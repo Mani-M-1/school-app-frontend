@@ -1,0 +1,22 @@
+
+ion-content{
+    --background: #fcfcfd;
+  
+    P{
+      font-size: 16px;
+      line-height: 22px;
+      font-family:Arial, Helvetica, sans-serif;
+     // color: #2197db;
+      margin: 0;
+      
+    }
+    
+  }
+  .today{
+    border-radius: 0 0 15px 15px;
+  }
+  .backbutton{
+    padding-left: 10px;
+    padding-top: 10px;
+    size: 10vh;
+  }

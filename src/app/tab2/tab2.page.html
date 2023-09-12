@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="new">
+    <ion-title>Blogs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of blogs">
+        <ion-card (click)="cardClick(item)" class="card-margin">
+          <!-- <ion-card-header>
+            <ion-card-title>{{ item.title }}</ion-card-title>
+          </ion-card-header> -->
+
+          <ion-card-content color="danger">
+            <ion-card-title>{{ item.title }}</ion-card-title>
+          </ion-card-content>
+
+          <ion-card-content color="light">
+            <ion-img src="{{item.images}}"/>
+
+            <!-- <ion-item color="primary">{{ item.timestamp }}</ion-item> Display the timestamp -->
+            <ion-item>{{ item.content }}</ion-item>
+            {{ item.timestamp }}
+            <!-- <ion-item>{{ item.Name }}</ion-item> -->
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+</ion-content>

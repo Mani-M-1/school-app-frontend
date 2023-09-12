@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="new">
+    <ion-title>Create a Blog</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab6" color=""></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="blogForm" (ngSubmit)="add()">
+    <ion-item>
+      <ion-label position="floating">Title:</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+      <ion-text *ngIf="blogForm.get('title')?.invalid && blogForm.get('title')?.touched" color="danger">
+        Title is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Content:</ion-label>
+      <ion-textarea formControlName="content" autoGrow="true"></ion-textarea>
+      <ion-text *ngIf="blogForm.get('content')?.invalid && blogForm.get('content')?.touched" color="danger">
+        Content is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Course Image:</ion-label>
+      <ion-input type="text" formControlName="images"></ion-input>
+      <ion-text *ngIf="blogForm.get('images')?.invalid && blogForm.get('images')?.touched" color="danger">
+        Course Image is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Professor Name:</ion-label>
+      <ion-input type="text" formControlName="professorName"></ion-input>
+      <ion-text *ngIf="blogForm.get('professorName')?.invalid && blogForm.get('professorName')?.touched" color="danger">
+        Professor Name is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-button class="ion-margin" shape="round" color="new" expand="block" type="submit" [disabled]="blogForm.invalid">Add Blog</ion-button>
+  </form>
+</ion-content>

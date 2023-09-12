@@ -1,0 +1,26 @@
+ion-list{
+    padding-bottom: 370px;
+}
+
+/* Success Alert */
+.success-alert {
+    --ion-background-color: #d4edda;
+    --ion-color-base: #155724;
+    --ion-color-contrast: #fff;
+  }
+  
+.error-alert {
+    --ion-background-color: #f8d7da;
+    --ion-color-base: #721c24;
+    --ion-color-contrast: #fff;
+  }
+
+  ion-toolbar{
+    border-radius: 0 0 10px 10px;
+  }
+
+  ion-title{
+    padding-left: 0px;
+    margin-left: 0px;
+    font-weight: bold;
+}

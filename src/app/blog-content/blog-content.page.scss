@@ -1,0 +1,77 @@
+ion-header{
+    --ion-background-color: rgb(67, 98, 236);
+}
+ion-title{
+    color:rgb(26, 25, 25);
+    font-weight: bold;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+ion-item{
+    color: rgb(5, 5, 5);
+}
+ion-content{
+    --ion-background-color:
+}
+ion-button-like{
+    --ion-color: rgb(8, 8, 8);
+}
+ion-toolbar{
+    border-radius: 0 0 10px 10px;
+}
+
+/* Example SCSS for customizing the button alignment in the grid */
+// .button-row {
+//     display: flex;
+//   }
+  
+//   .button-col {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+
+.line {
+    height: 1px; /* Adjust the height of the line as needed */
+    width: 100%; /* Make the line stretch across the container */
+    background-color: #ccc; /* Change the color of the line if desired */
+    margin-bottom: 10px; /* Adjust the spacing between the line and the icons */
+  }
+.icons{
+    padding-top: 10px;
+    padding-left: 20px;
+  display: flex;
+  align-items: center; /* Align the icons vertically in the center */
+}
+
+.icon-space {
+  width: 50px; /* Adjust the space between the icons as needed */
+}
+.space{
+    width: 30px;
+}
+.icon{
+    font-size: 20px;
+}
+.icon1{
+    font-size: 20px;
+
+}
+ion-card{
+    border: 1px solid #8d8585; /* Adjust the color and thickness as needed */
+    border-radius: 10px;
+    box-shadow: 0 8px 10px rgba(15, 15, 15, 0.425);
+}
+.content-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .card-margin {
+   
+    margin-left: -5px;
+    margin-right: -5px;
+  }

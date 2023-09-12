@@ -1,0 +1,82 @@
+ion-content{
+    --ion-background-color: rgb(250, 253, 253);
+ }
+ ion-header{
+     --ion-background-color: rgb(252, 253, 253);
+ }
+//  ion-card{
+//      border-radius: 10px;
+//      box-shadow: 0 8px 10px rgba(15, 15, 15, 0.425);
+//  }
+ ion-title{
+     color:rgb(23, 22, 22);
+     font-weight: bold;
+ }
+ ion-card-title.highlight{
+     font-weight:bold;
+     color:#2e97ec;
+ }
+ // p2{
+ //     margin-block-end: 0px;
+ //     padding-left: 5%;
+ //     margin-inline: end;
+ //     padding-inline-end: 0%;
+ //     size: 5px;
+ // }
+ p{
+     margin-block-start: auto;
+     margin-inline: start;
+     padding-inline-start: 0%;
+ }
+ /* Styling for the button with class "button-s" */
+ ion-button.button-s {
+   //  padding-right: 300px;
+      --background: #2e97ec; /* Set the background color */
+      --color: #0c0c0c; /* Set the text color */
+ //     --padding-start: 20px; /* Adjust the padding on the start slot */
+ //     --padding-end: 20px; /* Adjust the padding on the end slot */
+ //     --width: 50px; /* Set the button width */
+ //     // display: flex;
+ //     // justify-content: flex-start;
+ //     --align: start;
+   }
+   
+ //   /* Styling for the button with class "button-sr" */
+ ion-button.button-sr {
+  //--padding: 300px;
+  --background: #2e97ec; /* Set the background color */
+  --color: #000000; /* Set the text color */
+ //     --padding-start: 20px; /* Adjust the padding on the start slot */
+ //     --padding-end: 20px; /* Adjust the padding on the end slot */
+ //     --width: 50px; /* Set the button width */
+ //     // --display: flex;
+ //     // --justify-content: flex-end;
+ //     --align: end;
+   }
+ ion-button.button-container {
+     display: flex;
+     justify-content: space-between;
+     align-items: end;
+   }
+   ion-toolbar{
+    border-radius: 0 0 10px;
+   }
+
+   ion-card{
+    border: 1px solid #fffcfc; /* Adjust the color and thickness as needed */
+    border-radius: 8px; /* Adjust the border radius as needed */
+    border-radius: 10px;
+    box-shadow: 0 8px 10px rgba(15, 15, 15, 0.425);
+}
+.content-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .card-margin {
+   
+    margin-left: -3px;
+    margin-right: -3px;
+  }

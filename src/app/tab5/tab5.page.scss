@@ -1,0 +1,88 @@
+ion-header{
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    padding-bottom: 1vh;
+
+    ion-toolbar{
+        padding-left: 4vh;
+        padding-right: 2vh;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        border-radius: 0px 0px 25px 25px;
+        
+        ion-searchbar{
+    
+            border-radius: 30px 30px 30px 30px;
+    }
+    }
+}
+ion-content{
+
+      .end-btn {
+        position: absolute;
+        right: 0;
+        bottom: 10vh;
+        top: 0;
+        // font-size:small;
+        
+      }
+      // ion-card{
+      //   height: 25vh;
+      //   width: 20vh;
+      //   color: light;
+      
+      //   ion-card-title{
+      //     font-size: 1rem;
+      //   }
+      // }
+
+      .card-container{
+        ion-card{
+          padding-top: 1vh;
+          height: 25vh;
+          width: 20vh;
+          color: light;
+          margin: 1px;
+  
+          ion-card-title{
+            padding-top: 2.5vh;
+            font-size: 1rem;
+            font-weight: 700;
+          }
+        }
+      }
+      
+    
+    
+}
+.L{
+    font-size: 1.2rem;
+}
+.m{
+  padding-top: 1vh;
+  font-size: 1.2rem;
+  ion-button{
+    padding-left: 27.4vh;
+    margin: 0vh;
+    border: 0vh;
+  }
+}
+.calender{
+  padding-right: 8vh;
+}
+
+// .image{
+//   width: 80%;
+//   height: 60%;
+// }
+.image{
+  // width: 20vh;
+  // height: 60%;
+  //object-fit:scale-down;
+  width: 100%;
+  height: 60%;
+}
+
+// ion-searchbar {
+//   --box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); /* Adjust the shadow properties as desired */
+// }

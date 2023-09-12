@@ -1,0 +1,45 @@
+ion-header{
+    padding-bottom: 0;
+}
+
+ion-toolbar{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+ion-label{
+    font-size: 5em;
+    font-weight: bold;
+    
+}
+ion-note{
+    font-size: 1rem;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+}
+ion-card{
+    border-radius: 5px;
+    border: 1px solid #8d8585; /* Adjust the color and thickness as needed */
+    border-radius: 8px; /* Adjust the border radius as needed */
+
+}
+.content-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .card-margin {
+   
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  
+
+// ion-card-header{
+//     border-radius: 30px;
+
+// }

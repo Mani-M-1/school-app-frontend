@@ -1,0 +1,233 @@
+[
+    {
+    "id": 0,
+    "CourseName":"accounting",
+    "ProfessorName":"elon",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "CourseImage":"../../assets/5252601.jpg",
+    "CourseContent":[{
+        "week":"week1",
+        "readingmeterial":"hello",
+        "assignment":"assignment1",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week1",
+        "readingmeterial":"hello",
+        "assignment":"assignment1",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week2",
+        "readingmeterial":"hello",
+        "assignment":"assignmen2",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week3",
+        "readingmeterial":"hello",
+        "assignment":"assignment3",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    }
+    ]
+    },
+    
+    {
+    "id": 1,
+    "CourseName":"Photograph",
+    "ProfessorName":"marked",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "CourseImage":"../../assets/18965897.jpg",
+    "CourseContent":[{
+        "week":"week1",
+        "readingmeterial":"hello",
+        "assignment":"assignment2",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week2",
+        "readingmeterial":"hello",
+        "assignment":"assignmen2",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+
+    {
+        "week":"week2",
+        "readingmeterial":"hello",
+        "assignment":"assignmen2",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week3",
+        "readingmeterial":"hello",
+        "assignment":"assignment4",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    }
+    ]
+
+    },
+
+    {
+    "id": 2,
+    "CourseName":"Design",
+    "ProfessorName":"lenovo",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "CourseImage":"../../assets/3593965.jpg",
+    "CourseContent":[{
+        "week":"week1",
+        "readingmeterial":"hello",
+        "assignment":"assignment1",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week2",
+        "readingmeterial":"hello",
+        "assignment":"assignmen2",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week2",
+        "readingmeterial":"hello",
+        "assignment":"assignmen2",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    },
+    {
+        "week":"week3",
+        "readingmeterial":"hello",
+        "assignment":"assignment3",
+        "additionalContent":"hello world",
+        "annoncement":"hey you have exam this week",
+        "startDate":"01-10-2023",
+        "endDate":"02-12-2023"
+
+        
+    }
+    ]
+
+    },
+
+    {
+    "id": 3,
+    "CourseName":"markating",
+    "ProfessorName":"hella",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about markating",
+    "CourseImage":"../../assets/7038058.jpg"
+
+    },
+
+    {
+    "id": 4,
+    "CourseName":"photography",
+    "ProfessorName":"mark",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "CourseImage":"../../assets/18965897.jpg"
+
+    },
+
+    {
+    "id": 5,
+    "CourseName":"accounting",
+    "ProfessorName":"elon",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "src":"https://drive.google.com/file/d/14VwscFumlOSExu6urNSCIdbC5OYUbBrU/view?usp=share_link"
+
+    },
+
+
+    {
+    "id": 6,
+    "CourseName":"accounting",
+    "ProfessorName":"elon",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "src":"https://drive.google.com/file/d/14VwscFumlOSExu6urNSCIdbC5OYUbBrU/view?usp=share_link"
+
+    },
+
+    {
+    "id": 7,
+    "CourseName":"accounting",
+    "ProfessorName":"elon",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "src":"https://drive.google.com/file/d/14VwscFumlOSExu6urNSCIdbC5OYUbBrU/view?usp=share_link"
+
+    },
+    {"id": 8,
+    "CourseName":"auto",
+    "ProfessorName":"elon",
+    "CourseTimings":"12:00",
+    "AccessClass":"fdkjdf",
+    "Discription":"about accounting",
+    "CourseImage":"../../assets/5252601.jpg"
+    }
+]

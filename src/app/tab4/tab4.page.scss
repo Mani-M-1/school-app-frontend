@@ -1,0 +1,76 @@
+
+ion-icon{
+    padding-right: 15px;
+    font-size: 1.5rem;
+    padding-top: 15px;
+    color:black;
+}
+
+h3{
+    padding-right: 0px;
+}
+ion-avatar{
+    width: 10rem; 
+    height: 10rem;
+    //margin-top: 5rem;
+    position:absolute;
+    left: 55%;
+    top: 10%;
+    transform: translate(-50%, -50%, -80%, -80%);
+    padding-right: 1px;
+}
+.container{
+    background-color: #fde6b0;
+    padding-top: 11vh;
+    padding-bottom: 1vh;
+    padding-left: 1.5vh;
+    border-radius: 0 0 300vh 0;
+
+   
+}
+  
+
+h5{
+         font-size: 0.8rem;
+ }
+.school{
+    padding-top: 8vh;
+    // padding-bottom: 1vh;
+    align-items:center; 
+}
+.name{
+    padding-top: 0vh;
+    // padding-bottom: 1vh;
+    align-items:center;
+
+}
+.mobile{
+    padding-top: 0vh;
+    // padding-bottom: 1vh;
+    align-items:center;
+}
+.emergency{
+    padding-top: 0vh;
+    // padding-bottom: 1vh;
+    align-items:center;
+    
+}
+p{
+    padding-left: 12vh;
+    font-size: 1rem;
+    // padding-top: 0vh;
+    margin-top: -1.3em;
+}
+h6{
+   font-size: 0.8rem;
+//    margin-bottom: 0em;
+   margin-top: 0em;
+}
+.log-out{
+    position: relative;
+    top: 0;
+    right: -85%;
+}
+  
+  
+

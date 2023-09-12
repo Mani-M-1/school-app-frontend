@@ -1,0 +1,46 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom" [translucent]="true" slot="bottom">
+    <ion-tab-button *ngIf="isStudent" tab="tab1">
+      <ion-icon name="star" color="dark"></ion-icon>
+      <ion-label>Courses</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="isStudent" tab="tab2">
+      <ion-icon name="list" color="dark"></ion-icon>     
+      <ion-label>Blogs</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="isStudent" tab="tab3">
+      <ion-icon name="heart" color="dark"></ion-icon>
+      <ion-label>Favourites</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="isStudent" tab="tab4">
+      <ion-icon name="person" color="dark"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf= "!isStudent" tab="tab5">
+      <ion-icon name="star" color="dark"></ion-icon>
+      <ion-label>Courses</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf= "!isStudent" tab="tab6">
+      <ion-icon name="list" color="dark"></ion-icon>
+      <ion-label>Blogs</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf= "!isStudent" tab="tab7">
+      <ion-icon name="heart" color="dark"></ion-icon>
+      <ion-label>Favourites</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf= "!isStudent" tab="tab8">
+      <ion-icon name="person" color="dark"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+  
+
+</ion-tabs>

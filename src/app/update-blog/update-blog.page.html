@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="new">
+    <ion-title>Update Blog</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab6" color=""></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input labelplacement="floating" type="text" [(ngModel)]="title" name="title"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Content :</ion-label><br>
+        <ion-textarea   placeholder="Write task here" autoGrow="true" [(ngModel)]="content" required></ion-textarea>
+    </ion-item>
+
+    <ion-item color="white">
+      <ion-label position="floating">Course Image</ion-label><br>
+        <ion-input placeholder="Write image link here" [(ngModel)]="images" placeholder="paste images link here">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label labelplaceholder="floating">ProfessorName :</ion-label>
+      <ion-input type="text" name="Name" [(ngModel)]="Name" required></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button class="update" expand="full" 
+  (click)="updateBlog()" name="updateBlog" 
+  color="new" shape="round"> update Blog </ion-button>
+
+
+</ion-content>
