@@ -21,21 +21,47 @@
     </ion-item>
     
   </div> -->
+
+  
+  
+  
   <div>
-    <ion-avatar>
+    <ion-avatar class="avatar-container">
       <!-- <img src="{{imageSource}}" style="width: 400px" /> -->
       <!-- <img [src]="getPhoto()" style="width: 400px;" /> -->
       <!-- <img [src]="picture" /> -->
       <!-- <ion-img src="{{ profile }}"></ion-img> -->
       <!-- <img [src]="picture" style="width: 400px;"/> -->
       <ion-img src="{{ profile }}"></ion-img>
+
+      <ion-fab-button size="small" color="light" class="camera-button" 
+      class="camera-button" (click)="chooseFileInput.click()" (change)="onImageFileChange($event)">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+      <input
+        type="file"
+        accept="image/*"
+        style="display: none"
+        #chooseFileInput
+        (change)="onImageFileChange($event)"
+      />
     </ion-avatar>
 
     
-    <ion-fab-button slot="end" class="camera" size="small">
+
+
+    <ion-fab vertical="top" horizontal="end" color="" class="ok">
+    <ion-fab-button size="small" horizontal="end" color="transprent" (click)="uploadFiles('image')">
+      <!-- <ion-icon name="checkmark-outline" color="success" ></ion-icon> -->
+      <p>save<br>picture</p>
+    </ion-fab-button>
+    </ion-fab>
+    
+    <!-- <ion-fab-button slot="end" class="camera" size="small">
       <ion-icon name="camera-outline" size="small" (click)="takePicture()">
-      </ion-icon></ion-fab-button><br><br>
+      </ion-icon></ion-fab-button><br><br> -->
   </div>
+  
 
   <div class="school">
     <ion-item color="white" lines="none">

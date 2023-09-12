@@ -13,11 +13,11 @@ ion-avatar{
     //margin-top: 5rem;
     position:absolute;
     left: 28%;
-    top: 2%;
+   //  top: 2%;
     transform: translate(-50%, -50%, -80%, -80%);
 }
 .school{
-   padding-top: 28vh;
+   padding-top: 10vh;
    padding-left: 1vh;
    padding-right: 1vh;
 }
@@ -58,3 +58,27 @@ ion-avatar{
    // transform: translate(-50%, -50%, -80%, -80%);
    // padding-right: 1px;
 }
+.avatar-container {
+   margin-top: 50px;;
+   position: relative;
+   display: inline-block;
+ }
+ 
+ .camera-button {
+   position: absolute;
+   bottom: 14px;
+   right: 14px;
+   transform: translate(50%, 50%);
+ }
+ 
+ .camera-icon {
+   font-size: 20px; /* Adjust the size as needed */
+ }
+ .ok{
+   position: absolute;
+   top: 0;
+   right: 80px;
+ }
+ p{
+   font-size: 10px;
+ }

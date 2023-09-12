@@ -73,6 +73,7 @@ import { Router } from '@angular/router';
   //   console.log(data);
   //   this.Course = data;
   // });
+  
 
   logOut() {
 
@@ -85,5 +86,16 @@ import { Router } from '@angular/router';
     this.router.navigate(['/sign-in']);
   }
 
-}
+  getProfileData() {
+    this.http.get(`https://student-api-10-fbf8bbebe705.herokuapp.com/Signup/${this.username}`).subscribe((data: any) => {
+      console.log(data);
+      this.school = data.school;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+      this.mobileNo = data.mobileNo;
+      this.emergency = data.emergency;
+      this.profile = data.profile;
+    });
 
+}
+}

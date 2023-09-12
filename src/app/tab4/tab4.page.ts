@@ -72,7 +72,7 @@ export class Tab4Page implements OnInit {
     this.mobileNo = localStorage.getItem('mobileNo');
     this.emergency = localStorage.getItem('emergency');
     this.username = localStorage.getItem('username');
-    this.profile = localStorage.getItem('profile')
+    this.profile = localStorage.getItem('profile');
   }
   
 

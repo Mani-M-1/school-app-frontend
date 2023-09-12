@@ -6,6 +6,8 @@ import { response } from 'express';
 //import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { LoadingController } from '@ionic/angular';
+
 
 
 @Component({
@@ -14,6 +16,18 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./edit-profile.page.scss'],
 })
 export class EditProfilePage implements OnInit {
+
+  showLoader = false; // Controls whether the loader should be shown
+  loadingSpinner = 'crescent'; // Change this to 'lines', 'dots', etc. as per your preference
+  loadingMessage = 'Uploading...';
+
+  //this is for buttons "upload and update"
+  uploadInProgressImage = false;
+
+    //for upload status
+    uploadStatusImage = false;
+
+  //variables
   uploadedImage: any;
   school: any;
   firstName: any;
@@ -23,10 +37,22 @@ export class EditProfilePage implements OnInit {
   username: any;
   profile: any;
 
-  //for camera functionality
-  imageSource: any;
-  picture: any;
-  newImage: string | undefined;
+
+  //for uploading files
+  private image: File; // this is for file type for storing iamge event 
+
+
+  // for saving  S3 urls
+  imageUrl: any; //for showing course image url in db
+  filesFileUrl: any;
+  simulateUploadProcess: any;
+  uploadSuccessful: boolean;
+  uploadedFileUrl: any;
+
+  // //for camera functionality
+  // imageSource: any;
+  // picture: any;
+  // newImage: string | undefined;
 
   // role: any;
   userRole:any;
@@ -34,19 +60,20 @@ export class EditProfilePage implements OnInit {
   student:any;
   ImageUrl: string;
   
-  image: any;
-  uploadInProgressImage: boolean;
-  uploadStatusImage: boolean;
+  // image: any;
   
 
   //for showing image in ion-avatar
   selectedProfileImage: string | null = null;
+  file: any;
 
   constructor(
     private http: HttpClient,
     private toastService: ToastService,
     private router: Router,
     private domSanitizer: DomSanitizer,
+    private loadingController: LoadingController
+
     ) {
 
       //here we need to check if user is signed in and user role
@@ -74,6 +101,24 @@ export class EditProfilePage implements OnInit {
     console.log(this.profile);
     
   }
+
+  //this is for loading spinner and iam calling this
+   //async function in uploading function
+   async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'circles'
+    });
+    await loading.present();
+
+    // Simulate an asynchronous process
+    setTimeout(() => {
+      loading.dismiss();
+    }, 3000);
+  }
+
+  //for uploading files
+  selectedFile: File;
   
 
   //for camera module ionic
@@ -98,14 +143,14 @@ export class EditProfilePage implements OnInit {
   // }
 
  // camera module capacitor
-  async takePicture(){
-    const image = await Camera.getPhoto({
-      quality: 100,
-      allowEditing: true,
-      resultType: CameraResultType.DataUrl
-    });
-    this.picture = image.dataUrl;
-  }
+  // async takePicture(){
+  //   const image = await Camera.getPhoto({
+  //     quality: 100,
+  //     allowEditing: true,
+  //     resultType: CameraResultType.DataUrl
+  //   });
+  //   this.picture = image.dataUrl;
+  // }
   ngOnInit() {
   }
 
@@ -116,8 +161,7 @@ export class EditProfilePage implements OnInit {
       currentFile = this.image;
       this.uploadInProgressImage = true;
 
-    } 
-
+    }
 
     
     if (!currentFile) {
@@ -129,10 +173,13 @@ export class EditProfilePage implements OnInit {
       // this.uploadInProgressFile = true
     
    
+    this.showLoader = true;
+
     console.log(fileType);
    
     //here iam calling the presentLoading fun
     //from up there
+    await this.presentLoading();
 
     try {
       let formData = new FormData();
@@ -160,8 +207,8 @@ export class EditProfilePage implements OnInit {
       uploadedFileUrl = CLOUDFRONT_URL + currentFile.name
       console.log(uploadedFileUrl);
       if(fileType == 'image'){
-        this.ImageUrl = uploadedFileUrl;
-      } 
+        this.imageUrl = uploadedFileUrl;
+      }
 
       // Set the corresponding upload status to true after successful upload
       //this is for uploading buttons you can find more about in html fle at upload buttons
@@ -171,25 +218,40 @@ export class EditProfilePage implements OnInit {
     
     }catch (err) {
       console.log(err);
-    } 
+    } finally {
+      if (fileType == 'image') {
+        this.uploadInProgressImage = false;
+      }
+      
+        this.showLoader = false;
+    }
 
   }
  // this is for onchange event in html file
- onFileChange(event: any) {
+ onImageFileChange(event: any) {
   this.image = event.target.files[0];
 
 }
 
 
 
+
   update(){
+      console.log(this.school);
+      console.log(this.firstName);
+      console.log(this.lastName);
+      console.log(this.mobileNo);
+      console.log(this.emergency);
+      console.log(this.imageUrl);
+
       const updatedProfile = {
+        
         school: this.school,
         firstName: this.firstName,
         lastName: this.lastName,
         mobileNo: this.mobileNo,
         emergency: this.emergency,
-        profile: this.ImageUrl
+        profile: this.imageUrl
       };
       const username = localStorage.getItem('username');  
       const role = localStorage.getItem('userRole')  
