@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //   Token,
 // } from '@capacitor/push-notifications';
 
-import data from '../../assets/Course.json';
+// import data from '../../assets/Course.json';
 
 @Component({
   selector: 'app-tab1',
@@ -30,9 +30,11 @@ export class Tab1Page implements OnInit{
   searchText = '';
 
  //showMe: boolean = true;
-Course = data;
+// Course = data;
   taskForm: any;
   taskService: any;
+  username: any;
+  weeklyCourse: any;
 
 
  
@@ -71,7 +73,7 @@ Course = data;
       //this is for data
     //this.http.get('assets/Course.json').subscribe((data:any) => {
       //console.log(data);
-      this.Course = data;
+      // this.Course = data;
    // });
 
     //this is for push notifications
@@ -82,46 +84,11 @@ Course = data;
   }
   ngOnInit() {
     console.log('Initializing Tab1Page');
-
-    // Request permission to use push notifications
-    // iOS will prompt user and return if they granted permission or not
-    // Android will just grant without prompting
-    // PushNotifications.requestPermissions().then(result => {
-    //   if (result.receive === 'granted') {
-    //     // Register with Apple / Google to receive push via APNS/FCM
-    //     PushNotifications.register();
-    //   } else {
-    //     // Show some error
-    //   }
-    // });
-
-    // On success, we should be able to receive notifications
-    // PushNotifications.addListener('registration',
-    //   (token: Token) => {
-    //     //alert('Push registration success, token: ' + token.value);
-    //   }
-    // );
-
-    // Some issue with our setup and push will not work
-    // PushNotifications.addListener('registrationError',
-    //   (error: any) => {
-    //     alert('Error on registration: ' + JSON.stringify(error));
-    //   }
-    // );
-
-    // Show us the notification payload if the app is open on our device
-    // PushNotifications.addListener('pushNotificationReceived',
-    //   (notification: PushNotificationSchema) => {
-    //     alert('Push received: ' + JSON.stringify(notification));
-    //   }
-    // );
-
-    // Method called when tapping on a notification
-    // PushNotifications.addListener('pushNotificationActionPerformed',
-    //   (notification: ActionPerformed) => {
-    //     alert('Push action performed: ' + JSON.stringify(notification));
-    //   }
-    // );
+    this.username = localStorage.getItem('username');
+    console.log(this.username);
+    this.getCourseDetails(); // and we are calling this function
+    
+    
 }
 
 
@@ -146,7 +113,7 @@ showAllCards() {
 getCourseDetails(){
   this.http.get(`https://student-api-10-fbf8bbebe705.herokuapp.com/weeklycourse`).subscribe((data:any) => {
     console.log(data);
-    this.Course = data;
+    this.weeklyCourse = data;
   });
 }
 

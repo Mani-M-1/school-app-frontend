@@ -36,21 +36,21 @@ ion-content{
       //   }
       // }
 
-      .card-container{
-        ion-card{
-          padding-top: 1vh;
-          height: 25vh;
-          width: 20vh;
-          color: light;
-          margin: 1px;
+      // .card-container{
+      //   ion-card{
+      //     padding-top: 1vh;
+      //     height: 25vh;
+      //     width: 20vh;
+      //     color: light;
+      //     margin: 1px;
   
-          ion-card-title{
-            padding-top: 2.5vh;
-            font-size: 1rem;
-            font-weight: 700;
-          }
-        }
-      }
+      //     ion-card-title{
+      //       padding-top: 2.5vh;
+      //       font-size: 1rem;
+      //       font-weight: 700;
+      //     }
+      //   }
+      // }
       
     
     
@@ -71,10 +71,7 @@ ion-content{
   padding-right: 8vh;
 }
 
-// .image{
-//   width: 80%;
-//   height: 60%;
-// }
+
 .image{
   // width: 20vh;
   // height: 60%;
@@ -86,3 +83,35 @@ ion-content{
 // ion-searchbar {
 //   --box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); /* Adjust the shadow properties as desired */
 // }
+
+/* Add a class for responsive card styling */
+.responsive-card {
+  padding-top: 1vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.responsive-card .image {
+  flex: 1; /* Allow the image to expand and take available space */
+  max-height: 60%; /* Set a maximum height for the image */
+  overflow: hidden; /* Hide any overflowing content */
+  max-width: 100%;
+}
+
+/* Style the card title and professor name */
+.responsive-card ion-card-header {
+  padding: 0.5rem;
+}
+
+.responsive-card ion-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Add responsive card margin */
+.responsive-card {
+  margin: 0.5rem;
+}

@@ -25,12 +25,25 @@
       </ion-text>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Course Image:</ion-label>
+    <!-- <ion-item>
+      <ion-icon name="image-outline" slot="start" color="primary"></ion-icon>
+      <ion-label position="floating">Blog Image:</ion-label>
       <ion-input type="text" formControlName="images"></ion-input>
       <ion-text *ngIf="blogForm.get('images')?.invalid && blogForm.get('images')?.touched" color="danger">
         Course Image is required.
       </ion-text>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-icon name="image-outline" color="primary" class="icon-spacing"></ion-icon>
+      <ion-input formControlName="images" placeholder="Write image link here" 
+      type="file" (change)="onImageFileChange($event)"
+      > <!--type="file"--> 
+      </ion-input>
+      <!-- <ion-button color="new" (click)="uploadFiles('image')">Upload file</ion-button> -->
+      <ion-button color="new" (click)="uploadFiles('image')">
+        {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ? 'Update Image' : 'Upload Image') }}
+      </ion-button>
     </ion-item>
 
     <ion-item>

@@ -57,7 +57,7 @@
           </div><br><br> -->
         </ion-col><br>
 
-        <ion-col size="6" *ngFor="let item of weeklyCourse | searchFilter: searchText: 'CourseName'">
+        <ion-col size-md="6" *ngFor="let item of weeklyCourse | searchFilter: searchText: 'CourseName'">
           <!-- here iam giving item.id -->
           <ion-card (click)="cardClicked(item)">
             <div class="image">
