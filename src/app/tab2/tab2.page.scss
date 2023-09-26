@@ -80,3 +80,16 @@ ion-content{
     margin-left: -3px;
     margin-right: -3px;
   }
+
+  /* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  ion-card {
+    /* Adjust card styling for smaller screens */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(15, 15, 15, 0.2);
+  }
+
+  .ion-card-title {
+    font-size: 1.2rem;
+  }
+}

@@ -9,29 +9,34 @@
 
 <ion-content>
 
-  <ion-list>
     <ion-item>
-      <ion-label position="floating">Title</ion-label>
-      <ion-input labelplacement="floating" type="text" [(ngModel)]="title" name="title"></ion-input>
+      <ion-icon name="star-outline" class="icon-spacing" color="primary"></ion-icon>
+      <!-- <ion-label position="floating">Title</ion-label> -->
+      <ion-input placeholder="Title" type="text" [(ngModel)]="title" name="title"></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-label>Content :</ion-label><br>
-        <ion-textarea   placeholder="Write task here" autoGrow="true" [(ngModel)]="content" required></ion-textarea>
-    </ion-item>
-
-    <ion-item color="white">
-      <ion-label position="floating">Course Image</ion-label><br>
-        <ion-input placeholder="Write image link here" [(ngModel)]="images" placeholder="paste images link here">
-      </ion-input>
+      <ion-icon name="information-outline" color="success" class="icon-spacing"></ion-icon>
+        <ion-textarea placeholder="Write your content here" autoGrow="true" [(ngModel)]="content" required></ion-textarea>
     </ion-item>
 
     <ion-item>
-      <ion-label labelplaceholder="floating">ProfessorName :</ion-label>
-      <ion-input type="text" name="Name" [(ngModel)]="Name" required></ion-input>
+      <ion-icon name="image-outline" color="warning" class="icon-spacing"></ion-icon>
+        <ion-input [(ngModel)]="images" 
+        type="file" (change)="onImageFileChange($event)"
+        ></ion-input>
+      <ion-button color="new" (click)="uploadFiles('image')">
+        {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ? 'Update Image' : 'Upload Image') }}
+      </ion-button>
     </ion-item>
+    <p><b>Note:</b> Please upload a blog image before submitting the blog</p>
 
-  </ion-list>
+
+    <ion-item>
+      <ion-icon name="person-outline" color="danger" class="icon-spacing"></ion-icon>
+      <ion-input type="text" placeholder="ProfessorName" name="Name" [(ngModel)]="Name" required></ion-input>
+    </ion-item><br><br>
+
 
   <ion-button class="update" expand="full" 
   (click)="updateBlog()" name="updateBlog" 

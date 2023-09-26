@@ -214,6 +214,8 @@ export class Tab6Page implements OnInit {
   blogPost() {
     this.blogPosta();
    this.navcontroller.navigateRoot('/createblog');
+  //  this.router.navigate(['/createblog'])
+
   //  this.img(['assets/images/pexels-photo-jpg..webp'])
   }
   

@@ -10,16 +10,18 @@
 <ion-content>
   <form [formGroup]="blogForm" (ngSubmit)="add()">
     <ion-item>
-      <ion-label position="floating">Title:</ion-label>
-      <ion-input type="text" formControlName="title"></ion-input>
+      <!-- <ion-label position="floating">Title:</ion-label> -->
+      <ion-icon name="star-outline" class="icon-spacing" color="primary"></ion-icon>
+      <ion-input type="text" formControlName="title" placeholder="Title"></ion-input>
       <ion-text *ngIf="blogForm.get('title')?.invalid && blogForm.get('title')?.touched" color="danger">
         Title is required.
       </ion-text>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Content:</ion-label>
-      <ion-textarea formControlName="content" autoGrow="true"></ion-textarea>
+      <!-- <ion-label position="floating">Content:</ion-label> -->
+      <ion-icon name="information-outline" color="success" class="icon-spacing"></ion-icon>
+      <ion-textarea formControlName="content" autoGrow="true" placeholder="Write your content here"></ion-textarea>
       <ion-text *ngIf="blogForm.get('content')?.invalid && blogForm.get('content')?.touched" color="danger">
         Content is required.
       </ion-text>
@@ -35,7 +37,7 @@
     </ion-item> -->
 
     <ion-item>
-      <ion-icon name="image-outline" color="primary" class="icon-spacing"></ion-icon>
+      <ion-icon name="image-outline" color="warning" class="icon-spacing"></ion-icon>
       <ion-input formControlName="images" placeholder="Write image link here" 
       type="file" (change)="onImageFileChange($event)"
       > <!--type="file"--> 
@@ -45,10 +47,12 @@
         {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ? 'Update Image' : 'Upload Image') }}
       </ion-button>
     </ion-item>
+    <p><b>Note:</b> Please upload a blog image before submitting the blog</p>
 
     <ion-item>
-      <ion-label position="floating">Professor Name:</ion-label>
-      <ion-input type="text" formControlName="professorName"></ion-input>
+      <!-- <ion-label position="floating">Professor Name:</ion-label> -->
+      <ion-icon name="person-outline" color="danger" class="icon-spacing"></ion-icon>
+      <ion-input type="text" formControlName="professorName" placeholder="Name of the professor"></ion-input>
       <ion-text *ngIf="blogForm.get('professorName')?.invalid && blogForm.get('professorName')?.touched" color="danger">
         Professor Name is required.
       </ion-text>

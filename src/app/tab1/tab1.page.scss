@@ -58,7 +58,9 @@ ion-content{
         // height: 60%;
         //object-fit:fill;
         width: 100%;
-        height: 60%;
+        margin: auto;
+        // display:block;
+        position: inherit;
       }
       .L{
         font-size: 1.2rem;
@@ -81,7 +83,7 @@ ion-content{
 
 .responsive-card .image {
   flex: 1; /* Allow the image to expand and take available space */
-  max-height: 60%; /* Set a maximum height for the image */
+  max-height: 100%; /* Set a maximum height for the image */
   overflow: hidden; /* Hide any overflowing content */
   max-width: 100%; /* Adjust this value as needed */
 }
