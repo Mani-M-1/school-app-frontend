@@ -81,17 +81,17 @@ ion-content{
   justify-content: space-between;
 }
 
-.responsive-card .image {
-  flex: 1; /* Allow the image to expand and take available space */
-  max-height: 100%; /* Set a maximum height for the image */
-  overflow: hidden; /* Hide any overflowing content */
-  max-width: 100%; /* Adjust this value as needed */
-}
+// .responsive-card .image {
+//   flex: 1; /* Allow the image to expand and take available space */
+//   max-height: 100%; /* Set a maximum height for the image */
+//   overflow: hidden; /* Hide any overflowing content */
+//   max-width: 100%; /* Adjust this value as needed */
+// }
 
-/* Style the card title and professor name */
-.responsive-card ion-card-header {
-  padding: 0.5rem;
-}
+// /* Style the card title and professor name */
+// .responsive-card ion-card-header {
+//   padding: 0.5rem;
+// }
 
 .responsive-card ion-card-title {
   font-size: 1rem;
@@ -99,8 +99,8 @@ ion-content{
   margin-bottom: 0.5rem;
 }
 
-/* Add responsive card margin */
-.responsive-card {
-  margin: 0.5rem;
-}
+// /* Add responsive card margin */
+// .responsive-card {
+//   margin: 0.5rem;
+// }
 

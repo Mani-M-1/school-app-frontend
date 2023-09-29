@@ -20,8 +20,8 @@
   <!-- Loop through the blogs data  -->
 <div *ngIf="selectTabs == 'allBlogs'">
   <div *ngFor="let item of blogs">
-    <ion-row >
-     <ion-col color="primary">
+    <ion-row class="ion-justify-content-center">
+     <ion-col color="primary" size="12" size-md="10" size-lg="8" size-xl="6">
       <h1>{{item.count}}</h1>
   
       <!-- <ion-card class="card-margin"> -->
@@ -73,8 +73,8 @@
 <div *ngIf="selectTabs == 'yourBlogs'">
   <div *ngFor="let item of userBlogs">
     <!-- <div *ngIf="item.username === username"> -->
-    <ion-row >
-     <ion-col color="primary">
+    <ion-row class="ion-justify-content-center">
+     <ion-col size="12" size-md="10" size-lg="8" size-xl="6" color="primary">
       <h1>{{item.count}}</h1>
   
       <ion-card class="card-margin">

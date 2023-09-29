@@ -20,6 +20,7 @@ ion-toolbar{
     border-radius: 0 0 10px 10px;
 }
 
+
 /* Example SCSS for customizing the button alignment in the grid */
 // .button-row {
 //     display: flex;
@@ -75,3 +76,17 @@ ion-card{
     margin-left: -5px;
     margin-right: -5px;
   }
+.writer{
+    font-weight: bold;
+    padding-right: 10px;
+    
+}
+
+/* CSS for ion-card content */
+.ion-card-content {
+    /* Allow text to wrap to the next line */
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  
+ 
