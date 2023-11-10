@@ -1,15 +1,40 @@
+// ion-tab-bar {
+//   // Translucent positioning effect
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+//   --background: transparent;
+//     // opacity: 0.5;
+//   --box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15); 
+// }
+// // Used for the translucent tabs
+// ion-fab, ion-footer {
+//   bottom: 90px;
+//   color: #333;
+// }
+
+
+/* Make the tab bar transparent with a darkish color */
 ion-tab-bar {
-  // Translucent positioning effect
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  --background: transparent;
-    // opacity: 0.5;
-  --box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+  background-color: rgba(177, 174, 174, 0.6); /* Adjust the background color and opacity */
+  --ion-background-color: transparent; /* Make the background fully transparent */
+  --box-shadow: none; /* Remove any box shadow (optional) */
+  z-index: 1; /* Ensure the tab bar is on top of the content */
+}
+
+/* Customize the appearance of the tab buttons */
+ion-tab-button {
+  --color-selected: #0e05c4; /* Set the selected tab color */
+  --color: #161414; /* Set the unselected tab color */
   
 }
-// Used for the translucent tabs
-ion-fab, ion-footer {
-  bottom: 90px;
+
+/* Optional: Change the color of the active tab indicator */
+ion-tab-button::part(indicator) {
+  background-color: #f2f6f4; /* Set the active tab indicator color */
 }

@@ -79,7 +79,7 @@ const postdata = {
 
  
 
-this.http.post(`https://student-api-10-fbf8bbebe705.herokuapp.com/Signup`, postdata)
+this.http.post(`http://localhost:3000/Signup`, postdata)
       .subscribe(response => {
         console.log(response);
          // Assuming successful signup

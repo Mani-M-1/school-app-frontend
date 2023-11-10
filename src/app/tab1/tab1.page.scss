@@ -53,24 +53,42 @@ ion-content{
     //   }
     // }
 
-      .image{
-        // width: 20vh;
-        // height: 60%;
-        //object-fit:fill;
-        width: 100%;
-        margin: auto;
-        // display:block;
-        position: inherit;
+      // .image-container{
+      //   // width: 20vh;
+      //   // height: 60%;
+      //   //object-fit:fill;
+      //   width: 100%;
+      //   height: 100%;
+      //   margin: auto;
+      //   // display:block;
+      //   position: inherit;
+      // }
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%; /* Set the desired height */
+        width: 100%; /* Set the desired width */
       }
+      
+      .fixed-image {
+        // max-height: 50%;
+        // max-width: 50%;
+        height: auto;
+        width: auto;
+      }
+      
+
+
       .L{
         font-size: 1.2rem;
     }
     
     
 }
-.calender{
-  padding-right: 8vh;
-}
+// .calender{
+//   padding-right: 8vh;
+// }
 
 /* Add a class for responsive card styling */
 .responsive-card {

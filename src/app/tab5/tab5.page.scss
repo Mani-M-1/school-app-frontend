@@ -67,9 +67,9 @@ ion-content{
     border: 0vh;
   }
 }
-.calender{
-  padding-right: 8vh;
-}
+// .calender{
+//   padding-right: 8vh;
+// }
 
 
 // .image{
@@ -83,6 +83,21 @@ ion-content{
 // ion-searchbar {
 //   --box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); /* Adjust the shadow properties as desired */
 // }
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Set the desired height */
+  width: 100%; /* Set the desired width */
+}
+
+.fixed-image {
+  // max-height: 50%;
+  // max-width: 50%;
+  height: auto;
+  width: auto;
+}
 
 /* Add a class for responsive card styling */
 .responsive-card {

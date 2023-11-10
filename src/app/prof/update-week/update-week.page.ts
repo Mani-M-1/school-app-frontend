@@ -142,7 +142,7 @@ selectedFile: File;
     formData.append("filename", currentFile, currentFile.name);
     console.log(currentFile);
 
-      const response = await fetch('https://student-api-10-fbf8bbebe705.herokuapp.com/uploadfile', {
+      const response = await fetch('http://localhost:3000/uploadfile', {
         method: 'POST',
         body: formData,
       });
@@ -223,7 +223,7 @@ onVideoFileChange(event: any) {
       startDate: this.StartDate,
       endDate: this.EndDate,
     };
-   this.http.post(`https://student-api-10-fbf8bbebe705.herokuapp.com/weeklyCourse/updateWeek/${this.selectedWeekId}`, updateData)   
+   this.http.post(`http://localhost:3000/weeklyCourse/updateWeek/${this.selectedWeekId}`, updateData)   
    // this.http.post(`http://localhost:3000/weeklyCourse/updateWeek/${this.selectedWeekId}`, updateData)      
    
     .subscribe(res => {

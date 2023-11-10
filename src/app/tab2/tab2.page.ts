@@ -36,7 +36,7 @@ export class Tab2Page implements OnInit{
     this.blogcontent();
   }
     blogcontent(){
-      this.http.get('https://student-api-10-fbf8bbebe705.herokuapp.com/blog').subscribe((data: any) =>{
+      this.http.get('http://localhost:3000/blog').subscribe((data: any) =>{
         console.log(data);
         this.blogs = data.posts;
     })

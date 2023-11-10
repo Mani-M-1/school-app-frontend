@@ -129,7 +129,7 @@ export class CreateblogPage implements OnInit {
       formData.append("filename", currentFile, currentFile.name);
       console.log(currentFile);
   
-        const response = await fetch('https://student-api-10-fbf8bbebe705.herokuapp.com/uploadfile', {
+        const response = await fetch('http://localhost:3000/uploadfile', {
           method: 'POST',
           body: formData,
         });
@@ -208,7 +208,7 @@ add() {
 
     console.log(this.username);
 
-this.http.post('https://student-api-10-fbf8bbebe705.herokuapp.com/blog', bodydata).subscribe((response) =>{
+this.http.post('http://localhost:3000/blog', bodydata).subscribe((response) =>{
   console.log(response);
   this.presentSuccessAlert();
   this.navCtrl.navigateRoot('/tabs/tab6')

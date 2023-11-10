@@ -131,7 +131,7 @@ export class BlogContentPage implements OnInit {
       }
 
       console.log(comment);
-      this.http.post("https://student-api-10-fbf8bbebe705.herokuapp.com/blog/comment", comment)
+      this.http.post("http://localhost:3000/blog/comment", comment)
       .subscribe(response => {
         console.log(response);
     

@@ -111,7 +111,7 @@ showAllCards() {
 
 //get course details api
 getCourseDetails(){
-  this.http.get(`https://student-api-10-fbf8bbebe705.herokuapp.com/weeklycourse`).subscribe((data:any) => {
+  this.http.get(`http://localhost:3000/weeklycourse`).subscribe((data:any) => {
     console.log(data);
     this.weeklyCourse = data;
   });

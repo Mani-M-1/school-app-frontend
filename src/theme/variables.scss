@@ -100,12 +100,21 @@
 	--ion-color-light-blue-tint: #1affff;
 
   /** new **/
-  --ion-color-new: #8dd069;
+  --ion-color-new: #dddddd;
 	--ion-color-new-rgb: 253,230,176;
 	--ion-color-new-contrast: #000000;
 	--ion-color-new-contrast-rgb: 0,0,0;
 	--ion-color-new-shade: #dfca9b;
 	--ion-color-new-tint: #fde9b8;
+
+  /** white **/
+  --ion-color-white: #ffffff
+	--ion-color-white-rgb: 253,230,176;
+	--ion-color-white-contrast: #000000;
+	--ion-color-white-contrast-rgb: 0,0,0;
+	--ion-color-white-shade: #dfca9b;
+	--ion-color-white-tint: #fde9b8;
+
 
     /** pink **/
   --ion-color-pink: #ff00ff;
@@ -201,6 +210,15 @@
 	--ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb);
 	--ion-color-shade: var(--ion-color-new-shade);
 	--ion-color-tint: var(--ion-color-new-tint);
+}
+
+.ion-color-white {
+	--ion-color-base: var(--ion-color-white);
+	--ion-color-base-rgb: var(--ion-color-white-rgb);
+	--ion-color-contrast: var(--ion-color-white-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
+	--ion-color-shade: var(--ion-color-white-shade);
+	--ion-color-tint: var(--ion-color-white-tint);
 }
 
 .ion-color-pink {

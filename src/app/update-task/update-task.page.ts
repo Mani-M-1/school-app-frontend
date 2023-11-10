@@ -88,7 +88,7 @@ updateTask() {
     category: this.categorySelectedCategory
   }
 
-  this.http.post('https://student-api-10-fbf8bbebe705.herokuapp.com/todo/'+this.dataId, data).subscribe((data): void => {
+  this.http.post('http://localhost:3000/todo/'+this.dataId, data).subscribe((data): void => {
     console.log(data);
   });
 }

@@ -66,7 +66,7 @@ export class TodoHomePage {
   
 
   getAllItem() {
-  this.http.get('https://student-api-10-fbf8bbebe705.herokuapp.com/todo').subscribe((data: any) => {
+  this.http.get('http:localhost:3000/todo').subscribe((data: any) => {
     console.log(data);
     let list = JSON.stringify(data)
     this.todoList = data
@@ -149,7 +149,7 @@ backButton() {
 
   //new code
   getAllTask() {
-    this.http.get(`https://student-api-10-fbf8bbebe705.herokuapp.com/todo/${this.username}`).subscribe(
+    this.http.get(`http://localhost:3000/todo/${this.username}`).subscribe(
       (data: any) => {
         console.log(data);
         this.todoList = data.tasks;
@@ -162,7 +162,7 @@ backButton() {
 
   delete(key: any) { 
     console.log(key)
-    this.http.delete('https://student-api-10-fbf8bbebe705.herokuapp.com/todo/').subscribe(data => {
+    this.http.delete('http://localhost:3000/todo/'+key).subscribe(data => {
       console.log(data)
     });
     //this.todoService.deleteTask(key)

@@ -105,7 +105,7 @@ export class Tab5Page implements OnInit {
   //ngOnInit
   getCourseDetails(){ 
 
-    this.http.get(`https://student-api-10-fbf8bbebe705.herokuapp.com/weeklycourse/${this.username}`).subscribe((data:any) => {
+    this.http.get(`http://localhost:3000/weeklycourse/${this.username}`).subscribe((data:any) => {
       console.log(data);
       this.weeklyCourse = data;
     });

@@ -15,7 +15,8 @@ export class TabsPage {
   userRole : 'student';
   isStudent = false;
  // isLoggedin = false;
- @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
+//  selectedTab: string = 'tab1'; // Initialize with the default selected tab
+//  @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
 
 
   constructor(
@@ -42,20 +43,23 @@ export class TabsPage {
   }
 
 //for tabs
-ngAfterViewInit() {
-    this.overrideTabContainer();
-}
+// ngAfterViewInit() {
+//     this.overrideTabContainer();
+// }
 
-private overrideTabContainer() {
-    setTimeout(() => {
-        const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
-        const container = routerOutlet.querySelector('ion-content');
-        if (container) {
-             container.style.setProperty('--padding-bottom', '90px');
-        }
-    });
-}
+// private overrideTabContainer() {
+//     setTimeout(() => {
+//         const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
+//         const container = routerOutlet.querySelector('ion-content');
+//         if (container) {
+//              container.style.setProperty('--padding-bottom', '90px');
+//         }
+//     });
+// }
 
+// selectTab(tabName: string) {
+//   this.selectedTab = tabName; // Update the selectedTab when a tab is clicked
+// }
   
 
   ngOnInit(){

@@ -56,7 +56,7 @@ export class MProfPage implements OnInit {
   }
 
   getCourseDetails(){
-    this.http.get(`https://nice-gold-pike-shoe.cyclic.app/weeklyCourse`).subscribe((data:any) => {
+    this.http.get(`http://localhost:3000/weeklyCourse`).subscribe((data:any) => {
       console.log(data);
       this.weeklyCourse = data;
     });

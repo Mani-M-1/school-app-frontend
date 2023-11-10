@@ -151,7 +151,7 @@ selectedFile: File;
     formData.append("filename", currentFile, currentFile.name);
     console.log(currentFile);
 
-      const response = await fetch('https://student-api-10-fbf8bbebe705.herokuapp.com/uploadfile', {
+      const response = await fetch('http://localhost:3000/uploadfile', {
         method: 'POST',
         body: formData,
       });
@@ -234,7 +234,7 @@ onVideoFileChange(event: any) {
       "endDate": this.EndDate
     }
     console.log(postdata)
-    this.http.post(`https://student-api-10-fbf8bbebe705.herokuapp.com/weeklyCourse/addWeek`, postdata)
+    this.http.post(`http://localhost:3000/weeklyCourse/addWeek`, postdata)
   .subscribe(response => {
     console.log(response);
      // Assuming successful signup

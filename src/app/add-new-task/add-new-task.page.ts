@@ -41,6 +41,7 @@ export class AddNewTaskPage implements OnInit {
       if(login_state == 'true'){
         console.log("log in is succesful");
       this.username = localStorage.getItem('username');
+      console.log(this.username);
 
       }else{
         this.router.navigate(['/sign-in']);
@@ -64,13 +65,15 @@ export class AddNewTaskPage implements OnInit {
     date: this.itemDueDate,
     category: this.categorySelectedCategory
   };
+
+  console.log(this.username);
+
    console.log(body)
-    this.http.post(`https://student-api-10-fbf8bbebe705.herokuapp.com/todo`, body)
-      .subscribe(response => {
+    this.http.post("http://localhost:3000/todo", body).subscribe((response) => {
         console.log(response);
       }, error => {
         console.log(error)
-      })
+      });
   }
 
 
@@ -82,7 +85,7 @@ export class AddNewTaskPage implements OnInit {
   // this for adding task
   async add(){
     this.addNew()
-    this.newTaskObj = ({itemName:this.itemName, itemDueDate:this.itemDueDate, itemPriority:this.itemPriority,itemCategory:this.categorySelectedCategory})
+    this.newTaskObj = ({itemName:this.itemName, username:this.username, itemDueDate:this.itemDueDate, itemPriority:this.itemPriority,itemCategory:this.categorySelectedCategory})
     console.log(this.newTaskObj);
     let uid = this.itemName + this.itemDueDate
     

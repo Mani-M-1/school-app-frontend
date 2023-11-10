@@ -120,7 +120,7 @@ export class UpdateBlogPage implements OnInit {
     formData.append("filename", currentFile, currentFile.name);
     console.log(currentFile);
 
-      const response = await fetch('https://student-api-10-fbf8bbebe705.herokuapp.com/uploadfile', {
+      const response = await fetch('http://localhost:3000/uploadfile', {
         method: 'POST',
         body: formData,
       });

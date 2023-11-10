@@ -128,7 +128,7 @@ deleteWeek(weekId: any) {
           text: 'Delete',
           handler: () => {
             // Make DELETE request to API endpoint
-            this.http.delete(`https://student-api-10-fbf8bbebe705.herokuapp.com/weeklyCourse/deleteWeek/${weekId._id}`)              
+            this.http.delete(`http://localhost:3000/weeklyCourse/deleteWeek/${weekId._id}`)              
             .subscribe(
                 (response) => {
                   console.log(response);
