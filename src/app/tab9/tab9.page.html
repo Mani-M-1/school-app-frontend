@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="new" class="ion-header">
+    <ion-title color="light">Students</ion-title>
+  </ion-toolbar>
+
+  <ion-searchbar 
+  placeholder="Search your student" color="light" [(ngModel)]="searchText" (ionChange)="searchStudents()">
+  </ion-searchbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="log-out">
+    <ion-buttons  (click)="addstudent()">
+      <ion-icon name="person-add-outline" color="primary" slot="end"></ion-icon>
+    </ion-buttons>
+  </div>
+
+  <!-- <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addstudent()" >
+      <ion-icon name="pencil-outline"></ion-icon>   
+     </ion-fab-button>
+  </ion-fab> -->
+
+  <div class="students-list-container">
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row class="ion-align-items-center ion-margin-top" >
+    <ion-col *ngFor="let student of students" size="6">
+   <ion-card class="student-card" color="white" (click)="navigateToProfile(student)">
+
+    <div class="image">
+    <img src="{{student.images}}"/>
+  </div>
+  <ion-card-title class="s">{{student.firstName}}</ion-card-title>
+  <ion-card-title class="s">{{student.lastName}}</ion-card-title>
+  <!-- <ion-card-header>{{student.gender}}</ion-card-header> -->
+  <!-- <ion-card-title>{{student.yearOfStudy}}</ion-card-title> -->
+  <!-- <ion-item>{{student.group}}</ion-item>
+  <ion-item>{{student.email}}</ion-item>
+  <ion-item>{{student.mobileNumber}}</ion-item> --> 
+</ion-card>
+</ion-col>
+</ion-row>
+</ion-grid>
+</div>
+
+
+
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addstudent()" >
+      <ion-icon name="pencil-outline"></ion-icon>   
+     </ion-fab-button>
+  </ion-fab> -->
+
+</ion-content>

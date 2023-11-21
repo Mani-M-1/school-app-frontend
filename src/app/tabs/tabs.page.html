@@ -21,25 +21,35 @@
       <ion-label>Profile</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf= "!isStudent" tab="tab5">
+    <ion-tab-button *ngIf= "isProfessor" tab="tab5">
       <ion-icon name="star-outline"></ion-icon>
       <ion-label>Courses</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf= "!isStudent" tab="tab6">
+    <ion-tab-button *ngIf= "isProfessor" tab="tab6">
       <ion-icon name="list-outline"></ion-icon>
       <ion-label>Blogs</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf= "!isStudent" tab="tab7">
+    <ion-tab-button *ngIf= "isProfessor" tab="tab7">
       <ion-icon name="notifications-outline"></ion-icon>
       <ion-label>Notifications</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf= "!isStudent" tab="tab8">
+    <ion-tab-button *ngIf= "isProfessor" tab="tab8">
       <ion-icon name="person-outline"></ion-icon>
       <ion-label>Profile</ion-label>
     </ion-tab-button>
+
+    <ion-tab-button *ngIf= "isPrincipal" tab="tab9">
+      <ion-icon name="people-circle-outline"color="primary"></ion-icon>
+       <ion-label>Students</ion-label>
+     </ion-tab-button>
+ 
+     <ion-tab-button *ngIf= "isPrincipal" tab="tab10">
+       <ion-icon name="people-outline"color="primary"></ion-icon>
+       <ion-label>Employees</ion-label>
+     </ion-tab-button>
   </ion-tab-bar>
   
 

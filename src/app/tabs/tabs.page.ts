@@ -14,9 +14,11 @@ export class TabsPage {
   // loggedInUser: any;
   userRole : 'student';
   isStudent = false;
+  isPrincipal = false;
+  isProfessor = false;
  // isLoggedin = false;
 //  selectedTab: string = 'tab1'; // Initialize with the default selected tab
-//  @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
+ @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
 
 
   constructor(
@@ -25,11 +27,14 @@ export class TabsPage {
   ) {
     var role = localStorage.getItem('userRole');
     console.log(role);
-    if (role == 'student'){
-      this.isStudent = true;
-    }else{
-      this.isStudent = false;
-    }
+    this.isStudent = role === 'student';
+    this.isPrincipal = role === 'principal';
+    this.isProfessor = role === 'professor';
+    // if (role == 'student'){
+    //   this.isStudent = true;
+    // }else{
+    //   this.isStudent = false;
+    // }
     //this.userRole = this.roleService.getUserRole();
   //  if(role == 'student'){
   //   this.isLoggedin = false;
@@ -43,19 +48,19 @@ export class TabsPage {
   }
 
 //for tabs
-// ngAfterViewInit() {
-//     this.overrideTabContainer();
-// }
+ngAfterViewInit() {
+    this.overrideTabContainer();
+}
 
-// private overrideTabContainer() {
-//     setTimeout(() => {
-//         const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
-//         const container = routerOutlet.querySelector('ion-content');
-//         if (container) {
-//              container.style.setProperty('--padding-bottom', '90px');
-//         }
-//     });
-// }
+private overrideTabContainer() {
+    setTimeout(() => {
+        const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
+        const container = routerOutlet.querySelector('ion-content');
+        if (container) {
+             container.style.setProperty('--padding-bottom', '90px');
+        }
+    });
+}
 
 // selectTab(tabName: string) {
 //   this.selectedTab = tabName; // Update the selectedTab when a tab is clicked

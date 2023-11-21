@@ -96,6 +96,30 @@ const routes: Routes = [
     path: 'blog-content',
     loadChildren: () => import('./blog-content/blog-content.module').then( m => m.BlogContentPageModule)
   },
+  {
+    path: 'add-professor',
+    loadChildren: () => import('./add-professor/add-professor.module').then( m => m.AddProfessorPageModule)
+  },
+  {
+    path: 'add-student',
+    loadChildren: () => import('./add-student/add-student.module').then( m => m.AddStudentPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'forgotpassword1',
+    loadChildren: () => import('./forgotpassword1/forgotpassword1.module').then( m => m.Forgotpassword1PageModule)
+  },
+  {
+    path: 'professor-profile',
+    loadChildren: () => import('./professor-profile/professor-profile.module').then( m => m.ProfessorProfilePageModule)
+  },
+  {
+    path: 'student-profile',
+    loadChildren: () => import('./student-profile/student-profile.module').then( m => m.StudentProfilePageModule)
+  },
   
   
  

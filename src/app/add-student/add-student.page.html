@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar color="new">
+    <ion-title >Add-Student</ion-title>
+    
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab9" color="dark"></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <form [formGroup]="studentForm" (ngSubmit)="submitForm()">
+<div class="form-container">
+
+<ion-item>
+  <!-- <ion-label position="floating">FirstName</ion-label> -->
+  <ion-icon name="person" slot="start"></ion-icon>
+  <ion-input type="text" placeholder="enter your first name" formControlName="firstName" name="firstName"></ion-input>
+</ion-item>
+
+<ion-item>
+  <!-- <ion-label position="floating">LastName</ion-label> -->
+  <ion-icon name="person" slot="start"></ion-icon>
+  <ion-input type="text" placeholder="enter your last name" formControlName="lastName" name="lastName"></ion-input>
+</ion-item>
+
+<ion-item shape="round" fill="outline">
+  <ion-label>
+    <ion-icon name="man-outline" slot="start"></ion-icon> 
+      Gender
+  </ion-label>
+  <ion-select formControlName="selectedGender">
+    <ion-select-option value="male">Male</ion-select-option>
+    <ion-select-option value="female">Female</ion-select-option>
+    <ion-select-option value="other">Other</ion-select-option>
+  </ion-select>
+</ion-item>
+
+
+
+<ion-item shape="round" fill="outline">
+  <ion-label>
+    <ion-icon name="school" slot="start" slot="start"></ion-icon>
+    Year of Study
+  </ion-label>
+  <ion-select formControlName="selectedYear">
+    <ion-select-option value="1">First Year</ion-select-option>
+    <ion-select-option value="2">Second Year</ion-select-option>
+    <ion-select-option value="3">Third Year</ion-select-option>
+    <ion-select-option value="4">Fourth Year</ion-select-option>
+  </ion-select>
+</ion-item>
+
+
+<ion-item shape="round" fill="outline">
+  <ion-label>
+    <ion-icon name="book-outline" slot="start"></ion-icon>
+    Group
+  </ion-label>
+  <ion-select formControlName="selectedGroup">
+    <ion-select-option value="mpcs">MPCs</ion-select-option>
+    <ion-select-option value="bcom">B.Com</ion-select-option>
+    <ion-select-option value="bzc">BZC</ion-select-option>
+    <ion-select-option value="bsc">BSc</ion-select-option>
+    <ion-select-option value="ba">BA</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item fill="outline" shape="round">
+  <ion-icon name="mail-open-outline" slot="start"></ion-icon>
+  <!-- <ion-label position="floating"></ion-label> -->
+  <ion-input placeholder="email" formControlName="email" name="email"></ion-input>
+</ion-item>
+
+<!-- create password field here -->
+<ion-item  fill="outline" shape="round">
+  <ion-icon name="eye" slot="start"></ion-icon>
+  <!-- <ion-label position="floating">Password</ion-label> -->
+  <ion-input type="password" placeholder="Enter your password" formControlName="password" name="password"></ion-input>
+</ion-item>
+
+<ion-item fill="outline" shape="round">
+  <ion-icon name="call-outline" slot="start"></ion-icon>
+  <!-- <ion-label position="floating"></ion-label> -->
+  <ion-input placeholder="mobile number" formControlName="mobileNumber" name="mobileNumber"></ion-input>
+</ion-item>
+
+<ion-item class="input-item">
+  <ion-icon name="home" slot="start"></ion-icon>
+  <ion-label position="floating">Address</ion-label>
+  <ion-textarea type="text" placeholder="Enter your address (h.no, street, city, district, state)" formControlName="address" name="address" autoGrow="true"></ion-textarea>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating"></ion-label>
+  <ion-input type="text" formControlName="images" placeholder="paste image link here"></ion-input>
+
+  <!-- for default image url -->
+  <img [src]="studentForm.get('images')?.value || defaultImageUrl" alt="Default Image" />
+</ion-item>
+</div>
+
+<!-- create two feilds here , one schoolname, school code -->
+<ion-item class="input-item">
+  <ion-icon name="home" slot="start"></ion-icon>
+  <ion-label position="floating">SchoolName</ion-label>
+  <ion-textarea type="text" placeholder="Enter SchoolName here" formControlName="schoolname" name="schoolname" autoGrow="true"></ion-textarea>
+</ion-item>
+
+
+<ion-item class="input-item">
+  <ion-icon name="home" slot="start"></ion-icon>
+  <ion-label position="floating">SchoolCode</ion-label>
+  <ion-textarea type="text" placeholder="Enter your SchoolCode" formControlName="schoolcode" name="schoolcode" autoGrow="true"></ion-textarea>
+</ion-item>
+
+
+<ion-button shape="round" expand="full" color="primary" type="submit">Submit</ion-button>
+
+</form>
+</ion-list>
+
+
+
+</ion-content>

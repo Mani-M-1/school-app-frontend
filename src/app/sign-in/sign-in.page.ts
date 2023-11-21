@@ -105,7 +105,7 @@ export class SignInPage implements OnInit {
       console.log(response.lastName);
       console.log(response.mobileNo);
       console.log(response.emergency);
-      console.log(response.profile);
+      // console.log(response.profile);
 
       
       
@@ -117,6 +117,10 @@ export class SignInPage implements OnInit {
         case 'student':
           this.router.navigate(['/tabs/tab1']);
           break;
+
+          case 'principal':
+            this.router.navigate(['/tabs/tab9']);
+            break;
         default:
           // Handle other roles or invalid role values
           break;

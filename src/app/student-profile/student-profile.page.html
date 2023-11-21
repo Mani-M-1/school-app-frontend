@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar color="new">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab9" color="dark"></ion-back-button>
+    </ion-buttons>
+    
+
+    <ion-title class="ion-text-center ion-text-uppercase" color="dark">Student Profile</ion-title>
+
+    <!-- <ion-buttons slot="end" (click)="update(students)">
+      <ion-icon slot="icon-only" name="create-outline" color="dark"></ion-icon>
+    </ion-buttons> -->
+
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleEditMode(students)">
+        <ion-icon [name]="isEditing ? 'checkmark-outline' : 'create-outline'" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <div class="profile-picture round">
+      <img src="{{students.images}}" alt="Profile Picture" />
+    </div> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let student of students" class="profile-card">
+    <div class="profile-picture round">
+      <img src="{{student.images}}" alt="Profile Picture" />
+      <input #fileInput type="file" style="display: none;" (change)="handleFileInput($event)" accept="image/*">
+      <ion-button (click)="chooseFile()" class="camera-button">
+        <ion-icon name="camera"></ion-icon> Choose File
+      </ion-button>
+      <ion-button (click)="uploadImage('image', student)" class="upload-button">
+        Upload
+      </ion-button>
+    </div>
+    <p>{{ uploadStatus }}</p>
+  
+    
+     
+    <ion-card>
+      <div class="contact-details">
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="mail" slot="start" ></ion-icon>
+          <ion-input text-wrap="true">{{student.email}}</ion-input>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="email" [(ngModel)]="editedStudent.email" placeholder="{{student.email}}"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="eye" slot="start"></ion-icon>
+          <ion-label>{{student.password}}</ion-label>
+           <!-- Add the "Forgot Password" button -->
+         <ion-buttons slot="end">
+          <ion-button (click)="forgotPassword(students)">
+            <ion-icon name="key-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          </ion-buttons>
+        </ion-item>
+
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-label>{{student.mobileNumber}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="mobileNumber" [(ngModel)]="editedStudent.mobileNumber" placeholder="{{student.mobileNumber}}"></ion-input>
+        </ion-item>
+      </div>
+    </ion-card>
+
+    <div class="details">
+      <ion-card>
+        <ion-item class="s" *ngIf="!isEditing">
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-label>{{student.firstName}} {{student.lastName}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input [(ngModel)]="editedStudent.firstName" placeholder="{{student.firstName}}"></ion-input>
+          <ion-input [(ngModel)]="editedStudent.lastName" placeholder="{{student.lastName}}"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!isEditing">   
+           <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+          <ion-label>{{student.gender}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="gender" [(ngModel)]="editedStudent.gender" placeholder="{{student.gender}}"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="school-outline" slot="start"></ion-icon>
+          <ion-label>{{student.group}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="group" [(ngModel)]="editedStudent.group" placeholder="{{student.group}}"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label>Year: {{student.yearOfStudy}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="text" [(ngModel)]="editedStudent.yearOfStudy" placeholder="{{student.yearOfStudy}}"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label text-wrap="true">{{student.address}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="address" [(ngModel)]="editedStudent.address" placeholder="{{student.address}}"></ion-input>
+        </ion-item>
+
+        
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label text-wrap="true">{{student.schoolname}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="schoolname" [(ngModel)]="editedStudent.schoolname" placeholder="{{student.schoolname}}"></ion-input>
+        </ion-item>
+
+        
+        <ion-item *ngIf="!isEditing">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label text-wrap="true">{{student.schoolcode}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="isEditing">
+          <ion-input type="schoolcode" [(ngModel)]="editedStudent.schoolcode" placeholder="{{student.schoolcode}}"></ion-input>
+        </ion-item>
+
+      </ion-card>
+    </div>
+
+    <ion-button (click)="delete(student)" class="delete-button" slot="">
+      <ion-icon slot="icon-only" name="trash-outline" color="light"></ion-icon>
+    </ion-button>
+
+   <!-- Save and Cancel buttons -->
+<ion-button *ngIf="isEditing" (click)="saveChanges()" class="update">
+  Save
+</ion-button>
+<ion-button *ngIf="isEditing" (click)="cancelEdit()" class="updated">
+  Cancel
+</ion-button>
+
+<!-- Show "Block" button when the user is not blocked -->
+<ion-button
+  *ngIf="!isEditing && students.status !== 'blocked'"
+  (click)="blockStudent(students)"
+  class="block-button"
+  fill="clear"  >
+  Block
+</ion-button>
+
+<!-- Show "Unblock" button when the user is blocked -->
+<ion-button
+  *ngIf="!isEditing && students.status === 'blocked'"
+  (click)="unblockStudent(students)"
+  class="unblock-button"
+  fill="clear" >
+  Unblock
+</ion-button>
+
+  </ion-card>
+</ion-content>
