@@ -1,0 +1,66 @@
+ion-content {
+  --padding-top: 30px;
+}
+
+.course-regsiter-page__course-regiter-text {
+  text-align: center;
+}
+
+form {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// ion-input.course-regsiter-page__studentname {
+//   // --background: transparent;
+
+//   --background: #7573f5;
+//   --border-style: none;
+// }
+
+ion-item.course-regsiter-page__studentname-ion-item {
+  --border-radius: 15px;
+}
+
+ion-searchbar.course-regsiter-page__studentname-searchbar {
+  --border-radius: 20px;
+  --background: #7573f5;
+}
+
+ion-searchbar.course-regsiter-page__searchbar {
+  --border-radius: 20px;
+}
+
+ion-checkbox-group {
+  margin-top: 40px;
+}
+
+ion-item.course-regsiter-page__checkbox-group-ion-item {
+  // margin-bottom: 20px;
+  --background: transparent;
+}
+
+.course-regsiter-page__checkbox-details-wrapper {
+  margin-left: 20px;
+  padding: 8px;
+  width: 100%;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.physics {
+  background-color: #c1ffb1;
+}
+
+.chemistry {
+  background-color: #bcb4fb;
+}
+
+.maths {
+  background-color: #f896a4;
+}

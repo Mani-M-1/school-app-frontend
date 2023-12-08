@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+  <h1 class="course-regsiter-page__course-regiter-text">Course Register</h1>
+
+  <form (ngSubmit)="submitForm($event)">
+    <!-- <ion-item
+      color="tertiary"
+      class="course-regsiter-page__studentname-ion-item"
+    >
+      <ion-input
+        color="dark"
+        class="course-regsiter-page__studentname"
+        placeholder="Student Name"
+      ></ion-input>
+    </ion-item> -->
+
+    <ion-searchbar
+      class="course-regsiter-page__studentname-searchbar"
+      placeholder="Enter Student Name"
+    ></ion-searchbar>
+
+    <!-- <ion-select
+      placeholder="Select an item"
+      (ionChange)="onItemSelected($event.detail.value)"
+    >
+      <ion-select-option *ngFor="let item of courses" [value]="item"
+        >{{ item }}</ion-select-option
+      >
+    </ion-select> -->
+
+    <ion-searchbar
+      color="danger"
+      class="course-regsiter-page__searchbar"
+      placeholder="Find the course"
+    ></ion-searchbar>
+
+    <!-- <ion-checkbox-group> -->
+    <ion-item
+      *ngFor="let course of courses;"
+      class="course-regsiter-page__checkbox-group-ion-item"
+    >
+      <!-- <ion-checkbox value="Physics"></ion-checkbox> -->
+      <ion-checkbox
+        (ionChange)="checkboxChanged($event, course)"
+      ></ion-checkbox>
+      <div class="course-regsiter-page__checkbox-details-wrapper physics">
+        <ion-label>{{course.CourseName}}</ion-label>
+        <!-- <ion-button (click)="addCourse(course)" color="dark">Add</ion-button> -->
+      </div>
+    </ion-item>
+
+    <!-- Add button outside the loop for adding all courses -->
+    <!-- <ion-button (click)="addAllCourses()" color="dark">Add All</ion-button> -->
+
+    <!-- <ion-item class="course-regsiter-page__checkbox-group-ion-item">
+        <ion-checkbox value="Chemistry"></ion-checkbox>
+        <div class="course-regsiter-page__checkbox-details-wrapper chemistry">
+          <ion-label>Chemistry</ion-label>
+          <ion-button color="dark">Add</ion-button>
+        </div>
+      </ion-item>
+
+      <ion-item class="course-regsiter-page__checkbox-group-ion-item">
+        <ion-checkbox value="Maths"></ion-checkbox>
+        <div class="course-regsiter-page__checkbox-details-wrapper maths">
+          <ion-label>Maths</ion-label>
+          <ion-button color="dark">Add</ion-button>
+        </div>
+      </ion-item> -->
+    <!-- </ion-checkbox-group> -->
+    <ion-button type="submit" color="primary">Submit</ion-button>
+  </form>
+</ion-content>
