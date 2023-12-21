@@ -14,25 +14,25 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 // import { VideoPlayer } from '@ionic-native/video-player/ngx';
 //update popup
 
-
-
-@NgModule({//and declare in declarations
+@NgModule({
+  //and declare in declarations
   declarations: [AppComponent],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     CommonModule,
-    IonicStorageModule.forRoot(), 
-  ],//Ng2SearchPipeModule
-  providers: [{ 
-    provide: RouteReuseStrategy, 
-    useClass: IonicRouteStrategy, 
-     },
+    IonicStorageModule.forRoot(),
+  ], //Ng2SearchPipeModule
+  providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy,
+    },
     //  VideoPlayer,
-    ],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

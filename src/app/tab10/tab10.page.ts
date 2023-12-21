@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./tab10.page.scss'],
 })
 export class Tab10Page implements OnInit {
-
   professors: any[];
   searchText: any;
 
@@ -16,40 +15,46 @@ export class Tab10Page implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private http: HttpClient
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.getProfessors();
-
-  }
-// duplicate function
-  getProfessors() {
-    this.http.get<any[]>('http://localhost:3000/addingProfessors/professors').subscribe(
-      (response) => {
-        this.professors = response;
-      },
-      (error) => {
-        console.error('Error retrieving professors:', error);
+    this.route.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.getProfessors();
       }
-    );
+    });
+  }
+  // duplicate function
+  getProfessors() {
+    this.http
+      .get<any[]>('http://localhost:3000/addingProfessors/professors')
+      .subscribe(
+        (response) => {
+          this.professors = response;
+        },
+        (error) => {
+          console.error('Error retrieving professors:', error);
+        }
+      );
   }
 
-  addProfessor(){
+  addProfessor() {
     this.getProfessors();
-   this.route.navigate(['/add-professor'])
+    this.route.navigate(['/add-professor']);
   }
 
-cardClick(professor: any){
-  console.log(professor)
-  this.route.navigate(['/professor-profile', professor]);
-}
-
+  cardClick(professor: any) {
+    console.log(professor);
+    this.route.navigate(['/professor-profile', professor._id]);
+  }
 
   // Custom filter function to filter students based on the searchText
   searchStudents() {
     if (this.searchText.trim() !== '') {
       this.http
-        .get<any[]>(`http://localhost:3000/addingProfessors/search/${this.searchText}`)
+        .get<any[]>(
+          `http://localhost:3000/addingProfessors/search/${this.searchText}`
+        )
         .subscribe(
           (response) => {
             this.professors = response;
@@ -65,4 +70,7 @@ cardClick(professor: any){
     }
   }
 
+  trackByFunction(index: number, professor: any): number {
+    return professor._id; // Assuming each item has a unique 'id' property
+  }
 }

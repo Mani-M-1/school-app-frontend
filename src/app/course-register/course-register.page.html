@@ -14,9 +14,18 @@
     </ion-item> -->
 
     <ion-searchbar
+      (ionChange)="onSearchStudentChange($event)"
       class="course-regsiter-page__studentname-searchbar"
       placeholder="Enter Student Name"
+      value="{{studentFirstName}}"
+      disabled="true"
     ></ion-searchbar>
+
+    <!-- <ion-input
+      (ionChange)="onSearchStudentChange($event)"
+      class="course-regsiter-page__studentname-searchbar"
+      placeholder="Enter Student Name"
+    ></ion-input> -->
 
     <!-- <ion-select
       placeholder="Select an item"
@@ -41,6 +50,7 @@
       <!-- <ion-checkbox value="Physics"></ion-checkbox> -->
       <ion-checkbox
         (ionChange)="checkboxChanged($event, course)"
+        [checked]="course.isChecked"
       ></ion-checkbox>
       <div class="course-regsiter-page__checkbox-details-wrapper physics">
         <ion-label>{{course.CourseName}}</ion-label>
@@ -67,6 +77,11 @@
         </div>
       </ion-item> -->
     <!-- </ion-checkbox-group> -->
-    <ion-button type="submit" color="primary">Submit</ion-button>
+    <ion-button
+      class="course-regsiter-page__submit-btn"
+      type="submit"
+      color="primary"
+      >Submit</ion-button
+    >
   </form>
 </ion-content>

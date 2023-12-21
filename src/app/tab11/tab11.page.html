@@ -1,0 +1,18 @@
+<ion-content class="tab11-page__ion-content-wrapper">
+  <ion-searchbar
+    [debounce]="1000"
+    (ionInput)="handleInput($event)"
+    (ionFocus)="onSearchFocus()"
+    (ionBlur)="onSearchBlur()"
+    value="{{selectedStudent}}"
+    [(ngModel)]="selectedStudent"
+    (ionClear)="onSearchCancel($event)"
+  ></ion-searchbar>
+
+  <ion-list class="tab11-page__dropdown-card" *ngIf="isSearching">
+    <ion-item *ngFor="let result of results" (click)="selectItem(result)">
+      {{ result.firstName }}
+    </ion-item>
+  </ion-list>
+  <ion-button routerLink="/course-register"> Enroll Course</ion-button>
+</ion-content>

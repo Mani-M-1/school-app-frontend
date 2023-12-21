@@ -1,46 +1,43 @@
-ion-header{
-    padding-left: 0.5vh;
-    padding-right: 0.5vh;
-    padding-bottom: 1vh;
+ion-header {
+  padding-left: 0.5vh;
+  padding-right: 0.5vh;
+  padding-bottom: 1vh;
 
-    ion-toolbar{
-        padding-left: 4vh;
-        padding-right: 2vh;
-        padding-top: 2vh;
-        padding-bottom: 2vh;
-        border-radius: 0px 0px 25px 25px;
-        
-        
-          
-    }
+  ion-toolbar {
+    padding-left: 4vh;
+    padding-right: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-radius: 0px 0px 25px 25px;
+  }
 
-ion-title{
-    color:black;
+  ion-title {
+    color: black;
     font-size: x-large;
     padding-left: 13vh;
-}
+  }
 }
 
-ion-content{
-    ion-card{
+ion-content {
+  ion-card {
     border-radius: 20px;
     box-shadow: 0 8px 10px rgba(19, 18, 18, 0.425);
-        // height: 25vh;
-        width: 100%;
-        color: light;
-    }
-   .image{
-            // width: 20vh;
-            // height: 60%;
-            //object-fit:fill;
-            width: 100%;
-            height: 80%;
-    }
-   .s{
+    // height: 25vh;
+    width: 100%;
+    color: light;
+  }
+  .image {
+    // width: 20vh;
+    // height: 60%;
+    //object-fit:fill;
+    width: 100%;
+    height: 80%;
+  }
+  .s {
     font-size: bold;
-   }
+  }
 }
-ion-card-title{
+ion-card-title {
   padding-left: 2vh;
 }
 // .image{
@@ -48,14 +45,29 @@ ion-card-title{
 //     height: 80%;
 //     // padding-left: 30px;
 //   }
-ion-fab{
-    margin-top: 2vh;
+ion-fab {
+  margin-top: 2vh;
 }
-.students-list-container{
-    padding-right: 3vh;
+.students-list-container {
+  padding-right: 3vh;
 }
-.log-out{
-    position: relative;
-    top: 0;
-    right: -85%;
+.log-out {
+  position: relative;
+  top: 0;
+  right: -85%;
+}
+
+// styles by "manikanta"
+.tab9-page__student-items {
+  background-color: grey;
+  height: 250px;
+}
+
+.tab9-page__student-image {
+  width: 100%;
+  height: 70%;
+}
+
+.tab9-page__student-name {
+  padding: 0 10px;
 }

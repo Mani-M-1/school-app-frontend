@@ -3,23 +3,20 @@ import { Router } from '@angular/router';
 import { IonTabs } from '@ionic/angular';
 //import { RoleService } from '../role.service';
 
-
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
-
 })
 export class TabsPage {
   // loggedInUser: any;
-  userRole : 'student';
+  userRole: 'student';
   isStudent = false;
   isPrincipal = false;
   isProfessor = false;
- // isLoggedin = false;
-//  selectedTab: string = 'tab1'; // Initialize with the default selected tab
- @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
-
+  // isLoggedin = false;
+  //  selectedTab: string = 'tab1'; // Initialize with the default selected tab
+  @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
 
   constructor(
     //private roleService: RoleService
@@ -36,48 +33,43 @@ export class TabsPage {
     //   this.isStudent = false;
     // }
     //this.userRole = this.roleService.getUserRole();
-  //  if(role == 'student'){
-  //   this.isLoggedin = false;
-  //  }else if(role == 'professor'){
-  //   this.isLoggedin = false;
-  //  }else{
-  //   this.router.navigate(['/sign-in'])
-  //  }
-
-   
+    //  if(role == 'student'){
+    //   this.isLoggedin = false;
+    //  }else if(role == 'professor'){
+    //   this.isLoggedin = false;
+    //  }else{
+    //   this.router.navigate(['/sign-in'])
+    //  }
   }
 
-//for tabs
-ngAfterViewInit() {
+  //for tabs
+  ngAfterViewInit() {
     this.overrideTabContainer();
-}
+  }
 
-private overrideTabContainer() {
+  private overrideTabContainer() {
     setTimeout(() => {
-        const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
-        const container = routerOutlet.querySelector('ion-content');
-        if (container) {
-             container.style.setProperty('--padding-bottom', '90px');
-        }
+      const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
+      const container = routerOutlet.querySelector('ion-content');
+      if (container) {
+        container.style.setProperty('--padding-bottom', '90px');
+      }
     });
-}
+  }
 
-// selectTab(tabName: string) {
-//   this.selectedTab = tabName; // Update the selectedTab when a tab is clicked
-// }
-  
-
-  ngOnInit(){
-  //   //read the login data from local storage
-  //   const loginData = localStorage.getItem('loginResponse');
-
-  //   if(loginData){
-  //     this.loggedInUser = JSON.parse(loginData);
-  //     console.log(loginData)
-  //   //You can access the properties of the loggedinuser object here
-  //   console.log(this.loggedInUser.userId);
-  //   console.log(this.loggedInUser.username);
+  // selectTab(tabName: string) {
+  //   this.selectedTab = tabName; // Update the selectedTab when a tab is clicked
   // }
-}
 
+  ngOnInit() {
+    //   //read the login data from local storage
+    //   const loginData = localStorage.getItem('loginResponse');
+    //   if(loginData){
+    //     this.loggedInUser = JSON.parse(loginData);
+    //     console.log(loginData)
+    //   //You can access the properties of the loggedinuser object here
+    //   console.log(this.loggedInUser.userId);
+    //   console.log(this.loggedInUser.username);
+    // }
+  }
 }

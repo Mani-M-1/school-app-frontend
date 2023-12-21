@@ -1,103 +1,103 @@
-/* Custom styles for the profile page */
+// /* Custom styles for the profile page */
 
-ion-header {
-    ion-toolbar {
-      --background: #007bff; /* Change the primary header background color */
-      color: #fff;
-    }
-  }
-  
-  .profile-card {
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-  // .round {
-  //   border-radius: 50%;
-  //   overflow: hidden;
-  // }
-  .profile-picture {
-    height: 170px;
-    // display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f5f5f5; /* Add a background color for the profile picture container */
-    position: relative; /* Make the container relative for absolute positioning */
-    //  display: inline-block; /* To wrap content around the image */
-  }
-  .camera-icon {
-    position: absolute;
-    bottom: 126px; /* Adjust the value to control vertical position */
-    right: 6px; /* Adjust the value to control horizontal position */
-    font-size: 2rem; /* Adjust the font size as needed */
-    color: rgba(255, 255, 255, 0.7); /* Set the icon color and opacity */
-    background-color: rgba(0, 0, 0, 0.7); /* Set the background color and opacity */
-    padding: 5px;
-    border-radius: 50%; /* Make the icon circular */
-  }
-  
-  // .profile-picture img {
-  //   max-width: 100%;
-  //   // max-height: 100%;
-  //   // border-radius: 50%;
-  //   // object-fit: cover;
-  // }
-  .user-picture{
-    width: 200px;
-    height: 250px;
-  }
-  
-  ion-card-content {
-    padding: 20px;
-  }
-  
-  ion-item ion-icon {
-    color: #007bff; /* Change the color of the icons */
-  }
-  
-  .delete-button {
-    margin-top: 20px;
-  
-  }
-  ion-title{
-    padding-left: 8vh;
-    font-size: x-large;
-  }
-  .update{
-    margin-top: 20px;
-    padding-left: 200px;
-  }
-  .updated{
-    padding-left: 120px;
-  }
-  .block-button{
-    padding-left: 190px;
-    margin-top: 20px;
-    color: red;
-  }
-  .unblock-button{
-    padding-left: 165px;
-     margin-top: 20px;
-     color: red;
-  }
-  .camera-button,
-  .upload-button {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    font-size: 14px; /* Adjust font size for buttons */
-  }
-  
-  .camera-button ion-icon {
-    font-size: 24px;
-    margin-right: 5px; /* Add a small margin between icon and text */
-  }
-  
-  .upload-button {
-    bottom: 30px; /* Adjust vertical positioning for the second button */
-  }
+// ion-header {
+//     ion-toolbar {
+//       --background: #007bff; /* Change the primary header background color */
+//       color: #fff;
+//     }
+//   }
+
+//   .profile-card {
+//     margin: 10px;
+//     border-radius: 10px;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     overflow: hidden;
+//   }
+//   // .round {
+//   //   border-radius: 50%;
+//   //   overflow: hidden;
+//   // }
+//   .profile-picture {
+//     height: 170px;
+//     // display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background-color: #f5f5f5; /* Add a background color for the profile picture container */
+//     position: relative; /* Make the container relative for absolute positioning */
+//     //  display: inline-block; /* To wrap content around the image */
+//   }
+//   .camera-icon {
+//     position: absolute;
+//     bottom: 126px; /* Adjust the value to control vertical position */
+//     right: 6px; /* Adjust the value to control horizontal position */
+//     font-size: 2rem; /* Adjust the font size as needed */
+//     color: rgba(255, 255, 255, 0.7); /* Set the icon color and opacity */
+//     background-color: rgba(0, 0, 0, 0.7); /* Set the background color and opacity */
+//     padding: 5px;
+//     border-radius: 50%; /* Make the icon circular */
+//   }
+
+//   // .profile-picture img {
+//   //   max-width: 100%;
+//   //   // max-height: 100%;
+//   //   // border-radius: 50%;
+//   //   // object-fit: cover;
+//   // }
+//   .user-picture{
+//     width: 200px;
+//     height: 250px;
+//   }
+
+//   ion-card-content {
+//     padding: 20px;
+//   }
+
+//   ion-item ion-icon {
+//     color: #007bff; /* Change the color of the icons */
+//   }
+
+//   .delete-button {
+//     margin-top: 20px;
+
+//   }
+//   ion-title{
+//     padding-left: 8vh;
+//     font-size: x-large;
+//   }
+//   .update{
+//     margin-top: 20px;
+//     padding-left: 200px;
+//   }
+//   .updated{
+//     padding-left: 120px;
+//   }
+//   .block-button{
+//     padding-left: 190px;
+//     margin-top: 20px;
+//     color: red;
+//   }
+//   .unblock-button{
+//     padding-left: 165px;
+//      margin-top: 20px;
+//      color: red;
+//   }
+//   .camera-button,
+//   .upload-button {
+//     position: absolute;
+//     bottom: 5px;
+//     right: 5px;
+//     cursor: pointer;
+//     background-color: transparent;
+//     border: none;
+//     padding: 0;
+//     font-size: 14px; /* Adjust font size for buttons */
+//   }
+
+//   .camera-button ion-icon {
+//     font-size: 24px;
+//     margin-right: 5px; /* Add a small margin between icon and text */
+//   }
+
+//   .upload-button {
+//     bottom: 30px; /* Adjust vertical positioning for the second button */
+//   }

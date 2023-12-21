@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
-  styleUrls: ['tab4.page.scss']
+  styleUrls: ['tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
   school: any;
@@ -31,39 +31,36 @@ export class Tab4Page implements OnInit {
     // this.emergency = localStorage.getItem('emergency');
     // this.username = localStorage.getItem('username');
 
-
     // console.log(this.school);
     // console.log(this.firstName);
     // console.log(this.lastName);
     // console.log(this.mobileNo);
     // console.log(this.emergency);
-   
+
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
 
-    if(login_state == 'true'){
-      console.log("log in is succesful");
-    }else{
+    if (login_state == 'true') {
+      console.log('log in is succesful');
+    } else {
       this.router.navigate(['/sign-in']);
     }
   }
 
-
   //presona based login in and logout
   //persona means personality means role
   logOut() {
-
     // Step 1: Update the login_state in localStorage to false
-    localStorage.setItem('isLoggedIn', 'false');
+    // localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('isLoggedIn'); // written by "manikanta"
 
-    console.log("log-out successful");
-  
+    console.log('log-out successful');
+
     // Step 2: Navigate the user to the sign-in page
     this.router.navigate(['/sign-in']);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ionViewDidEnter() {
     this.school = localStorage.getItem('school');
@@ -74,23 +71,22 @@ export class Tab4Page implements OnInit {
     this.username = localStorage.getItem('username');
     this.profile = localStorage.getItem('profile');
   }
-  
 
   getProfileData() {
-    this.http.get(`http://localhost:3000/Signup/${this.username}`).subscribe((data: any) => {
-      console.log(data);
-      this.school = data.school;
-      this.firstName = data.firstName;
-      this.lastName = data.lastName;
-      this.mobileNo = data.mobileNo;
-      this.emergency = data.emergency;
-      this.profile = data.profile;
-    });
-  // this.http.get(`http://localhost:3000/Signup`).subscribe((data:any) => {
-  //   console.log(data);
-  //   this.Course = data;
-  // });
-
-}
-
+    this.http
+      .get(`http://localhost:3000/Signup/${this.username}`)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.school = data.school;
+        this.firstName = data.firstName;
+        this.lastName = data.lastName;
+        this.mobileNo = data.mobileNo;
+        this.emergency = data.emergency;
+        this.profile = data.profile;
+      });
+    // this.http.get(`http://localhost:3000/Signup`).subscribe((data:any) => {
+    //   console.log(data);
+    //   this.Course = data;
+    // });
+  }
 }

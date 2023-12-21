@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -9,15 +9,29 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./course-register.page.scss'],
 })
 export class CourseRegisterPage implements OnInit {
+  studentId: string = '';
+  studentFirstName: string = '';
+  // searchStudent: string = '';
   selectedCourses: string[] = []; // this array is used to store the selected courses
   courses: any[]; // available courses from "weeklyCourses"
-
 
   constructor(
     private navctrl: NavController,
     private http: HttpClient,
-    private router: Router
-  ) {}
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      this.studentId = params['studentId'];
+      this.studentFirstName = params['studentFirstName'];
+      console.log(this.studentFirstName);
+    });
+  }
+
+  onSearchStudentChange(event: any) {
+    // this.searchStudent = event.target.value;
+    // console.log('Search term changed:', this.searchStudent);
+  }
 
   getCourses() {
     this.http.get<any[]>('http://localhost:3000/weeklyCourse').subscribe(
@@ -43,20 +57,58 @@ export class CourseRegisterPage implements OnInit {
   // }
 
   // Add a single course to the selectedCourses array
+  // addCourse(course: any) {
+  //   if (!this.selectedCourses.includes(course)) {
+  //     this.selectedCourses.push(course);
+  //   }
+  //   console.log(this.selectedCourses);
+  // }
+
   addCourse(course: any) {
-    if (!this.selectedCourses.includes(course)) {
-      this.selectedCourses.push(course);
-    }
-    console.log(this.selectedCourses);
+    const body = {
+      StudentId: this.studentId,
+      CourseId: course._id,
+      CourseName: course.CourseName,
+    };
+    console.log(body);
+    this.http
+      .post('http://localhost:3000/enrollCourse/enrollCourses', body)
+      .subscribe(
+        (response) => {
+          // this.getCourses();
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   // Remove a single course from the selectedCourses array
+  // removeCourse(course: any) {
+  //   const index = this.selectedCourses.indexOf(course);
+  //   if (index !== -1) {
+  //     this.selectedCourses.splice(index, 1);
+  //   }
+  //   console.log(this.selectedCourses);
+  // }
+
   removeCourse(course: any) {
-    const index = this.selectedCourses.indexOf(course);
-    if (index !== -1) {
-      this.selectedCourses.splice(index, 1);
-    }
-    console.log(this.selectedCourses);
+    const body = {
+      StudentId: this.studentId,
+      CourseId: course._id,
+    };
+    console.log(body);
+    this.http
+      .post('http://localhost:3000/enrollCourse/removeCourses', body)
+      .subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   // Handle changes in checkbox state
@@ -84,5 +136,6 @@ export class CourseRegisterPage implements OnInit {
     event.preventDefault();
     console.log('Form Submitted');
     console.log(this.selectedCourses);
+    this.navctrl.back();
   }
 }

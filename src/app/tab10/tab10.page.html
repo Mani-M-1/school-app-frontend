@@ -1,38 +1,53 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="new" class="ion-header">
+  <ion-toolbar color="primary" class="ion-header">
     <ion-title color="light">Employees</ion-title>
   </ion-toolbar>
-  <ion-searchbar 
-    placeholder="Search your professor" color="light" [(ngModel)]="searchText" (ionChange)="searchStudents()">
-    </ion-searchbar>
+  <ion-searchbar
+    placeholder="Search your professor"
+    color="light"
+    [(ngModel)]="searchText"
+    (ionChange)="searchStudents()"
+  >
+  </ion-searchbar>
 </ion-header>
 
 <ion-content>
-
   <div class="log-out">
-    <ion-buttons  (click)="addProfessor()">
+    <ion-buttons (click)="addProfessor()">
       <ion-icon name="person-add-outline" color="primary" slot="end"></ion-icon>
     </ion-buttons>
   </div>
 
   <div class="sr">
     <ion-grid class="ion-padding-horizontal">
-      <ion-row class="ion-align-items-center ion-margin-top" >
-      <ion-col *ngFor="let professor of professors" size="6">
-    <ion-card color="white" (click)="cardClick(professor)">
-      <div class="image">
-       <img src="{{professor.images}}"/>
-      </div>
-      <ion-card-title class="s" textWrap="true">{{ professor.firstName }} {{ professor.lastName }}</ion-card-title>
-      <!-- <ion-card-title class="s">{{ professor.lastName }}</ion-card-title> -->
-      <!-- <ion-item>{{ professor.gender }}</ion-item> -->
-      <ion-card-title class="ss">{{ professor.subjects }}</ion-card-title>
-      <!-- <ion-item>{{ professor.email }}</ion-item> -->
-      <!-- <ion-item>{{ professor.mobileNumber }}</ion-item> -->
-    </ion-card>
-  </ion-col>
-  </ion-row>
-  </ion-grid>
+      <ion-row class="ion-align-items-center ion-margin-top">
+        <ion-col
+          *ngFor="let professor of professors; trackBy: trackByFunction"
+          size="12"
+          size-sm="6"
+          size-md="4"
+          size-lg="2.2"
+        >
+          <ion-card
+            class="tab10-professor-items"
+            color="white"
+            (click)="cardClick(professor)"
+          >
+            <img class="tab10-professor-image" src="{{professor.images}}" />
+            <!-- <div class="image">
+            </div> -->
+            <p class="tab10-professor-name" textWrap="true">
+              {{ professor.firstName }} {{ professor.lastName }}
+            </p>
+            <!-- <ion-card-title class="s">{{ professor.lastName }}</ion-card-title> -->
+            <!-- <ion-item>{{ professor.gender }}</ion-item> -->
+            <p class="tab10-professor-name">{{ professor.subjects }}</p>
+            <!-- <ion-item>{{ professor.email }}</ion-item> -->
+            <!-- <ion-item>{{ professor.mobileNumber }}</ion-item> -->
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
   <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -40,5 +55,4 @@
       <ion-icon name="pencil-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab> -->
-
 </ion-content>

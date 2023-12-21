@@ -3,9 +3,13 @@
     <ion-title>Add-Professor</ion-title>
 
     <ion-buttons slot="start">
-      <ion-icon slot="icon-only" name="chevron-back-outline" color="dark" routerLink="/tab10" ></ion-icon>
+      <ion-icon
+        slot="icon-only"
+        name="chevron-back-outline"
+        color="dark"
+        routerLink="/tabs/tab10"
+      ></ion-icon>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
@@ -13,84 +17,137 @@
   <ion-list>
     <form [formGroup]="professorForm" (ngSubmit)="submitForm()">
       <div class="form-container">
+        <ion-item class="input-item">
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Enter your first name"
+            formControlName="firstName"
+            name="firstName"
+          ></ion-input>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="person" slot="start"></ion-icon>
-      <ion-label position="floating">First Name</ion-label>
-      <ion-input type="text" placeholder="Enter your first name" formControlName="firstName" name="firstName"></ion-input>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Enter your last name"
+            formControlName="lastName"
+            name="lastName"
+          ></ion-input>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="person" slot="start"></ion-icon>
-      <ion-label position="floating">Last Name</ion-label>
-      <ion-input type="text" placeholder="Enter your last name" formControlName="lastName" name="lastName"></ion-input>
-    </ion-item>
+        <ion-item class="select-item">
+          <ion-icon name="transgender" slot="start"></ion-icon>
+          <ion-label>Gender</ion-label>
+          <ion-select formControlName="gender">
+            <ion-select-option value="male">Male</ion-select-option>
+            <ion-select-option value="female">Female</ion-select-option>
+            <ion-select-option value="other">Other</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-    <ion-item class="select-item">
-      <ion-icon name="transgender" slot="start"></ion-icon>
-      <ion-label>Gender</ion-label>
-      <ion-select formControlName="gender">
-        <ion-select-option value="male">Male</ion-select-option>
-        <ion-select-option value="female">Female</ion-select-option>
-        <ion-select-option value="other">Other</ion-select-option>
-      </ion-select>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="school" slot="start"></ion-icon>
+          <ion-label position="floating">Subjects</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Enter subjects"
+            formControlName="subjects"
+            name="subjects"
+          ></ion-input>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="school" slot="start"></ion-icon>
-      <ion-label position="floating">Subjects</ion-label>
-      <ion-input type="text" placeholder="Enter subjects" formControlName="subjects" name="subjects"></ion-input>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label position="floating">Email ID</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Enter your email"
+            formControlName="email"
+            name="email"
+          ></ion-input>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="mail" slot="start"></ion-icon>
-      <ion-label position="floating">Email ID</ion-label>
-      <ion-input type="email" placeholder="Enter your email" formControlName="email" name="email"></ion-input>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="eye" slot="start"></ion-icon>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Enter your password"
+            formControlName="password"
+            name="password"
+          ></ion-input>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="eye" slot="start"></ion-icon>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" placeholder="Enter your password" formControlName="password" name="password"></ion-input>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="call" slot="start"></ion-icon>
+          <ion-label position="floating">Mobile Number</ion-label>
+          <ion-input
+            type="tel"
+            placeholder="Enter your mobile number"
+            formControlName="mobileNumber"
+            name="mobileNumber"
+          ></ion-input>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="call" slot="start"></ion-icon>
-      <ion-label position="floating">Mobile Number</ion-label>
-      <ion-input type="tel" placeholder="Enter your mobile number" formControlName="mobileNumber" name="mobileNumber"></ion-input>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label position="floating">Address</ion-label>
+          <ion-textarea
+            placeholder="Enter your address (h.no, street, city, district, state)"
+            formControlName="address"
+            name="address"
+            autoGrow="true"
+          ></ion-textarea>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="home" slot="start"></ion-icon>
-      <ion-label position="floating">Address</ion-label>
-      <ion-textarea placeholder="Enter your address (h.no, street, city, district, state)" formControlName="address" name="address" autoGrow="true"></ion-textarea>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label position="floating">SchoolName</ion-label>
+          <ion-textarea
+            type="text"
+            placeholder="Enter SchoolName here"
+            formControlName="schoolname"
+            name="schoolname"
+            autoGrow="true"
+          ></ion-textarea>
+        </ion-item>
 
-    <ion-item class="input-item">
-      <ion-icon name="home" slot="start"></ion-icon>
-      <ion-label position="floating">SchoolName</ion-label>
-      <ion-textarea type="text" placeholder="Enter SchoolName here" formControlName="schoolname" name="schoolname" autoGrow="true"></ion-textarea>
-    </ion-item>
-  
-  
-    <ion-item class="input-item">
-      <ion-icon name="home" slot="start"></ion-icon>
-      <ion-label position="floating">SchoolCode</ion-label>
-      <ion-textarea type="text" placeholder="Enter your SchoolCode" formControlName="schoolcode" name="schoolcode" autoGrow="true"></ion-textarea>
-    </ion-item>
+        <ion-item class="input-item">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label position="floating">SchoolCode</ion-label>
+          <ion-textarea
+            type="text"
+            placeholder="Enter your SchoolCode"
+            formControlName="schoolcode"
+            name="schoolcode"
+            autoGrow="true"
+          ></ion-textarea>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating"></ion-label>
-      <ion-input type="text" formControlName="images" placeholder="paste image link here"></ion-input>
+        <ion-item>
+          <ion-label position="floating"></ion-label>
+          <ion-input
+            type="text"
+            formControlName="images"
+            placeholder="paste image link here"
+          ></ion-input>
 
-      <!-- for default image url -->
-      <img [src]="professorForm.get('images')?.value || defaultImageUrl" alt="Default Image" />
-    </ion-item>
+          <!-- for default image url -->
+          <img
+            [src]="professorForm.get('images')?.value || defaultImageUrl"
+            alt="Default Image"
+          />
+        </ion-item>
+      </div>
 
-  </div>
-  
-    <!-- Submit button -->
-    <ion-button shape="round" expand="full" color="primary" type="submit">Submit</ion-button>
+      <!-- Submit button -->
+      <ion-button shape="round" expand="full" color="primary" type="submit"
+        >Submit</ion-button
+      >
     </form>
   </ion-list>
-  </ion-content>
+</ion-content>

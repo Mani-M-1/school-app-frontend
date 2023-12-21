@@ -3,131 +3,197 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
+  // { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
 
- // { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-  
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () =>
+      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
     path: 'tab1',
-    loadChildren: () => import('./tab1/tab1.module').then(m => m.Tab1PageModule)
+    loadChildren: () =>
+      import('./tab1/tab1.module').then((m) => m.Tab1PageModule),
   },
   {
     path: 'search',
-    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+    loadChildren: () =>
+      import('./search/search.module').then((m) => m.SearchPageModule),
   },
   {
     path: 'sign-in',
-    loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
+    loadChildren: () =>
+      import('./sign-in/sign-in.module').then((m) => m.SignInPageModule),
   },
-
-
 
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    loadChildren: () =>
+      import('./sign-up/sign-up.module').then((m) => m.SignUpPageModule),
   },
-  
+
   {
     path: 'course-content',
-    loadChildren: () => import('./course-content/course-content.module').then( m => m.CourseContentPageModule)
+    loadChildren: () =>
+      import('./course-content/course-content.module').then(
+        (m) => m.CourseContentPageModule
+      ),
   },
   {
     path: 'forgot-pass',
-    loadChildren: () => import('./forgot-pass/forgot-pass.module').then( m => m.ForgotPassPageModule)
+    loadChildren: () =>
+      import('./forgot-pass/forgot-pass.module').then(
+        (m) => m.ForgotPassPageModule
+      ),
   },
   {
     path: 'weekly-course',
-    loadChildren: () => import('./prof/weekly-course/weekly-course.module').then( m => m.WeeklyCoursePageModule)
+    loadChildren: () =>
+      import('./prof/weekly-course/weekly-course.module').then(
+        (m) => m.WeeklyCoursePageModule
+      ),
   },
   {
     path: 'samplepage',
-    loadChildren: () => import('./samplepage/samplepage.module').then( m => m.SamplepagePageModule)
+    loadChildren: () =>
+      import('./samplepage/samplepage.module').then(
+        (m) => m.SamplepagePageModule
+      ),
   },
   {
     path: 'm-prof',
-    loadChildren: () => import('./prof/m-prof/m-prof.module').then( m => m.MProfPageModule)
+    loadChildren: () =>
+      import('./prof/m-prof/m-prof.module').then((m) => m.MProfPageModule),
   },
   {
     path: 'prof-course-content',
-    loadChildren: () => import('./prof/prof-course-content/prof-course-content.module').then( m => m.ProfCourseContentPageModule)
+    loadChildren: () =>
+      import('./prof/prof-course-content/prof-course-content.module').then(
+        (m) => m.ProfCourseContentPageModule
+      ),
   },
   {
     path: 'update-week',
-    loadChildren: () => import('./prof/update-week/update-week.module').then( m => m.UpdateWeekPageModule)
+    loadChildren: () =>
+      import('./prof/update-week/update-week.module').then(
+        (m) => m.UpdateWeekPageModule
+      ),
   },
   {
     path: 'add-new-week',
-    loadChildren: () => import('./prof/add-new-week/add-new-week.module').then( m => m.AddNewWeekPageModule)
+    loadChildren: () =>
+      import('./prof/add-new-week/add-new-week.module').then(
+        (m) => m.AddNewWeekPageModule
+      ),
   },
   {
     path: 'details',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+    loadChildren: () =>
+      import('./details/details.module').then((m) => m.DetailsPageModule),
   },
   {
     path: 'edit-profile',
-    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+    loadChildren: () =>
+      import('./edit-profile/edit-profile.module').then(
+        (m) => m.EditProfilePageModule
+      ),
   },
-  
+
   {
     path: 'add-new-task',
-    loadChildren: () => import('./add-new-task/add-new-task.module').then( m => m.AddNewTaskPageModule)
+    loadChildren: () =>
+      import('./add-new-task/add-new-task.module').then(
+        (m) => m.AddNewTaskPageModule
+      ),
   },
   {
     path: 'update-task',
-    loadChildren: () => import('./update-task/update-task.module').then( m => m.UpdateTaskPageModule)
+    loadChildren: () =>
+      import('./update-task/update-task.module').then(
+        (m) => m.UpdateTaskPageModule
+      ),
   },
-  
+
   {
     path: 'createblog',
-    loadChildren: () => import('./createblog/createblog.module').then( m => m.CreateblogPageModule)
+    loadChildren: () =>
+      import('./createblog/createblog.module').then(
+        (m) => m.CreateblogPageModule
+      ),
   },
   {
     path: 'update-blog',
-    loadChildren: () => import('./update-blog/update-blog.module').then( m => m.UpdateBlogPageModule)
+    loadChildren: () =>
+      import('./update-blog/update-blog.module').then(
+        (m) => m.UpdateBlogPageModule
+      ),
   },
   {
     path: 'todo-home',
-    loadChildren: () => import('./todo-home/todo-home.module').then( m => m.TodoHomePageModule)
+    loadChildren: () =>
+      import('./todo-home/todo-home.module').then((m) => m.TodoHomePageModule),
   },
   {
     path: 'blog-content',
-    loadChildren: () => import('./blog-content/blog-content.module').then( m => m.BlogContentPageModule)
+    loadChildren: () =>
+      import('./blog-content/blog-content.module').then(
+        (m) => m.BlogContentPageModule
+      ),
   },
   {
     path: 'add-professor',
-    loadChildren: () => import('./add-professor/add-professor.module').then( m => m.AddProfessorPageModule)
+    loadChildren: () =>
+      import('./add-professor/add-professor.module').then(
+        (m) => m.AddProfessorPageModule
+      ),
   },
   {
     path: 'add-student',
-    loadChildren: () => import('./add-student/add-student.module').then( m => m.AddStudentPageModule)
+    loadChildren: () =>
+      import('./add-student/add-student.module').then(
+        (m) => m.AddStudentPageModule
+      ),
   },
   {
     path: 'forgot-password',
-    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+    loadChildren: () =>
+      import('./forgot-password/forgot-password.module').then(
+        (m) => m.ForgotPasswordPageModule
+      ),
   },
   {
     path: 'forgotpassword1',
-    loadChildren: () => import('./forgotpassword1/forgotpassword1.module').then( m => m.Forgotpassword1PageModule)
+    loadChildren: () =>
+      import('./forgotpassword1/forgotpassword1.module').then(
+        (m) => m.Forgotpassword1PageModule
+      ),
   },
   {
-    path: 'professor-profile',
-    loadChildren: () => import('./professor-profile/professor-profile.module').then( m => m.ProfessorProfilePageModule)
+    path: 'professor-profile/:id',
+    loadChildren: () =>
+      import('./professor-profile/professor-profile.module').then(
+        (m) => m.ProfessorProfilePageModule
+      ),
   },
   {
-    path: 'student-profile',
-    loadChildren: () => import('./student-profile/student-profile.module').then( m => m.StudentProfilePageModule)
+    path: 'student-profile/:id',
+    loadChildren: () =>
+      import('./student-profile/student-profile.module').then(
+        (m) => m.StudentProfilePageModule
+      ),
   },
-  
-  
- 
+  {
+    path: 'course-register/:studentId/:studentFirstName',
+    loadChildren: () =>
+      import('./course-register/course-register.module').then(
+        (m) => m.CourseRegisterPageModule
+      ),
+  },
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
