@@ -4,7 +4,7 @@
   </ion-toolbar>
   <ion-searchbar 
     placeholder="Search your professor" color="light" [(ngModel)]="searchText" (ionChange)="searchStudents()">
-    </ion-searchbar>
+  </ion-searchbar>
 </ion-header>
 
 <ion-content>
@@ -15,30 +15,21 @@
     </ion-buttons>
   </div>
 
-  <div class="sr">
+  <div class="professor-cards">
     <ion-grid class="ion-padding-horizontal">
-      <ion-row class="ion-align-items-center ion-margin-top" >
-      <ion-col *ngFor="let professor of professors" size="6">
-    <ion-card color="white" (click)="cardClick(professor)">
-      <div class="image">
-       <img src="{{professor.images}}"/>
-      </div>
-      <ion-card-title class="s" textWrap="true">{{ professor.firstName }} {{ professor.lastName }}</ion-card-title>
-      <!-- <ion-card-title class="s">{{ professor.lastName }}</ion-card-title> -->
-      <!-- <ion-item>{{ professor.gender }}</ion-item> -->
-      <ion-card-title class="ss">{{ professor.subjects }}</ion-card-title>
-      <!-- <ion-item>{{ professor.email }}</ion-item> -->
-      <!-- <ion-item>{{ professor.mobileNumber }}</ion-item> -->
-    </ion-card>
-  </ion-col>
-  </ion-row>
-  </ion-grid>
+      <ion-row class="ion-align-items-center ion-margin-top">
+        <ion-col size="6" *ngFor="let professor of professors">
+          <ion-card class="professor-card" (click)="cardClick(professor)">
+            <div class="card-header">
+              <img src="{{ professor.images }}" class="card-image" />
+            </div>
+            <ion-card-content>
+              <ion-card-title class="professor-name">{{ professor.firstName }} {{ professor.lastName }}</ion-card-title>
+              <ion-card-subtitle class="professor-subject">{{ professor.subjects }}</ion-card-subtitle>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addProfessor()">
-      <ion-icon name="pencil-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
-
 </ion-content>

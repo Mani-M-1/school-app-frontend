@@ -13,6 +13,19 @@ ion-header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
   // .round {
   //   border-radius: 50%;
   //   overflow: hidden;
@@ -26,10 +39,7 @@ ion-header {
     position: relative; /* Make the container relative for absolute positioning */
     // display: inline-block; /* To wrap content around the image */
   }
-  .profile-picture {
-    position: relative;
-  }
-  
+ 
   .camera-button,
   .upload-button {
     position: absolute;
@@ -80,12 +90,41 @@ ion-header {
     padding-left: 120px;
   }
   .block-button{
-    padding-left: 190px;
+    margin-left: 87%;
     margin-top: 20px;
     color: red;
   }
   .unblock-button{
-    padding-left: 165px;
+    margin-left: 87%;
      margin-top: 20px;
      color: red;
   }
+
+  @media only screen and (max-width: 768px) {
+    /* ... Your tablet/laptop styles here ... */
+    .block-button{
+      margin-left: 79%;
+      margin-top: 20px;
+      color: red;
+    }
+    .unblock-button{
+      margin-left: 79%;
+       margin-top: 20px;
+       color: red;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    /* ... Your tablet/laptop styles here ... */
+    .block-button{
+      margin-left: 57%;
+      margin-top: 20px;
+      color: red;
+    }
+    .unblock-button{
+      margin-left: 57%;
+       margin-top: 20px;
+       color: red;
+    }
+  }
+  

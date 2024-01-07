@@ -23,6 +23,8 @@ export class AddStudentPage implements OnInit {
   password: any;
   mobileNumber: any;
   address: any;
+  schoolname: any;
+  schoolcode: any;
   
   defaultImageUrl: string = 'https://i.pinimg.com/736x/b4/bb/ec/b4bbecdfa52f0c32f9d3dddca2d8e088--college-tips-college-student-discounts.jpg'; // Replace with your default image URL
 
@@ -58,9 +60,11 @@ export class AddStudentPage implements OnInit {
 
 submitForm(){
       // Create the student object to be sent in the POST request
-      if (this.studentForm.valid) {
-     const formValue = this.studentForm.value
-  const body = {
+   if (this.studentForm.valid) {
+     const formValue = this.studentForm.value;
+
+    // Prepare the request body for the API
+    const body = {
     firstName: formValue.firstName,
     lastName: formValue.lastName,
     gender: formValue.selectedGender,
@@ -75,6 +79,7 @@ submitForm(){
     images: formValue.images || this.defaultImageUrl,  // for default image url
 
   };
+  console.log(body);
       // Make the POST request to the API endpoint
  this.http.post('http://localhost:3000/addingStudents/student', body).subscribe((response) => {
   console.log(response);

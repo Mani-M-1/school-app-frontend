@@ -92,7 +92,7 @@ submitForm(){
   // Navigate to a specific route after successful submission
   this.navCtrl.navigateRoot(['/tab10']);
  },(error) => {
-  console.error('Error creating student:', error);
+  console.error('Error creating professor:', error);
   // Handle error response here (e.g., show an error message)
 });
   }

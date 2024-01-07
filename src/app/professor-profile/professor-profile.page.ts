@@ -36,9 +36,14 @@ professors: any = [];
   updatedStudent: any;
 
 
-  chooseFile() {
+ // Modify this method to check if fileInput is not null
+ chooseFile() {
+  // Check if fileInput is not null
+  if (this.fileInput && this.fileInput.nativeElement) {
     this.fileInput.nativeElement.click();
   }
+}
+
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private toastController: ToastController) {
      // Retrieve the student data from the state passed by the previous page
@@ -60,24 +65,8 @@ professors: any = [];
       let professorData: any = params
      this.professors.push(professorData.params);
      console.log(this.professors)
-      // Here, you can fetch the student data using the studentId from your data source
-      // Replace 'fetchStudentDataById' with the appropriate function to get student data by ID
-      // this.originalProfessor = { /* Student data from your API */ };
-      // this.editedProfessor = { ...this.originalProfessor };
     }); 
   }
- 
-  // ionViewDidEnter() {
-  //   this.mobileNumber = localStorage.getItem('mobileNumber');
-  //   this.firstName = localStorage.getItem('firstName');
-  //   this.lastName = localStorage.getItem('lastName');
-  //   this.subjects = localStorage.getItem('subjects');
-  //   this.email = localStorage.getItem('email');
-  //   this.gender = localStorage.getItem('gender');
-  //   this.address = localStorage.getItem('address');
-
-  // }
-  
   
   delete(professorData: any){
     // console.log('clickdeletebutton')
@@ -86,20 +75,10 @@ professors: any = [];
     let doc_id = professorData._id
   this.http.delete('http://localhost:3000/addingProfessors/professors/'+doc_id).subscribe((data) => {
   console.log(data);
-   // Optionally, you can remove the deleted professor from the array to update the UI
-  //  this.professors = this.professors.filter(
-  //   (professor: any) => professor._id !== professorData
-  // );
 }
   )
   this.router.navigate(['/tab10']);
   }
-
-  // edit(professor:any){
-  //   console.log(professor[0]);
-  //   this.router.navigate(['/update-professor-profile', professor[0]]);
-   
-  // }
 
   forgotPassword(professorPassword: any){
     console.log(professorPassword[0]);
@@ -148,12 +127,6 @@ saveChanges() {
 // Function to trigger file upload
 uploadImage( fileType:any, professor: any) {
 
-  // var currentFile: File | null = null;
-  
-  // if(fileType == 'image'){
-  // this.selectedFile = this.image
-  // }
-
   if (!this.selectedFile) {
     console.log("No file selected.");
     return;
@@ -168,7 +141,6 @@ uploadImage( fileType:any, professor: any) {
        if (response.isSuccess) {
          this.uploadStatus = 'File uploaded successfully';
           // Store the uploaded file URL in the variable
-        // this.uploadedFileUrl = response.message;
         // //we have to call update profile function here
         console.log('Uploaded File URL:', this.selectedFile);
         let selectedFile = response.message;
@@ -200,9 +172,7 @@ uploadImage( fileType:any, professor: any) {
 updateProfileImage(imagepath:any, profileId: any) {
   const data = {
     images: imagepath
-    //  updatedStudent: this.updatedStudent._id
   };
-  // console.log(profileId._id);
   // Make the PUT request to the API endpoint
   console.log(data)
   this.http
@@ -213,14 +183,10 @@ updateProfileImage(imagepath:any, profileId: any) {
         // Handle the response or show a success message
         console.log(response.updatedProfessor);
         this.updatedProfessor = response.updatedProfessor;
-        // For example, show a success toast
-        // this.showToast('Student profile updated successfully.');
       },
       (error) => {
         // Handle the error or show an error message
         console.error(error);
-        // For example, show an error toast
-        // this.showToast('Error updating student profile. Please try again.');
       }
     );
     // this.router.navigate(['/tab9']);
@@ -237,8 +203,6 @@ updateProfileImage(imagepath:any, profileId: any) {
     // Make an API call to updatwew the status on server
     this.http.post(`http://localhost:3000/addingProfessors/block/${this.professor._id}`, {}).subscribe((response) => {
           console.log(response);
-    // Handle success and show a pop-up alert
-    // this.showAlert('Student is blocked'); 
     // Handle success and show a toasted message
     this.presentToast('Student is blocked', 'danger');
  
@@ -259,8 +223,6 @@ updateProfileImage(imagepath:any, profileId: any) {
       //Make an API call to update the server
       this.http.post(`http://localhost:3000/addingProfessors/unblock/${this.professor._id}`, {}).subscribe((response) => {
         console.log(response);
-        // Handle success and show a pop-up alert
-      //  this.showAlert('Student is unblocked'); 
           // Handle success and show a toasted message
           this.presentToast('Student is unblocked', 'success');
            },
@@ -270,10 +232,6 @@ updateProfileImage(imagepath:any, profileId: any) {
       );
     }
   }
-
-  // showAlert(message: string){
-  //   alert(message); // display a pop-up alert with the provided message
-  // }
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({

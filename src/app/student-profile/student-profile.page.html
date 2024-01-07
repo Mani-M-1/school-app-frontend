@@ -4,34 +4,33 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tab9" color="dark"></ion-back-button>
     </ion-buttons>
-    
-
     <ion-title class="ion-text-center ion-text-uppercase" color="dark">Student Profile</ion-title>
-
-    <!-- <ion-buttons slot="end" (click)="update(students)">
-      <ion-icon slot="icon-only" name="create-outline" color="dark"></ion-icon>
-    </ion-buttons> -->
-
     <ion-buttons slot="end">
       <ion-button (click)="toggleEditMode(students)">
         <ion-icon [name]="isEditing ? 'checkmark-outline' : 'create-outline'" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <!-- <div class="profile-picture round">
-      <img src="{{students.images}}" alt="Profile Picture" />
-    </div> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card *ngFor="let student of students" class="profile-card">
     <div class="profile-picture round">
-      <img src="{{student.images}}" alt="Profile Picture" />
+
+      <div class="profile">
+        <ion-avatar class="profile-image">
+          <ion-img src="{{student.images}}" alt="Profile Picture"></ion-img>
+        </ion-avatar>
+      </div>
+
       <input #fileInput type="file" style="display: none;" (change)="handleFileInput($event)" accept="image/*">
-      <ion-button (click)="chooseFile()" class="camera-button">
-        <ion-icon name="camera"></ion-icon> Choose File
+     <!-- Only show the "Choose File" button when a file is not selected -->
+      <ion-button *ngIf="!fileInput.files?.length" (click)="chooseFile()" class="camera-button">
+       <ion-icon name="camera"></ion-icon>
       </ion-button>
-      <ion-button (click)="uploadImage('image', student)" class="upload-button">
+
+      <!-- Only show the "Upload" button when a file is selected -->
+      <ion-button *ngIf="fileInput?.files?.length" (click)="uploadImage('image', student)" class="upload-button">
         Upload
       </ion-button>
     </div>
@@ -42,12 +41,13 @@
     <ion-card>
       <div class="contact-details">
         <ion-item *ngIf="!isEditing">
-          <ion-icon name="mail" slot="start" ></ion-icon>
-          <ion-input text-wrap="true">{{student.email}}</ion-input>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label text-wrap="true">{{student.email}}</ion-label>
         </ion-item>
         <ion-item *ngIf="isEditing">
           <ion-input type="email" [(ngModel)]="editedStudent.email" placeholder="{{student.email}}"></ion-input>
         </ion-item>
+  
 
         <ion-item *ngIf="!isEditing">
           <ion-icon name="eye" slot="start"></ion-icon>
@@ -139,30 +139,30 @@
     </ion-button>
 
    <!-- Save and Cancel buttons -->
-<ion-button *ngIf="isEditing" (click)="saveChanges()" class="update">
-  Save
-</ion-button>
-<ion-button *ngIf="isEditing" (click)="cancelEdit()" class="updated">
-  Cancel
-</ion-button>
+    <ion-button *ngIf="isEditing" (click)="saveChanges()" class="update">
+      Save
+    </ion-button>
+    <ion-button *ngIf="isEditing" (click)="cancelEdit()" class="updated">
+      Cancel
+    </ion-button>
 
-<!-- Show "Block" button when the user is not blocked -->
-<ion-button
-  *ngIf="!isEditing && students.status !== 'blocked'"
-  (click)="blockStudent(students)"
-  class="block-button"
-  fill="clear"  >
-  Block
-</ion-button>
+    <!-- Show "Block" button when the user is not blocked -->
+    <ion-button
+      *ngIf="!isEditing && students.status !== 'blocked'"
+      (click)="blockStudent(students)"
+      class="block-button"
+      fill="clear"  >
+      Block
+    </ion-button>
 
-<!-- Show "Unblock" button when the user is blocked -->
-<ion-button
-  *ngIf="!isEditing && students.status === 'blocked'"
-  (click)="unblockStudent(students)"
-  class="unblock-button"
-  fill="clear" >
-  Unblock
-</ion-button>
+    <!-- Show "Unblock" button when the user is blocked -->
+    <ion-button
+      *ngIf="!isEditing && students.status === 'blocked'"
+      (click)="unblockStudent(students)"
+      class="unblock-button"
+      fill="clear" >
+      Unblock
+    </ion-button>
 
   </ion-card>
 </ion-content>

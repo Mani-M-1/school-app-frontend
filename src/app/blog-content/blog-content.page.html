@@ -3,104 +3,65 @@
     <ion-title>Blog Content</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" size-md="10" size-lg="8" size-xl="6" *ngFor="let item of blogs">
         <!-- <ion-card class="card-margin"> -->
-          <!-- <ion-card-header>
-            <ion-card-title>{{ item.title }}</ion-card-title>
-          </ion-card-header> -->
-
-          <ion-card-content color="danger">
-            <ion-card-title>{{item.title}}</ion-card-title>
-          </ion-card-content>
-
-          <ion-card-content color="light" class="ion-card-content">
-            <ion-img src="{{item.images}}" /><br><br>
-            <!-- <ion-item color="primary">{{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}</ion-item> Display the date and time -->
-            <div>
-              <p style="text-align:justify;">{{ item.content }}</p>
-            </div>
-          <!-- <ion-item class="a"> {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}<br></ion-item> -->
-            <!-- <ion-item>{{ item.Name }}</ion-item> -->
-
-            <ion-item class="writer">{{ item.Name }}</ion-item>
-
-            <div class="line"></div>
-            <div class="icons">
-              <ion-icon name="thumbs-up-outline" slot="start" class="icon1"
-              (click)="likePost()" expand="full"></ion-icon>Like
-
-
-
-              <div class="icon-space"></div>
-
-              <ion-icon name="chatbox-outline" slot="start" class="icon"
-              (click)="toggleCommentSection()" expand="full"></ion-icon>Comment
-              
-              <div class="space"></div>
-
-              {{ item.timestamp | date: 'yyyy-MM-dd' }}
-              {{ item.timestamp | date: 'hh:mm a' }}
-
+        <!-- <ion-card-header><ion-card-title>{{ item.title }}</ion-card-title></ion-card-header> -->
+        <ion-card-content color="danger">
+          <ion-card-title>{{item.title}}</ion-card-title>
+        </ion-card-content>
+        <ion-card-content color="light" class="ion-card-content">
+          <ion-img src="{{item.images}}" />
+          <br>
+          <br>
+          <!-- <ion-item color="primary">{{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}</ion-item> Display the date and time -->
+          <div>
+            <p style="text-align:justify;">{{ item.content }}</p>
           </div>
-            <!-- <ion-row class="button-row">
-              <ion-col size="6" class="button-col">
-                <ion-button (click)="likePost()" expand="full">
-                  <ion-icon name="thumbs-up-outline" slot="start"></ion-icon>
+          <!-- <ion-item class="a"> {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}<br></ion-item> -->
+          <!-- <ion-item>{{ item.Name }}</ion-item> -->
+          <ion-item class="writer">{{ item.Name }}</ion-item>
+          <div class="line"></div>
+          <div class="icons">
+            <ion-button (click)="likePost()">
+              <ion-icon name="thumbs-up-outline" slot="start"></ion-icon> Like
+            </ion-button>
+            <div class="icon-space"></div>
+            <ion-button (click)="toggleCommentSection()" expand="full" color="light">
+              <ion-icon name="chatbox-outline" slot="start"></ion-icon> Comment
+            </ion-button>
+            <div class="space"></div>
+            {{ item.timestamp | date: 'yyyy-MM-dd' }}
+            {{ item.timestamp | date: 'hh:mm a' }}
+          </div>
+          <!-- <ion-row class="button-row"><ion-col size="6" class="button-col"><ion-button (click)="likePost()" expand="full"><ion-icon name="thumbs-up-outline" slot="start"></ion-icon>
                   Like
-                </ion-button>
-              </ion-col>
-              <ion-col size="6" class="button-col">
-                <ion-button (click)="toggleCommentSection()" expand="full" color="new">
-                  <ion-icon name="chatbox-outline" slot="start"></ion-icon>
+                </ion-button></ion-col><ion-col size="6" class="button-col"><ion-button (click)="toggleCommentSection()" expand="full" color="light"><ion-icon name="chatbox-outline" slot="start"></ion-icon>
                   Comment
-                </ion-button>
-              </ion-col>
-            </ion-row> -->
-            
-          </ion-card-content>
-
-          <!-- Comment section -->
-          <ion-item *ngIf="showCommentSection">
-            <ion-textarea [(ngModel)]="commentText" placeholder="Enter your comment"></ion-textarea>
-            <ion-button (click)="postComment()" expand="full" color="new">Post Comment</ion-button>
-          </ion-item>
-
-          <!-- <ion-button aria-label="Favorite">
-            <ion-icon name="heart" aria-hidden="true"></ion-icon>
-          </ion-button> -->
-          
-
+                </ion-button></ion-col></ion-row> -->
+        </ion-card-content>
+        <!-- Comment section -->
+        <ion-item *ngIf="showCommentSection">
+          <ion-textarea [(ngModel)]="commentText" placeholder="Enter your comment"></ion-textarea>
+          <ion-button (click)="postComment()" expand="full" color="new">Post Comment</ion-button>
+        </ion-item>
+        <!-- <ion-button aria-label="Favorite"><ion-icon name="heart" aria-hidden="true"></ion-icon></ion-button> -->
         <!-- </ion-card> -->
-
         <!-- Your post content here -->
-
-  <!-- <ion-button (click)="likePost()" expand="full" color="new">
-    <ion-icon name="thumbs-up-outline" slot="start"></ion-icon>
-    Like
-  </ion-button>
-
-  <ion-button (click)="toggleCommentSection()" expand="full" color="new">
-    <ion-icon name="chatbox-outline" slot="start"></ion-icon>
-    Comment
-  </ion-button> -->
-
-  <!-- Comment section -->
-  <!-- <ion-item *ngIf="showCommentSection">
-    <ion-textarea [(ngModel)]="commentText" placeholder="Enter your comment"></ion-textarea>
-    <ion-button (click)="postComment()" expand="full" color="new">Post Comment</ion-button>
-  </ion-item> -->
-
+        <!-- <ion-button (click)="likePost()" expand="full" color="new"><ion-icon name="thumbs-up-outline" slot="start"></ion-icon>
+          Like
+        </ion-button>
+        <ion-button (click)="toggleCommentSection()" expand="full" color="new"><ion-icon name="chatbox-outline" slot="start"></ion-icon>
+          Comment
+        </ion-button> -->
+        <!-- Comment section -->
+        <!-- <ion-item *ngIf="showCommentSection"><ion-textarea [(ngModel)]="commentText" placeholder="Enter your comment"></ion-textarea><ion-button (click)="postComment()" expand="full" color="new">Post Comment</ion-button></ion-item> -->
       </ion-col>
     </ion-row>
   </ion-grid>
-
- 
-  
 </ion-content>

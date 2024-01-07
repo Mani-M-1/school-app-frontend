@@ -120,6 +120,14 @@ const routes: Routes = [
     path: 'student-profile',
     loadChildren: () => import('./student-profile/student-profile.module').then( m => m.StudentProfilePageModule)
   },
+  {
+    path: 'tab9',
+    loadChildren: () => import('./tab9/tab9.module').then(m => m.Tab9PageModule)
+  },
+  {
+    path: 'tab10',
+    loadChildren: () => import('./tab10/tab10.module').then(m => m.Tab10PageModule)
+  },
   
   
  

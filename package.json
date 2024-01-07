@@ -31,6 +31,8 @@
     "@ionic/angular": "^7.0.0",
     "@ionic/storage-angular": "^4.0.0",
     "add": "^2.0.6",
+    "angular-analytics": "^1.0.0",
+    "angular-gtag": "^1.0.4",
     "cordova": "^12.0.0",
     "cordova-plugin-video-player": "^1.0.1",
     "ionicons": "^7.0.0",

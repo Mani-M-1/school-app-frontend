@@ -33,13 +33,6 @@ export class StudentProfilePage implements OnInit {
   address: any;
   updatedStudent: any;
   selectedFileUrl: any;
-  // editedStudent: any;
-  // originalStudent: {};
-
-
-  chooseFile() {
-    this.fileInput.nativeElement.click();
-  }
  
 students: any = [];  // Assuming you have an array of student data
 // Define a variable to hold the selected student data
@@ -82,28 +75,12 @@ students: any = [];  // Assuming you have an array of student data
       console.log(params);
       let studentData: any = params
      this.students.push(studentData.params);
-    //  if (studentData) {
-    //   this.students = [Object.assign({}, studentData)]; // Clone the object
-    // }
      console.log(this.students)
       // Here, you can fetch the student data using the studentId from your data source
       // Replace 'fetchStudentDataById' with the appropriate function to get student data by ID
       this.originalStudent = { /* Student data from your API */ };
       this.editedStudent = { ...this.originalStudent };
-    });   
-   
-
-// student(){
-//  //i'm getting item from blog-post-page..
-//  this.content = localStorage.getItem('add-student');
-//     let a = JSON.parse(this.content)
-//     this.students.push(a)
-//     console.log(a.content);
-//     };
-// // this.http.get<any[]>('http://localhost:3000/addingStudents/student').subscribe((response) => {
-// //   this.students = response;
-// //   console.log(response)
-// //  });
+    });
  
 }
 
@@ -117,15 +94,6 @@ delete(studentData: any){
    )
    this.router.navigate(['/tab9']);
 }
-
-//update function ....once click the edit icon navigate to updata student profile page
-// update(updatedStudent: any){
-//   console.log(updatedStudent[0])
-//   this.router.navigate(['/update-student-profile', updatedStudent[0]])
-  // console.log(student);
-  // this.router.navigate(['/update-student-profile'], navigationExtras);
-
-
 
  // Function to handle the "Forgot Password" button click
  forgotPassword(studentPassword: any) {
@@ -171,6 +139,15 @@ saveChanges() {
  handleFileInput(event: any) {
    this.selectedFile = event.target.files[0];
  }
+
+  // Modify this method to check if fileInput is not null
+  chooseFile() {
+    // Check if fileInput is not null
+    if (this.fileInput && this.fileInput.nativeElement) {
+      this.fileInput.nativeElement.click();
+    }
+  }
+
 
  // Function to trigger file upload
  uploadImage( fileType:any, student: any) {
@@ -223,6 +200,8 @@ saveChanges() {
    );
  }
 
+ 
+
  //duplicate function for uploading image
 updateProfileImage(imagepath:any, profileId: any) {
   const data = {
@@ -246,8 +225,6 @@ updateProfileImage(imagepath:any, profileId: any) {
       (error) => {
         // Handle the error or show an error message
         console.error(error);
-        // For example, show an error toast
-        // this.showToast('Error updating student profile. Please try again.');
       }
     );
     // this.router.navigate(['/tab9']);

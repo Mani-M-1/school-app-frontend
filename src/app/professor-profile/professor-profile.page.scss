@@ -13,12 +13,22 @@ ion-header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
-  // .round {
-  //   border-radius: 50%;
-  //   overflow: hidden;
-  // }
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
   .profile-picture {
-    height: 170px;
+    height: 220px;
     // display: flex;
     align-items: center;
     justify-content: center;
@@ -31,18 +41,11 @@ ion-header {
     bottom: 126px; /* Adjust the value to control vertical position */
     right: 6px; /* Adjust the value to control horizontal position */
     font-size: 2rem; /* Adjust the font size as needed */
-    color: rgba(255, 255, 255, 0.7); /* Set the icon color and opacity */
+    color: rgba(14, 13, 13, 0.7); /* Set the icon color and opacity */
     background-color: rgba(0, 0, 0, 0.7); /* Set the background color and opacity */
     padding: 5px;
     border-radius: 50%; /* Make the icon circular */
   }
-  
-  // .profile-picture img {
-  //   max-width: 100%;
-  //   // max-height: 100%;
-  //   // border-radius: 50%;
-  //   // object-fit: cover;
-  // }
   .user-picture{
     width: 200px;
     height: 250px;
@@ -72,13 +75,13 @@ ion-header {
     padding-left: 120px;
   }
   .block-button{
-    padding-left: 190px;
+    margin-left: 87%;
     margin-top: 20px;
     color: red;
   }
   .unblock-button{
-    padding-left: 165px;
-     margin-top: 20px;
+    margin-left: 87%;
+    margin-top: 20px;
      color: red;
   }
   .camera-button,
@@ -101,3 +104,32 @@ ion-header {
   .upload-button {
     bottom: 30px; /* Adjust vertical positioning for the second button */
   }
+
+  @media only screen and (max-width: 768px) {
+    /* ... Your tablet/laptop styles here ... */
+    .block-button{
+      margin-left: 79%;
+      margin-top: 20px;
+      color: red;
+    }
+    .unblock-button{
+      margin-left: 79%;
+       margin-top: 20px;
+       color: red;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    /* ... Your tablet/laptop styles here ... */
+    .block-button{
+      margin-left: 57%;
+      margin-top: 20px;
+      color: red;
+    }
+    .unblock-button{
+      margin-left: 57%;
+       margin-top: 20px;
+       color: red;
+    }
+  }
+  
