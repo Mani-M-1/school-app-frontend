@@ -66,7 +66,7 @@ const routes: Routes = [
       import('./prof/m-prof/m-prof.module').then((m) => m.MProfPageModule),
   },
   {
-    path: 'prof-course-content',
+    path: 'prof-course-content/:courseId',
     loadChildren: () =>
       import('./prof/prof-course-content/prof-course-content.module').then(
         (m) => m.ProfCourseContentPageModule
@@ -183,7 +183,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'course-register/:studentId/:studentFirstName',
+    path: 'course-register/:studentId/:studentFirstName/:username',
     loadChildren: () =>
       import('./course-register/course-register.module').then(
         (m) => m.CourseRegisterPageModule

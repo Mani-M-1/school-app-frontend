@@ -101,7 +101,7 @@ export class ProfessorProfilePage implements OnInit {
         //   (professor: any) => professor._id !== professorData
         // );
       });
-    this.router.navigate(['tabs/tab10']);
+    this.router.navigate(['/tabs/tab10']);
   }
 
   // edit(professor:any){

@@ -1,22 +1,21 @@
 <ion-content *ngFor="let item of weeklyCourse" class="content-padding">
-
   <ion-header class="ion-no-border">
     <ion-toolbar color="new">
-        {{ item.CourseName }}
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/tabs/tab5" color=""></ion-back-button>
-        </ion-buttons>
+      {{ item.CourseName }}
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/tab5" color=""></ion-back-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
   <p>Add A Week for your Course</p>
   <ion-fab vertical="top" horizontal="end" class="addWeek" side="left">
-    <ion-fab-button color="new"  size="small" (click)="addNewWeek(item)">
+    <ion-fab-button color="new" size="small" (click)="addNewWeek(item)">
       <ion-icon name="pencil-outline" size="small" color="gb"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
-    <!-- <ion-col *ngFor="let item of weeklyCourse">
+
+  <!-- <ion-col *ngFor="let item of weeklyCourse">
       <ion-card color="white">
         <ion-card-header color="tertiary">
           <ion-card-title>
@@ -53,90 +52,112 @@
         </ion-button>
       </div>
     </ion-col> -->
-    <!-- <div class="ion-padding-bottom">
+  <!-- <div class="ion-padding-bottom">
       <ion-button shape="round" expand="block" class="addWeek" (click)="addNewWeek(item)">Add new Week
         <ion-icon name="add-outline" slot="start"></ion-icon>
       </ion-button>
     </div> -->
 
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12" size-md="9" size-lg="8" size-xl="5.5">
-        <!-- <ion-card color="white"> -->
-          <!-- <ion-card-header color="tertiary">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="12" size-md="9" size-lg="8" size-xl="5.5">
+      <!-- <ion-card color="white"> -->
+      <!-- <ion-card-header color="tertiary">
             <ion-card-title>
               {{ item.CourseName }}
             </ion-card-title>
           </ion-card-header> -->
 
-            <ng-container *ngFor="let content of item.CourseContent">
-              <ion-card class="card-margin">
-                <ion-card-header>
-
-                  <ion-card-title>
-                     {{ content.week }}
-                  </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                  <ion-note>
-                    <ion-icon name="calendar-outline" class="icon-spacing"></ion-icon>
-                    {{ content.startDate }} - {{ content.endDate }}<br>
-                    <ion-icon name="document-outline" class="icon-spacing"></ion-icon>        
-                    {{content.readingmeterial}}<br>
-                    <ion-icon name="document-text-outline" class="icon-spacing"></ion-icon>
-                    {{content.assignment}}<br>
-                    <ion-icon name="documents-outline" class="icon-spacing"></ion-icon>
-                    {{content.additionalContent}}<br>
-                    <ion-icon name="megaphone-outline" class="icon-spacing"></ion-icon>
-                    {{content.announcement}}<br><br>
-                    <!-- <video id='fp_docs_player_0' class="fp_docs_player_0" controls style="width: 100%; height: 100%x;"> <!--style="width: 370px; height: 240px;-->
-                      <!-- <source data-fluid-hd src='src="https://cdn.fluidplayer.com/videos/valerian-480p.mkv' />
+      <ng-container *ngFor="let content of item.CourseContent">
+        <ion-card class="card-margin">
+          <ion-card-header>
+            <ion-card-title> {{ content.week }} </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-note>
+              <ion-icon name="calendar-outline" class="icon-spacing"></ion-icon>
+              {{ content.startDate }} - {{ content.endDate }}<br />
+              <ion-icon name="document-outline" class="icon-spacing"></ion-icon>
+              {{content.readingmeterial}}<br />
+              <ion-icon
+                name="document-text-outline"
+                class="icon-spacing"
+              ></ion-icon>
+              {{content.assignment}}<br />
+              <ion-icon
+                name="documents-outline"
+                class="icon-spacing"
+              ></ion-icon>
+              {{content.additionalContent}}<br />
+              <ion-icon
+                name="megaphone-outline"
+                class="icon-spacing"
+              ></ion-icon>
+              {{content.announcement}}<br /><br />
+              <!-- <video id='fp_docs_player_0' class="fp_docs_player_0" controls style="width: 100%; height: 100%x;"> <!--style="width: 370px; height: 240px;-->
+              <!-- <source data-fluid-hd src='src="https://cdn.fluidplayer.com/videos/valerian-480p.mkv' />
                       <source data-fluid-hd src='src="https://cdn.fluidplayer.com/videos/valerian-720p.mkv'/> -->
-                      <!-- <source src="https://cdn.fluidplayer.com/videos/valerian-1080p.mkv" /> -->
-  
-                      <!--mkv and mp4 videos are playing-->
-                      <!-- <source src="{{content.courseVideo}}" /> -->
-  
-                      <!-- .mkv  -->
-                  <!-- </video> -->
+              <!-- <source src="https://cdn.fluidplayer.com/videos/valerian-1080p.mkv" /> -->
 
-                  <div id="video-player">
-                    <video controls style="width: 100%; height: 100%x;">
-                      <source src={{content.courseVideo}} type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  
+              <!--mkv and mp4 videos are playing-->
+              <!-- <source src="{{content.courseVideo}}" /> -->
 
-                  <!-- <div id="container">
+              <!-- .mkv  -->
+              <!-- </video> -->
+
+              <div id="video-player">
+                <video controls style="width: 100%; height: 100%x">
+                  <source src="{{content.courseVideo}}" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              <!-- <div id="container">
                     <ion-button expand="block" color="primary" (click)="playOfflineVideo()">View Local Video</ion-button>
                     <ion-button expand="block" color="success" (click)="playOnlineVideo()">View Online Video</ion-button>
                     <ion-button expand="block" color="danger" (click)="closeVideoPlayer()">Close Video Player</ion-button>
                   </div> -->
-                  
-                    <div class="buttons">
-                      <ion-button shape="round" color="new" class="update" (click)="update(content)">update
-                        <ion-icon name="create-outline" slot="start" color="success"></ion-icon>
-                      </ion-button>
-                      <ion-button shape="round" color="new" class="del" (click)="deleteWeek(content)">Delete
-                        <ion-icon name="trash-outline" slot="start" color="red"></ion-icon>
-                      </ion-button>
-                    </div>
-                  </ion-note>
-                </ion-card-content>
-              </ion-card>
-            </ng-container>
-    
-          <!-- <div class="ion-padding-bottom">
+
+              <div class="buttons">
+                <ion-button
+                  shape="round"
+                  color="new"
+                  class="update"
+                  (click)="update(content)"
+                  >update
+                  <ion-icon
+                    name="create-outline"
+                    slot="start"
+                    color="success"
+                  ></ion-icon>
+                </ion-button>
+                <ion-button
+                  shape="round"
+                  color="new"
+                  class="del"
+                  (click)="deleteWeek(content)"
+                  >Delete
+                  <ion-icon
+                    name="trash-outline"
+                    slot="start"
+                    color="red"
+                  ></ion-icon>
+                </ion-button>
+              </div>
+            </ion-note>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+
+      <!-- <div class="ion-padding-bottom">
             <ion-button shape="round" color="tertiary" expand="block" class="addWeek" (click)="addNewWeek(item)">Add new Week
               <ion-icon name="add-outline" slot="start"></ion-icon>
             </ion-button>
           </div> -->
-        <!-- </ion-card> -->
-      </ion-col>
-    </ion-row>
+      <!-- </ion-card> -->
+    </ion-col>
+  </ion-row>
 
-    
-    <!-- <ion-row>
+  <!-- <ion-row>
       <ion-col>
         <div class="card-container">
           <ion-card-content>
@@ -175,11 +196,4 @@
         </div>
       </ion-col>
     </ion-row> -->
-    
-
-    
-
-    
-    
-
 </ion-content>

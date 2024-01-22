@@ -5,44 +5,48 @@
 </ion-header> -->
 
 <ion-content [fullscreen]="true">
+  <ion-segment
+    style="background-color: rgb(6, 6, 6)"
+    color="primary"
+    [(ngModel)]="selectTabs"
+  >
+    <ion-segment-button value="allBlogs">
+      <ion-label>All Blogs</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="yourBlogs">
+      <ion-label>Your Blogs</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-    <ion-segment color="dark" [(ngModel)]="selectTabs">
-      <ion-segment-button value="allBlogs" >
-        <ion-label>All Blogs</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="yourBlogs">
-        <ion-label>Your Blogs</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-    
-  
   <!-- in this ngFor is loop the data in blogs..,, blogs is server side file  -->
   <!-- Loop through the blogs data  -->
-<div *ngIf="selectTabs == 'allBlogs'">
-  <div *ngFor="let item of blogs">
-    <ion-row class="ion-justify-content-center">
-     <ion-col color="primary" size="12" size-md="10" size-lg="8" size-xl="6">
-      <h1>{{item.count}}</h1>
-  
-      <!-- <ion-card class="card-margin"> -->
-       <ion-card  class="rounded-card" color="white" (click)="cardClick(item)" class="tab6card">
-        <ion-img src="{{item.images}}" />
-  
-        <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
-  
-          <ion-card-content>
-                       <!-- Display the date and time -->
-            <ion-card-title class="highlight">{{item.title}}</ion-card-title>
-            {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}<br>
-  
-  
-          </ion-card-content>
-          <ion-card-header>
-            {{item.Name}}
-          </ion-card-header>
-       </ion-card>
-  
-       <!-- <div class="button-container">
+  <div *ngIf="selectTabs === 'allBlogs'">
+    <div *ngFor="let item of blogs">
+      <ion-row class="ion-justify-content-center">
+        <ion-col color="primary" size="12" size-md="10" size-lg="8" size-xl="6">
+          <h1>{{item.count}}</h1>
+
+          <!-- <ion-card class="card-margin"> -->
+          <ion-card
+            class="rounded-card"
+            color="white"
+            (click)="cardClick(item)"
+            class="tab6card"
+          >
+            <ion-img src="{{item.images}}" />
+
+            <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
+
+            <ion-card-content>
+              <!-- Display the date and time -->
+              <ion-card-title class="highlight">{{item.title}}</ion-card-title>
+              {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp |
+              date: 'hh:mm a' }}<br />
+            </ion-card-content>
+            <ion-card-header> {{item.Name}} </ion-card-header>
+          </ion-card>
+
+          <!-- <div class="button-container">
         <ion-button class="button-s" (click)="update(item)" slot="end" color="new">Update
           <ion-icon slot="icon-only" name="create-outline" size="small"></ion-icon>
         </ion-button>
@@ -51,10 +55,10 @@
           <ion-icon slot="icon-only" name="trash-outline" size="small"></ion-icon>
         </ion-button>
       </div> -->
-      <!-- </ion-card> -->
-  
-  <!-- <button (click)="update(item)" color="tertiary"> -->
-    <!-- <div class="button-container">
+          <!-- </ion-card> -->
+
+          <!-- <button (click)="update(item)" color="tertiary"> -->
+          <!-- <div class="button-container">
       <ion-button class="button-s" (click)="update(item)" slot="end" color="new">Update
         <ion-icon slot="icon-only" name="create-outline" size="small"></ion-icon>
       </ion-button>
@@ -63,75 +67,90 @@
         <ion-icon slot="icon-only" name="trash-outline" size="small"></ion-icon>
       </ion-button>
     </div> -->
-  
-      </ion-col>
-    </ion-row> 
-  
+        </ion-col>
+      </ion-row>
     </div>
-</div>
+  </div>
 
-<div *ngIf="selectTabs == 'yourBlogs'">
-  <div *ngFor="let item of userBlogs">
-    <!-- <div *ngIf="item.username === username"> -->
-    <ion-row class="ion-justify-content-center">
-     <ion-col size="12" size-md="10" size-lg="8" size-xl="6" color="primary">
-      <h1>{{item.count}}</h1>
-  
-      <ion-card class="card-margin">
-       <ion-card  class="rounded-card" color="white" (click)="cardClick(item)">
-        <ion-img src="{{item.images}}" />
-  
-        <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
-  
-          <ion-card-content>
-                       <!-- Display the date and time -->
-            <ion-card-title class="highlight">{{item.title}}</ion-card-title>
-            {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}<br>
-  
-  
-          </ion-card-content>
-  
-          <!-- <ion-card-content>
+  <div *ngIf="selectTabs === 'yourBlogs'">
+    <div *ngFor="let item of userBlogs">
+      <!-- <div *ngIf="item.username === username"> -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-md="10" size-lg="8" size-xl="6" color="primary">
+          <h1>{{item.count}}</h1>
+
+          <ion-card class="card-margin">
+            <ion-card
+              class="rounded-card"
+              color="white"
+              (click)="cardClick(item)"
+            >
+              <ion-img src="{{item.images}}" />
+
+              <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
+
+              <ion-card-content>
+                <!-- Display the date and time -->
+                <ion-card-title class="highlight"
+                  >{{item.title}}</ion-card-title
+                >
+                {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp |
+                date: 'hh:mm a' }}<br />
+              </ion-card-content>
+
+              <!-- <ion-card-content>
             {{item.content}}
           </ion-card-content> -->
-          <ion-card-header>
-            {{item.Name}}
-          </ion-card-header>
-          <!-- <ion-row> -->
-      
-  
-            <!-- <button (click)="update(item)" color="tertiary"> -->
+              <ion-card-header> {{item.Name}} </ion-card-header>
+              <!-- <ion-row> -->
+
+              <!-- <button (click)="update(item)" color="tertiary"> -->
               <!-- <ion-button class="button-s" (click)="update(item)">
               <ion-icon slot="start" name="create-outline" ></ion-icon>
               </ion-button> -->
               <!-- <p>Update</p> -->
-            <!-- </button>> -->
-          
-            <!-- <button (click)="delete(item._id)" color="danger"> -->
+              <!-- </button>> -->
+
+              <!-- <button (click)="delete(item._id)" color="danger"> -->
               <!-- <ion-button class="button-sr" (click)="delete(item._id)">
               <ion-icon slot="end" name="trash-outline" ></ion-icon>
               </ion-button> -->
-  
-              
+
               <!-- <p2>delete</p2> -->
-            <!-- </button> -->
-          <!-- </ion-row> -->
-          
-       </ion-card>
-  
-       <div class="button-container">
-        <ion-button class="button-s" (click)="update(item)" slot="end" color="success">Update
-          <ion-icon slot="icon-only" name="create-outline" size="small"></ion-icon>
-        </ion-button>
-      
-        <ion-button class="button-sr"  (click)="delete(item._id)" color="danger">Delete
-          <ion-icon slot="icon-only" name="trash-outline" size="small"></ion-icon>
-        </ion-button>
-      </div>
-      </ion-card>
-  
-  <!-- <button (click)="update(item)" color="tertiary"> -->
-    <!-- <div class="button-container">
+              <!-- </button> -->
+              <!-- </ion-row> -->
+            </ion-card>
+
+            <div class="button-container">
+              <ion-button
+                class="button-s"
+                (click)="update(item)"
+                slot="end"
+                color="success"
+                >Update
+                <ion-icon
+                  slot="icon-only"
+                  name="create-outline"
+                  size="small"
+                ></ion-icon>
+              </ion-button>
+
+              <ion-button
+                class="button-sr"
+                (click)="delete(item._id)"
+                color="danger"
+                >Delete
+                <ion-icon
+                  slot="icon-only"
+                  name="trash-outline"
+                  size="small"
+                ></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card>
+
+          <!-- <button (click)="update(item)" color="tertiary"> -->
+          <!-- <div class="button-container">
       <ion-button class="button-s" (click)="update(item)" slot="end" color="new">Update
         <ion-icon slot="icon-only" name="create-outline" size="small"></ion-icon>
       </ion-button>
@@ -140,20 +159,16 @@
         <ion-icon slot="icon-only" name="trash-outline" size="small"></ion-icon>
       </ion-button>
     </div> -->
-  
-      </ion-col>
-    </ion-row> 
-  
-    
-  <!-- </div> -->
-</div>
-</div>
- 
- 
+        </ion-col>
+      </ion-row>
+
+      <!-- </div> -->
+    </div>
+  </div>
+
   <ion-fab>
     <ion-fab-button (click)="blogPost()" color="new">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>

@@ -354,6 +354,7 @@ export class StudentProfilePage implements OnInit {
       '/course-register',
       this.studentProfileId,
       student.firstName,
+      student.email,
     ]);
   }
 

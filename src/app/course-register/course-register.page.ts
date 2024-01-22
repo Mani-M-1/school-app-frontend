@@ -11,9 +11,11 @@ import { NavController } from '@ionic/angular';
 export class CourseRegisterPage implements OnInit {
   studentId: string = '';
   studentFirstName: string = '';
+  username: any;
   // searchStudent: string = '';
   selectedCourses: string[] = []; // this array is used to store the selected courses
   courses: any[]; // available courses from "weeklyCourses"
+  enrolledCoursesArr: any[];
 
   constructor(
     private navctrl: NavController,
@@ -24,6 +26,7 @@ export class CourseRegisterPage implements OnInit {
     this.route.params.subscribe((params) => {
       this.studentId = params['studentId'];
       this.studentFirstName = params['studentFirstName'];
+      this.username = params['username'];
       console.log(this.studentFirstName);
     });
   }
@@ -33,11 +36,44 @@ export class CourseRegisterPage implements OnInit {
     // console.log('Search term changed:', this.searchStudent);
   }
 
+  getEnrolledCourses() {
+    this.http
+      .get<any>(
+        `http://localhost:3000/enrollCourse/user-profile-details/${this.username}`
+      )
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.enrolledCoursesArr = response.userProfile.enrolledCourses;
+
+          console.log(this.enrolledCoursesArr);
+
+          // Update the isChecked status in this.courses based on enrollment
+          this.updateCheckedStatus();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  updateCheckedStatus() {
+    // Loop through each course and update isChecked based on enrollment status
+    this.courses.forEach((course) => {
+      course.isChecked = this.enrolledCoursesArr.some(
+        (enrolledCourse) => enrolledCourse.CourseId === course._id
+      );
+    });
+  }
+
   getCourses() {
     this.http.get<any[]>('http://localhost:3000/weeklyCourse').subscribe(
       (response) => {
         this.courses = response;
         console.log(response);
+
+        // this function is called to get the courses of particular student
+        this.getEnrolledCourses();
       },
       (error) => {
         console.log(error);
@@ -47,6 +83,22 @@ export class CourseRegisterPage implements OnInit {
 
   ngOnInit() {
     this.getCourses();
+  }
+
+  searchCourseFunc(event: any) {
+    console.log(event.target.value);
+    const searchCourseText = event.target.value.toLowerCase();
+    console.log(this.courses);
+
+    if (searchCourseText.trim() !== '') {
+      const filteredArr = this.courses.filter((course) =>
+        course.CourseName.toLowerCase().includes(searchCourseText)
+      );
+      console.log(filteredArr);
+      this.courses = filteredArr;
+    } else {
+      this.getCourses();
+    }
   }
 
   // addCourse(course: any) {
@@ -77,6 +129,9 @@ export class CourseRegisterPage implements OnInit {
         (response) => {
           // this.getCourses();
           console.log(response);
+
+          // calling this function  to update the enrolled courses array
+          this.getEnrolledCourses();
         },
         (error) => {
           console.log(error);
@@ -104,6 +159,9 @@ export class CourseRegisterPage implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
+
+          // calling this function  to update the enrolled courses array
+          this.getEnrolledCourses();
         },
         (error) => {
           console.log(error);
