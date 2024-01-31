@@ -11,12 +11,16 @@ import { ToastService } from '../../services/toast.service';
 import { response } from 'express';
 import { LoadingController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-weekly-course',
   templateUrl: './weekly-course.page.html',
   styleUrls: ['./weekly-course.page.scss'],
 })
 export class WeeklyCoursePage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   showLoader = false; // Controls whether the loader should be shown
   loadingSpinner = 'crescent'; // Change this to 'lines', 'dots', etc. as per your preference
   loadingMessage = 'Uploading...'; // Customize the loading message
@@ -188,7 +192,7 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
       formData.append('filename', currentFile, currentFile.name);
       console.log(currentFile);
 
-      const response = await fetch('http://localhost:3000/uploadfile', {
+      const response = await fetch(`${this.apiUrl}/uploadfile`, {
         method: 'POST',
         body: formData,
       });
@@ -308,7 +312,7 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
     };
 
     console.log(postdata);
-    this.http.post('http://localhost:3000/weeklyCourse', postdata).subscribe(
+    this.http.post(`${this.apiUrl}/weeklyCourse`, postdata).subscribe(
       (response) => {
         console.log(response);
         // Assuming successful signup

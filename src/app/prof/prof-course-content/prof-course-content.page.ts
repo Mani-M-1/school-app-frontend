@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import Plyr from 'plyr';
 
+import { environment } from 'src/environments/environment';
+
 // for video player in this page and i need to
 //write same code in course-content page
 //import { VideoPlayer, VideoOptions } from '@ionic-native/video-player/ngx';
@@ -14,6 +16,8 @@ import Plyr from 'plyr';
   styleUrls: ['./prof-course-content.page.scss'],
 })
 export class ProfCourseContentPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   courseId: string;
   weeklyCourse: any[] = [];
   modalCtrl: any;
@@ -66,7 +70,7 @@ export class ProfCourseContentPage implements OnInit {
 
     // added by "manikanta"
     this.http
-      .get<any>(`http://localhost:3000/weeklyCourse/getCourse/${this.courseId}`)
+      .get<any>(`${this.apiUrl}/weeklyCourse/getCourse/${this.courseId}`)
       .subscribe(
         (data) => {
           this.weeklyCourse.push(data);
@@ -145,7 +149,7 @@ export class ProfCourseContentPage implements OnInit {
               // Make DELETE request to API endpoint
               this.http
                 .delete(
-                  `http://localhost:3000/weeklyCourse/deleteWeeklyCourse/${weekId._id}/${this.courseId}`
+                  `${this.apiUrl}/weeklyCourse/deleteWeeklyCourse/${weekId._id}/${this.courseId}`
                 )
                 .subscribe(
                   (response) => {

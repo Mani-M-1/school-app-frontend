@@ -3,12 +3,16 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-professor-profile',
   templateUrl: './professor-profile.page.html',
   styleUrls: ['./professor-profile.page.scss'],
 })
 export class ProfessorProfilePage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   isEditing: boolean = false; // Add this line
   originalProfessor: any = {};
   editedProfessor: any = {};
@@ -52,9 +56,7 @@ export class ProfessorProfilePage implements OnInit {
       console.log(this.professorId);
     });
     this.http
-      .get(
-        `http://localhost:3000/addingprofessors/professors/${this.professorId}`
-      )
+      .get(`${this.apiUrl}/addingprofessors/professors/${this.professorId}`)
       .subscribe(
         (response) => {
           this.professor = response;
@@ -93,7 +95,7 @@ export class ProfessorProfilePage implements OnInit {
     // now get the document id this professor
     let doc_id = professorData._id;
     this.http
-      .delete('http://localhost:3000/addingProfessors/professors/' + doc_id)
+      .delete(`${this.apiUrl}/addingProfessors/professors/${doc_id}`)
       .subscribe((data) => {
         console.log(data);
         // Optionally, you can remove the deleted professor from the array to update the UI
@@ -133,7 +135,7 @@ export class ProfessorProfilePage implements OnInit {
     // Save the edited data to the server
     this.http
       .put<any>(
-        `http://localhost:3000/addingProfessors/professors/${this.professorId}`,
+        `${this.apiUrl}/addingProfessors/professors/${this.professorId}`,
         this.editedProfessor
       )
       .subscribe(
@@ -173,7 +175,7 @@ export class ProfessorProfilePage implements OnInit {
     formData.append('filename', this.selectedFile);
 
     this.http
-      .post<any>('http://localhost:3000/addingProfessors/uploadfiles', formData)
+      .post<any>(`${this.apiUrl}/addingProfessors/uploadfiles`, formData)
       .subscribe(
         async (response) => {
           console.log(response);
@@ -217,10 +219,7 @@ export class ProfessorProfilePage implements OnInit {
     // Make the PUT request to the API endpoint
     console.log(data);
     this.http
-      .put<any>(
-        `http://localhost:3000/addingProfessors/professors/${profileId}`,
-        data
-      )
+      .put<any>(`${this.apiUrl}/addingProfessors/professors/${profileId}`, data)
       .subscribe(
         (response) => {
           console.log(response);
@@ -248,10 +247,7 @@ export class ProfessorProfilePage implements OnInit {
 
       // Make an API call to updatwew the status on server
       this.http
-        .post(
-          `http://localhost:3000/addingProfessors/block/${this.professorId}`,
-          {}
-        )
+        .post(`${this.apiUrl}/addingProfessors/block/${this.professorId}`, {})
         .subscribe(
           (response) => {
             console.log(response);
@@ -275,10 +271,7 @@ export class ProfessorProfilePage implements OnInit {
 
       //Make an API call to update the server
       this.http
-        .post(
-          `http://localhost:3000/addingProfessors/unblock/${this.professorId}`,
-          {}
-        )
+        .post(`${this.apiUrl}/addingProfessors/unblock/${this.professorId}`, {})
         .subscribe(
           (response) => {
             console.log(response);

@@ -61,11 +61,11 @@ export class SignInPage implements OnInit {
       password: this.password,
       // "role": this.role
     };
+    console.log(postdata);
 
     //here we are hitting to the data base link
     this.http.post(`${this.apiUrl}/Signup/login`, postdata).subscribe(
       (response: any) => {
-        console.log(postdata);
         console.log(response);
 
         // Save the user role in local storage
@@ -101,7 +101,7 @@ export class SignInPage implements OnInit {
             this.router.navigate(['/tabs/tab5']);
             break;
           case 'student':
-            this.router.navigate(['/tabs/tab1']);
+            this.router.navigate(['/tabs/student-side-courses-page']);
             break;
 
           case 'principal':

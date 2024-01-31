@@ -3,12 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-tab11',
   templateUrl: './tab11.page.html',
   styleUrls: ['./tab11.page.scss'],
 })
 export class Tab11Page implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   selectedStudent: any = '';
 
   // data = [
@@ -39,17 +43,15 @@ export class Tab11Page implements OnInit {
   }
 
   getStudent() {
-    this.http
-      .get<any[]>('http://localhost:3000/addingStudents/student')
-      .subscribe(
-        (response) => {
-          this.results = [...response];
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    this.http.get<any[]>(`${this.apiUrl}/addingStudents/student`).subscribe(
+      (response) => {
+        this.results = [...response];
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   handleInput(event: any) {

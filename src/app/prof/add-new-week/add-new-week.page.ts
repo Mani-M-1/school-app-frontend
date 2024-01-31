@@ -4,12 +4,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast.service';
 import { LoadingController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-add-new-week',
   templateUrl: './add-new-week.page.html',
   styleUrls: ['./add-new-week.page.scss'],
 })
 export class AddNewWeekPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   showLoader = false; // Controls whether the loader should be shown
   loadingSpinner = 'crescent'; // Change this to 'lines', 'dots', etc. as per your preference
   loadingMessage = 'Uploading...'; // Customize the loading message
@@ -130,7 +134,7 @@ export class AddNewWeekPage implements OnInit {
       formData.append('filename', currentFile, currentFile.name);
       console.log(currentFile);
 
-      const response = await fetch('http://localhost:3000/uploadfile', {
+      const response = await fetch(`${this.apiUrl}/uploadfile`, {
         method: 'POST',
         body: formData,
       });
@@ -206,18 +210,16 @@ export class AddNewWeekPage implements OnInit {
       endDate: this.EndDate,
     };
     console.log(postdata);
-    this.http
-      .post(`http://localhost:3000/weeklyCourse/addWeek`, postdata)
-      .subscribe(
-        (response) => {
-          console.log(response);
-          // Assuming successful signup
-          this.router.navigate(['/prof-course-content', this._id]);
-        },
-        (error) => {
-          console.log(error);
-          this.toastService.presentToast('Please enter valid details');
-        }
-      );
+    this.http.post(`${this.apiUrl}/weeklyCourse/addWeek`, postdata).subscribe(
+      (response) => {
+        console.log(response);
+        // Assuming successful signup
+        this.router.navigate(['/prof-course-content', this._id]);
+      },
+      (error) => {
+        console.log(error);
+        this.toastService.presentToast('Please enter valid details');
+      }
+    );
   }
 }

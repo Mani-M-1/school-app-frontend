@@ -3,12 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-update-blog',
   templateUrl: './update-blog.page.html',
   styleUrls: ['./update-blog.page.scss'],
 })
 export class UpdateBlogPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   showLoader = false; // Controls whether the loader should be shown
   loadingSpinner = 'crescent'; // Change this to 'lines', 'dots', etc. as per your preference
   loadingMessage = 'Uploading...'; // Customize the loading message
@@ -109,7 +113,7 @@ export class UpdateBlogPage implements OnInit {
       formData.append('filename', currentFile, currentFile.name);
       console.log(currentFile);
 
-      const response = await fetch('http://localhost:3000/uploadfile', {
+      const response = await fetch(`${this.apiUrl}/uploadfile`, {
         method: 'POST',
         body: formData,
       });
@@ -159,7 +163,7 @@ export class UpdateBlogPage implements OnInit {
       Name: this.Name,
     };
     this.http
-      .put(`http://localhost:3000/blog/${this.selectedblogId}`, data)
+      .put(`${this.apiUrl}/blog/${this.selectedblogId}`, data)
       .subscribe((data) => {
         console.log(data);
       });

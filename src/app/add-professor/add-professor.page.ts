@@ -5,12 +5,16 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { response } from 'express';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-add-professor',
   templateUrl: './add-professor.page.html',
   styleUrls: ['./add-professor.page.scss'],
 })
 export class AddProfessorPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   defaultImageUrl: string =
     'https://th.bing.com/th/id/R.0b511a64db3eb07e3249a1ec328532a9?rik=CQxxwGIccG%2bGxA&riu=http%3a%2f%2fphotos.demandstudios.com%2fgetty%2farticle%2f171%2f207%2f78036480.jpg&ehk=1r%2bN75USzR%2bu9tv0mDdE3TmsQN%2bm4S43ibi1MdptPjA%3d&risl=&pid=ImgRaw&r=0';
   professorForm!: FormGroup;
@@ -77,7 +81,7 @@ export class AddProfessorPage implements OnInit {
       };
       // send a post request to add professor data
       this.http
-        .post('http://localhost:3000/addingProfessors/professors', body)
+        .post(`${this.apiUrl}/addingProfessors/professors`, body)
         .subscribe(
           (response) => {
             console.log(response);
@@ -117,7 +121,7 @@ export class AddProfessorPage implements OnInit {
     };
     // Send a POST request to send an email
     this.http
-      .post('http://localhost:3000/addingStudents/send-email', body)
+      .post(`${this.apiUrl}/addingStudents/send-email`, body)
       .subscribe((response) => {
         console.log(response);
       });

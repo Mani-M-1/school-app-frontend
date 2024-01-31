@@ -11,9 +11,11 @@ const routes: Routes = [
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
-    path: 'tab1',
+    path: 'student-side-courses-page',
     loadChildren: () =>
-      import('./tab1/tab1.module').then((m) => m.Tab1PageModule),
+      import(
+        './student-side-courses-page/student-side-courses-page.module'
+      ).then((m) => m.StudentSideCoursesPageModule),
   },
   {
     path: 'search',

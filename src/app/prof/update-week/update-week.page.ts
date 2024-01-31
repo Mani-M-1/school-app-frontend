@@ -6,12 +6,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-update-week',
   templateUrl: './update-week.page.html',
   styleUrls: ['./update-week.page.scss'],
 })
 export class UpdateWeekPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   showLoader = false; // Controls whether the loader should be shown
   loadingSpinner = 'crescent'; // Change this to 'lines', 'dots', etc. as per your preference
   loadingMessage = 'Uploading...'; // Customize the loading message
@@ -149,7 +153,7 @@ export class UpdateWeekPage implements OnInit {
       formData.append('filename', currentFile, currentFile.name);
       console.log(currentFile);
 
-      const response = await fetch('http://localhost:3000/uploadfile', {
+      const response = await fetch(`${this.apiUrl}/uploadfile`, {
         method: 'POST',
         body: formData,
       });
@@ -227,10 +231,10 @@ export class UpdateWeekPage implements OnInit {
     console.log(updateData);
     this.http
       .put(
-        `http://localhost:3000/weeklyCourse/updateWeeklyCourse/${this.selectedWeekId}`,
+        `${this.apiUrl}/weeklyCourse/updateWeeklyCourse/${this.selectedWeekId}`,
         updateData
       )
-      // this.http.post(`http://localhost:3000/weeklyCourse/updateWeek/${this.selectedWeekId}`, updateData)
+      // this.http.post(`${this.apiUrl}/weeklyCourse/updateWeek/${this.selectedWeekId}`, updateData)
 
       .subscribe(
         (res) => {

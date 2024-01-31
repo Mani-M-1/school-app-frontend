@@ -15,12 +15,16 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
-    selector: 'app-tab8',
-    templateUrl: 'tab8.page.html',
-    styleUrls: ['tab8.page.scss']
-  })
-  export class Tab8Page {
+  selector: 'app-tab8',
+  templateUrl: 'tab8.page.html',
+  styleUrls: ['tab8.page.scss'],
+})
+export class Tab8Page {
+  private apiUrl: string = environment.apiUrl;
+
   school: any;
   firstName: any;
   lastName: any;
@@ -29,24 +33,17 @@ import { Router } from '@angular/router';
   username: any;
   profile: any;
 
-
   updateProfile: any;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
-
+  constructor(private http: HttpClient, private router: Router) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
 
-    if(login_state == 'true'){
-      console.log("log in is succesful");
-    }else{
+    if (login_state == 'true') {
+      console.log('log in is succesful');
+    } else {
       this.router.navigate(['/sign-in']);
     }
-
-    
 
     this.school = localStorage.getItem('school');
     this.firstName = localStorage.getItem('firstName');
@@ -55,7 +52,6 @@ import { Router } from '@angular/router';
     this.emergency = localStorage.getItem('emergency');
     this.username = localStorage.getItem('username');
     this.profile = localStorage.getItem('profile');
-
 
     console.log(this.school);
     console.log(this.firstName);
@@ -69,33 +65,32 @@ import { Router } from '@angular/router';
     // this.emergency = localStorage.getItem('emergency');
     // console.log(this.emergency);
   }
-  // this.http.get(`http://localhost:3000/Signup`).subscribe((data:any) => {
+  // this.http.get(`${this.apiUrl}/Signup`).subscribe((data:any) => {
   //   console.log(data);
   //   this.Course = data;
   // });
-  
 
   logOut() {
-
     // Step 1: Update the login_state in localStorage to false
     localStorage.setItem('isLoggedIn', 'false');
 
-    console.log("log-out successful");
-  
+    console.log('log-out successful');
+
     // Step 2: Navigate the user to the sign-in page
     this.router.navigate(['/sign-in']);
   }
 
   getProfileData() {
-    this.http.get(`http://localhost:3000/Signup/${this.username}`).subscribe((data: any) => {
-      console.log(data);
-      this.school = data.school;
-      this.firstName = data.firstName;
-      this.lastName = data.lastName;
-      this.mobileNo = data.mobileNo;
-      this.emergency = data.emergency;
-      this.profile = data.profile;
-    });
-
-}
+    this.http
+      .get(`${this.apiUrl}/Signup/${this.username}`)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.school = data.school;
+        this.firstName = data.firstName;
+        this.lastName = data.lastName;
+        this.mobileNo = data.mobileNo;
+        this.emergency = data.emergency;
+        this.profile = data.profile;
+      });
+  }
 }

@@ -8,9 +8,11 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'student-side-courses-page',
         loadChildren: () =>
-          import('../tab1/tab1.module').then((m) => m.Tab1PageModule),
+          import(
+            '../student-side-courses-page/student-side-courses-page.module'
+          ).then((m) => m.StudentSideCoursesPageModule),
       },
       {
         path: 'tab2',
@@ -65,14 +67,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/student-side-courses-page',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/student-side-courses-page',
     pathMatch: 'full',
   },
 ];

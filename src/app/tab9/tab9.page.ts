@@ -3,12 +3,16 @@ import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { NavigationEnd, Router } from '@angular/router';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-tab9',
   templateUrl: './tab9.page.html',
   styleUrls: ['./tab9.page.scss'],
 })
 export class Tab9Page implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   students: any[];
   allStudents: any[]; // A copy of the original students array
   searchText: string = '';
@@ -32,17 +36,15 @@ export class Tab9Page implements OnInit {
 
   //duplecate function
   getStudents() {
-    this.http
-      .get<any[]>('http://localhost:3000/addingStudents/student')
-      .subscribe(
-        (response) => {
-          this.students = response;
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    this.http.get<any[]>(`${this.apiUrl}/addingStudents/student`).subscribe(
+      (response) => {
+        this.students = response;
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   // Custom filter function to filter students based on the searchText
@@ -54,9 +56,7 @@ export class Tab9Page implements OnInit {
       // If the search bar is not empty (searchText has some content), perform the search
       // Make an HTTP GET request to the search API endpoint with the search text as a parameter
       this.http
-        .get<any[]>(
-          `http://localhost:3000/addingStudents/search/${this.searchText}`
-        )
+        .get<any[]>(`${this.apiUrl}/addingStudents/search/${this.searchText}`)
         .subscribe(
           (response) => {
             // Handle the successful response from the API

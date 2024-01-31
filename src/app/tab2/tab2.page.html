@@ -7,7 +7,13 @@
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-left">
-      <ion-col size="12" size-md="6" size-lg="6" size-xl="4" *ngFor="let item of blogs">
+      <ion-col
+        size="12"
+        size-md="6"
+        size-lg="6"
+        size-xl="4"
+        *ngFor="let item of blogs"
+      >
         <ion-card (click)="cardClick(item)" class="card-margin">
           <!-- <ion-card-header>
             <ion-card-title>{{ item.title }}</ion-card-title>
@@ -15,9 +21,9 @@
 
           <ion-card-content color="danger">
             <ion-card-title>{{ item.title }}</ion-card-title>
-          <!-- </ion-card-content> -->
+            <!-- </ion-card-content> -->
 
-          <!-- <ion-card-content color="light"> -->
+            <!-- <ion-card-content color="light"> -->
             <ion-img src="{{item.images}}" />
 
             <!-- <ion-item color="primary">{{ item.timestamp }}</ion-item> Display the timestamp -->
@@ -25,11 +31,8 @@
             {{ item.timestamp }}
             <!-- <ion-item>{{ item.Name }}</ion-item> -->
           </ion-card-content>
-
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  
 </ion-content>

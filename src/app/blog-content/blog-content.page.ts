@@ -4,12 +4,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { response } from 'express';
 import { ToastService } from '../services/toast.service';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-blog-content',
   templateUrl: './blog-content.page.html',
   styleUrls: ['./blog-content.page.scss'],
 })
 export class BlogContentPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   blogs: any[] = [];
 
   comments = {};
@@ -60,7 +64,7 @@ export class BlogContentPage implements OnInit {
   }
 
   blogcontent() {
-    //   this.http.get('http://localhost:3000/blogs').subscribe((data: any) =>{
+    //   this.http.get('${this.apiUrl}/blogs').subscribe((data: any) =>{
     //     console.log(data);
     //     this.blogs = data.posts;
     // }
@@ -116,7 +120,7 @@ export class BlogContentPage implements OnInit {
     };
 
     console.log(comment);
-    this.http.post('http://localhost:3000/blog/comment', comment).subscribe(
+    this.http.post(`${this.apiUrl}/blog/comment`, comment).subscribe(
       (response) => {
         console.log(response);
       },
@@ -138,7 +142,7 @@ export class BlogContentPage implements OnInit {
   //     //postId: 'post-id'
   //   };
 
-  //   this.http.post('http://localhost:3000/blog/comment', requestBody)
+  //   this.http.post('${this.apiUrl}/blog/comment', requestBody)
   //     .subscribe((response: any) => {
   //       // Handle the API response
   //       console.log(response);

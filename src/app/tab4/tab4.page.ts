@@ -3,12 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
   styleUrls: ['tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   school: any;
   firstName: any;
   lastName: any;
@@ -74,7 +78,7 @@ export class Tab4Page implements OnInit {
 
   getProfileData() {
     this.http
-      .get(`http://localhost:3000/Signup/${this.username}`)
+      .get(`${this.apiUrl}/Signup/${this.username}`)
       .subscribe((data: any) => {
         console.log(data);
         this.school = data.school;
@@ -84,7 +88,7 @@ export class Tab4Page implements OnInit {
         this.emergency = data.emergency;
         this.profile = data.profile;
       });
-    // this.http.get(`http://localhost:3000/Signup`).subscribe((data:any) => {
+    // this.http.get(`${this.apiUrl}/Signup`).subscribe((data:any) => {
     //   console.log(data);
     //   this.Course = data;
     // });

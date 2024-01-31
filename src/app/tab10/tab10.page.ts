@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-tab10',
   templateUrl: './tab10.page.html',
   styleUrls: ['./tab10.page.scss'],
 })
 export class Tab10Page implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   professors: any[];
   searchText: any;
 
@@ -27,7 +31,7 @@ export class Tab10Page implements OnInit {
   // duplicate function
   getProfessors() {
     this.http
-      .get<any[]>('http://localhost:3000/addingProfessors/professors')
+      .get<any[]>(`${this.apiUrl}/addingProfessors/professors`)
       .subscribe(
         (response) => {
           this.professors = response;
@@ -52,9 +56,7 @@ export class Tab10Page implements OnInit {
   searchStudents() {
     if (this.searchText.trim() !== '') {
       this.http
-        .get<any[]>(
-          `http://localhost:3000/addingProfessors/search/${this.searchText}`
-        )
+        .get<any[]>(`${this.apiUrl}/addingProfessors/search/${this.searchText}`)
         .subscribe(
           (response) => {
             this.professors = response;

@@ -1,32 +1,34 @@
-
 <ion-header class="ion-no-border">
   <ion-toolbar color="new" class="ion-header">
     <app-greeting></app-greeting>
-    
+
     <!-- <ion-fab vertical="top" horizontal="end" side="right">
       <ion-fab-button color="transprent" size="small">
           <ion-icon name="notifications-outline" size="small"></ion-icon>
       </ion-fab-button>
   </ion-fab> -->
-  <ion-fab vertical="top" horizontal="end" class="calender" side="left">
-    <ion-fab-button color="transprent" (click)="addTask()" size="small">
-      <ion-icon name="calendar-number-outline" size="small"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-   <ion-searchbar 
-    placeholder="Search your topic" color="transparent" [(ngModel)]="searchText" style="--border-radius: 30px;"> <!--(ionInput)="search($event)">-->
+    <ion-fab vertical="top" horizontal="end" class="calender" side="left">
+      <ion-fab-button color="transprent" (click)="addTask()" size="small">
+        <ion-icon name="calendar-number-outline" size="small"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-searchbar
+      placeholder="Search your topic"
+      color="transparent"
+      [(ngModel)]="searchText"
+      style="--border-radius: 30px"
+    >
+      <!--(ionInput)="search($event)">-->
       <!--<ion-fab vertical="top" horizontal="end">
         <ion-fab-button color="transparent">
             <ion-icon name="mic-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>-->
     </ion-searchbar>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <!--<ion-title color="black">
     <h3 class="title-with-button">Explore categories
       <ion-button class="end-btn" fill="clear">See all</ion-button></h3>
@@ -36,11 +38,16 @@
     <ion-grid class="ion-padding-horizontal">
       <ion-row class="ion-align-items-center ion-margin-top">
         <ion-col size="12">
-          <ion-label class="L">Create a Course
+          <ion-label class="L"
+            >Create a Course
 
-            <ion-button  class="end-btn" size="small" color="new" routerLink="/weekly-course">
+            <ion-button
+              class="end-btn"
+              size="small"
+              color="new"
+              routerLink="/weekly-course"
+            >
               <ion-icon name="add-outline"></ion-icon>
-            
             </ion-button>
           </ion-label>
           <!-- <div class="m">
@@ -54,25 +61,32 @@
             </ion-label>
           </ion-col>
     
-          </div><br><br> -->
-        </ion-col><br>
+          </div><br><br> --> </ion-col
+        ><br />
 
-        <ion-col size="6" size-sm="6" size-md="4" size-lg="3" size-xl="3" *ngFor="let item of weeklyCourse | searchFilter: searchText: 'CourseName'">
+        <ion-col
+          size="6"
+          size-sm="6"
+          size-md="4"
+          size-lg="3"
+          size-xl="3"
+          *ngFor="let item of weeklyCourse | searchFilter: searchText: 'CourseName'"
+        >
           <!-- here iam giving item.id -->
-          <ion-card class="responsive-card" (click)="cardClicked(item)">
-            <div class="image-container">
-              <img src="{{item.CourseImage}}" class="fixed-image" />
-            </div>
+          <ion-card class="tab5-page__course-card" (click)="cardClicked(item)">
+            <!-- <div class="image-container"> -->
+            <img
+              src="{{item.CourseImage}}"
+              class="tab5-page__course-card-img"
+            />
+            <!-- </div> -->
             <ion-card-header>
-              <ion-card-title>
-                {{ item.CourseName }}
-              </ion-card-title>
+              <ion-card-title> {{ item.CourseName }} </ion-card-title>
               {{item.ProfessorName}}
             </ion-card-header>
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
-    
   </div>
 </ion-content>

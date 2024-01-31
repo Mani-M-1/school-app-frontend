@@ -2,13 +2,12 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { HttpClientModule } from '@angular/common/http';
 
-
-import { Tab1PageRoutingModule } from './tab1-routing.module';
-//imported pipe which i create using ionic generate
+import { StudentSideCoursesPageRoutingModule } from './student-side-courses-page-routing.module';
+import { StudentSideCoursesPage } from './student-side-courses-page.page';
+//imported pipe which i create using io./student-side-courses-page-routing.module
 //import { SearchFilterPipe } from '../search-filter.pipe';
 //greeting component
 import { SharedModule } from '../shared/shared.module';
@@ -18,16 +17,14 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule,
+    StudentSideCoursesPageRoutingModule,
     HttpClientModule,
-    SharedModule
-
-    
+    SharedModule,
   ],
   declarations: [
-    Tab1Page,
+    StudentSideCoursesPage,
     //SearchFilterPipe, //and declared here
     //GreetingComponent
-  ]
+  ],
 })
-export class Tab1PageModule {}
+export class StudentSideCoursesPageModule {}

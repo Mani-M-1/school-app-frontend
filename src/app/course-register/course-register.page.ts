@@ -3,12 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-course-register',
   templateUrl: './course-register.page.html',
   styleUrls: ['./course-register.page.scss'],
 })
 export class CourseRegisterPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   studentId: string = '';
   studentFirstName: string = '';
   username: any;
@@ -39,7 +43,7 @@ export class CourseRegisterPage implements OnInit {
   getEnrolledCourses() {
     this.http
       .get<any>(
-        `http://localhost:3000/enrollCourse/user-profile-details/${this.username}`
+        `${this.apiUrl}/enrollCourse/user-profile-details/${this.username}`
       )
       .subscribe(
         (response) => {
@@ -67,7 +71,7 @@ export class CourseRegisterPage implements OnInit {
   }
 
   getCourses() {
-    this.http.get<any[]>('http://localhost:3000/weeklyCourse').subscribe(
+    this.http.get<any[]>(`${this.apiUrl}/weeklyCourse`).subscribe(
       (response) => {
         this.courses = response;
         console.log(response);
@@ -123,20 +127,18 @@ export class CourseRegisterPage implements OnInit {
       CourseName: course.CourseName,
     };
     console.log(body);
-    this.http
-      .post('http://localhost:3000/enrollCourse/enrollCourses', body)
-      .subscribe(
-        (response) => {
-          // this.getCourses();
-          console.log(response);
+    this.http.post(`${this.apiUrl}/enrollCourse/enrollCourses`, body).subscribe(
+      (response) => {
+        // this.getCourses();
+        console.log(response);
 
-          // calling this function  to update the enrolled courses array
-          this.getEnrolledCourses();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+        // calling this function  to update the enrolled courses array
+        this.getEnrolledCourses();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   // Remove a single course from the selectedCourses array
@@ -154,19 +156,17 @@ export class CourseRegisterPage implements OnInit {
       CourseId: course._id,
     };
     console.log(body);
-    this.http
-      .post('http://localhost:3000/enrollCourse/removeCourses', body)
-      .subscribe(
-        (response) => {
-          console.log(response);
+    this.http.post(`${this.apiUrl}/enrollCourse/removeCourses`, body).subscribe(
+      (response) => {
+        console.log(response);
 
-          // calling this function  to update the enrolled courses array
-          this.getEnrolledCourses();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+        // calling this function  to update the enrolled courses array
+        this.getEnrolledCourses();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   // Handle changes in checkbox state

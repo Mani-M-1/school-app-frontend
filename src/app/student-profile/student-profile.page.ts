@@ -6,6 +6,8 @@ import { response } from 'express';
 import { error } from 'console';
 import { ToastController } from '@ionic/angular'; // Import ToastController
 
+import { environment } from 'src/environments/environment';
+
 interface StudentResponse {
   _id: string;
   firstName: string;
@@ -21,6 +23,8 @@ interface StudentResponse {
   styleUrls: ['./student-profile.page.scss'],
 })
 export class StudentProfilePage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   isEditing: boolean = false; // Add this line
   originalStudent: any = {};
   editedStudent: any = {};
@@ -86,9 +90,7 @@ export class StudentProfilePage implements OnInit {
 
   getStudentProfileDetails(username: string) {
     this.http
-      .get<any>(
-        `http://localhost:3000/enrollCourse/user-profile-details/${username}`
-      )
+      .get<any>(`${this.apiUrl}/enrollCourse/user-profile-details/${username}`)
       .subscribe(
         (response) => {
           this.studentProfileId = response.userProfile._id;
@@ -116,7 +118,7 @@ export class StudentProfilePage implements OnInit {
     });
     this.http
       .get<StudentResponse>(
-        `http://localhost:3000/addingStudents/student/${this.studentId}`
+        `${this.apiUrl}/addingStudents/student/${this.studentId}`
       )
       .subscribe(
         (response) => {
@@ -146,11 +148,11 @@ export class StudentProfilePage implements OnInit {
     // now get the document id this student
     let doc_id = studentData._id;
     this.http
-      .delete('http://localhost:3000/addingStudents/student/' + doc_id)
+      .delete(`${this.apiUrl}/addingStudents/student/${doc_id}`)
       .subscribe((data) => {
         console.log(data);
 
-        this.router.navigate(['tabs/tab9']);
+        this.router.navigate(['/tabs/tab9']);
       });
   }
 
@@ -184,7 +186,7 @@ export class StudentProfilePage implements OnInit {
     // Save the edited data to the server
     this.http
       .put<any>(
-        `http://localhost:3000/addingStudents/student/${this.studentId}`,
+        `${this.apiUrl}/addingStudents/student/${this.studentId}`,
         this.editedStudent
       )
       .subscribe(
@@ -225,7 +227,7 @@ export class StudentProfilePage implements OnInit {
     formData.append('filename', this.selectedFile);
 
     this.http
-      .post<any>('http://localhost:3000/addingStudents/uploadfiles', formData)
+      .post<any>(`${this.apiUrl}/addingStudents/uploadfiles`, formData)
       .subscribe(
         async (response) => {
           console.log(response);
@@ -269,10 +271,7 @@ export class StudentProfilePage implements OnInit {
     // Make the PUT request to the API endpoint
     console.log(data);
     this.http
-      .put<any>(
-        `http://localhost:3000/addingStudents/student/${profileId}`,
-        data
-      )
+      .put<any>(`${this.apiUrl}/addingStudents/student/${profileId}`, data)
       .subscribe(
         (response) => {
           console.log(response);
@@ -302,10 +301,7 @@ export class StudentProfilePage implements OnInit {
 
       // Make an API call to updatwew the status on server
       this.http
-        .post(
-          `http://localhost:3000/addingStudents/block/${this.studentId}`,
-          {}
-        )
+        .post(`${this.apiUrl}/addingStudents/block/${this.studentId}`, {})
         .subscribe(
           (response) => {
             console.log(response);
@@ -329,10 +325,7 @@ export class StudentProfilePage implements OnInit {
 
       //Make an API call to update the server
       this.http
-        .post(
-          `http://localhost:3000/addingStudents/unblock/${this.studentId}`,
-          {}
-        )
+        .post(`${this.apiUrl}/addingStudents/unblock/${this.studentId}`, {})
         .subscribe(
           (response) => {
             console.log(response);

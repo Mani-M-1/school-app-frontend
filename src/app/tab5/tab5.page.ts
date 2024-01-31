@@ -4,12 +4,16 @@ import { Router, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-tab5',
   templateUrl: 'tab5.page.html',
   styleUrls: ['tab5.page.scss'],
 })
 export class Tab5Page implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   searchText: any;
   showAll: boolean | undefined;
   weeklyCourse: any;
@@ -39,7 +43,7 @@ export class Tab5Page implements OnInit {
     //console.log(data);
     //this.weeklyCourse = data;
     //});
-    this.getCourseDetails();
+    // this.getCourseDetails();
 
     // this is for task form in todo-main
     this.taskForm = this.formBuilder.group({
@@ -103,7 +107,7 @@ export class Tab5Page implements OnInit {
   //ngOnInit
   getCourseDetails() {
     this.http
-      .get(`http://localhost:3000/weeklycourse/${this.username}`)
+      .get(`${this.apiUrl}/weeklycourse/${this.username}`)
       .subscribe((data: any) => {
         console.log(data);
         this.weeklyCourse = data;

@@ -112,12 +112,16 @@ import { NavController } from '@ionic/angular';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-tab6',
   templateUrl: 'tab6.page.html',
   styleUrls: ['tab6.page.scss'],
 })
 export class Tab6Page implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   // selectTabs: 'allBlogs';
   selectTabs: string = 'allBlogs';
 
@@ -178,7 +182,7 @@ export class Tab6Page implements OnInit {
   //once you write a function in any html file then you must declare the function in ts file...you not declare the function you getting error...
   //this function is duplicate function ...and aslo declare in blogPost function....
   blogPosta() {
-    this.http.get(`http://localhost:3000/blog/`).subscribe(
+    this.http.get(`${this.apiUrl}/blog/`).subscribe(
       (data: any) => {
         // after posting data from createblog page i'm getting data here.
         console.log(data); // and setting item in local storage, you can find it below of this file as setItem
@@ -192,7 +196,7 @@ export class Tab6Page implements OnInit {
 
   //get blog posted by user
   getBlogs() {
-    this.http.get(`http://localhost:3000/blog/${this.username}`).subscribe(
+    this.http.get(`${this.apiUrl}/blog/${this.username}`).subscribe(
       (data: any) => {
         // after posting data from createblog page i'm getting data here.
         console.log(data); // and setting item in local storage, you can find it below of this file as setItem
@@ -222,7 +226,7 @@ export class Tab6Page implements OnInit {
   delete(key: any) {
     console.log('clickdeletebutton');
     console.log(key);
-    this.http.delete('http://localhost:3000/blog/' + key).subscribe((data) => {
+    this.http.delete(`${this.apiUrl}/blog/` + key).subscribe((data) => {
       console.log(data);
 
       this.getBlogs();

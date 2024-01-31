@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { LoadingController } from '@ionic/angular';
 
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,6 +16,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./edit-profile.page.scss'],
 })
 export class EditProfilePage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
 
   showLoader = false; // Controls whether the loader should be shown
   loadingSpinner = 'crescent'; // Change this to 'lines', 'dots', etc. as per your preference
@@ -24,8 +25,8 @@ export class EditProfilePage implements OnInit {
   //this is for buttons "upload and update"
   uploadInProgressImage = false;
 
-    //for upload status
-    uploadStatusImage = false;
+  //for upload status
+  uploadStatusImage = false;
 
   //variables
   uploadedImage: any;
@@ -37,10 +38,8 @@ export class EditProfilePage implements OnInit {
   username: any;
   profile: any;
 
-
   //for uploading files
-  private image: File; // this is for file type for storing iamge event 
-
+  private image: File; // this is for file type for storing iamge event
 
   // for saving  S3 urls
   imageUrl: any; //for showing course image url in db
@@ -55,13 +54,12 @@ export class EditProfilePage implements OnInit {
   // newImage: string | undefined;
 
   // role: any;
-  userRole:any;
+  userRole: any;
   professor: any;
-  student:any;
+  student: any;
   ImageUrl: string;
-  
+
   // image: any;
-  
 
   //for showing image in ion-avatar
   selectedProfileImage: string | null = null;
@@ -73,17 +71,15 @@ export class EditProfilePage implements OnInit {
     private router: Router,
     private domSanitizer: DomSanitizer,
     private loadingController: LoadingController
+  ) {
+    //here we need to check if user is signed in and user role
+    let login_state = localStorage.getItem('isLoggedIn');
 
-    ) {
-
-      //here we need to check if user is signed in and user role
-      let login_state = localStorage.getItem('isLoggedIn');
-
-      if(login_state == 'true'){
-        console.log("log in is succesful");
-      }else{
-        this.router.navigate(['/sign-in']);
-      }
+    if (login_state == 'true') {
+      console.log('log in is succesful');
+    } else {
+      this.router.navigate(['/sign-in']);
+    }
 
     this.school = localStorage.getItem('school');
     this.firstName = localStorage.getItem('firstName');
@@ -92,22 +88,20 @@ export class EditProfilePage implements OnInit {
     this.emergency = localStorage.getItem('emergency');
     this.profile = localStorage.getItem('profile');
 
-
     console.log(this.school);
     console.log(this.firstName);
     console.log(this.lastName);
     console.log(this.mobileNo);
     console.log(this.emergency);
     console.log(this.profile);
-    
   }
 
   //this is for loading spinner and iam calling this
-   //async function in uploading function
-   async presentLoading() {
+  //async function in uploading function
+  async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'Loading...',
-      spinner: 'circles'
+      spinner: 'circles',
     });
     await loading.present();
 
@@ -119,7 +113,6 @@ export class EditProfilePage implements OnInit {
 
   //for uploading files
   selectedFile: File;
-  
 
   //for camera module ionic
   // takePicture = async () => {
@@ -142,7 +135,7 @@ export class EditProfilePage implements OnInit {
   //   return this.imageSource
   // }
 
- // camera module capacitor
+  // camera module capacitor
   // async takePicture(){
   //   const image = await Camera.getPhoto({
   //     quality: 100,
@@ -151,32 +144,28 @@ export class EditProfilePage implements OnInit {
   //   });
   //   this.picture = image.dataUrl;
   // }
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async uploadFiles(fileType: any) {
     var currentFile;
 
-    if(fileType == 'image'){
+    if (fileType == 'image') {
       currentFile = this.image;
       this.uploadInProgressImage = true;
-
     }
 
-    
     if (!currentFile) {
-      console.log("No file selected.");
+      console.log('No file selected.');
       return;
     }
-      // this.uploadInProgressImage = true;
-      // this.uploadInProgressVideo = true;
-      // this.uploadInProgressFile = true
-    
-   
+    // this.uploadInProgressImage = true;
+    // this.uploadInProgressVideo = true;
+    // this.uploadInProgressFile = true
+
     this.showLoader = true;
 
     console.log(fileType);
-   
+
     //here iam calling the presentLoading fun
     //from up there
     await this.presentLoading();
@@ -184,29 +173,28 @@ export class EditProfilePage implements OnInit {
     try {
       let formData = new FormData();
 
-    // Add the file that was just added to the form data
-    formData.append("filename", currentFile, currentFile.name);
-    console.log(currentFile);
+      // Add the file that was just added to the form data
+      formData.append('filename', currentFile, currentFile.name);
+      console.log(currentFile);
 
-      const response = await fetch('http://localhost:3000/uploadfile', {
+      const response = await fetch(`${this.apiUrl}/uploadfile`, {
         method: 'POST',
         body: formData,
       });
 
-
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      
+
       // Update the flag on successful upload
- 
+
       //here iam storing this s3 url in "uploadedFileUrl"
       let uploadedFileUrl = (await response.json()) as string;
 
-      const CLOUDFRONT_URL = 'https://d2ax4codf16e0h.cloudfront.net/'
-      uploadedFileUrl = CLOUDFRONT_URL + currentFile.name
+      const CLOUDFRONT_URL = 'https://d2ax4codf16e0h.cloudfront.net/';
+      uploadedFileUrl = CLOUDFRONT_URL + currentFile.name;
       console.log(uploadedFileUrl);
-      if(fileType == 'image'){
+      if (fileType == 'image') {
         this.imageUrl = uploadedFileUrl;
       }
 
@@ -214,61 +202,58 @@ export class EditProfilePage implements OnInit {
       //this is for uploading buttons you can find more about in html fle at upload buttons
       if (fileType == 'image') {
         this.uploadStatusImage = true;
-      } 
-    
-    }catch (err) {
+      }
+    } catch (err) {
       console.log(err);
     } finally {
       if (fileType == 'image') {
         this.uploadInProgressImage = false;
       }
-      
-        this.showLoader = false;
+
+      this.showLoader = false;
     }
-
   }
- // this is for onchange event in html file
- onImageFileChange(event: any) {
-  this.image = event.target.files[0];
+  // this is for onchange event in html file
+  onImageFileChange(event: any) {
+    this.image = event.target.files[0];
+  }
 
-}
+  update() {
+    console.log(this.school);
+    console.log(this.firstName);
+    console.log(this.lastName);
+    console.log(this.mobileNo);
+    console.log(this.emergency);
+    console.log(this.imageUrl);
 
+    const updatedProfile = {
+      school: this.school,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      mobileNo: this.mobileNo,
+      emergency: this.emergency,
+      profile: this.imageUrl,
+    };
+    const username = localStorage.getItem('username');
+    const role = localStorage.getItem('userRole');
+    // localStorage.setItem('userRole', response.role);
 
+    // const username = 'venuazmeera69@gmail.com'
+    console.log(username);
+    console.log(role);
 
-
-  update(){
-      console.log(this.school);
-      console.log(this.firstName);
-      console.log(this.lastName);
-      console.log(this.mobileNo);
-      console.log(this.emergency);
-      console.log(this.imageUrl);
-
-      const updatedProfile = {
-        
-        school: this.school,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        mobileNo: this.mobileNo,
-        emergency: this.emergency,
-        profile: this.imageUrl
-      };
-      const username = localStorage.getItem('username');  
-      const role = localStorage.getItem('userRole')  
-      // localStorage.setItem('userRole', response.role);
-  
-      // const username = 'venuazmeera69@gmail.com'
-      console.log(username);
-      console.log(role);
-
-
-      this.http.put(`https://student-api-10-fbf8bbebe705.herokuapp.com/Signup/${username}`, updatedProfile)      
-      .subscribe(res => {
+    this.http
+      .put(
+        `https://student-api-10-fbf8bbebe705.herokuapp.com/Signup/${username}`,
+        updatedProfile
+      )
+      .subscribe(
+        (res) => {
           console.log(res);
           //after getting response now set the local storage agin with the updated values
           //as same as sign-in screen with setItem
           console.log(updatedProfile);
-        
+
           //iam storing data for updation in tab4 page details
           //like school, firstname, lastname, mobileno, emergency
           localStorage.setItem('school', updatedProfile.school);
@@ -276,28 +261,24 @@ export class EditProfilePage implements OnInit {
           localStorage.setItem('lastName', updatedProfile.lastName);
           localStorage.setItem('mobileNo', updatedProfile.mobileNo);
           localStorage.setItem('emergency', updatedProfile.emergency);
-          
+
           // Do something with the response if needed
           // this.toastService.presentToast("Profile updated successfully");
 
-          if(this.userRole === this.professor){
+          if (this.userRole === this.professor) {
             this.router.navigate(['/tabs/tab8']);
-            this.toastService.presentToast("Profile updated successfully");
-
+            this.toastService.presentToast('Profile updated successfully');
           }
-          if (this.userRole === this.student){
+          if (this.userRole === this.student) {
             this.router.navigate(['/tabs/tab4']);
-            this.toastService.presentToast("Profile updated successfully");
-
-          }else{
-            this.toastService.presentToast("somethig went wrong")
+            this.toastService.presentToast('Profile updated successfully');
+          } else {
+            this.toastService.presentToast('somethig went wrong');
           }
-          
-        },error =>{
-          err: error
-        });
-    }
-  
-  
-
+        },
+        (error) => {
+          err: error;
+        }
+      );
+  }
 }
