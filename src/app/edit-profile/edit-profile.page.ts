@@ -55,8 +55,7 @@ export class EditProfilePage implements OnInit {
 
   // role: any;
   userRole: any;
-  professor: any;
-  student: any;
+
   ImageUrl: string;
 
   // image: any;
@@ -98,18 +97,18 @@ export class EditProfilePage implements OnInit {
 
   //this is for loading spinner and iam calling this
   //async function in uploading function
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'Loading...',
-      spinner: 'circles',
-    });
-    await loading.present();
+  // async presentLoading() {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Loading...',
+  //     spinner: 'circles',
+  //   });
+  //   await loading.present();
 
-    // Simulate an asynchronous process
-    setTimeout(() => {
-      loading.dismiss();
-    }, 3000);
-  }
+  //   // Simulate an asynchronous process
+  //   setTimeout(() => {
+  //     loading.dismiss();
+  //   }, 4000);
+  // }
 
   //for uploading files
   selectedFile: File;
@@ -168,7 +167,13 @@ export class EditProfilePage implements OnInit {
 
     //here iam calling the presentLoading fun
     //from up there
-    await this.presentLoading();
+
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'circles',
+    });
+
+    await loading.present();
 
     try {
       let formData = new FormData();
@@ -196,12 +201,15 @@ export class EditProfilePage implements OnInit {
       console.log(uploadedFileUrl);
       if (fileType == 'image') {
         this.imageUrl = uploadedFileUrl;
+        localStorage.setItem('profile', uploadedFileUrl);
+        this.profile = uploadedFileUrl;
       }
 
       // Set the corresponding upload status to true after successful upload
       //this is for uploading buttons you can find more about in html fle at upload buttons
       if (fileType == 'image') {
         this.uploadStatusImage = true;
+        await loading.dismiss();
       }
     } catch (err) {
       console.log(err);
@@ -243,10 +251,7 @@ export class EditProfilePage implements OnInit {
     console.log(role);
 
     this.http
-      .put(
-        `https://student-api-10-fbf8bbebe705.herokuapp.com/Signup/${username}`,
-        updatedProfile
-      )
+      .put(`${this.apiUrl}/Signup/${username}`, updatedProfile)
       .subscribe(
         (res) => {
           console.log(res);
@@ -265,15 +270,21 @@ export class EditProfilePage implements OnInit {
           // Do something with the response if needed
           // this.toastService.presentToast("Profile updated successfully");
 
-          if (this.userRole === this.professor) {
-            this.router.navigate(['/tabs/tab8']);
-            this.toastService.presentToast('Profile updated successfully');
-          }
-          if (this.userRole === this.student) {
-            this.router.navigate(['/tabs/tab4']);
-            this.toastService.presentToast('Profile updated successfully');
-          } else {
+          if (!role) {
             this.toastService.presentToast('somethig went wrong');
+          } else {
+            if (role === 'student') {
+              this.router.navigate(['/tabs/tab4']);
+              this.toastService.presentToast('Profile updated successfully');
+            }
+            if (role === 'professor') {
+              this.router.navigate(['/tabs/tab8']);
+              this.toastService.presentToast('Profile updated successfully');
+            }
+            if (role === 'principal') {
+              this.router.navigate(['/tabs/tab11']);
+              this.toastService.presentToast('Profile updated successfully');
+            }
           }
         },
         (error) => {

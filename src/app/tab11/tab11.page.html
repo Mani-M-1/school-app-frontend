@@ -1,18 +1,85 @@
-<ion-content class="tab11-page__ion-content-wrapper">
-  <ion-searchbar
-    [debounce]="1000"
-    (ionInput)="handleInput($event)"
-    (ionFocus)="onSearchFocus()"
-    (ionBlur)="onSearchBlur()"
-    value="{{selectedStudent}}"
-    [(ngModel)]="selectedStudent"
-    (ionClear)="onSearchCancel($event)"
-  ></ion-searchbar>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="new">
+    <ion-buttons slot="end" routerLink="/edit-profile">
+      <ion-icon name="pencil-outline" class="edit" color="success">
+      </ion-icon></ion-buttons
+    ><br /><br />
+  </ion-toolbar>
+</ion-header>
 
-  <ion-list class="tab11-page__dropdown-card" *ngIf="isSearching">
-    <ion-item *ngFor="let result of results" (click)="selectItem(result)">
-      {{ result.firstName }}
-    </ion-item>
-  </ion-list>
-  <ion-button routerLink="/course-register"> Enroll Course</ion-button>
+<ion-content [fullscreen]="true" color="">
+  <div class="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="auto">
+          <ion-avatar>
+            <ion-img src="{{ profile }}"></ion-img>
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-label>
+            <h4>{{ firstName }} {{ lastName }}</h4>
+            <h5>{{ username }}</h5>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- <div class="container">
+        <ion-avatar>
+          <ion-img src="{{ profile }}"></ion-img>
+        </ion-avatar>
+        
+          <h4>
+            {{ firstName }} {{ lastName }}          
+          </h4>
+          <h5>
+            {{ username }}
+          </h5>
+      </div> -->
+
+  <div class="log-out">
+    <ion-buttons (click)="logOut()">
+      <ion-icon name="exit-outline" color="danger"></ion-icon>
+    </ion-buttons>
+  </div>
+
+  <div>
+    <div class="school">
+      <ion-item color="transparent" lines="none">
+        <ion-icon
+          name="business-outline"
+          slot="start"
+          color="success"
+        ></ion-icon>
+        <h6>School</h6>
+      </ion-item>
+      <p>{{ school }}</p>
+    </div>
+
+    <div class="name">
+      <ion-item color="transparent" lines="none">
+        <ion-icon name="person-outline" slot="start" color="danger"> </ion-icon>
+        <h6>Full Name</h6>
+      </ion-item>
+      <p>{{ firstName }} {{ lastName }}</p>
+    </div>
+
+    <div class="mobile">
+      <ion-item color="transparent" lines="none">
+        <ion-icon name="call-outline" slot="start" color="secondary"></ion-icon>
+        <h6>Mobile Number</h6>
+      </ion-item>
+      <p>{{ mobileNo }}</p>
+    </div>
+
+    <div class="emergency">
+      <ion-item color="transparent" lines="none">
+        <ion-icon name="home-outline" slot="start" color="warning"></ion-icon>
+        <h6>Emergency Contact</h6>
+      </ion-item>
+      <p>{{ emergency }}</p>
+    </div>
+  </div>
 </ion-content>

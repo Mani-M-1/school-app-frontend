@@ -136,7 +136,7 @@ const routes: Routes = [
       import('./todo-home/todo-home.module').then((m) => m.TodoHomePageModule),
   },
   {
-    path: 'blog-content',
+    path: 'blog-content/:blogId',
     loadChildren: () =>
       import('./blog-content/blog-content.module').then(
         (m) => m.BlogContentPageModule

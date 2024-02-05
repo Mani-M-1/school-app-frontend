@@ -58,13 +58,16 @@
           <!-- here iam giving item.id -->
           <ion-card
             color=""
-            class="responsive-card"
+            class="tab1-page__course-card"
             (click)="cardClicked(item)"
           >
-            <div class="image-container">
-              <img src="{{item.CourseImage}}" class="fixed-image" />
-              <!-- <img src= /> -->
-            </div>
+            <!-- <div class="image-container"> -->
+            <img
+              src="{{item.CourseImage}}"
+              class="tab1-page__course-card-img"
+            />
+            <!-- <img src= /> -->
+            <!-- </div> -->
             <ion-card-header>
               <ion-card-title> {{ item.CourseName }} </ion-card-title>
               {{item.ProfessorName}}

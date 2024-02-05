@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import Plyr from 'plyr';
 
@@ -73,7 +73,7 @@ export class ProfCourseContentPage implements OnInit {
       .get<any>(`${this.apiUrl}/weeklyCourse/getCourse/${this.courseId}`)
       .subscribe(
         (data) => {
-          this.weeklyCourse.push(data);
+          this.weeklyCourse = [{ ...data }];
           console.log(this.weeklyCourse);
         },
         (error) => {
@@ -118,7 +118,11 @@ export class ProfCourseContentPage implements OnInit {
   // }
 
   ngOnInit() {
-    this.fetchTheCourseDeatails();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.fetchTheCourseDeatails();
+      }
+    });
   }
 
   addNewWeek(data: any) {
@@ -154,6 +158,7 @@ export class ProfCourseContentPage implements OnInit {
                 .subscribe(
                   (response) => {
                     console.log(response);
+                    this.fetchTheCourseDeatails();
                     // Handle success case here you can show TOAST message
                   },
                   (error) => {

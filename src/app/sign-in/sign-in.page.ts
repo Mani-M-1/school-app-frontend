@@ -108,6 +108,7 @@ export class SignInPage implements OnInit {
             this.router.navigate(['/tabs/tab9']);
             break;
           default:
+            null;
             // Handle other roles or invalid role values
             break;
         }

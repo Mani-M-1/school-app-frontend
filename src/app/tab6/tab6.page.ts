@@ -125,13 +125,13 @@ export class Tab6Page implements OnInit {
   // selectTabs: 'allBlogs';
   selectTabs: string = 'allBlogs';
 
-  blogs: any;
+  blogs: any = [];
 
   //this user name variable for shoeing
   //individual blog data based on prof username
   username: any;
 
-  userBlogs: any;
+  userBlogs: any = [];
 
   constructor(
     private navcontroller: NavController,
@@ -140,6 +140,7 @@ export class Tab6Page implements OnInit {
     private http: HttpClient,
     private cdr: ChangeDetectorRef
   ) {
+    let username = localStorage.getItem('isLoggedIn');
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
 
@@ -171,7 +172,7 @@ export class Tab6Page implements OnInit {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.getBlogs();
+        // this.getBlogs();
 
         this.blogPosta();
       }
@@ -187,6 +188,12 @@ export class Tab6Page implements OnInit {
         // after posting data from createblog page i'm getting data here.
         console.log(data); // and setting item in local storage, you can find it below of this file as setItem
         this.blogs = data.posts;
+        this.userBlogs = data.posts.filter(
+          (post: any) => post.username === this.username
+        );
+        console.log(this.userBlogs);
+        // if (this.userBlogs.includes(data.posts)) {
+        // }
       },
       (error) => {
         console.log(error);
@@ -195,19 +202,21 @@ export class Tab6Page implements OnInit {
   }
 
   //get blog posted by user
-  getBlogs() {
-    this.http.get(`${this.apiUrl}/blog/${this.username}`).subscribe(
-      (data: any) => {
-        // after posting data from createblog page i'm getting data here.
-        console.log(data); // and setting item in local storage, you can find it below of this file as setItem
-        //  console.log(this.username);
-        this.userBlogs = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  // getBlogs() {
+  //   this.http.get(`${this.apiUrl}/blog/${this.username}`).subscribe(
+  //     (data: any) => {
+  //       // after posting data from createblog page i'm getting data here.
+  //       console.log(data); // and setting item in local storage, you can find it below of this file as setItem
+  //       //  console.log(this.username);
+  //       this.userBlogs = [...data];
+
+  //       // this.blogPosta();
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   // this blogPost function is original function ...and it's function works on navigate to anther page....
   blogPost() {
@@ -226,10 +235,11 @@ export class Tab6Page implements OnInit {
   delete(key: any) {
     console.log('clickdeletebutton');
     console.log(key);
-    this.http.delete(`${this.apiUrl}/blog/` + key).subscribe((data) => {
+    this.http.delete(`${this.apiUrl}/blog/${key}`).subscribe((data) => {
       console.log(data);
 
-      this.getBlogs();
+      // this.getBlogs();
+      this.blogPosta();
     });
   }
 

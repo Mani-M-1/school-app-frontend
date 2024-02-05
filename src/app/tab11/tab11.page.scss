@@ -1,10 +1,76 @@
-ion-content.tab11-page__ion-content-wrapper {
-  position: relative;
+ion-icon {
+  padding-right: 15px;
+  font-size: 1.5rem;
+  padding-top: 15px;
+  color: black;
 }
 
-ion-list.tab11-page__dropdown-card {
-  position: absolute;
-  width: 100%;
-  top: 50px;
-  z-index: 100;
+h3 {
+  padding-right: 0px;
+}
+ion-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-left: -1vh;
+  //margin-top: 5rem;
+  // position:absolute;
+  // left: 55%;
+  // top: 10%;
+  // transform: translate(-50%, -50%, -80%, -80%);
+  // padding-right: 1px;
+}
+.container {
+  padding-top: 0;
+  background-color: #ddd;
+  padding-top: 1vh;
+  // padding-bottom: 1vh;
+  padding-left: 1.5vh;
+  border-radius: 0 0 0 0;
+  border-bottom: 1px solid #cbc1c1; /* You can customize border styles here */
+  border-top: 1px solid #ccc; /* You can customize border styles here */
+  //   padding: 10px; /* Optional: Add padding for spacing */
+}
+h5 {
+  font-size: 0.8rem;
+}
+h4 {
+  padding-top: 1.5vh;
+  padding-bottom: 0vh;
+}
+.school {
+  padding-top: 0vh;
+  // padding-bottom: 1vh;
+  align-items: center;
+}
+
+.name {
+  padding-top: 0vh;
+  // padding-bottom: 1vh;
+  align-items: center;
+}
+.mobile {
+  padding-top: 0vh;
+  // padding-bottom: 1vh;
+  align-items: center;
+}
+.emergency {
+  padding-top: 0vh;
+  // padding-bottom: 1vh;
+  align-items: center;
+}
+p {
+  padding-left: 12vh;
+  font-size: 1rem;
+  // padding-top: 0vh;
+  margin-top: -1.3em;
+}
+h6 {
+  font-size: 0.8rem;
+  //    margin-bottom: 0em;
+  margin-top: 0em;
+}
+.log-out {
+  position: relative;
+  top: 0;
+  right: -85%;
 }

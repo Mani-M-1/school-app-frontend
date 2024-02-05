@@ -93,7 +93,7 @@ export class AddStudentPage implements OnInit {
             'your credencials',
             data.createdStudent.password
           );
-          this.route.navigate(['/tab9']);
+          this.route.navigate(['/tabs/tab9']);
         },
         (error) => {
           console.error('Error creating student:', error);

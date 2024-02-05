@@ -53,11 +53,11 @@ export class Tab2Page implements OnInit {
   // console.log(b.blogcontent)
 
   cardClick(createblog: any) {
-    console.log(createblog);
-    let a = createblog;
+    // console.log(createblog);
+    // let a = createblog;
 
-    localStorage.setItem('createblog', JSON.stringify(a)); // here i'm setting item in local storage
-    console.log('cardClick'); // and i'm getting this data in blog content page..
-    this.router.navigate(['/blog-content', createblog]);
+    // localStorage.setItem('createblog', JSON.stringify(a)); // here i'm setting item in local storage
+    // console.log('cardClick'); // and i'm getting this data in blog content page..
+    this.router.navigate(['/blog-content', createblog._id]);
   }
 }

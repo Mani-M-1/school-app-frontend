@@ -5,7 +5,7 @@ import { TodoService } from '../todo.service';
 import { UpdateTaskPage } from '../update-task/update-task.page';
 import { HttpClient } from '@angular/common/http';
 import { constants } from 'buffer';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ToastService } from '../services/toast.service';
 
@@ -48,11 +48,17 @@ export class TodoHomePage {
     } else {
       this.router.navigate(['/sign-in']);
     }
-    this.getAllTask();
+    // this.getAllTask();
 
     this.username = localStorage.getItem('username');
     console.log(this.username);
-    this.getAllTask();
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.getAllTask();
+      }
+    });
+    // this.getAllTask();
 
     this.userrole = localStorage.getItem('userRole');
     console.log(this.userrole);
@@ -63,20 +69,20 @@ export class TodoHomePage {
 
   // }
 
-  getAllItem() {
-    this.http.get(`${this.apiUrl}/todo`).subscribe(
-      (data: any) => {
-        console.log(data);
-        let list = JSON.stringify(data);
-        this.todoList = data;
-        console.log(this.todoList.tasks);
-        //this.todoList.push()
-      },
-      (err: any) => {
-        console.log(err);
-      }
-    );
-  }
+  // getAllItem() {
+  //   this.http.get(`${this.apiUrl}/todo`).subscribe(
+  //     (data: any) => {
+  //       console.log(data);
+  //       let list = JSON.stringify(data);
+  //       this.todoList = [...data];
+  //       console.log(this.todoList.tasks);
+  //       //this.todoList.push()
+  //     },
+  //     (err: any) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 
   //  map(){
   //   fetch('${this.apiUrl}/todos')
@@ -118,7 +124,7 @@ export class TodoHomePage {
     if (this.userrole === 'professor') {
       this.router.navigate(['/tabs/tab5']);
     } else if (this.userrole === 'student') {
-      this.router.navigate(['/tabs/tab1']);
+      this.router.navigate(['/tabs/student-side-courses-page']);
     } else {
       console.log('something went wrong');
       this.toastService.presentToast('Something went wrong');
@@ -147,7 +153,7 @@ export class TodoHomePage {
     this.http.get(`${this.apiUrl}/todo/${this.username}`).subscribe(
       (data: any) => {
         console.log(data);
-        this.todoList = data.tasks;
+        this.todoList = [...data.tasks];
       },
       (err: any) => {
         console.log(err);
@@ -159,9 +165,9 @@ export class TodoHomePage {
     console.log(key);
     this.http.delete(`${this.apiUrl}/todo/${key}`).subscribe((data) => {
       console.log(data);
+      this.getAllTask();
     });
     //this.todoService.deleteTask(key)
-    this.getAllTask();
   }
 
   async update(selectedTask: any) {
@@ -181,6 +187,6 @@ export class TodoHomePage {
   //   console.log("button clicked");
   // }
   goToTab1Page() {
-    this.navCtrl.navigateBack('/tabs/tab1');
+    this.navCtrl.navigateBack('/tabs/student-side-courses-page');
   }
 }

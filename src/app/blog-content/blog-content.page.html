@@ -39,25 +39,48 @@
 
           <div class="line"></div>
           <div class="icons">
-            <ion-icon
+            <!-- <ion-icon
               name="thumbs-up-outline"
               slot="start"
               class="icon1"
               (click)="likePost()"
               expand="full"
-            ></ion-icon
-            >Like
+            ></ion-icon -->
+            <ion-icon
+              *ngIf="isBlogLiked"
+              name="thumbs-up"
+              style="font-size: 20px"
+              (click)="dislikeBlog()"
+            ></ion-icon>
+
+            <ion-icon
+              *ngIf="!isBlogLiked"
+              name="thumbs-down"
+              style="font-size: 20px"
+              (click)="likeBlog()"
+            ></ion-icon>
+            <!-- {{ item.likes.length }} -->
+            <!-- <ion-icon
+              *ngIf="isBlogLiked"
+              name="heart-empty"
+              class="icon1"
+              (click)="dislikeBlog()"
+            ></ion-icon> -->
+
+            {{ item.likedBy.length }}
+            <!-- Like -->
 
             <div class="icon-space"></div>
 
-            <ion-icon
-              name="chatbox-outline"
-              slot="start"
-              class="icon"
-              (click)="toggleCommentSection()"
-              expand="full"
-            ></ion-icon
-            >Comment
+            <ion-button color="translucent" (click)="toggleCommentSection()">
+              <ion-icon
+                name="chatbox-outline"
+                slot="start"
+                class="icon"
+                expand="full"
+              ></ion-icon
+              >Comment
+            </ion-button>
 
             <div class="space"></div>
 
@@ -90,6 +113,27 @@
             >Post Comment</ion-button
           >
         </ion-item>
+
+        <ul class="blog-content-page__comments-list">
+          <li
+            class="blog-content-page__comments-list-item"
+            *ngFor="let comment of item.comments"
+          >
+            <div class="blog-content-page__comments-list-item-profile-img">
+              {{comment.username[0].toUpperCase()}}
+            </div>
+            <div
+              class="blog-content-page__comments-list-item-username-and-comment-wrapper"
+            >
+              <span class="blog-content-page__comments-list-item-username">
+                {{comment.username}}
+              </span>
+              <span class="blog-content-page__comments-list-item-comment">
+                {{comment.comment}}
+              </span>
+            </div>
+          </li>
+        </ul>
 
         <!-- <ion-button aria-label="Favorite">
             <ion-icon name="heart" aria-hidden="true"></ion-icon>

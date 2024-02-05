@@ -8,27 +8,31 @@
   <ion-grid>
     <ion-row class="ion-justify-content-left">
       <ion-col
-        size="12"
-        size-md="6"
-        size-lg="6"
-        size-xl="4"
+        size="6"
+        size-sm="6"
+        size-md="4"
+        size-lg="3"
+        size-xl="3"
+        class="tab2-page__allblogs-row-item"
         *ngFor="let item of blogs"
       >
-        <ion-card (click)="cardClick(item)" class="card-margin">
+        <ion-card (click)="cardClick(item)" class="tab2-page__blogs-card">
           <!-- <ion-card-header>
             <ion-card-title>{{ item.title }}</ion-card-title>
           </ion-card-header> -->
 
-          <ion-card-content color="danger">
-            <ion-card-title>{{ item.title }}</ion-card-title>
-            <!-- </ion-card-content> -->
+          <!-- <ion-card-content color="danger"> -->
+          <!-- </ion-card-content> -->
 
-            <!-- <ion-card-content color="light"> -->
-            <ion-img src="{{item.images}}" />
+          <img class="tab2-page__allblogs-card-img" src="{{item.images}}" />
+          <ion-card-content color="light">
+            <ion-card-title>{{ item.title }}</ion-card-title>
 
             <!-- <ion-item color="primary">{{ item.timestamp }}</ion-item> Display the timestamp -->
-            <ion-item>{{ item.Name }}</ion-item>
-            {{ item.timestamp }}
+            <p class="tab2-page__allblogs-card-name">{{ item.Name }}</p>
+            <p class="tab2-page__allblogs-card-timestamp">
+              {{item.timestamp }}
+            </p>
             <!-- <ion-item>{{ item.Name }}</ion-item> -->
           </ion-card-content>
         </ion-card>

@@ -16,6 +16,8 @@ export class BlogContentPage implements OnInit {
 
   blogs: any[] = [];
 
+  isBlogLiked: any;
+
   comments = {};
   _id: any;
   username: any;
@@ -25,13 +27,14 @@ export class BlogContentPage implements OnInit {
   content: any;
 
   // Declare variables
-  showCommentSection: boolean = true;
+  showCommentSection: boolean = false;
   commentText: any;
   likeCount: number = 0;
+  blogId: any;
 
   constructor(
     private http: HttpClient,
-    private Arouter: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private toastService: ToastService
   ) {
@@ -52,39 +55,65 @@ export class BlogContentPage implements OnInit {
     //  console.log(b.CourseContent);
   }
 
+  getBlogDetails() {
+    this.activatedRoute.params.subscribe((params) => {
+      this.blogId = params['blogId'];
+      console.log(this.blogId);
+    });
+
+    this.http
+      .get<any>(`${this.apiUrl}/blog/getSpecificBlog/${this.blogId}`)
+      .subscribe(
+        (data) => {
+          console.log(data.blogDetails);
+          this.blogs = [{ ...data.blogDetails }];
+          const usernameInData = data.blogDetails.likedBy.filter(
+            (blog: { username: any }) => blog.username === this.username
+          );
+
+          if (usernameInData.length > 0) {
+            this.isBlogLiked = true;
+          } else {
+            this.isBlogLiked = false;
+          }
+          console.log(usernameInData);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
   ngOnInit() {
-    this.blogcontent();
+    // this.isBlogLiked = false;
+    this.getBlogDetails();
+    // this.blogcontent();
 
     //here we are getting item username from sign-in page
     //for showing individual data
     // this._id = localStorage.getItem('_id')
     this.username = localStorage.getItem('username');
     console.log(this.username);
-    this.postComment(); // and we are calling this function
   }
 
-  blogcontent() {
-    //   this.http.get('${this.apiUrl}/blogs').subscribe((data: any) =>{
-    //     console.log(data);
-    //     this.blogs = data.posts;
-    // }
+  // blogcontent() {
+  //   //   this.http.get('${this.apiUrl}/blogs').subscribe((data: any) =>{
+  //   //     console.log(data);
+  //   //     this.blogs = data.posts;
+  //   // }
 
-    //i'm getting item from blog-post-page..
-    this.content = localStorage.getItem('createblog');
+  //   //i'm getting item from blog-post-page..
+  //   this.content = localStorage.getItem('createblog');
 
-    let a = JSON.parse(this.content);
-    console.log(a);
-    this.blogs.push(a);
-    console.log(a.content);
-    console.log(a._id);
-    // console.log(a.timeStamp);
-    console.log(a.comment);
-    // this._id = this.a.content._id
-  }
-
-  toggleCommentSection() {
-    this.showCommentSection = !this.showCommentSection;
-  }
+  //   let a = JSON.parse(this.content);
+  //   console.log(a);
+  //   this.blogs.push(a);
+  //   console.log(a.content);
+  //   console.log(a._id);
+  //   // console.log(a.timeStamp);
+  //   console.log(a.comment);
+  //   // this._id = this.a.content._id
+  // }
 
   // likePost(blogId: any) {
   //   console.log('blogId', blogId);
@@ -102,7 +131,43 @@ export class BlogContentPage implements OnInit {
 
   // }
 
-  likePost() {}
+  // likePost() {}
+
+  likeBlog() {
+    this.http
+      .post<any>(`${this.apiUrl}/blog/likeblog/${this.blogId}`, {
+        username: this.username,
+      })
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.getBlogDetails();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  dislikeBlog() {
+    this.http
+      .post<any>(`${this.apiUrl}/blog/dislikeblog/${this.blogId}`, {
+        username: this.username,
+      })
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.getBlogDetails();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  toggleCommentSection() {
+    this.showCommentSection = !this.showCommentSection;
+  }
 
   postComment() {
     //this user name is for showing user who posted the comment
@@ -123,6 +188,11 @@ export class BlogContentPage implements OnInit {
     this.http.post(`${this.apiUrl}/blog/comment`, comment).subscribe(
       (response) => {
         console.log(response);
+
+        this.commentText = '';
+
+        // triggering reload of the blog data
+        this.getBlogDetails();
       },
       (error) => {
         console.log(error);
@@ -132,33 +202,35 @@ export class BlogContentPage implements OnInit {
       }
     );
   }
-
-  // postComment() {
-  //   // Handle post comment button click
-  //   const requestBody = {
-  //     userID: 'user-id',
-  //     message: this.commentText,
-  //     date: new Date(),
-  //     //postId: 'post-id'
-  //   };
-
-  //   this.http.post('${this.apiUrl}/blog/comment', requestBody)
-  //     .subscribe((response: any) => {
-  //       // Handle the API response
-  //       console.log(response);
-
-  //       // Reset the comment text
-  //       this.commentText = '';
-  //     }, (error) => {
-  //       // Handle error
-  //       console.error(error);
-  //     });
-  //   console.log('Comment posted:', this.commentText);
-  // }
-
-  // let a:any = localStorage.getItem('createblog');
-  // console.log(a);
-  // let b = JSON.parse(a);
-  // this.createblog.push(b);
-  // console.log(b.blogcontent)
 }
+
+// blogcontent(){
+
+//     //i'm getting item from blog-post-page..
+//      this.content = localStorage.getItem('createblog');
+
+//     // let a = JSON.parse(this.content)
+//     const {likes,...rest} = JSON.parse(this.content);
+//     const likedArr = likes.filter((like: { isLiked: boolean; }) => like.isLiked === true);
+
+//     const a = {likes:likedArr, ...rest};
+//     console.log(a);
+//     this.blogs.push(a)
+//     console.log(a.content);
+//     console.log(a._id);
+//     // console.log(a.timeStamp);
+//     console.log(a.comment);
+//     // this._id = this.a.content._id
+
+//   };
+
+//   toggleLikeDislike(blogId: string): void {
+//     if (this.isLikedMap.get(blogId)) {
+//       this.unlikeButton(blogId);
+//     } else {
+//       this.likebutton(blogId);
+//     }
+//   }
+
+//   // like button functionality
+//   likebut…

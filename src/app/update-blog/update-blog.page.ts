@@ -166,7 +166,7 @@ export class UpdateBlogPage implements OnInit {
       .put(`${this.apiUrl}/blog/${this.selectedblogId}`, data)
       .subscribe((data) => {
         console.log(data);
+        this.router.navigate(['/tabs/tab6']);
       });
-    this.router.navigate(['/tabs/tab6']);
   }
 }

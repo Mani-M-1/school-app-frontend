@@ -78,8 +78,8 @@ export class AddNewTaskPage implements OnInit {
   }
 
   ngOnInit() {
-    this.categories.push();
-    this.categories.push();
+    // this.categories.push();
+    // this.categories.push();
   }
 
   // this for adding task

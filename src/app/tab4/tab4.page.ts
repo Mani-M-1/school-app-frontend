@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
 
@@ -24,23 +24,10 @@ export class Tab4Page implements OnInit {
   updateProfile: any;
 
   constructor(
+    private navctrl: NavController,
     private http: HttpClient,
-    private navCtrl: NavController,
     private router: Router
   ) {
-    // this.school = localStorage.getItem('school');
-    // this.firstName = localStorage.getItem('firstName');
-    // this.lastName = localStorage.getItem('lastName');
-    // this.mobileNo = localStorage.getItem('mobileNo');
-    // this.emergency = localStorage.getItem('emergency');
-    // this.username = localStorage.getItem('username');
-
-    // console.log(this.school);
-    // console.log(this.firstName);
-    // console.log(this.lastName);
-    // console.log(this.mobileNo);
-    // console.log(this.emergency);
-
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
 
@@ -51,8 +38,16 @@ export class Tab4Page implements OnInit {
     }
   }
 
-  //presona based login in and logout
-  //persona means personality means role
+  ngOnInit() {
+    console.log('ngOnInit triggered in tab11');
+    // this.ionViewDidEnter();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.getProfileData();
+      }
+    });
+  }
+
   logOut() {
     // Step 1: Update the login_state in localStorage to false
     // localStorage.setItem('isLoggedIn', 'false');
@@ -64,27 +59,28 @@ export class Tab4Page implements OnInit {
     this.router.navigate(['/sign-in']);
   }
 
-  ngOnInit() {}
-
-  ionViewDidEnter() {
-    this.school = localStorage.getItem('school');
-    this.firstName = localStorage.getItem('firstName');
-    this.lastName = localStorage.getItem('lastName');
-    this.mobileNo = localStorage.getItem('mobileNo');
-    this.emergency = localStorage.getItem('emergency');
-    this.username = localStorage.getItem('username');
-    this.profile = localStorage.getItem('profile');
-  }
+  // ionViewDidEnter() {
+  //   this.school = localStorage.getItem('school');
+  //   this.firstName = localStorage.getItem('firstName');
+  //   this.lastName = localStorage.getItem('lastName');
+  //   this.mobileNo = localStorage.getItem('mobileNo');
+  //   this.emergency = localStorage.getItem('emergency');
+  //   this.username = localStorage.getItem('username');
+  //   console.log(this.username);
+  //   this.profile = localStorage.getItem('profile');
+  // }
 
   getProfileData() {
+    this.username = localStorage.getItem('username');
+    console.log(this.username);
     this.http
       .get(`${this.apiUrl}/Signup/${this.username}`)
       .subscribe((data: any) => {
         console.log(data);
         this.school = data.school;
-        this.firstName = data.firstName;
+        this.firstName = data.FirstName;
         this.lastName = data.lastName;
-        this.mobileNo = data.mobileNo;
+        this.mobileNo = data.mobileno;
         this.emergency = data.emergency;
         this.profile = data.profile;
       });
