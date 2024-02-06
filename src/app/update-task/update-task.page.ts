@@ -36,7 +36,7 @@ export class UpdateTaskPage implements OnInit {
 
   constructor(
     public modalCtlr: ModalController,
-    public todoServive: TodoService,
+    public todoService: TodoService,
     private http: HttpClient,
     private router: Router
   ) {
@@ -52,8 +52,8 @@ export class UpdateTaskPage implements OnInit {
   }
 
   ngOnInit() {
-    this.categories.push();
-    this.categories.push();
+    // this.categories.push();
+    // this.categories.push();
     console.log(this.task);
 
     this.itemName = this.task.task;
@@ -113,7 +113,7 @@ export class UpdateTaskPage implements OnInit {
       itemCategory: this.categorySelectedCategory,
     };
     let uid = this.task.key;
-    await this.todoServive.updateTask(uid, this.newTaskObj);
+    await this.todoService.updateTask(uid, this.newTaskObj);
     this.dismis();
   }
 }

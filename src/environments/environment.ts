@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'https://school-app-backend-5dhz.onrender.com',
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://school-app-backend-05j7.onrender.com',
+  // apiUrl: 'http://localhost:3000',
 };
 
 /*

@@ -10,10 +10,10 @@
     color="primary"
     [(ngModel)]="selectTabs"
   >
-    <ion-segment-button value="allBlogs">
+    <ion-segment-button value="allBlogs" (click)="handleOnclickAllBlogs()">
       <ion-label>All Blogs</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="yourBlogs">
+    <ion-segment-button value="yourBlogs" (click)="handleOnclickYourBlogs()">
       <ion-label>Your Blogs</ion-label>
     </ion-segment-button>
   </ion-segment>
@@ -26,7 +26,7 @@
       <ion-col
         *ngFor="let item of blogs"
         color="primary"
-        size="6"
+        size="12"
         size-sm="6"
         size-md="4"
         size-lg="3"
@@ -88,7 +88,7 @@
     <!-- <div *ngIf="item.username === username"> -->
     <ion-row class="tab6-page__allblogs-row-item">
       <ion-col
-        size="6"
+        size="12"
         size-sm="6"
         size-md="4"
         size-lg="3"
@@ -98,59 +98,48 @@
       >
         <h1>{{item.count}}</h1>
 
-        <ion-card class="card-margin">
-          <ion-card
-            class="rounded-card"
-            color="white"
-            (click)="cardClick(item)"
-            class="tab6card"
-          >
-            <ion-img
-              class="tab6-page__allblogs-card-img"
-              src="{{item.images}}"
-            />
+        <!-- <ion-card > -->
+        <ion-card class="card-margin" color="white" (click)="cardClick(item)">
+          <ion-img class="tab6-page__allblogs-card-img" src="{{item.images}}" />
 
-            <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
+          <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
 
-            <ion-card-content>
-              <!-- Display the date and time -->
-              <ion-card-title class="highlight">{{item.title}}</ion-card-title>
-              <p class="tab6-page__allblogs-card-timestamp">
-                {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp |
-                date: 'hh:mm a' }}
-              </p>
-              <!-- <br /> -->
-              <p class="tab6-page__allblogs-card-name">{{item.Name}}</p>
-            </ion-card-content>
-          </ion-card>
+          <ion-card-content>
+            <!-- Display the date and time -->
+            <ion-card-title class="highlight">{{item.title}}</ion-card-title>
+            <p class="tab6-page__allblogs-card-timestamp">
+              {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp |
+              date: 'hh:mm a' }}
+            </p>
+            <!-- <br /> -->
+            <p class="tab6-page__allblogs-card-name">{{item.Name}}</p>
+          </ion-card-content>
 
-          <div class="button-container">
-            <ion-button
-              class="button-s"
+          <div class="tab6-page__update-and-delete-btns-wrapper">
+            <button
+              class="tab6-page__update-and-delete-btns update-btn"
               (click)="update(item)"
-              slot="end"
-              color="success"
-              >Update
+            >
               <ion-icon
                 slot="icon-only"
                 name="create-outline"
-                size="small"
+                style="font-size: 20px"
               ></ion-icon>
-            </ion-button>
+            </button>
 
-            <ion-button
-              class="button-sr"
+            <button
+              class="tab6-page__update-and-delete-btns delete-btn"
               (click)="delete(item._id)"
-              color="danger"
-              >Delete
+            >
               <ion-icon
                 slot="icon-only"
                 name="trash-outline"
-                size="small"
+                style="font-size: 20px"
               ></ion-icon>
-            </ion-button>
+            </button>
           </div>
         </ion-card>
+        <!-- </ion-card> -->
 
         <!-- <button (click)="update(item)" color="tertiary"> -->
         <!-- <div class="button-container">

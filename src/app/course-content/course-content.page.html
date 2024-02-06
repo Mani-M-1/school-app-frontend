@@ -1,79 +1,101 @@
-
-
 <ion-content *ngFor="let item of Course" class="content-padding">
-
   <ion-header class="ion-no-border">
     <ion-toolbar color="new">
-        {{ item.CourseName }}
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/tabs/tab1" color=""></ion-back-button>
-        </ion-buttons>
+      {{ item.CourseName }}
+      <ion-buttons slot="start">
+        <ion-back-button
+          defaultHref="/tabs/student-side-courses-page"
+          color=""
+        ></ion-back-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
-    
 
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12" size-md="9" size-lg="8" size-xl="5.5">
-        <!-- <ion-card color="white"> -->
-          <!-- <ion-card-header color="tertiary">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="12" size-md="9" size-lg="8" size-xl="5.5">
+      <!-- <ion-card color="white"> -->
+      <!-- <ion-card-header color="tertiary">
             <ion-card-title>
               {{ item.CourseName }}
             </ion-card-title>
           </ion-card-header> -->
 
-          <ion-card-content>
-            <ng-container *ngFor="let content of item.CourseContent">
-              <ion-card class="card-margin">
-                <ion-card-header>
+      <ion-card-content>
+        <ng-container *ngFor="let content of item.CourseContent">
+          <ion-card class="card-margin">
+            <ion-card-header>
+              <ion-card-title> {{ content.week }} </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-note>
+                <ion-icon
+                  name="calendar-outline"
+                  class="icon-spacing"
+                  color="success"
+                ></ion-icon>
+                {{ content.startDate }} to {{ content.endDate }}<br />
+                <ion-icon
+                  name="document-outline"
+                  class="icon-spacing"
+                  color="tertiary"
+                ></ion-icon>
+                <a href="{{content.readingmeterial}}" target="_blank"
+                  >{{content.readingmeterial}}</a
+                ><br />
+                <ion-icon
+                  name="document-text-outline"
+                  class="icon-spacing"
+                  color="danger"
+                ></ion-icon>
+                {{content.assignment}}<br />
+                <ion-icon
+                  name="documents-outline"
+                  class="icon-spacing"
+                  color="gb"
+                ></ion-icon>
+                <a href="{{content.additionalContent}}" target="_blank"
+                  >{{content.additionalContent}}</a
+                ><br />
+                <!-- {{content.additionalContent}}<br> -->
+                <ion-icon
+                  name="megaphone-outline"
+                  class="icon-spacing"
+                  color="warning"
+                ></ion-icon>
+                {{content.announcement}}<br /><br />
 
-                  <ion-card-title>
-                     {{ content.week }}
-                  </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                  <ion-note>
-                    <ion-icon name="calendar-outline" class="icon-spacing" color="success"></ion-icon>
-                    {{ content.startDate }} - {{ content.endDate }}<br>
-                    <ion-icon name="document-outline" class="icon-spacing" color="tertiary"></ion-icon>
-                    <a href="{{content.readingmeterial}}" target="_blank">{{content.readingmeterial}}</a><br>
-                    <ion-icon name="document-text-outline" class="icon-spacing" color="danger"></ion-icon>
-                    {{content.assignment}}<br>
-                    <ion-icon name="documents-outline" class="icon-spacing" color="gb"></ion-icon>
-                    <a href="{{content.additionalContent}}" target="_blank">{{content.additionalContent}}</a><br>
-                    <!-- {{content.additionalContent}}<br> -->
-                    <ion-icon name="megaphone-outline" class="icon-spacing" color="warning"></ion-icon>
-                    {{content.announcement}}<br><br>
-
-                    <video id='fp_docs_player_0' class="fp_docs_player_0" controls style="width: 100%; height: 100%;"> <!--style="width: 370px; height: 240px;-->
-                      <!-- <source data-fluid-hd src='src="https://cdn.fluidplayer.com/videos/valerian-480p.mkv' />
+                <video
+                  id="fp_docs_player_0"
+                  class="fp_docs_player_0"
+                  controls
+                  style="width: 100%; height: 100%"
+                >
+                  <!--style="width: 370px; height: 240px;-->
+                  <!-- <source data-fluid-hd src='src="https://cdn.fluidplayer.com/videos/valerian-480p.mkv' />
                       <source data-fluid-hd src='src="https://cdn.fluidplayer.com/videos/valerian-720p.mkv'/> -->
-                      <!-- <source src="https://cdn.fluidplayer.com/videos/valerian-1080p.mkv" /> -->
+                  <!-- <source src="https://cdn.fluidplayer.com/videos/valerian-1080p.mkv" /> -->
 
-                      <!--mkv and mp4 videos are playing-->
-                      <source src="{{content.courseVideo}}" />
+                  <!--mkv and mp4 videos are playing-->
+                  <source src="{{content.courseVideo}}" />
 
-                      .mkv 
-                  </video>
+                  .mkv
+                </video>
+              </ion-note>
+            </ion-card-content>
+          </ion-card>
+        </ng-container>
+      </ion-card-content>
 
-                   
-                  </ion-note>
-                </ion-card-content>
-              </ion-card>
-            </ng-container>
-          </ion-card-content>
-    
-          <!-- <div class="ion-padding-bottom">
+      <!-- <div class="ion-padding-bottom">
             <ion-button shape="round" color="tertiary" expand="block" class="addWeek" (click)="addNewWeek(item)">Add new Week
               <ion-icon name="add-outline" slot="start"></ion-icon>
             </ion-button>
           </div> -->
-        <!-- </ion-card> -->
-      </ion-col>
-    </ion-row>
+      <!-- </ion-card> -->
+    </ion-col>
+  </ion-row>
 
-    
-    <!-- <ion-row>
+  <!-- <ion-row>
       <ion-col>
         <div class="card-container">
           <ion-card-content>
@@ -112,11 +134,4 @@
         </div>
       </ion-col>
     </ion-row> -->
-    
-
-    
-
-    
-    
-
 </ion-content>

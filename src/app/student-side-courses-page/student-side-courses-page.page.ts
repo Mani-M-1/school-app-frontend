@@ -64,11 +64,11 @@ export class StudentSideCoursesPage implements OnInit {
       console.log('log in is succesful');
 
       // Only initialize OneSignal if the app is running on a mobile device
-      if (this.platform.is('mobile')) {
-        //   this.platform.ready().then(() => {
-        //     // OneSignalInit();
-        this.OneSignalInit();
-      }
+      // if (this.platform.is('mobile')) {
+      //   //   this.platform.ready().then(() => {
+      //   //     // OneSignalInit();
+      //   this.OneSignalInit();
+      // }
       // }
       // this.getCourseDetails(); // Call other necessary methods
     } else {
@@ -106,39 +106,41 @@ export class StudentSideCoursesPage implements OnInit {
     });
   }
 
-  OneSignalInit(): void {
-    console.log('OnsignalInit function triggered');
-    //   // Uncomment to set OneSignal device logging to VERBOSE
-    //   // OneSignal.setLogLevel(6, 0);
-    //   //alert("notification started")
-    //   // NOTE: Update the setAppId value below with your OneSignal AppId.
-    //   // OneSignal.setAppId("d3feb1d4-dcd3-468f-826f-5481d02c64d3");
-    OneSignal.setAppId('29817fd7-735e-487b-8b4f-cb8d408a8d97'); // my onesignal app id
-    OneSignal.setNotificationOpenedHandler(function (jsonData: any) {
-      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-      alert('message received');
-    });
+  // will be implemented version 2 of applicaton development
 
-    // 'works on onesignal-cordova-plugin version: ^3.3.1';
-    // Prompts the user for notification permissions.
-    //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.
-    OneSignal.promptForPushNotificationsWithUserResponse((accepted: any) => {
-      console.log('User accepted notifications: ' + accepted);
-      if (accepted) {
-        //we are using "uuid" for assigning the "externalId" for a user
-        // const uniqueId = uuidv4();
-        // console.log(`uniqueId: ${uniqueId}`);
-        // OneSignal.setExternalUserId(uniqueId);
-        // localStorage.setItem('onesignalExternalId', uniqueId);
-        const phoneNumAsString = localStorage.getItem('mobileNo');
-        if (phoneNumAsString !== null) {
-          const phoneNum = JSON.parse(phoneNumAsString);
-          // console.log(phoneNum);
-          OneSignal.setExternalUserId(phoneNum);
-        }
-      }
-    });
-  }
+  // OneSignalInit(): void {
+  //   console.log('OnsignalInit function triggered');
+  //   //   // Uncomment to set OneSignal device logging to VERBOSE
+  //   //   // OneSignal.setLogLevel(6, 0);
+  //   //   //alert("notification started")
+  //   //   // NOTE: Update the setAppId value below with your OneSignal AppId.
+  //   //   // OneSignal.setAppId("d3feb1d4-dcd3-468f-826f-5481d02c64d3");
+  //   OneSignal.setAppId('29817fd7-735e-487b-8b4f-cb8d408a8d97'); // my onesignal app id
+  //   OneSignal.setNotificationOpenedHandler(function (jsonData: any) {
+  //     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  //     alert('message received');
+  //   });
+
+  //   // 'works on onesignal-cordova-plugin version: ^3.3.1';
+  //   // Prompts the user for notification permissions.
+  //   //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.
+  //   OneSignal.promptForPushNotificationsWithUserResponse((accepted: any) => {
+  //     console.log('User accepted notifications: ' + accepted);
+  //     if (accepted) {
+  //       //we are using "uuid" for assigning the "externalId" for a user
+  //       // const uniqueId = uuidv4();
+  //       // console.log(`uniqueId: ${uniqueId}`);
+  //       // OneSignal.setExternalUserId(uniqueId);
+  //       // localStorage.setItem('onesignalExternalId', uniqueId);
+  //       const phoneNumAsString = localStorage.getItem('mobileNo');
+  //       if (phoneNumAsString !== null) {
+  //         const phoneNum = JSON.parse(phoneNumAsString);
+  //         // console.log(phoneNum);
+  //         OneSignal.setExternalUserId(phoneNum);
+  //       }
+  //     }
+  //   });
+  // }
 
   // Seeall(){
   // this.showMe = !this.showMe

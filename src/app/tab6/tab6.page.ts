@@ -123,7 +123,7 @@ export class Tab6Page implements OnInit {
   private apiUrl: string = environment.apiUrl;
 
   // selectTabs: 'allBlogs';
-  selectTabs: string = 'allBlogs';
+  selectTabs: any;
 
   blogs: any = [];
 
@@ -170,6 +170,8 @@ export class Tab6Page implements OnInit {
     this.username = localStorage.getItem('username');
     console.log(this.username);
 
+    this.selectTabs = localStorage.getItem('activeTabInBlogs');
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // this.getBlogs();
@@ -177,6 +179,16 @@ export class Tab6Page implements OnInit {
         this.blogPosta();
       }
     });
+  }
+
+  handleOnclickAllBlogs() {
+    localStorage.setItem('activeTabInBlogs', 'allBlogs');
+    this.selectTabs = 'allBlogs';
+  }
+
+  handleOnclickYourBlogs() {
+    localStorage.setItem('activeTabInBlogs', 'yourBlogs');
+    this.selectTabs = 'yourBlogs';
   }
 
   // blogPost is button function in blogpost,page file .....

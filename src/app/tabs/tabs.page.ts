@@ -10,7 +10,7 @@ import { RoleService } from '../role.service';
 })
 export class TabsPage {
   // loggedInUser: any;
-  userRole: 'student';
+  // userRole: 'student';
   isStudent = false;
   isPrincipal = false;
   isProfessor = false;

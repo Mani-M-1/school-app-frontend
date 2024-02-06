@@ -7,7 +7,7 @@
     <ion-title color="tertiary"> Welcome Back! </ion-title>
     <p>Log in to your existant account of Student Corner</p>
 
-    <div id="sign-in-page__login-form">
+    <div class="sign-in-page__login-form">
       <!-- <ion-radio-group value="strawberries">
             <ion-item color="transparent">
               <ion-label color="black">I want to BUY it</ion-label>
@@ -64,32 +64,16 @@
       </ion-item>
 
       <!-- <div class="sign-in-page__login-btn-wrapper"> -->
-      <ion-button
-        class="sign-in-page__login-btn"
-        shape="round"
-        size="large"
-        color="new"
-        (click)="logIn()"
-        >Log in</ion-button
-      >
-      <!-- </div> -->
-      <br />
 
-      <div>
-        <br /><br /><br />
-        <!-- <p>Or connect using</p>
-        <div class="button-container">
-          <ion-button size="larger">
-            <ion-icon name="logo-google" slot="start"></ion-icon>
-            google
-          </ion-button>
-          <ion-button  size="larger" color="danger">
-            <ion-icon name="logo-facebook" slot="start"></ion-icon>
-            facebook
-          </ion-button>
-        </div><br> -->
-        <p>Don't have an account?<br /><b routerLink="/sign-up">Sign Up</b></p>
-      </div>
+      <!-- <div class="sign-in-page__login-btn-wrapper"> -->
+      <button class="sign-in-page__login-btn" (click)="logIn()">Log in</button>
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- <br /> -->
+
+      <!-- <div> -->
+      <p>Don't have an account?<br /><b routerLink="/sign-up">Sign Up</b></p>
+      <!-- </div> -->
     </div>
   </div>
 </ion-content>

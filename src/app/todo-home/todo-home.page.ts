@@ -56,6 +56,7 @@ export class TodoHomePage {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.getAllTask();
+        console.log(`this.getAllTask(); triggered in todo-home`);
       }
     });
     // this.getAllTask();
@@ -137,6 +138,7 @@ export class TodoHomePage {
     });
     modal.onDidDismiss().then((newTask) => {
       this.getAllTask();
+      console.log('modal dismmissed');
     });
     return await modal.present();
   }
@@ -177,7 +179,8 @@ export class TodoHomePage {
       componentProps: { task: selectedTask },
     });
 
-    modal.onDidDismiss().then(() => {
+    modal.onDidDismiss().then((data) => {
+      console.log(`data from modal: ${data}`);
       this.getAllTask();
     });
 
