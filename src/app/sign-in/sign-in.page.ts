@@ -73,7 +73,7 @@ export class SignInPage implements OnInit {
         // Save the user role in local storage
         //here you setItem for local storage and you call
         //that data with get item where ever you want
-        localStorage.setItem('userRole', response.role);
+        // localStorage.setItem('userRole', response.role);
         localStorage.setItem('username', response.username);
         localStorage.setItem('school', response.school);
         localStorage.setItem('firstName', response.firstName);

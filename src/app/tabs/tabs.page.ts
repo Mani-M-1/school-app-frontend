@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { IonTabs } from '@ionic/angular';
 import { RoleService } from '../role.service';
 
@@ -16,14 +16,14 @@ export class TabsPage {
   isProfessor = false;
   // isLoggedin = false;
   //  selectedTab: string = 'tab1'; // Initialize with the default selected tab
-  @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
+  // @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
 
   constructor(private roleService: RoleService, private router: Router) {
-    var role = localStorage.getItem('userRole');
-    console.log(role);
-    this.isStudent = role === 'student';
-    this.isPrincipal = role === 'principal';
-    this.isProfessor = role === 'professor';
+    // var role = localStorage.getItem('userRole');
+    // console.log(role);
+    // this.isStudent = role === 'student';
+    // this.isPrincipal = role === 'principal';
+    // this.isProfessor = role === 'professor';
     // if (role == 'student'){
     //   this.isStudent = true;
     // }else{
@@ -40,29 +40,39 @@ export class TabsPage {
   }
 
   //for tabs
-  ngAfterViewInit() {
-    this.overrideTabContainer();
-  }
+  // ngAfterViewInit() {
+  //   this.overrideTabContainer();
+  // }
 
-  private overrideTabContainer() {
-    setTimeout(() => {
-      const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
-      const container = routerOutlet.querySelector('ion-content');
-      if (container) {
-        container.style.setProperty('--padding-bottom', '90px');
-      }
-    });
-  }
+  // private overrideTabContainer() {
+  //   setTimeout(() => {
+  //     const routerOutlet = (this.ionTabs.outlet as any).nativeEl as HTMLElement;
+  //     const container = routerOutlet.querySelector('ion-content');
+  //     if (container) {
+  //       container.style.setProperty('--padding-bottom', '90px');
+  //     }
+  //   });
+  // }
 
   // selectTab(tabName: string) {
   //   this.selectedTab = tabName; // Update the selectedTab when a tab is clicked
   // }
 
   ngOnInit() {
-    const userRole = this.roleService.getUserRole();
-    if (userRole) {
-      this.updateTabsVisibility(userRole);
-    }
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const userRole = this.roleService.getUserRole();
+        if (userRole) {
+          this.updateTabsVisibility(userRole);
+        }
+      }
+    });
+
+    // const userRole = this.roleService.getUserRole();
+    // console.log(userRole);
+    // if (userRole) {
+    //   this.updateTabsVisibility(userRole);
+    // }
   }
 
   private updateTabsVisibility(userRole: string) {
