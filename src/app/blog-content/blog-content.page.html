@@ -36,7 +36,6 @@
           <!-- <ion-item>{{ item.Name }}</ion-item> -->
 
           <ion-item class="writer">{{ item.Name }}</ion-item>
-
           <div class="line"></div>
           <div class="icons">
             <!-- <ion-icon
@@ -48,14 +47,14 @@
             ></ion-icon -->
             <ion-icon
               *ngIf="isBlogLiked"
-              name="thumbs-up"
+              name="heart"
               style="font-size: 20px"
               (click)="dislikeBlog()"
             ></ion-icon>
 
             <ion-icon
               *ngIf="!isBlogLiked"
-              name="thumbs-down"
+              name="heart-outline"
               style="font-size: 20px"
               (click)="likeBlog()"
             ></ion-icon>

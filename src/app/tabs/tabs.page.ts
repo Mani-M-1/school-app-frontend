@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonTabs } from '@ionic/angular';
-//import { RoleService } from '../role.service';
+import { RoleService } from '../role.service';
 
 @Component({
   selector: 'app-tabs',
@@ -18,10 +18,7 @@ export class TabsPage {
   //  selectedTab: string = 'tab1'; // Initialize with the default selected tab
   @ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
 
-  constructor(
-    //private roleService: RoleService
-    private router: Router
-  ) {
+  constructor(private roleService: RoleService, private router: Router) {
     var role = localStorage.getItem('userRole');
     console.log(role);
     this.isStudent = role === 'student';
@@ -62,14 +59,15 @@ export class TabsPage {
   // }
 
   ngOnInit() {
-    //   //read the login data from local storage
-    //   const loginData = localStorage.getItem('loginResponse');
-    //   if(loginData){
-    //     this.loggedInUser = JSON.parse(loginData);
-    //     console.log(loginData)
-    //   //You can access the properties of the loggedinuser object here
-    //   console.log(this.loggedInUser.userId);
-    //   console.log(this.loggedInUser.username);
-    // }
+    const userRole = this.roleService.getUserRole();
+    if (userRole) {
+      this.updateTabsVisibility(userRole);
+    }
+  }
+
+  private updateTabsVisibility(userRole: string) {
+    this.isStudent = userRole === 'student';
+    this.isProfessor = userRole === 'professor';
+    this.isPrincipal = userRole === 'principal';
   }
 }

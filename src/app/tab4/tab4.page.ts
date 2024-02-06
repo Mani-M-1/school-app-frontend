@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 import { NavigationEnd, Router } from '@angular/router';
+import { RoleService } from '../role.service';
 
 import { environment } from 'src/environments/environment';
 
@@ -26,7 +27,8 @@ export class Tab4Page implements OnInit {
   constructor(
     private navctrl: NavController,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private roleService: RoleService
   ) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
@@ -54,6 +56,8 @@ export class Tab4Page implements OnInit {
     localStorage.removeItem('isLoggedIn'); // written by "manikanta"
 
     console.log('log-out successful');
+
+    this.roleService.clearUserRole(); // clear role in "role service"
 
     // Step 2: Navigate the user to the sign-in page
     this.router.navigate(['/sign-in']);

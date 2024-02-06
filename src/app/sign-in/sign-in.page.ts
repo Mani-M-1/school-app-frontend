@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastService } from '../services/toast.service';
 import { AuthService } from '../shared/auth.service';
+import { RoleService } from '../role.service';
 
 import { environment } from 'src/environments/environment';
 
@@ -41,7 +42,8 @@ export class SignInPage implements OnInit {
     //for showing toast massages i used it for log in fail
     //don't forgot to use it is good one
     private toastService: ToastService,
-    private authService: AuthService
+    private authService: AuthService,
+    private roleService: RoleService
   ) {}
 
   ngOnInit() {}
@@ -95,20 +97,22 @@ export class SignInPage implements OnInit {
         console.log(response.emergency);
         // console.log(response.profile);
 
+        this.roleService.setUserRole(response.role); // Set the user's role
+
         // Redirect to the appropriate page based on the user role
         switch (response.role as string) {
-          case 'professor':
-            this.router.navigate(['/tabs/tab5']);
-            break;
           case 'student':
             this.router.navigate(['/tabs/student-side-courses-page']);
+            break;
+
+          case 'professor':
+            this.router.navigate(['/tabs/tab5']);
             break;
 
           case 'principal':
             this.router.navigate(['/tabs/tab9']);
             break;
           default:
-            null;
             // Handle other roles or invalid role values
             break;
         }

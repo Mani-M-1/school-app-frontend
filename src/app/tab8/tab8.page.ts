@@ -17,6 +17,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
 import { NavController } from '@ionic/angular';
+import { RoleService } from '../role.service';
 
 @Component({
   selector: 'app-tab8',
@@ -39,7 +40,8 @@ export class Tab8Page {
   constructor(
     private navctrl: NavController,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private roleService: RoleService
   ) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
@@ -67,6 +69,8 @@ export class Tab8Page {
     localStorage.removeItem('isLoggedIn'); // written by "manikanta"
 
     console.log('log-out successful');
+
+    this.roleService.clearUserRole(); // clear role in "role service"
 
     // Step 2: Navigate the user to the sign-in page
     this.router.navigate(['/sign-in']);

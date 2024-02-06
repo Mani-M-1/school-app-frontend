@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { RoleService } from '../role.service';
 
 import { environment } from 'src/environments/environment';
 
@@ -26,7 +27,8 @@ export class Tab11Page implements OnInit {
   constructor(
     private navctrl: NavController,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private roleService: RoleService
   ) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
@@ -52,6 +54,8 @@ export class Tab11Page implements OnInit {
     // Step 1: Update the login_state in localStorage to false
     // localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('isLoggedIn'); // written by "manikanta"
+
+    this.roleService.clearUserRole();
 
     console.log('log-out successful');
 

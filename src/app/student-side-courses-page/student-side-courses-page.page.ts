@@ -65,8 +65,11 @@ export class StudentSideCoursesPage implements OnInit {
 
       // Only initialize OneSignal if the app is running on a mobile device
       if (this.platform.is('mobile')) {
+        //   this.platform.ready().then(() => {
+        //     // OneSignalInit();
         this.OneSignalInit();
       }
+      // }
       // this.getCourseDetails(); // Call other necessary methods
     } else {
       this.router.navigate(['/sign-in']);

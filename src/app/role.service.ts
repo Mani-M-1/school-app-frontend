@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoleService {
- // getUserRole(): any {
- //   throw new Error('Method not implemented.');
-  //}
+  constructor() {}
 
-  constructor() { }
+  setUserRole(role: string) {
+    localStorage.setItem('userRole', role);
+  }
+
+  getUserRole(): any {
+    return localStorage.getItem('userRole');
+  }
+
+  clearUserRole() {
+    localStorage.removeItem('userRole');
+  }
 }
