@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import Plyr from 'plyr';
+// import linkifyStr from 'linkifyjs/string';
 
 import { environment } from 'src/environments/environment';
 
@@ -62,6 +63,11 @@ export class ProfCourseContentPage implements OnInit {
     // };
   }
 
+  linkify(text: string): string {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+  }
+
   fetchTheCourseDeatails() {
     // getting the course id from the "url"
     this.activatedRoute.params.subscribe((params) => {
@@ -73,6 +79,9 @@ export class ProfCourseContentPage implements OnInit {
       .get<any>(`${this.apiUrl}/weeklyCourse/getCourse/${this.courseId}`)
       .subscribe(
         (data) => {
+          // const { assignment, ...rest } = data;
+          // const modifiedAssignmentValue = linkifyStr(assignment);
+          // this.weeklyCourse = [{ modifiedAssignmentValue, ...rest }];
           this.weeklyCourse = [{ ...data }];
           console.log(this.weeklyCourse);
         },

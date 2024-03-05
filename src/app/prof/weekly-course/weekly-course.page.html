@@ -2,7 +2,7 @@
   <ion-toolbar color="new">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab5"></ion-back-button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,185 +10,299 @@
   <!-- <ion-grid>
     <ion-row class="ion-justify-content-left">
       <ion-col size="12" size-md="10" size-lg="8" size-xl="7"> -->
-        <div class="background-container">
-      
-          <!-- <ion-card color="white"> -->
-            <ion-card-header color="new" class="header">Enter your Course Details</ion-card-header>
-            <ion-card-content >
-        
-              <ion-item>
-                <ion-icon name="book-outline" color="primary" class="icon-spacing"></ion-icon>
-                <ion-input placeholder="Enter your Course Name" 
-                [(ngModel)]="CourseName"
-                ></ion-input>
-              </ion-item>
-        
-              <!-- <ion-item>
+  <div class="background-container">
+    <!-- <ion-card color="white"> -->
+    <ion-card-header color="new" class="header"
+      >Enter your Course Details</ion-card-header
+    >
+    <ion-card-content>
+      <ion-item>
+        <ion-icon
+          name="book-outline"
+          color="primary"
+          class="icon-spacing"
+        ></ion-icon>
+        <ion-input
+          placeholder="Enter your Course Name"
+          [(ngModel)]="CourseName"
+        ></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
                 <ion-label position="floating">Professor</ion-label>
         
                 <ion-input placeholder="Enter your Course Name" [(ngModel)]="CourseName"></ion-input>
               </ion-item> -->
-              
-             
-              <ion-item>
-                <ion-icon name="school-outline" color="danger" class="icon-spacing"></ion-icon>
-                <ion-input placeholder="Professor name"
-                 [(ngModel)]="ProfessorName" 
-                 ></ion-input>
-              </ion-item>
-        
-              <ion-item class="CourseDate">
-                <!-- <ion-label position="floating">Course Date</ion-label> -->
-                <ion-icon name="calendar-outline" color="tertiary" class="icon-"></ion-icon>
-                <ion-input placeholder="Enter Course date"
-                type="date"
-                [(ngModel)]="CourseDate"
-                ></ion-input>
-              </ion-item>
-        
-              <ion-item class="CourseTimings">
-                <ion-icon name="time-outline" color="warning" class="icon-spacing"></ion-icon>
-                <ion-input placeholder="Enter Course time"
-                type="time"
-                [(ngModel)]="Coursetimings"
-                ></ion-input>
-              </ion-item>
-        
-              <ion-item>
-                <ion-icon name="people-circle-outline" color="success" class="icon-spacing"></ion-icon>
-                <ion-input placeholder="Enter who can access this class" 
-                [(ngModel)]="Accessclass" 
-                ></ion-input>
-              </ion-item>
-        
-              <ion-item>
-                <ion-icon name="information-circle-outline" color="danger" class="icon-align"></ion-icon>
-                <ion-textarea
-                 autoGrow="true"
-                placeholder="Discription"  [(ngModel)]="Discription"></ion-textarea>
-              </ion-item>
-        
-        
-              <ion-item>
-                <ion-icon name="image-outline" color="primary" class="icon-spacing"></ion-icon>
-                <ion-input placeholder="Write image link here" 
-                type="file" (change)="onImageFileChange($event)"
-                > <!--type="file"--> 
-                </ion-input>
-                <!-- <ion-button color="new" (click)="uploadFiles('image')">Upload file</ion-button> -->
-                <ion-button color="new" (click)="uploadFiles('image')">
-                  {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ? 'Update Image' : 'Upload Image') }}
-                </ion-button>
-              </ion-item>
-        
-             
-            </ion-card-content>
-            <!-- </ion-card> -->
-        
-        <div *ngFor="let content of CourseContent; let i = index">
-          <ion-card color="white" class="course-card">
-              <ion-card-header color="new" class="white-text">Course Content Details</ion-card-header>
-              <ion-card-content>
-                <ion-item>
-                  <ion-icon name="calendar-outline" color="danger" class="icon-spacing"></ion-icon>
-                  <!-- <ion-input [(ngModel)]="CourseContent[i].week" name="week{{i}}"> -->
-                  <ion-select placeholder="Select a week"  
-                  [(ngModel)]="CourseContent[i].week" name="week{{i}}">
-                    <ion-select-option value="week1" color="dark">First Week</ion-select-option>
-                    <ion-select-option value="week2">Second Week</ion-select-option>
-                    <ion-select-option value="week3">Third Week</ion-select-option>
-                    <ion-select-option value="week4">Fourth Week</ion-select-option>
-                    <ion-select-option value="week5">Fifth Week</ion-select-option>
-                    <ion-select-option value="week6">Sixth Week</ion-select-option>
-                    <ion-select-option value="week7">Seventh Week</ion-select-option>
-                    <ion-select-option value="week8">Eighth Week</ion-select-option>
-                    <ion-select-option value="week9">Ninth Week</ion-select-option>
-                    <ion-select-option value="week10">Tenth Week</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                                
-                 <ion-item>
-                  <ion-icon name="videocam-outline" color="warning" class="icon-spacing"></ion-icon>
-                  <ion-input placeholder="Write image link here" type="file" 
-                  (change)="onVideoFileChange($event)"> <!--type="file"-->
-                  </ion-input>
-                  <!-- <ion-button color="new" (click)="uploadFiles('video')">Upload file</ion-button> -->
-                  <ion-button color="new" (click)="uploadFiles('video')">
-                    {{ uploadInProgressVideo ? 'Uploading...' : (uploadStatusVideo ? 'Update Video' : 'Upload Video') }}
-                  </ion-button>
-                </ion-item>
-                
-                 <ion-item>
-                  <ion-icon name="videocam-outline" color="success" class="icon-spacing"></ion-icon>
-                  <ion-input placeholder="Give a video Link" 
-                  [(ngModel)]="CourseContent[i].videoLink"></ion-input>
-                </ion-item>
-                
-                
-                <ion-item>
-                  <ion-icon name="document-outline" color="warning" class="icon-spacing"></ion-icon>
-                  <ion-input placeholder="Write image link here" 
-                  type="file" (change)="onFileChange($event)"> <!--type="file"-->
-                  </ion-input>
-                  <ion-button color="new" (click)="uploadFiles('file')">
-                    {{ uploadInProgressFile ? 'Uploading...' : (uploadStatusFile ? 'Update Pdf' : 'Upload Pdf') }}
-                  </ion-button>        
-                </ion-item>
-        
-                <ion-item>
-                  <ion-icon name="document-outline" color="primary" class="icon-spacing"></ion-icon>        
-                    <ion-input placeholder="Enter your pdf link here"
-                    [(ngModel)]="CourseContent[i].Readingmeterial" name="Readingmeterial{{i}}">
-                  </ion-input>
-                </ion-item>
-          
-                <ion-item>
-                  <ion-icon name="document-text-outline" color="warning" class="icon-spacing"></ion-icon>
-                  <ion-input placeholder="Give Assignment to your Students" 
-                  [(ngModel)]="CourseContent[i].assignment" name="assignment{{i}}"></ion-input>
-                </ion-item>
-          
-                <ion-item>
-                  <ion-icon name="documents-outline" color="success" class="icon-spacing"></ion-icon>
-                    <ion-input placeholder="Give a pdf link for addl content" 
-                    [(ngModel)]="CourseContent[i].additionalContent" name="additionalContent{{i}}">
-                  </ion-input>
-                </ion-item>
-          
-                <ion-item>
-                  <ion-icon name="megaphone-outline" color="dark" class="icon-spacing"></ion-icon>
-                  <ion-input placeholder="Anounce if Something to mention" 
-                  [(ngModel)]="CourseContent[i].annoncement" name="annoncement{{i}}">
-                  </ion-input>
-                </ion-item>
-          
-                <ion-item>
-                  <!-- <ion-label position="floating">Start Date</ion-label> -->
-                  <ion-icon name="calendar-outline" color="pink" class="icon-spacing"></ion-icon>
-                  <ion-input placeholder="Select start date"
-                  type="date"
-                  [(ngModel)]="CourseContent[i].startDate" 
-                  name="startDate{{i}}">Start Date: </ion-input>
-                </ion-item>
-          
-                <ion-item>
-                <!-- <ion-label position="floating">End Date</ion-label> -->
-                  <ion-icon name="calendar-outline" color="warning" class="icon-spacing"></ion-icon>
-                  <ion-input placeholder="Select End date"
-                  type="date" 
-                  [(ngModel)]="CourseContent[i].endDate" name="endDate{{i}}">End Date: </ion-input>
-                </ion-item><br>
-        
-                <!-- <ion-item>
+
+      <ion-item>
+        <ion-icon
+          name="school-outline"
+          color="danger"
+          class="icon-spacing"
+        ></ion-icon>
+        <ion-input
+          placeholder="Professor name"
+          [(ngModel)]="ProfessorName"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="CourseDate">
+        <!-- <ion-label position="floating">Course Date</ion-label> -->
+        <ion-icon
+          name="calendar-outline"
+          color="tertiary"
+          class="icon-"
+        ></ion-icon>
+        <ion-input
+          placeholder="Enter Course date"
+          type="date"
+          [(ngModel)]="CourseDate"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="CourseTimings">
+        <ion-icon
+          name="time-outline"
+          color="warning"
+          class="icon-spacing"
+        ></ion-icon>
+        <ion-input
+          placeholder="Enter Course time"
+          type="time"
+          [(ngModel)]="Coursetimings"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon
+          name="people-circle-outline"
+          color="success"
+          class="icon-spacing"
+        ></ion-icon>
+        <ion-input
+          placeholder="Enter who can access this class"
+          [(ngModel)]="Accessclass"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon
+          name="information-circle-outline"
+          color="danger"
+          class="icon-align"
+        ></ion-icon>
+        <ion-textarea
+          rows="4"
+          autoGrow="true"
+          placeholder="Discription"
+          [(ngModel)]="Discription"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon
+          name="image-outline"
+          color="primary"
+          class="icon-spacing"
+        ></ion-icon>
+        <ion-input
+          placeholder="Write image link here"
+          type="file"
+          (change)="onImageFileChange($event)"
+        >
+          <!--type="file"-->
+        </ion-input>
+        <!-- <ion-button color="new" (click)="uploadFiles('image')">Upload file</ion-button> -->
+        <ion-button color="new" (click)="uploadFiles('image')">
+          {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ?
+          'Update Image' : 'Upload Image') }}
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+    <!-- </ion-card> -->
+
+    <div *ngFor="let content of CourseContent; let i = index">
+      <ion-card color="white" class="course-card">
+        <ion-card-header color="new" class="white-text"
+          >Course Content Details</ion-card-header
+        >
+        <ion-card-content>
+          <ion-item>
+            <ion-icon
+              name="calendar-outline"
+              color="danger"
+              class="icon-spacing"
+            ></ion-icon>
+            <!-- <ion-input [(ngModel)]="CourseContent[i].week" name="week{{i}}"> -->
+            <ion-select
+              placeholder="Select a week"
+              [(ngModel)]="CourseContent[i].week"
+              name="week{{i}}"
+            >
+              <ion-select-option value="week1" color="dark"
+                >First Week</ion-select-option
+              >
+              <ion-select-option value="week2">Second Week</ion-select-option>
+              <ion-select-option value="week3">Third Week</ion-select-option>
+              <ion-select-option value="week4">Fourth Week</ion-select-option>
+              <ion-select-option value="week5">Fifth Week</ion-select-option>
+              <ion-select-option value="week6">Sixth Week</ion-select-option>
+              <ion-select-option value="week7">Seventh Week</ion-select-option>
+              <ion-select-option value="week8">Eighth Week</ion-select-option>
+              <ion-select-option value="week9">Ninth Week</ion-select-option>
+              <ion-select-option value="week10">Tenth Week</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="videocam-outline"
+              color="warning"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Write image link here"
+              type="file"
+              (change)="onVideoFileChange($event)"
+            >
+              <!--type="file"-->
+            </ion-input>
+            <!-- <ion-button color="new" (click)="uploadFiles('video')">Upload file</ion-button> -->
+            <ion-button color="new" (click)="uploadFiles('video')">
+              {{ uploadInProgressVideo ? 'Uploading...' : (uploadStatusVideo ?
+              'Update Video' : 'Upload Video') }}
+            </ion-button>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="videocam-outline"
+              color="success"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Give a video Link"
+              [(ngModel)]="CourseContent[i].videoLink"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="document-outline"
+              color="warning"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Write image link here"
+              type="file"
+              (change)="onFileChange($event)"
+            >
+              <!--type="file"-->
+            </ion-input>
+            <ion-button color="new" (click)="uploadFiles('file')">
+              {{ uploadInProgressFile ? 'Uploading...' : (uploadStatusFile ?
+              'Update Pdf' : 'Upload Pdf') }}
+            </ion-button>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="document-outline"
+              color="primary"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Enter your pdf link here"
+              [(ngModel)]="CourseContent[i].Readingmeterial"
+              name="Readingmeterial{{i}}"
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="document-text-outline"
+              color="warning"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-textarea
+              rows="4"
+              placeholder="Give Assignment to your Students"
+              [(ngModel)]="CourseContent[i].assignment"
+              name="assignment{{i}}"
+            ></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="documents-outline"
+              color="success"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Give a pdf link for addl content"
+              [(ngModel)]="CourseContent[i].additionalContent"
+              name="additionalContent{{i}}"
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="megaphone-outline"
+              color="dark"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Anounce if Something to mention"
+              [(ngModel)]="CourseContent[i].annoncement"
+              name="annoncement{{i}}"
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <!-- <ion-label position="floating">Start Date</ion-label> -->
+            <ion-icon
+              name="calendar-outline"
+              color="pink"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Select start date"
+              type="date"
+              [(ngModel)]="CourseContent[i].startDate"
+              name="startDate{{i}}"
+              >Start Date:
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <!-- <ion-label position="floating">End Date</ion-label> -->
+            <ion-icon
+              name="calendar-outline"
+              color="warning"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Select End date"
+              type="date"
+              [(ngModel)]="CourseContent[i].endDate"
+              name="endDate{{i}}"
+              >End Date:
+            </ion-input> </ion-item
+          ><br />
+
+          <!-- <ion-item>
                   <ion-input placeholder="Type your message"></ion-input>
                 </ion-item> -->
-          
-                <!--<ion-item color="white">
+
+          <!--<ion-item color="white">
                   <ion-label position="floating">Email</ion-label>
                   <ion-input placeholder="Enter your email"></ion-input>
                 </ion-item> <br> -->
-        
-                <!-- <form>
+
+          <!-- <form>
                   <div *ngFor="let content of CourseContent; let i = index">
                     <label>Week:</label>
                     <input [(ngModel)]="CourseContent[i].week" name="week{{i}}">
@@ -206,16 +320,18 @@
                     <input [(ngModel)]="CourseContent[i].endDate" name="endDate{{i}}">
                   </div>
                 </form> -->
-                <ion-button size="full" shape="round" color="new"
-                (click)="SubmitCourse()">Submit Course</ion-button>
-        
-            </ion-card-content>
-            
-            </ion-card>
-          </div>
-          </div>
-      <!-- </ion-col>
+          <ion-button
+            size="full"
+            shape="round"
+            color="new"
+            (click)="SubmitCourse()"
+            >Submit Course</ion-button
+          >
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <!-- </ion-col>
     </ion-row>
   </ion-grid> -->
 </ion-content>
-

@@ -1,0 +1,76 @@
+// ion-button {
+//   background-color: transparent;
+//   color: red;
+// }
+
+#tab3-page__toolbar {
+  --background: transparent;
+}
+
+ion-title {
+  --background: transparent;
+}
+
+.notification-header {
+  background-color: rgb(96, 94, 94);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tab3-page__clear-all-btn {
+  --box-shadow: none;
+  --background: transparent;
+  font-size: 12px;
+}
+
+.tab3-page__students-list {
+  //   background-color: blue;
+}
+
+.tab3-page__students-list-item {
+  border-bottom: 2px solid grey;
+}
+
+.tab3-page__students-list-item-img-and-data-wrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.tab3-page__profile-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: teal;
+  margin-right: 10px;
+}
+
+.tab3-page__username {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tab3-page__notification-description {
+  font-size: 12px;
+}
+
+.tab3-page__delete-btn {
+  --box-shadow: none;
+  --background: transparent;
+}
+
+.coming-soon-text {
+  height: calc(100vh - 50px);
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .coming-soon-text {
+    display: none;
+  }
+}

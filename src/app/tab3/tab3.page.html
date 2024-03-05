@@ -1,17 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Notifications
-    </ion-title>
+<ion-header class="notification-header" [translucent]="true">
+  <ion-toolbar id="tab3-page__toolbar">
+    <ion-title> Notifications </ion-title>
   </ion-toolbar>
+  <ion-button
+    class="tab3-page__clear-all-btn"
+    (click)="handleOnclickClearAllBtn()"
+  >
+    Clear All
+  </ion-button>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-title class="coming-soon-text"> Coming soon... </ion-title>
+  <ion-list *ngIf="notificationArr.length > 0" class="tab3-page__students-list">
+    <ion-item
+      class="tab3-page__students-list-item"
+      *ngFor="let notification of notificationArr"
+    >
+      <!-- <div class="tab3-page__profile-img">
+        {{notification.additionalData.username[0]}}
+        
+      </div> -->
 
-  <app-explore-container name="Content yet to come"></app-explore-container>
+      <div class="tab3-page__students-list-item-img-and-data-wrapper">
+        <img
+          src="{{notification.additionalData.profile}}"
+          class="tab3-page__profile-img"
+        />
+
+        <div class="tab3-page__user-details">
+          <p class="tab3-page__username">
+            {{notification.additionalData.username}}
+          </p>
+          <p class="tab3-page__notification-description">
+            {{notification.body}}
+          </p>
+        </div>
+      </div>
+
+      <ion-button
+        class="tab3-page__delete-btn"
+        color="translucent"
+        (click)="handleOnclickDeleteBtn(notification)"
+      >
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

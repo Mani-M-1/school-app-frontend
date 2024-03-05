@@ -1,40 +1,176 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="new" class="ion-header">
-    <app-greeting></app-greeting>
+<ion-content [fullscreen]="true">
+  <ion-header class="ion-no-border">
+    <ion-toolbar color="new" class="ion-header">
+      <app-greeting></app-greeting>
 
-    <!-- <ion-fab vertical="top" horizontal="end" side="right">
+      <!-- <ion-fab vertical="top" horizontal="end" side="right">
       <ion-fab-button color="transprent" size="small">
           <ion-icon name="notifications-outline" size="small"></ion-icon>
       </ion-fab-button>
   </ion-fab> -->
-    <ion-fab vertical="top" horizontal="end" class="calender" side="left">
-      <ion-fab-button color="transprent" (click)="addTask()" size="small">
-        <ion-icon name="calendar-number-outline" size="small"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <ion-searchbar
-      placeholder="Search your topic"
-      color="transparent"
-      [(ngModel)]="searchText"
-      style="--border-radius: 30px"
-    >
-      <!--(ionInput)="search($event)">-->
-      <!--<ion-fab vertical="top" horizontal="end">
+      <ion-fab vertical="top" horizontal="end" class="calender" side="left">
+        <ion-fab-button color="transprent" (click)="addTask()" size="small">
+          <ion-icon name="calendar-number-outline" size="small"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-searchbar
+        placeholder="Search your topic"
+        color="transparent"
+        [(ngModel)]="searchText"
+        style="--border-radius: 30px"
+      >
+        <!--(ionInput)="search($event)">-->
+        <!--<ion-fab vertical="top" horizontal="end">
         <ion-fab-button color="transparent">
             <ion-icon name="mic-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>-->
-    </ion-searchbar>
-  </ion-toolbar>
-</ion-header>
+      </ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content [fullscreen]="true">
   <!--<ion-title color="black">
     <h3 class="title-with-button">Explore categories
       <ion-button class="end-btn" fill="clear">See all</ion-button></h3>
   </ion-title>-->
 
   <div class="card-container">
+    <!-- popup starts -->
+    <dialog
+      id="popup-card"
+      *ngIf="isDeletePopupActive || isUpdatePopupActive"
+      open
+    >
+      <div class="popup-details-wrapper" *ngIf="isDeletePopupActive">
+        <h5>Do you want to delete this course ?</h5>
+
+        <div class="popup-card-btns-wrapper">
+          <button class="accept btn" (click)="acceptDeletingCourse()">
+            Yes
+          </button>
+          <button class="cancel btn" (click)="rejectDeletingCourse()">
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <div class="update-course-details-popup-card" *ngIf="isUpdatePopupActive">
+        <button class="close-update-modal-btn" (click)="closeUpdateModal()">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <ion-card-content>
+          <ion-item>
+            <ion-icon
+              name="book-outline"
+              color="primary"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Enter your Course Name"
+              [(ngModel)]="CourseName"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="school-outline"
+              color="danger"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Professor name"
+              [(ngModel)]="ProfessorName"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item class="CourseDate">
+            <!-- <ion-label position="floating">Course Date</ion-label> -->
+            <ion-icon
+              name="calendar-outline"
+              color="tertiary"
+              class="icon-"
+            ></ion-icon>
+            <ion-input
+              placeholder="Enter Course date"
+              type="date"
+              [(ngModel)]="CourseDate"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item class="CourseTimings">
+            <ion-icon
+              name="time-outline"
+              color="warning"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Enter Course time"
+              type="time"
+              [(ngModel)]="Coursetimings"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="people-circle-outline"
+              color="success"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Enter who can access this class"
+              [(ngModel)]="Accessclass"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="information-circle-outline"
+              color="danger"
+              class="icon-align"
+            ></ion-icon>
+            <ion-textarea
+              rows="4"
+              autoGrow="true"
+              placeholder="Discription"
+              [(ngModel)]="Discription"
+            ></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              name="image-outline"
+              color="primary"
+              class="icon-spacing"
+            ></ion-icon>
+            <ion-input
+              placeholder="Write image link here"
+              type="file"
+              (change)="onImageFileChange($event)"
+            >
+              <!--type="file"-->
+            </ion-input>
+            <!-- <ion-button color="new" (click)="uploadFiles('image')">Upload file</ion-button> -->
+            <ion-button
+              id="upload-img-btn"
+              color="new"
+              (click)="uploadFiles('image')"
+            >
+              {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ?
+              'Update Image' : 'Upload Image') }}
+            </ion-button>
+          </ion-item>
+
+          <ion-item class="save-btn-item">
+            <ion-button color="primary" (click)="saveChanges()">
+              Save
+            </ion-button>
+          </ion-item>
+        </ion-card-content>
+      </div>
+    </dialog>
+
+    <!-- popup ends  -->
+
     <ion-grid class="ion-padding-horizontal">
       <ion-row class="ion-align-items-center ion-margin-top">
         <ion-col size="12">
@@ -70,20 +206,41 @@
           size-md="4"
           size-lg="3"
           size-xl="3"
-          *ngFor="let item of weeklyCourse | searchFilter: searchText: 'CourseName'"
+          *ngFor="let item of weeklyCourse | searchFilter: searchText: 'CourseName' ; let i = index"
         >
           <!-- here iam giving item.id -->
-          <ion-card class="tab5-page__course-card" (click)="cardClicked(item)">
+          <ion-card class="tab5-page__course-card">
             <!-- <div class="image-container"> -->
             <img
               src="{{item.CourseImage}}"
               class="tab5-page__course-card-img"
+              (click)="cardClicked(item)"
             />
             <!-- </div> -->
-            <ion-card-header>
-              <ion-card-title> {{ item.CourseName }} </ion-card-title>
-              {{item.ProfessorName}}
-            </ion-card-header>
+
+            <div class="course-content-and-delet-icon-wrapper">
+              <ion-card-header>
+                <ion-card-title> {{ item.CourseName }} </ion-card-title>
+                {{item.ProfessorName}}
+              </ion-card-header>
+
+              <button class="options-btn" (click)="optionsFunc(i)">
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+              </button>
+              <!-- <button class="delete-course-btn" (click)="deleteCourse()">
+                <ion-icon name="trash-outline"></ion-icon>
+              </button> -->
+
+              <ul *ngIf="isOptionsVisible[i]" class="options-card">
+                <li class="option-item" (click)="cardClicked(item)">Details</li>
+                <li class="option-item" (click)="updateCourseDetails(item)">
+                  Update
+                </li>
+                <li class="option-item" (click)="deleteCourse(item._id)">
+                  Delete
+                </li>
+              </ul>
+            </div>
           </ion-card>
         </ion-col>
       </ion-row>

@@ -1,0 +1,14 @@
+.notification-header {
+  height: 50px;
+}
+
+.coming-soon-text {
+  height: calc(100vh - 50px);
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .coming-soon-text {
+    display: none;
+  }
+}

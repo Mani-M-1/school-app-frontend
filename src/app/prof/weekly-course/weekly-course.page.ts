@@ -35,6 +35,9 @@ export class WeeklyCoursePage implements OnInit {
   uploadStatusImage = false;
   uploadStatusVideo = false;
 
+  // for notification details
+  profile: any;
+
   //variables
   CourseName: any;
   ProfessorName: any;
@@ -90,6 +93,7 @@ export class WeeklyCoursePage implements OnInit {
     if (login_state == 'true') {
       console.log('log in is succesful');
       this.username = localStorage.getItem('username');
+      this.profile = localStorage.getItem('profile');
     } else {
       this.router.navigate(['/sign-in']);
     }
@@ -308,6 +312,11 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
         announcement: this.CourseContent[0].announcement,
         startDate: this.CourseContent[0].startDate,
         endDate: this.CourseContent[0].endDate,
+      },
+
+      NotificationDetails: {
+        username: this.username,
+        profile: this.profile,
       },
     };
 

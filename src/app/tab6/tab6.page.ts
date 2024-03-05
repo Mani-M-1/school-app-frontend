@@ -172,6 +172,10 @@ export class Tab6Page implements OnInit {
 
     this.selectTabs = localStorage.getItem('activeTabInBlogs');
 
+    if (!this.selectTabs) {
+      this.selectTabs = 'allBlogs';
+    }
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // this.getBlogs();

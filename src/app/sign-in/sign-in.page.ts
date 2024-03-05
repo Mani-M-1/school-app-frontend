@@ -5,8 +5,11 @@ import { Router } from '@angular/router';
 import { ToastService } from '../services/toast.service';
 import { AuthService } from '../shared/auth.service';
 import { RoleService } from '../role.service';
+import { NotificationService } from '../notification.service';
 
 import { environment } from 'src/environments/environment';
+import OneSignal from 'onesignal-cordova-plugin'; // Import OneSignal
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-in',
@@ -43,8 +46,90 @@ export class SignInPage implements OnInit {
     //don't forgot to use it is good one
     private toastService: ToastService,
     private authService: AuthService,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private platform: Platform,
+    private notificationService: NotificationService
   ) {}
+
+  platformFun(mobileNum: any) {
+    if (this.platform.is('mobile')) {
+      // this.platform.ready().then(() => {
+      //   console.log(
+      //     'Platform ready in mobile view and triggering this.OnSignalInit()'
+      //   );
+      //   this.OneSignalInit();
+      // });
+      console.log("this.platform.is('mobile') triggered");
+      this.OneSignalInit(mobileNum);
+    }
+  }
+
+  // will be implemented version 2 of applicaton development
+
+  OneSignalInit(phoneNum: any): void {
+    console.log('OnsignalInit function triggered');
+    //   // Uncomment to set OneSignal device logging to VERBOSE
+    //   // OneSignal.setLogLevel(6, 0);
+    //   //alert("notification started")
+    //   // NOTE: Update the setAppId value below with your OneSignal AppId.
+    //   // OneSignal.setAppId("d3feb1d4-dcd3-468f-826f-5481d02c64d3");
+    OneSignal.setAppId('29817fd7-735e-487b-8b4f-cb8d408a8d97'); // my onesignal app id
+    OneSignal.setNotificationOpenedHandler((jsonData: any) => {
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      alert('message received');
+
+      // Store notification locally
+      const { additionalData, title, body, notificationId } =
+        jsonData.notification;
+      // storeNotification({ additionalData, title, body });
+      // storeNotification(jsonData.notification);
+      this.notificationService.storeNotification({
+        notificationId,
+        additionalData,
+        title,
+        body,
+      });
+
+      // triggering "getNotifications" function in "Notification Service" to get new nootifications immediately after aclicking on notification alert
+      // this.notificationService.getNotifications();
+    });
+
+    // Handle notification received event
+    document.addEventListener('notificationReceived', (event: any) => {
+      // Handle notification received event
+      // This event is triggered when a notification is received, even if the app is in the background
+      const notification = event.data.notification;
+
+      console.log('notificationReceived triggered');
+
+      // Store notification locally
+      storeNotification(notification);
+    });
+
+    // 'works on onesignal-cordova-plugin version: ^3.3.1';
+    // Prompts the user for notification permissions.
+    //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.
+    OneSignal.promptForPushNotificationsWithUserResponse((accepted: any) => {
+      console.log('User accepted notifications: ' + accepted);
+      if (accepted) {
+        //we are using "uuid" for assigning the "externalId" for a user
+        // const uniqueId = uuidv4();
+        // console.log(`uniqueId: ${uniqueId}`);
+        // OneSignal.setExternalUserId(uniqueId);
+        // localStorage.setItem('onesignalExternalId', uniqueId);
+        // const phoneNumAsString = localStorage.getItem('mobileNo');
+        // if (phoneNumAsString !== null) {
+        //   const phoneNum = JSON.parse(phoneNumAsString);
+        //   // console.log(phoneNum);
+        //   OneSignal.setExternalUserId(phoneNum);
+        // }
+        if (phoneNum !== null) {
+          // console.log(phoneNum);
+          OneSignal.setExternalUserId(phoneNum);
+        }
+      }
+    });
+  }
 
   ngOnInit() {}
 
@@ -97,6 +182,9 @@ export class SignInPage implements OnInit {
         console.log(response.emergency);
         // console.log(response.profile);
 
+        // invoking platform function to trigger onesignal
+        this.platformFun(response.mobileNo);
+
         this.roleService.setUserRole(response.role); // Set the user's role
 
         // Redirect to the appropriate page based on the user role
@@ -140,4 +228,15 @@ export class SignInPage implements OnInit {
       }
     );
   }
+}
+
+function storeNotification(notification: any) {
+  // Implement your logic to store the notification locally
+  // For example, you can store it in local storage
+  console.log('storeNotifications function triggered');
+  let notifications: any[] = JSON.parse(
+    localStorage.getItem('notifications') || '[]'
+  );
+  notifications.push(notification);
+  localStorage.setItem('notifications', JSON.stringify(notifications));
 }

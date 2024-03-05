@@ -5,8 +5,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { environment } from 'src/environments/environment';
-import OneSignal from 'onesignal-cordova-plugin'; // Import OneSignal
-import { Platform } from '@ionic/angular';
+// import OneSignal from 'onesignal-cordova-plugin'; // Import OneSignal
+// import { Platform } from '@ionic/angular';
 
 //import { CourseContentPage } from '../course-content/course-content.page';
 
@@ -52,23 +52,27 @@ export class StudentSideCoursesPage implements OnInit {
     private http: HttpClient,
     private router: Router,
     private formBuilder: FormBuilder,
-    private navCtrl: NavController,
-    private platform: Platform
+    private navCtrl: NavController // private platform: Platform
   ) {
     //
 
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
+    console.log(`tab1 login_state: ${login_state}`);
 
     if (login_state == 'true') {
       console.log('log in is succesful');
 
       // Only initialize OneSignal if the app is running on a mobile device
       // if (this.platform.is('mobile')) {
-      //   //   this.platform.ready().then(() => {
-      //   //     // OneSignalInit();
+      //   // this.platform.ready().then(() => {
+      //   //   console.log(
+      //   //     'Platform ready in mobile view and triggering this.OnSignalInit()'
+      //   //   );
+      //   //   this.OneSignalInit();
+      //   // });
+      //   console.log("this.platform.is('mobile') triggered");
       //   this.OneSignalInit();
-      // }
       // }
       // this.getCourseDetails(); // Call other necessary methods
     } else {
@@ -106,7 +110,7 @@ export class StudentSideCoursesPage implements OnInit {
     });
   }
 
-  // will be implemented version 2 of applicaton development
+  // // will be implemented version 2 of applicaton development
 
   // OneSignalInit(): void {
   //   console.log('OnsignalInit function triggered');
@@ -119,7 +123,30 @@ export class StudentSideCoursesPage implements OnInit {
   //   OneSignal.setNotificationOpenedHandler(function (jsonData: any) {
   //     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   //     alert('message received');
+
+  //     // Store notification locally
+  //     // storeNotification(jsonData.notification);
   //   });
+
+  //   // Handle notification received event
+  //   // document.addEventListener('notificationReceived', (event: any) => {
+  //   //   // Handle notification received event
+  //   //   // This event is triggered when a notification is received, even if the app is in the background
+  //   //   const notification = event.data.notification;
+
+  //   //   console.log('notificationReceived triggered');
+
+  //   //   // Store notification locally
+  //   //   storeNotification(notification);
+  //   // });
+
+  //   // // Handle notification received event
+  //   // OneSignal.handleNotificationReceived().subscribe(async (notification) => {
+  //   //   // Store notification locally
+  //   //   await this.storeNotification(notification);
+  //   //   // Perform any additional actions as needed
+  //   //   console.log('Notification received: ' + JSON.stringify(notification));
+  //   // });
 
   //   // 'works on onesignal-cordova-plugin version: ^3.3.1';
   //   // Prompts the user for notification permissions.
@@ -140,6 +167,14 @@ export class StudentSideCoursesPage implements OnInit {
   //       }
   //     }
   //   });
+  // }
+
+  // async storeNotification(notification: any) {
+  //   let notifications: any[] = JSON.parse(
+  //     localStorage.getItem('notifications') || '[]'
+  //   );
+  //   notifications.push(notification);
+  //   localStorage.setItem('notifications', JSON.stringify(notifications));
   // }
 
   // Seeall(){
@@ -192,3 +227,14 @@ export class StudentSideCoursesPage implements OnInit {
     }
   }
 }
+
+// function storeNotification(notification: any) {
+//   // Implement your logic to store the notification locally
+//   // For example, you can store it in local storage
+//   console.log('storeNotifications function triggered');
+//   let notifications: any[] = JSON.parse(
+//     localStorage.getItem('notifications') || '[]'
+//   );
+//   notifications.push(notification);
+//   localStorage.setItem('notifications', JSON.stringify(notifications));
+// }
