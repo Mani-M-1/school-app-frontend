@@ -40,7 +40,13 @@
       <ion-button (click)="chooseFile()" class="camera-button">
         <ion-icon name="camera"></ion-icon> Choose File
       </ion-button>
-      <ion-button (click)="uploadImage('image', student)" class="upload-button">
+
+      <!-- Only show the "Upload" button when a file is selected -->
+      <ion-button
+        *ngIf="fileInput?.files?.length"
+        (click)="uploadImage('image', student)"
+        class="upload-button"
+      >
         Upload
       </ion-button>
     </div>

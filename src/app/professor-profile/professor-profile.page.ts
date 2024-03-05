@@ -39,8 +39,12 @@ export class ProfessorProfilePage implements OnInit {
   imageUrl: any;
   updatedprofessor: any;
 
+  // Modify this method to check if fileInput is not null
   chooseFile() {
-    this.fileInput.nativeElement.click();
+    // Check if fileInput is not null
+    if (this.fileInput && this.fileInput.nativeElement) {
+      this.fileInput.nativeElement.click();
+    }
   }
 
   constructor(
@@ -286,10 +290,6 @@ export class ProfessorProfilePage implements OnInit {
         );
     }
   }
-
-  // showAlert(message: string){
-  //   alert(message); // display a pop-up alert with the provided message
-  // }
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({

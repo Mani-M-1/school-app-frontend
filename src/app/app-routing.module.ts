@@ -184,13 +184,6 @@ const routes: Routes = [
         (m) => m.StudentProfilePageModule
       ),
   },
-  {
-    path: 'course-register/:studentId/:studentFirstName/:username',
-    loadChildren: () =>
-      import('./course-register/course-register.module').then(
-        (m) => m.CourseRegisterPageModule
-      ),
-  },
 ];
 @NgModule({
   imports: [
