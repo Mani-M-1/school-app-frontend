@@ -1,4 +1,4 @@
-package studentcorner.app;
+package studentcornerV2.app;
 
 import com.getcapacitor.BridgeActivity;
 

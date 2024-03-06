@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "studentcorner.app"
+    namespace "studentcornerV2.app"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "studentcorner.app"
+        applicationId "studentcornerV2.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

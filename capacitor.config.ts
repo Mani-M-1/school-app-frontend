@@ -2,12 +2,12 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   // appId: 'io.ionic.starter',
-  appId: 'studentcorner.app',
+  appId: 'studentcornerV2.app',
   appName: 'student-corner',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'https',
+  },
 };
 
 export default config;
