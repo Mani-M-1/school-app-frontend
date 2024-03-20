@@ -49,7 +49,7 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   updatePassword() {
-    const apiUrl = `${this.apiUrl}/addingStudents/update-password`;
+    const apiUrl = `${this.apiUrl}/user/update-password`;
     // let apiUrl: string;
     // if (this.isStudent) {
     //   apiUrl = 'http://localhost:3000/addingStudents/update-password';

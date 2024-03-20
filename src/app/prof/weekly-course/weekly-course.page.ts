@@ -41,7 +41,7 @@ export class WeeklyCoursePage implements OnInit {
   //variables
   CourseName: any;
   ProfessorName: any;
-  username: any;
+  email: any;
   CourseDate: any;
   Coursetimings: any;
   Accessclass: any;
@@ -79,6 +79,8 @@ export class WeeklyCoursePage implements OnInit {
   uploadSuccessful: boolean;
   uploadedFileUrl: any;
 
+  schoolId: any;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -92,8 +94,9 @@ export class WeeklyCoursePage implements OnInit {
 
     if (login_state == 'true') {
       console.log('log in is succesful');
-      this.username = localStorage.getItem('username');
+      this.email = localStorage.getItem('email');
       this.profile = localStorage.getItem('profile');
+      this.schoolId = localStorage.getItem('schoolId');
     } else {
       this.router.navigate(['/sign-in']);
     }
@@ -129,7 +132,7 @@ myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({
   "CourseName": "hello10",
   "ProfessorName": "venu",
-  "username": "rahul123@gmail.com",
+  "email": "rahul123@gmail.com",
   "CourseDate": "10-06-2023",
   "Coursetimings": "10:10",
   "Accessclass": "anyone",
@@ -258,7 +261,7 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
   SubmitCourse() {
     console.log(this.CourseName);
     console.log(this.ProfessorName);
-    console.log(this.username);
+    console.log(this.email);
     console.log(this.CourseDate);
     console.log(this.Coursetimings);
     console.log(this.Accessclass);
@@ -292,12 +295,13 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
     const postdata = {
       CourseName: this.CourseName,
       ProfessorName: this.ProfessorName,
-      username: this.username,
+      email: this.email,
       CourseDate: this.CourseDate,
       Coursetimings: this.Coursetimings,
       Accessclass: this.Accessclass,
       Discription: this.Discription,
       CourseImage: this.imageUrl,
+      schoolId: this.schoolId,
 
       // "CourseContent":this.CourseContent[0]
 
@@ -315,7 +319,7 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
       },
 
       NotificationDetails: {
-        username: this.username,
+        email: this.email,
         profile: this.profile,
       },
     };

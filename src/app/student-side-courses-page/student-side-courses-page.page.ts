@@ -37,8 +37,10 @@ export class StudentSideCoursesPage implements OnInit {
   // Course = data;
   taskForm: any;
   taskService: any;
-  username: any;
+  email: any;
   weeklyCourse: any;
+
+  // schoolId: any;
 
   /* Course: any = [];
   get filteredCourse() {
@@ -100,8 +102,9 @@ export class StudentSideCoursesPage implements OnInit {
 
   ngOnInit() {
     console.log('Initializing Tab1Page');
-    this.username = localStorage.getItem('username');
-    console.log(this.username);
+    this.email = localStorage.getItem('email');
+    // this.schoolId = localStorage.getItem('schoolId');
+    console.log(this.email);
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -185,29 +188,32 @@ export class StudentSideCoursesPage implements OnInit {
   //this.showAll = true;
   //}
 
-  showAllCards() {
-    if (this.searchText) {
-      this.searchText = '';
-    }
-    this.showAll = !this.showAll;
-  }
+  // showAllCards() {
+  //   if (this.searchText) {
+  //     this.searchText = '';
+  //   }
+  //   this.showAll = !this.showAll;
+  // }
 
   //get course details api
   getCourseDetails() {
-    this.http.get(`${this.apiUrl}/weeklycourse`).subscribe((data: any) => {
-      console.log(data);
-      this.weeklyCourse = data;
-    });
+    this.http
+      .get(`${this.apiUrl}/enrollCourse/user-profile-details/${this.email}`)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.weeklyCourse = data.userProfile.enrolledCourses;
+        console.log(this.weeklyCourse);
+      });
   }
 
   cardClicked(item: any) {
     console.log(item);
-    let a = item;
+    // let a = item;
 
-    localStorage.setItem('Coursedata', JSON.stringify(a));
+    localStorage.setItem('Coursedata', JSON.stringify(item.CourseDetails));
     console.log('card clicked');
     this.router.navigate(['/course-content']);
-    //this.navCtrl.navigateForward(CourseContentPage,{data: item})
+    // this.navCtrl.navigateForward(CourseContentPage,{data: item})
   }
 
   addTask() {

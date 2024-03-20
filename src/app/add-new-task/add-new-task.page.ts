@@ -28,7 +28,7 @@ export class AddNewTaskPage implements OnInit {
   date: any;
   priority: any;
   task: any;
-  username: any;
+  email: any;
 
   constructor(
     public modalCtlr: ModalController,
@@ -41,8 +41,8 @@ export class AddNewTaskPage implements OnInit {
 
     if (login_state == 'true') {
       console.log('log in is succesful');
-      this.username = localStorage.getItem('username');
-      console.log(this.username);
+      this.email = localStorage.getItem('email');
+      console.log(this.email);
     } else {
       this.router.navigate(['/sign-in']);
     }
@@ -50,7 +50,7 @@ export class AddNewTaskPage implements OnInit {
 
   addNew() {
     console.log(this.itemName),
-      console.log(this.username),
+      console.log(this.email),
       console.log(this.itemPriority),
       console.log(this.itemDueDate),
       console.log(this.categorySelectedCategory);
@@ -58,13 +58,13 @@ export class AddNewTaskPage implements OnInit {
     //now write post http call to push data to database
     const body = {
       task: this.itemName,
-      username: this.username,
+      email: this.email,
       priority: this.itemPriority,
       date: this.itemDueDate,
       category: this.categorySelectedCategory,
     };
 
-    console.log(this.username);
+    console.log(this.email);
 
     console.log(body);
     this.http.post(`${this.apiUrl}/todo`, body).subscribe(
@@ -87,7 +87,7 @@ export class AddNewTaskPage implements OnInit {
     this.addNew();
     this.newTaskObj = {
       itemName: this.itemName,
-      username: this.username,
+      email: this.email,
       itemDueDate: this.itemDueDate,
       itemPriority: this.itemPriority,
       itemCategory: this.categorySelectedCategory,

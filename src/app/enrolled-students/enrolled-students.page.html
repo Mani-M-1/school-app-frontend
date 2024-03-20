@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true">
+  <h1 class="course-regsiter-page__course-regiter-text">Enrolled Students</h1>
+
+  <form (ngSubmit)="submitForm($event)">
+    <!-- <ion-searchbar
+      (ionChange)="onSearchStudentChange($event)"
+      class="course-regsiter-page__studentname-searchbar"
+      placeholder="Enter Course Name"
+      value="{{courseName}}"
+      disabled="true"
+    ></ion-searchbar> -->
+    <ion-title
+      ><span style="font-size: 16px; color: rgb(227, 227, 227)">Course:</span>
+      {{courseName}}
+    </ion-title>
+
+    <ion-searchbar
+      color="danger"
+      class="course-regsiter-page__searchbar"
+      placeholder="Find the student"
+      (input)="searchCourseFunc($event)"
+    ></ion-searchbar>
+
+    <!-- <ion-checkbox-group> -->
+    <ion-item
+      *ngFor="let student of students;"
+      class="course-regsiter-page__checkbox-group-ion-item"
+    >
+      <!-- <ion-checkbox value="Physics"></ion-checkbox> -->
+      <ion-checkbox
+        (ionChange)="checkboxChanged($event, student)"
+        [checked]="student.enrolledCourse.isChecked"
+      ></ion-checkbox>
+      <div class="course-regsiter-page__checkbox-details-wrapper physics">
+        <ion-label>{{student.email}}</ion-label>
+        <ion-label
+          style="font-size: 12px; font-weight: bold; color: green"
+          *ngIf="student.enrolledCourse.isChecked"
+          >Passed</ion-label
+        >
+        <ion-label
+          style="font-size: 12px; font-weight: bold; color: red"
+          *ngIf="!student.enrolledCourse.isChecked"
+          >Failed</ion-label
+        >
+      </div>
+    </ion-item>
+
+    <!-- Add button outside the loop for adding all courses -->
+
+    <!-- </ion-checkbox-group> -->
+    <ion-button
+      class="course-regsiter-page__submit-btn"
+      type="submit"
+      color="primary"
+      >Submit</ion-button
+    >
+  </form>
+</ion-content>

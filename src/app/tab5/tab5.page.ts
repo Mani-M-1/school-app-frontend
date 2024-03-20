@@ -29,8 +29,8 @@ export class Tab5Page implements OnInit {
   taskForm: any;
   taskService: any;
   //this user name variable for shoeing
-  //individual data based on prof username
-  username: any;
+  //individual data based on prof email
+  email: any;
 
   // for course content update
   courseId: any;
@@ -104,6 +104,10 @@ export class Tab5Page implements OnInit {
     this.isOptionsVisible = [];
   }
 
+  handleOnclickEnrolledStudentsBtn(course: any) {
+    this.router.navigate(['enrolled-students', course._id, course.CourseName]);
+  }
+
   deleteCourse(courseId: any) {
     this.isDeletePopupActive = true;
     this.courseId = courseId;
@@ -145,7 +149,7 @@ export class Tab5Page implements OnInit {
     this.courseId = courseDetails._id;
     this.CourseName = courseDetails.CourseName;
     this.ProfessorName = courseDetails.ProfessorName;
-    this.username = courseDetails.username;
+    this.email = courseDetails.email;
     this.CourseDate = courseDetails.CourseDate;
     this.Coursetimings = courseDetails.Coursetimings;
     this.Accessclass = courseDetails.Accessclass;
@@ -157,7 +161,7 @@ export class Tab5Page implements OnInit {
     const body = {
       CourseName: this.CourseName,
       ProfessorName: this.ProfessorName,
-      username: this.username,
+      email: this.email,
       CourseDate: this.CourseDate,
       Coursetimings: this.Coursetimings,
       Accessclass: this.Accessclass,
@@ -294,13 +298,13 @@ export class Tab5Page implements OnInit {
   }
 
   ngOnInit() {
-    //here we are getting item username from sign-in page
+    //here we are getting item email from sign-in page
     //for showing individual data
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.username = localStorage.getItem('username');
-        console.log(this.username);
+        this.email = localStorage.getItem('email');
+        console.log(this.email);
         this.getCourseDetails(); // and we are calling this function
       }
     });
@@ -343,20 +347,25 @@ export class Tab5Page implements OnInit {
   // here is the function we are calling in
   //ngOnInit
   getCourseDetails() {
-    this.http.get(`${this.apiUrl}/weeklycourse/${this.username}`).subscribe(
-      (data: any) => {
-        console.log(data);
-        this.weeklyCourse = data;
-        // Initialize visibility state for each item
-        this.isOptionsVisible = new Array(this.weeklyCourse.length).fill(false);
-        console.log(this.isOptionsVisible);
-      },
-      (err) => {
-        console.log(err.message);
-        this.toastService.presentToast(
-          'Some thing went wrong please check all details'
-        );
-      }
-    );
+    console.log(`url: ${this.apiUrl}/weeklycourse/professor/${this.email}`);
+    this.http
+      .get(`${this.apiUrl}/weeklycourse/professor/${this.email}`)
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.weeklyCourse = data;
+          // Initialize visibility state for each item
+          this.isOptionsVisible = new Array(this.weeklyCourse.length).fill(
+            false
+          );
+          console.log(this.isOptionsVisible);
+        },
+        (err) => {
+          console.log(err.message);
+          this.toastService.presentToast(
+            'Some thing went wrong please check all details'
+          );
+        }
+      );
   }
 }

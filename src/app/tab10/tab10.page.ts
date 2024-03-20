@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 export class Tab10Page implements OnInit {
   private apiUrl: string = environment.apiUrl;
 
+  schoolId: any; // schoolId name of "principal" who loged in
+
   professors: any[];
   searchText: any;
 
@@ -19,7 +21,9 @@ export class Tab10Page implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private http: HttpClient
-  ) {}
+  ) {
+    this.schoolId = localStorage.getItem('schoolId');
+  }
 
   ngOnInit() {
     this.route.events.subscribe((event) => {
@@ -31,7 +35,7 @@ export class Tab10Page implements OnInit {
   // duplicate function
   getProfessors() {
     this.http
-      .get<any[]>(`${this.apiUrl}/addingProfessors/professors`)
+      .get<any[]>(`${this.apiUrl}/user/same-school/${this.schoolId}/professor`)
       .subscribe(
         (response) => {
           this.professors = response;
@@ -56,7 +60,9 @@ export class Tab10Page implements OnInit {
   searchStudents() {
     if (this.searchText.trim() !== '') {
       this.http
-        .get<any[]>(`${this.apiUrl}/addingProfessors/search/${this.searchText}`)
+        .get<any[]>(
+          `${this.apiUrl}/user/professor/search/${this.searchText}/${this.schoolId}`
+        )
         .subscribe(
           (response) => {
             this.professors = response;

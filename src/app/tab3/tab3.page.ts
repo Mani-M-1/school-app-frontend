@@ -35,7 +35,7 @@ export class Tab3Page {
     //     additionalData: {
     //       profile:
     //         'https://d2ax4codf16e0h.cloudfront.net/error-404-vector-img-cropped.jpg',
-    //       username: 'newprofessor@gmail.com',
+    //       email: 'newprofessor@gmail.com',
     //     },
     //     body: 'This is a test notification message.',
     //     notificationId: 'bffa38d7-0f45-48d4-9158-27b63c7ec992',

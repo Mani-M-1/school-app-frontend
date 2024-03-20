@@ -59,18 +59,16 @@ export class ProfessorProfilePage implements OnInit {
       this.professorId = params['id']; // Assuming the parameter is named 'id'
       console.log(this.professorId);
     });
-    this.http
-      .get(`${this.apiUrl}/addingprofessors/professors/${this.professorId}`)
-      .subscribe(
-        (response) => {
-          this.professor = response;
+    this.http.get(`${this.apiUrl}/user/details/${this.professorId}`).subscribe(
+      (response) => {
+        this.professor = response;
 
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit() {
@@ -99,7 +97,7 @@ export class ProfessorProfilePage implements OnInit {
     // now get the document id this professor
     let doc_id = professorData._id;
     this.http
-      .delete(`${this.apiUrl}/addingProfessors/professors/${doc_id}`)
+      .delete(`${this.apiUrl}/user/profile/${doc_id}`)
       .subscribe((data) => {
         console.log(data);
         // Optionally, you can remove the deleted professor from the array to update the UI
@@ -123,7 +121,7 @@ export class ProfessorProfilePage implements OnInit {
 
   //edit function
   toggleEditMode(professor: any) {
-    this.isEditing = true;
+    this.isEditing = !this.isEditing;
     this.editedProfessor = { ...this.professor }; // Clone the professor data for editing
     this.originalProfessor = { ...this.professor }; // Store the original professor data
   }
@@ -139,7 +137,7 @@ export class ProfessorProfilePage implements OnInit {
     // Save the edited data to the server
     this.http
       .put<any>(
-        `${this.apiUrl}/addingProfessors/professors/${this.professorId}`,
+        `${this.apiUrl}/user/profile/${this.professorId}`,
         this.editedProfessor
       )
       .subscribe(
@@ -179,7 +177,7 @@ export class ProfessorProfilePage implements OnInit {
     formData.append('filename', this.selectedFile);
 
     this.http
-      .post<any>(`${this.apiUrl}/addingProfessors/uploadfiles`, formData)
+      .post<any>(`${this.apiUrl}/user/profile/uploadfiles`, formData)
       .subscribe(
         async (response) => {
           console.log(response);
@@ -216,14 +214,14 @@ export class ProfessorProfilePage implements OnInit {
   //duplicate function for uploading image
   updateProfileImage(imagepath: any, profileId: any) {
     const data = {
-      images: imagepath,
+      profile: imagepath,
       //  updatedprofessor: this.updatedprofessor._id
     };
     // console.log(profileId._id);
     // Make the PUT request to the API endpoint
     console.log(data);
     this.http
-      .put<any>(`${this.apiUrl}/addingProfessors/professors/${profileId}`, data)
+      .put<any>(`${this.apiUrl}/user/profile/update/${profileId}`, data)
       .subscribe(
         (response) => {
           console.log(response);
@@ -251,7 +249,7 @@ export class ProfessorProfilePage implements OnInit {
 
       // Make an API call to updatwew the status on server
       this.http
-        .post(`${this.apiUrl}/addingProfessors/block/${this.professorId}`, {})
+        .post(`${this.apiUrl}/user/block/${this.professorId}`, {})
         .subscribe(
           (response) => {
             console.log(response);
@@ -275,7 +273,7 @@ export class ProfessorProfilePage implements OnInit {
 
       //Make an API call to update the server
       this.http
-        .post(`${this.apiUrl}/addingProfessors/unblock/${this.professorId}`, {})
+        .post(`${this.apiUrl}/user/unblock/${this.professorId}`, {})
         .subscribe(
           (response) => {
             console.log(response);

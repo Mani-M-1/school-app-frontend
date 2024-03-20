@@ -185,10 +185,17 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'course-register/:studentId/:studentFirstName/:username',
+    path: 'course-register/:studentId/:studentFirstName/:email',
     loadChildren: () =>
       import('./course-register/course-register.module').then(
         (m) => m.CourseRegisterPageModule
+      ),
+  },
+  {
+    path: 'enrolled-students/:courseId/:courseName',
+    loadChildren: () =>
+      import('./enrolled-students/enrolled-students.module').then(
+        (m) => m.EnrolledStudentsPageModule
       ),
   },
 ];

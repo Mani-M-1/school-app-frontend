@@ -47,7 +47,7 @@ export class Forgotpassword1Page implements OnInit {
   }
 
   updatePassword() {
-    const apiUrl = `${this.apiUrl}/addingProfessors/update-password`;
+    const apiUrl = `${this.apiUrl}/user/update-password`;
 
     const Data = {
       currentPassword: this.currentPassword,

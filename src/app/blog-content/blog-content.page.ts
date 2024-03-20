@@ -20,7 +20,7 @@ export class BlogContentPage implements OnInit {
 
   comments = {};
   _id: any;
-  username: any;
+  email: any;
   comment: any;
   timeStamp: any;
 
@@ -67,16 +67,16 @@ export class BlogContentPage implements OnInit {
         (data) => {
           console.log(data.blogDetails);
           this.blogs = [{ ...data.blogDetails }];
-          const usernameInData = data.blogDetails.likedBy.filter(
-            (blog: { username: any }) => blog.username === this.username
+          const emailInData = data.blogDetails.likedBy.filter(
+            (blog: { email: any }) => blog.email === this.email
           );
 
-          if (usernameInData.length > 0) {
+          if (emailInData.length > 0) {
             this.isBlogLiked = true;
           } else {
             this.isBlogLiked = false;
           }
-          console.log(usernameInData);
+          console.log(emailInData);
         },
         (err) => {
           console.log(err);
@@ -89,11 +89,11 @@ export class BlogContentPage implements OnInit {
     this.getBlogDetails();
     // this.blogcontent();
 
-    //here we are getting item username from sign-in page
+    //here we are getting item email from sign-in page
     //for showing individual data
     // this._id = localStorage.getItem('_id')
-    this.username = localStorage.getItem('username');
-    console.log(this.username);
+    this.email = localStorage.getItem('email');
+    console.log(this.email);
   }
 
   // blogcontent() {
@@ -136,7 +136,7 @@ export class BlogContentPage implements OnInit {
   likeBlog() {
     this.http
       .post<any>(`${this.apiUrl}/blog/likeblog/${this.blogId}`, {
-        username: this.username,
+        email: this.email,
       })
       .subscribe(
         (data) => {
@@ -152,7 +152,7 @@ export class BlogContentPage implements OnInit {
   dislikeBlog() {
     this.http
       .post<any>(`${this.apiUrl}/blog/dislikeblog/${this.blogId}`, {
-        username: this.username,
+        email: this.email,
       })
       .subscribe(
         (data) => {
@@ -172,14 +172,14 @@ export class BlogContentPage implements OnInit {
   postComment() {
     //this user name is for showing user who posted the comment
     console.log(this.blogs[0]._id);
-    console.log(this.username);
+    console.log(this.email);
     console.log(this.commentText);
     //console.log(this.timeStamp);
 
     const comment = {
       // "_id": this._id,
       _id: this.blogs[0]._id,
-      username: this.username,
+      email: this.email,
       comment: this.commentText,
       // "timeStamp": this.timeStamp
     };

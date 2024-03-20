@@ -26,7 +26,7 @@ export class TodoHomePage {
   priority: any;
   date: any;
   category: any;
-  username: any;
+  email: any;
   userRole: any;
   student: any;
   professor: any;
@@ -50,8 +50,8 @@ export class TodoHomePage {
     }
     // this.getAllTask();
 
-    this.username = localStorage.getItem('username');
-    console.log(this.username);
+    this.email = localStorage.getItem('email');
+    console.log(this.email);
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -152,7 +152,7 @@ export class TodoHomePage {
 
   //new code
   getAllTask() {
-    this.http.get(`${this.apiUrl}/todo/${this.username}`).subscribe(
+    this.http.get(`${this.apiUrl}/todo/${this.email}`).subscribe(
       (data: any) => {
         console.log(data);
         this.todoList = [...data.tasks];

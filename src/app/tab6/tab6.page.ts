@@ -128,10 +128,12 @@ export class Tab6Page implements OnInit {
   blogs: any = [];
 
   //this user name variable for shoeing
-  //individual blog data based on prof username
-  username: any;
+  //individual blog data based on prof email
+  email: any;
 
   userBlogs: any = [];
+
+  schoolId: any;
 
   constructor(
     private navcontroller: NavController,
@@ -140,7 +142,7 @@ export class Tab6Page implements OnInit {
     private http: HttpClient,
     private cdr: ChangeDetectorRef
   ) {
-    let username = localStorage.getItem('isLoggedIn');
+    let email = localStorage.getItem('isLoggedIn');
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
 
@@ -156,19 +158,20 @@ export class Tab6Page implements OnInit {
     // });
     // this.getAllBlogs();
 
-    //here we are getting item username from sign-in page
+    //here we are getting item email from sign-in page
     //for showing individual data
-    //here we are getting item username from sign-in page
+    //here we are getting item email from sign-in page
     //for showing individual data
-    // this.username = localStorage.getItem('username');
-    // console.log(this.username);
+    // this.email = localStorage.getItem('email');
+    // console.log(this.email);
     // and we are calling this function
     // this.getBlogs();
   }
 
   ngOnInit() {
-    this.username = localStorage.getItem('username');
-    console.log(this.username);
+    this.email = localStorage.getItem('email');
+    this.schoolId = localStorage.getItem('schoolId');
+    console.log(this.email);
 
     this.selectTabs = localStorage.getItem('activeTabInBlogs');
 
@@ -199,13 +202,13 @@ export class Tab6Page implements OnInit {
   //once you write a function in any html file then you must declare the function in ts file...you not declare the function you getting error...
   //this function is duplicate function ...and aslo declare in blogPost function....
   blogPosta() {
-    this.http.get(`${this.apiUrl}/blog/`).subscribe(
+    this.http.get(`${this.apiUrl}/blog/school/${this.schoolId}`).subscribe(
       (data: any) => {
         // after posting data from createblog page i'm getting data here.
         console.log(data); // and setting item in local storage, you can find it below of this file as setItem
         this.blogs = data.posts;
         this.userBlogs = data.posts.filter(
-          (post: any) => post.username === this.username
+          (post: any) => post.email === this.email
         );
         console.log(this.userBlogs);
         // if (this.userBlogs.includes(data.posts)) {
@@ -219,11 +222,11 @@ export class Tab6Page implements OnInit {
 
   //get blog posted by user
   // getBlogs() {
-  //   this.http.get(`${this.apiUrl}/blog/${this.username}`).subscribe(
+  //   this.http.get(`${this.apiUrl}/blog/${this.email}`).subscribe(
   //     (data: any) => {
   //       // after posting data from createblog page i'm getting data here.
   //       console.log(data); // and setting item in local storage, you can find it below of this file as setItem
-  //       //  console.log(this.username);
+  //       //  console.log(this.email);
   //       this.userBlogs = [...data];
 
   //       // this.blogPosta();

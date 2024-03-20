@@ -35,7 +35,7 @@ export class EditProfilePage implements OnInit {
   lastName: any;
   mobileNo: any;
   emergency: any;
-  username: any;
+  email: any;
   profile: any;
 
   //for uploading files
@@ -224,6 +224,7 @@ export class EditProfilePage implements OnInit {
   // this is for onchange event in html file
   onImageFileChange(event: any) {
     this.image = event.target.files[0];
+    this.uploadFiles('image');
   }
 
   update() {
@@ -242,16 +243,16 @@ export class EditProfilePage implements OnInit {
       emergency: this.emergency,
       profile: this.imageUrl,
     };
-    const username = localStorage.getItem('username');
+    const email = localStorage.getItem('email');
     const role = localStorage.getItem('userRole');
     // localStorage.setItem('userRole', response.role);
 
-    // const username = 'venuazmeera69@gmail.com'
-    console.log(username);
+    // const email = 'venuazmeera69@gmail.com'
+    console.log(email);
     console.log(role);
 
     this.http
-      .put(`${this.apiUrl}/Signup/${username}`, updatedProfile)
+      .put(`${this.apiUrl}/user/profile/${email}`, updatedProfile)
       .subscribe(
         (res) => {
           console.log(res);

@@ -88,8 +88,8 @@
           <ion-input
             type="tel"
             placeholder="Enter your mobile number"
-            formControlName="mobileNumber"
-            name="mobileNumber"
+            formControlName="mobileNo"
+            name="mobileNo"
           ></ion-input>
         </ion-item>
 
@@ -106,41 +106,70 @@
 
         <ion-item class="input-item">
           <ion-icon name="home" slot="start"></ion-icon>
-          <ion-label position="floating">SchoolName</ion-label>
+          <ion-label position="floating">School Name</ion-label>
+          <!-- <ion-textarea
+            type="text"
+            placeholder="Enter School Name here"
+            formControlName="school"
+            name="school"
+            autoGrow="true"
+          ></ion-textarea> -->
           <ion-textarea
             type="text"
-            placeholder="Enter SchoolName here"
-            formControlName="schoolname"
-            name="schoolname"
+            placeholder="Enter your School Name"
+            name="school"
             autoGrow="true"
+            [disabled]="true"
+            value="{{school}}"
           ></ion-textarea>
         </ion-item>
 
         <ion-item class="input-item">
           <ion-icon name="home" slot="start"></ion-icon>
-          <ion-label position="floating">SchoolCode</ion-label>
+          <ion-label position="floating">School Id</ion-label>
           <ion-textarea
             type="text"
-            placeholder="Enter your SchoolCode"
-            formControlName="schoolcode"
-            name="schoolcode"
+            placeholder="Enter your School Id"
+            name="schoolId"
             autoGrow="true"
+            [disabled]="true"
+            value="{{schoolId}}"
           ></ion-textarea>
+          <!-- <ion-textarea
+            type="text"
+            placeholder="Enter your SchoolId"
+            formControlName="schoolId"
+            name="schoolId"
+            autoGrow="true"
+            [disabled]="true"
+          ></ion-textarea> -->
         </ion-item>
 
-        <ion-item>
+        <!-- <ion-item>
           <ion-label position="floating"></ion-label>
           <ion-input
             type="text"
-            formControlName="images"
+            formControlName="profile"
             placeholder="paste image link here"
           ></ion-input>
 
-          <!-- for default image url -->
+          for default image url
           <img
-            [src]="professorForm.get('images')?.value || defaultImageUrl"
+            [src]="professorForm.get('profile')?.value || defaultImageUrl"
             alt="Default Image"
           />
+        </ion-item> -->
+
+        <ion-item class="input-item">
+          <ion-icon name="link-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Image Url</ion-label>
+          <ion-textarea
+            type="text"
+            placeholder="Paste image link here"
+            formControlName="profile"
+            name="profile"
+            autoGrow="true"
+          ></ion-textarea>
         </ion-item>
       </div>
 

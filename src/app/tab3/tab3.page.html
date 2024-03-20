@@ -18,7 +18,7 @@
       *ngFor="let notification of notificationArr"
     >
       <!-- <div class="tab3-page__profile-img">
-        {{notification.additionalData.username[0]}}
+        {{notification.additionalData.email[0]}}
         
       </div> -->
 
@@ -29,9 +29,7 @@
         />
 
         <div class="tab3-page__user-details">
-          <p class="tab3-page__username">
-            {{notification.additionalData.username}}
-          </p>
+          <p class="tab3-page__email">{{notification.additionalData.email}}</p>
           <p class="tab3-page__notification-description">
             {{notification.body}}
           </p>

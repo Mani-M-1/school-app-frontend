@@ -23,18 +23,24 @@ export class AddProfessorPage implements OnInit {
   lastName: string;
   gender: string;
   subjects: string;
-  images: string;
+  profile: string;
   email: string;
   password: string;
-  mobileNumber: string;
+  mobileNo: string;
   address: string;
+
+  schoolId: any;
+  school: any;
 
   constructor(
     private http: HttpClient,
     private navCtrl: NavController,
     private alertController: AlertController,
     private formbuilder: FormBuilder
-  ) {}
+  ) {
+    this.schoolId = localStorage.getItem('schoolId'); // schoolId of "professor"
+    this.school = localStorage.getItem('school'); // school of "professor"
+  }
 
   ngOnInit() {
     this.createForm();
@@ -48,14 +54,12 @@ export class AddProfessorPage implements OnInit {
       subjects: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      mobileNumber: [
-        '',
-        [Validators.required, Validators.pattern(/^[0-9]{10}$/)],
-      ],
-      images: [''], // Initialize images as an empty string
+      mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      profile: [''], // Initialize profile as an empty string
       address: ['', Validators.required], // Address field
-      schoolname: ['', Validators.required],
-      schoolcode: ['', Validators.required],
+
+      // school: ['', Validators.required],
+      // schoolId: ['', Validators.required],
     });
   }
 
@@ -73,55 +77,49 @@ export class AddProfessorPage implements OnInit {
         subjects: formValue.subjects,
         email: formValue.email,
         password: formValue.password,
-        mobileNumber: formValue.mobileNumber,
+        mobileNo: formValue.mobileNo,
         address: formValue.address,
-        schoolname: formValue.schoolname,
-        schoolcode: formValue.schoolcode,
-        images: formValue.images || this.defaultImageUrl,
+        school: this.school,
+        schoolId: this.schoolId,
+        role: 'professor',
+        profile: formValue.profile || this.defaultImageUrl,
       };
       // send a post request to add professor data
-      this.http
-        .post(`${this.apiUrl}/addingProfessors/professors`, body)
-        .subscribe(
-          (response) => {
-            console.log(response);
-            // extract email and password from the response
-            // email,password
-            let data: any = response;
-            console.log(data.createdProfessor.email);
-            console.log(data.createdProfessor.password);
+      this.http.post(`${this.apiUrl}/user/signup`, body).subscribe(
+        (response) => {
+          console.log(response);
+          // extract email and password from the response
+          // email,password
+          let data: any = response;
+          console.log(data.createdProfessor.email);
+          console.log(data.createdProfessor.password);
 
-            // call the sendEmail functon to send email with credentials
-            this.sendEmail(
-              data.createdProfessor.email,
-              'your credencials',
-              data.createdProfessor.password
-            );
+          // call the sendEmail functon to send email with credentials
+          this.sendEmail(
+            data.createdProfessor.email,
+            data.createdProfessor.password
+          );
 
-            // Navigate to a specific route after successful submission
-            this.navCtrl.navigateRoot(['/tabs/tab10']);
-          },
-          (error) => {
-            console.error('Error creating student:', error);
-            // Handle error response here (e.g., show an error message)
-          }
-        );
+          // Navigate to a specific route after successful submission
+          this.navCtrl.navigateRoot(['/tabs/tab10']);
+        },
+        (error) => {
+          console.error('Error creating student:', error);
+          // Handle error response here (e.g., show an error message)
+        }
+      );
     }
   }
   // this called function with variables
   // this function is used for sending emails
-  sendEmail(toEmail: any, subject: any, text: any) {
+  sendEmail(email: any, password: any) {
     console.log('thisfunctions is triggaring');
 
     // Prepare the request body for sending an email
-    const body = {
-      toEmail: toEmail,
-      subject: subject,
-      text: text,
-    };
+    const body = { email, password };
     // Send a POST request to send an email
     this.http
-      .post(`${this.apiUrl}/addingStudents/send-email`, body)
+      .post(`${this.apiUrl}/user/send-email`, body)
       .subscribe((response) => {
         console.log(response);
       });

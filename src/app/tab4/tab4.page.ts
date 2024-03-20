@@ -19,7 +19,7 @@ export class Tab4Page implements OnInit {
   lastName: any;
   mobileNo: any;
   emergency: any;
-  username: any;
+  email: any;
   profile: any;
 
   updateProfile: any;
@@ -38,16 +38,16 @@ export class Tab4Page implements OnInit {
     } else {
       this.router.navigate(['/sign-in']);
     }
-  }
 
-  ngOnInit() {
     this.school = localStorage.getItem('school');
     this.firstName = localStorage.getItem('firstName');
     this.lastName = localStorage.getItem('lastName');
     this.mobileNo = localStorage.getItem('mobileNo');
     this.emergency = localStorage.getItem('emergency');
     this.profile = localStorage.getItem('profile');
+  }
 
+  ngOnInit() {
     console.log('ngOnInit triggered in tab11');
     // this.ionViewDidEnter();
     this.router.events.subscribe((event) => {
@@ -76,16 +76,16 @@ export class Tab4Page implements OnInit {
   //   this.lastName = localStorage.getItem('lastName');
   //   this.mobileNo = localStorage.getItem('mobileNo');
   //   this.emergency = localStorage.getItem('emergency');
-  //   this.username = localStorage.getItem('username');
-  //   console.log(this.username);
+  //   this.email = localStorage.getItem('email');
+  //   console.log(this.email);
   //   this.profile = localStorage.getItem('profile');
   // }
 
   getProfileData() {
-    this.username = localStorage.getItem('username');
-    console.log(this.username);
+    this.email = localStorage.getItem('email');
+    console.log(this.email);
     this.http
-      .get(`${this.apiUrl}/Signup/${this.username}`)
+      .get(`${this.apiUrl}/user/profile/${this.email}`)
       .subscribe((data: any) => {
         console.log(data);
         this.school = data.school;

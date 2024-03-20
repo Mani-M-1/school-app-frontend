@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
 export class Tab9Page implements OnInit {
   private apiUrl: string = environment.apiUrl;
 
+  schoolId: any; // school name of "principal" who loged in
+
   students: any[];
   allStudents: any[]; // A copy of the original students array
   searchText: string = '';
@@ -23,7 +25,9 @@ export class Tab9Page implements OnInit {
     private navctrl: NavController,
     private http: HttpClient,
     private router: Router
-  ) {}
+  ) {
+    this.schoolId = localStorage.getItem('schoolId');
+  }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -36,15 +40,18 @@ export class Tab9Page implements OnInit {
 
   //duplecate function
   getStudents() {
-    this.http.get<any[]>(`${this.apiUrl}/addingStudents/student`).subscribe(
-      (response) => {
-        this.students = response;
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    console.log(`${this.apiUrl}/user/same-school/${this.schoolId}/student`);
+    this.http
+      .get<any[]>(`${this.apiUrl}/user/same-school/${this.schoolId}/student`)
+      .subscribe(
+        (response) => {
+          this.students = response;
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   // Custom filter function to filter students based on the searchText
@@ -52,11 +59,12 @@ export class Tab9Page implements OnInit {
     if (this.searchText.trim() !== '') {
       // This condition checks if the search bar is not empty.
       // trim() function is used to remove leading and trailing spaces
-
       // If the search bar is not empty (searchText has some content), perform the search
       // Make an HTTP GET request to the search API endpoint with the search text as a parameter
       this.http
-        .get<any[]>(`${this.apiUrl}/addingStudents/search/${this.searchText}`)
+        .get<any[]>(
+          `${this.apiUrl}/user/student/search/${this.searchText}/${this.schoolId}`
+        )
         .subscribe(
           (response) => {
             // Handle the successful response from the API

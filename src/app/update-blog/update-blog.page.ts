@@ -37,7 +37,7 @@ export class UpdateBlogPage implements OnInit {
   simulateUploadProcess: any;
   uploadSuccessful: boolean;
   uploadedFileUrl: any;
-  username: string | null;
+  email: string | null;
 
   constructor(
     private http: HttpClient,
@@ -49,6 +49,9 @@ export class UpdateBlogPage implements OnInit {
       //Retriving the week id from the URL parameters
       console.log(params);
       this.selectedblogId = params['_id'];
+      this.title = params['title'];
+      this.content = params['content'];
+      this.Name = params['Name'];
       console.log(this.selectedblogId);
     });
     console.log('data');
@@ -58,8 +61,8 @@ export class UpdateBlogPage implements OnInit {
 
     if (login_state == 'true') {
       console.log('log in is succesful');
-      this.username = localStorage.getItem('username');
-      console.log(this.username);
+      this.email = localStorage.getItem('email');
+      console.log(this.email);
     } else {
       this.router.navigate(['/sign-in']);
     }

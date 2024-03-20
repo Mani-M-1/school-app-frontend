@@ -6,16 +6,16 @@ ion-title {
   padding-right: 10vh;
   font-size: medium;
 }
-ion-avatar {
-  outline: auto;
-  width: 10rem;
-  height: 10rem;
-  //margin-top: 5rem;
-  position: absolute;
-  left: 28%;
-  //  top: 2%;
-  transform: translate(-50%, -50%, -80%, -80%);
-}
+// ion-avatar {
+//   // outline: auto;
+//   width: 10rem;
+//   height: 10rem;
+//   // //margin-top: 5rem;
+//   // position: absolute;
+//   // left: 28%;
+//   // //  top: 2%;
+//   // transform: translate(-50%, -50%, -80%, -80%);
+// }
 .school {
   padding-top: 10vh;
   padding-left: 1vh;
@@ -58,17 +58,20 @@ ion-avatar {
   // transform: translate(-50%, -50%, -80%, -80%);
   // padding-right: 1px;
 }
-.avatar-container {
-  margin-top: 50px;
-  position: relative;
-  display: inline-block;
-}
+// .avatar-container {
+// margin-top: 50px;
+// left: 40%;
+// position: relative;
+// display: inline-block;
+// }
 
 .camera-button {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
-  transform: translate(50%, 50%);
+  bottom: -4%;
+  right: -4%;
+  border: 2px solid rgb(202, 202, 202);
+  border-radius: 50%;
+  // transform: translate(50%, 50%);
 }
 
 .camera-icon {
@@ -84,19 +87,34 @@ p {
 }
 
 // styles added by "manikanta"
-.edit-profile-page__save-pic-btn {
-  position: fixed;
-  right: 10px;
-  top: 60px;
-  border: 2px solid grey;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+// .edit-profile-page__save-pic-btn {
+//   position: fixed;
+//   right: 10px;
+//   top: 60px;
+//   border: 2px solid grey;
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .edit-profile-page__save-pic-btn:hover {
+//   background-color: rgb(78, 78, 78);
+// }
+
+.edit-profile-page__profile-wrapper {
+  // background-color: red;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 30%;
 }
 
-.edit-profile-page__save-pic-btn:hover {
-  background-color: rgb(78, 78, 78);
+ion-avatar {
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+  border: 2px solid rgb(255, 255, 255);
 }

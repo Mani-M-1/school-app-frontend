@@ -17,13 +17,16 @@ export class AddStudentPage implements OnInit {
 
   firstName: any;
   lastName: any;
-  selectedYear: string;
-  selectedGroup: string;
-  selectedGender: string;
+  yearOfStudy: string;
+  group: string;
+  gender: string;
   email: any;
   password: any;
-  mobileNumber: any;
+  mobileNo: any;
   address: any;
+
+  schoolId: any;
+  school: any;
 
   defaultImageUrl: string =
     'https://i.pinimg.com/736x/b4/bb/ec/b4bbecdfa52f0c32f9d3dddca2d8e088--college-tips-college-student-discounts.jpg'; // Replace with your default image URL
@@ -33,7 +36,10 @@ export class AddStudentPage implements OnInit {
     private router: ActivatedRoute,
     private http: HttpClient,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    this.schoolId = localStorage.getItem('schoolId'); // schoolId of "professor"
+    this.school = localStorage.getItem('school'); // school of "professor"
+  }
 
   ngOnInit() {
     this.createForm();
@@ -43,19 +49,16 @@ export class AddStudentPage implements OnInit {
     this.studentForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      selectedGender: ['', Validators.required],
-      selectedYear: ['', Validators.required],
-      selectedGroup: ['', Validators.required],
+      gender: ['', Validators.required],
+      yearOfStudy: ['', Validators.required],
+      group: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      mobileNumber: [
-        '',
-        [Validators.required, Validators.pattern(/^[0-9]{10}$/)],
-      ],
+      mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       address: ['', Validators.required], // Address field
-      schoolname: ['', Validators.required],
-      schoolcode: ['', Validators.required],
-      images: [''], // Initialize images as an empty string
+      // school: ['', Validators.required],
+      // schoolId: ['', Validators.required],
+      profile: [''], // Initialize images as an empty string
     });
   }
 
@@ -66,19 +69,20 @@ export class AddStudentPage implements OnInit {
       const body = {
         firstName: formValue.firstName,
         lastName: formValue.lastName,
-        gender: formValue.selectedGender,
-        yearOfStudy: formValue.selectedYear,
-        group: formValue.selectedGroup,
+        gender: formValue.gender,
+        yearOfStudy: formValue.yearOfStudy,
+        group: formValue.group,
         email: formValue.email,
         password: formValue.password,
-        mobileNumber: formValue.mobileNumber,
+        mobileNo: formValue.mobileNo,
         address: formValue.address,
-        schoolname: formValue.schoolname,
-        schoolcode: formValue.schoolcode,
-        images: formValue.images || this.defaultImageUrl, // for default image url
+        school: this.school,
+        schoolId: this.schoolId,
+        role: 'student',
+        profile: formValue.profile || this.defaultImageUrl, // for default image url
       };
       // Make the POST request to the API endpoint
-      this.http.post(`${this.apiUrl}/addingStudents/student`, body).subscribe(
+      this.http.post(`${this.apiUrl}/user/signup`, body).subscribe(
         (response) => {
           console.log(response);
           // extract email and password from the response
@@ -90,7 +94,6 @@ export class AddStudentPage implements OnInit {
           // call the sendEmail functon to send email with credentials
           this.sendEmail(
             data.createdStudent.email,
-            'your credencials',
             data.createdStudent.password
           );
           this.route.navigate(['/tabs/tab9']);
@@ -105,18 +108,14 @@ export class AddStudentPage implements OnInit {
 
   // this called function with variables
   // this function is used for sending emails
-  sendEmail(toEmail: any, subject: any, text: any) {
+  sendEmail(email: any, password: any) {
     console.log('thisfunctions is triggaring');
 
     // Prepare the request body for sending an email
-    const body = {
-      toEmail: toEmail,
-      subject: subject,
-      text: text,
-    };
+    const body = { email, password };
     // Send a POST request to send an email
     this.http
-      .post(`${this.apiUrl}/addingProfessors/send-email`, body)
+      .post(`${this.apiUrl}/user/send-email`, body)
       .subscribe((response) => {
         console.log(response);
       });

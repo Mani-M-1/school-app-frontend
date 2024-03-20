@@ -38,7 +38,7 @@ export class CreateblogPage implements OnInit {
   content: any;
   Name: any;
   images: any;
-  username: any;
+  email: any;
 
   private image: File; // this is for file type for storing iamge event
 
@@ -48,6 +48,8 @@ export class CreateblogPage implements OnInit {
   simulateUploadProcess: any;
   uploadSuccessful: boolean;
   uploadedFileUrl: any;
+
+  schoolId: any;
 
   constructor(
     private http: HttpClient,
@@ -62,8 +64,9 @@ export class CreateblogPage implements OnInit {
 
     if (login_state == 'true') {
       console.log('log in is succesful');
-      this.username = localStorage.getItem('username');
-      console.log(this.username);
+      this.email = localStorage.getItem('email');
+      this.schoolId = localStorage.getItem('schoolId');
+      console.log(this.email);
     } else {
       this.router.navigate(['/sign-in']);
     }
@@ -189,10 +192,11 @@ export class CreateblogPage implements OnInit {
         content: formValue.content,
         Name: formValue.professorName,
         images: this.imageUrl,
-        username: this.username, // Include the username in the request body
+        email: this.email, // Include the email in the request body
+        schoolId: this.schoolId,
       };
 
-      console.log(this.username);
+      console.log(this.email);
 
       this.http.post(`${this.apiUrl}/blog`, bodydata).subscribe((response) => {
         console.log(response);

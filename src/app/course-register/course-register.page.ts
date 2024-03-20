@@ -15,11 +15,13 @@ export class CourseRegisterPage implements OnInit {
 
   studentId: string = '';
   studentFirstName: string = '';
-  username: any;
+  email: any;
   // searchStudent: string = '';
   selectedCourses: string[] = []; // this array is used to store the selected courses
   courses: any[]; // available courses from "weeklyCourses"
   enrolledCoursesArr: any[];
+
+  schoolId: any;
 
   constructor(
     private navctrl: NavController,
@@ -30,9 +32,11 @@ export class CourseRegisterPage implements OnInit {
     this.route.params.subscribe((params) => {
       this.studentId = params['studentId'];
       this.studentFirstName = params['studentFirstName'];
-      this.username = params['username'];
+      this.email = params['email'];
       console.log(this.studentFirstName);
     });
+
+    this.schoolId = localStorage.getItem('schoolId');
   }
 
   onSearchStudentChange(event: any) {
@@ -43,7 +47,7 @@ export class CourseRegisterPage implements OnInit {
   getEnrolledCourses() {
     this.http
       .get<any>(
-        `${this.apiUrl}/enrollCourse/user-profile-details/${this.username}`
+        `${this.apiUrl}/enrollCourse/user-profile-details/${this.email}`
       )
       .subscribe(
         (response) => {
@@ -71,18 +75,20 @@ export class CourseRegisterPage implements OnInit {
   }
 
   getCourses() {
-    this.http.get<any[]>(`${this.apiUrl}/weeklyCourse`).subscribe(
-      (response) => {
-        this.courses = response;
-        console.log(response);
+    this.http
+      .get<any[]>(`${this.apiUrl}/weeklyCourse/${this.schoolId}`)
+      .subscribe(
+        (response) => {
+          this.courses = response;
+          console.log(response);
 
-        // this function is called to get the courses of particular student
-        this.getEnrolledCourses();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+          // this function is called to get the courses of particular student
+          this.getEnrolledCourses();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   ngOnInit() {

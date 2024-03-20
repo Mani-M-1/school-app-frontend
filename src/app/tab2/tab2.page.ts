@@ -17,6 +17,8 @@ export class Tab2Page implements OnInit {
   blogs: any[] = [];
   content: any;
 
+  schoolId: any;
+
   constructor(
     private http: HttpClient,
     private arouter: ActivatedRoute,
@@ -24,6 +26,8 @@ export class Tab2Page implements OnInit {
   ) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
+
+    this.schoolId = localStorage.getItem('schoolId');
 
     if (login_state == 'true') {
       console.log('log in is succesful');
@@ -36,10 +40,12 @@ export class Tab2Page implements OnInit {
     this.blogcontent();
   }
   blogcontent() {
-    this.http.get(`${this.apiUrl}/blog`).subscribe((data: any) => {
-      console.log(data);
-      this.blogs = data.posts;
-    });
+    this.http
+      .get(`${this.apiUrl}/blog/school/${this.schoolId}`)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.blogs = data.posts;
+      });
     //  this.content = localStorage.getItem('createblog');
     // let a = JSON.parse(this.content)
     // this.blogs.push(a)

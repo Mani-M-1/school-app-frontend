@@ -72,14 +72,14 @@ export class SignUpPage implements OnInit {
       firstName: this.firstName,
       lastName: this.lastName,
       mobileNo: this.phone,
-      username: this.email,
+      email: this.email,
       school: this.school,
       role: this.role,
       emergency: this.emergency,
       password: this.password,
     };
 
-    this.http.post(`${this.apiUrl}/Signup`, postdata).subscribe(
+    this.http.post(`${this.apiUrl}/user/signup`, postdata).subscribe(
       (response) => {
         console.log(response);
         // Assuming successful signup

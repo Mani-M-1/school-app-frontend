@@ -44,7 +44,6 @@ export class StudentProfilePage implements OnInit {
   address: any;
   updatedStudent: any;
   selectedFileUrl: any;
-  username: string;
 
   // editedStudent: any;
   // originalStudent: {};
@@ -88,13 +87,42 @@ export class StudentProfilePage implements OnInit {
     private toastController: ToastController
   ) {}
 
-  getStudentProfileDetails(username: string) {
+  // getStudentProfileDetails(email: string) {
+  //   this.http
+  //     .get<any>(`${this.apiUrl}/enrollCourse/user-profile-details/${email}`)
+  //     .subscribe(
+  //       (response) => {
+  //         this.studentProfileId = response.userProfile._id;
+  //         const enrolledCoursesArr = response.userProfile.enrolledCourses;
+
+  //         // filtering "currentCourses"
+  //         this.currentCourseArr = enrolledCoursesArr.filter(
+  //           (eachItem: any) => eachItem.isCompleted === false
+  //         );
+
+  //         // filtering "completedCourses"
+  //         this.completedCourseArr = enrolledCoursesArr.filter(
+  //           (eachItem: any) => eachItem.isCompleted === true
+  //         );
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
+
+  getStudent() {
+    this.route.params.subscribe((params) => {
+      this.studentId = params['id']; // Assuming the parameter is named 'id'
+    });
     this.http
-      .get<any>(`${this.apiUrl}/enrollCourse/user-profile-details/${username}`)
+      .get<any>(`${this.apiUrl}/user/details/${this.studentId}`)
       .subscribe(
         (response) => {
-          this.studentProfileId = response.userProfile._id;
-          const enrolledCoursesArr = response.userProfile.enrolledCourses;
+          this.student = response;
+          console.log(this.student);
+
+          const enrolledCoursesArr = response.enrolledCourses;
 
           // filtering "currentCourses"
           this.currentCourseArr = enrolledCoursesArr.filter(
@@ -105,29 +133,10 @@ export class StudentProfilePage implements OnInit {
           this.completedCourseArr = enrolledCoursesArr.filter(
             (eachItem: any) => eachItem.isCompleted === true
           );
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
 
-  getStudent() {
-    this.route.params.subscribe((params) => {
-      this.studentId = params['id']; // Assuming the parameter is named 'id'
-    });
-    this.http
-      .get<StudentResponse>(
-        `${this.apiUrl}/addingStudents/student/${this.studentId}`
-      )
-      .subscribe(
-        (response) => {
-          this.student = response;
-          console.log(this.student);
-
-          // passing the email which is used as "username" for profile
-          this.getStudentProfileDetails(response.email);
-          // console.log(this.usernameForCourses);
+          // passing the email which is used as "email" for profile
+          // this.getStudentProfileDetails(response.email);
+          // console.log(this.emailForCourses);
         },
         (error) => {
           console.log(error);
@@ -148,7 +157,7 @@ export class StudentProfilePage implements OnInit {
     // now get the document id this student
     let doc_id = studentData._id;
     this.http
-      .delete(`${this.apiUrl}/addingStudents/student/${doc_id}`)
+      .delete(`${this.apiUrl}/user/profile/${doc_id}`)
       .subscribe((data) => {
         console.log(data);
 
@@ -164,14 +173,14 @@ export class StudentProfilePage implements OnInit {
   // this.router.navigate(['/update-student-profile'], navigationExtras);
 
   // Function to handle the "Forgot Password" button click
-  forgotPassword(studentPassword: any) {
-    console.log(studentPassword[0]);
-    // Navigate to the forgot password page
-    this.router.navigate(['/forgot-password', studentPassword[0]]);
-  }
+  // forgotPassword(studentPassword: any) {
+  //   console.log(studentPassword[0]);
+  //   // Navigate to the forgot password page
+  //   this.router.navigate(['/forgot-password', studentPassword[0]]);
+  // }
 
   toggleEditMode(student: any) {
-    this.isEditing = true;
+    this.isEditing = !this.isEditing;
     this.editedStudent = { ...this.updatedStudent }; // Clone the student data for editing
     this.originalStudent = { ...this.updatedStudent }; // Store the original student data
   }
@@ -186,7 +195,7 @@ export class StudentProfilePage implements OnInit {
     // Save the edited data to the server
     this.http
       .put<any>(
-        `${this.apiUrl}/addingStudents/student/${this.studentId}`,
+        `${this.apiUrl}/user/profile/${this.studentId}`,
         this.editedStudent
       )
       .subscribe(
@@ -227,7 +236,7 @@ export class StudentProfilePage implements OnInit {
     formData.append('filename', this.selectedFile);
 
     this.http
-      .post<any>(`${this.apiUrl}/addingStudents/uploadfiles`, formData)
+      .post<any>(`${this.apiUrl}/user/profile/uploadfiles`, formData)
       .subscribe(
         async (response) => {
           console.log(response);
@@ -263,15 +272,16 @@ export class StudentProfilePage implements OnInit {
 
   //duplicate function for uploading image
   updateProfileImage(imagepath: any, profileId: any) {
+    console.log(imagepath, profileId);
     const data = {
-      images: imagepath,
+      profile: imagepath,
       //  updatedStudent: this.updatedStudent._id
     };
     // console.log(profileId._id);
     // Make the PUT request to the API endpoint
     console.log(data);
     this.http
-      .put<any>(`${this.apiUrl}/addingStudents/student/${profileId}`, data)
+      .put<any>(`${this.apiUrl}/user/profile/update/${profileId}`, data)
       .subscribe(
         (response) => {
           console.log(response);
@@ -301,7 +311,7 @@ export class StudentProfilePage implements OnInit {
 
       // Make an API call to updatwew the status on server
       this.http
-        .post(`${this.apiUrl}/addingStudents/block/${this.studentId}`, {})
+        .post(`${this.apiUrl}/user/block/${this.studentId}`, {})
         .subscribe(
           (response) => {
             console.log(response);
@@ -325,7 +335,7 @@ export class StudentProfilePage implements OnInit {
 
       //Make an API call to update the server
       this.http
-        .post(`${this.apiUrl}/addingStudents/unblock/${this.studentId}`, {})
+        .post(`${this.apiUrl}/user/unblock/${this.studentId}`, {})
         .subscribe(
           (response) => {
             console.log(response);
@@ -345,7 +355,7 @@ export class StudentProfilePage implements OnInit {
   handleOnclickEnrollCourse(student: any) {
     this.router.navigate([
       '/course-register',
-      this.studentProfileId,
+      student._id,
       student.firstName,
       student.email,
     ]);

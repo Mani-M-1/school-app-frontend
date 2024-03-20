@@ -13,13 +13,19 @@
       ></ion-input>
     </ion-item> -->
 
-    <ion-searchbar
+    <!-- <ion-searchbar
       (ionChange)="onSearchStudentChange($event)"
       class="course-regsiter-page__studentname-searchbar"
       placeholder="Enter Student Name"
       value="{{studentFirstName}}"
       disabled="true"
-    ></ion-searchbar>
+    ></ion-searchbar> -->
+    <ion-title
+      ><span style="font-size: 16px; color: rgb(227, 227, 227)"
+        >Student Name:</span
+      >
+      {{studentFirstName}}
+    </ion-title>
 
     <!-- <ion-input
       (ionChange)="onSearchStudentChange($event)"

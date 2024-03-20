@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import data from '../../assets/Course.json';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-course-content',
@@ -10,7 +11,11 @@ import data from '../../assets/Course.json';
   styleUrls: ['./course-content.page.scss'],
 })
 export class CourseContentPage implements OnInit {
+  private apiUrl: string = environment.apiUrl;
+
   Course: any[] = [];
+
+  email: any;
 
   constructor(
     private http: HttpClient,
@@ -19,6 +24,7 @@ export class CourseContentPage implements OnInit {
   ) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
+    this.email = localStorage.getItem('email');
 
     if (login_state == 'true') {
       console.log('log in is succesful');
@@ -26,11 +32,6 @@ export class CourseContentPage implements OnInit {
       this.router.navigate(['/sign-in']);
     }
 
-    this.http.get('assets/Course.json').subscribe((data: any) => {
-      console.log(data);
-      // this.Course = data;
-    });
-    //this.getCourseDetails();
     let a: any = localStorage.getItem('Coursedata');
     console.log(a);
     let b = JSON.parse(a);

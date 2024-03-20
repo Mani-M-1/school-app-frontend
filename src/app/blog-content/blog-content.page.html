@@ -114,13 +114,13 @@
             *ngFor="let comment of item.comments"
           >
             <div class="blog-content-page__comments-list-item-profile-img">
-              {{comment.username[0].toUpperCase()}}
+              {{comment.email[0].toUpperCase()}}
             </div>
             <div
-              class="blog-content-page__comments-list-item-username-and-comment-wrapper"
+              class="blog-content-page__comments-list-item-email-and-comment-wrapper"
             >
-              <span class="blog-content-page__comments-list-item-username">
-                {{comment.username}}
+              <span class="blog-content-page__comments-list-item-email">
+                {{comment.email}}
               </span>
               <span class="blog-content-page__comments-list-item-comment">
                 {{comment.comment}}

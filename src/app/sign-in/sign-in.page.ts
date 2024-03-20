@@ -23,13 +23,12 @@ export class SignInPage implements OnInit {
   email: any;
   password: any;
   role: any;
-  username: any;
   school: any;
   firstName: any;
   lastName: any;
   mobileNo: any;
   emergency: any;
-  loggedInUsername: any;
+  loggedInemail: any;
   profile: any;
 
   student: any;
@@ -52,16 +51,22 @@ export class SignInPage implements OnInit {
   ) {}
 
   platformFun(mobileNum: any) {
-    if (this.platform.is('mobile')) {
-      // this.platform.ready().then(() => {
-      //   console.log(
-      //     'Platform ready in mobile view and triggering this.OnSignalInit()'
-      //   );
-      //   this.OneSignalInit();
-      // });
-      console.log("this.platform.is('mobile') triggered");
-      this.OneSignalInit(mobileNum);
-    }
+    this.platform.ready().then(() => {
+      if (this.platform.is('mobile')) {
+        // this.platform.ready().then(() => {
+        //   console.log(
+        //     'Platform ready in mobile view and triggering this.OnSignalInit()'
+        //   );
+        //   this.OneSignalInit();
+        // });
+        console.log("this.platform.is('mobile') triggered");
+        this.OneSignalInit(mobileNum);
+      } else {
+        console.log(
+          'Platform is not mobile. OneSignal initialization skipped.'
+        );
+      }
+    });
   }
 
   // will be implemented version 2 of applicaton development
@@ -95,16 +100,16 @@ export class SignInPage implements OnInit {
     });
 
     // Handle notification received event
-    document.addEventListener('notificationReceived', (event: any) => {
-      // Handle notification received event
-      // This event is triggered when a notification is received, even if the app is in the background
-      const notification = event.data.notification;
+    // document.addEventListener('notificationReceived', (event: any) => {
+    //   // Handle notification received event
+    //   // This event is triggered when a notification is received, even if the app is in the background
+    //   const notification = event.data.notification;
 
-      console.log('notificationReceived triggered');
+    //   console.log('notificationReceived triggered');
 
-      // Store notification locally
-      storeNotification(notification);
-    });
+    //   // Store notification locally
+    //   // storeNotification(notification);
+    // });
 
     // 'works on onesignal-cordova-plugin version: ^3.3.1';
     // Prompts the user for notification permissions.
@@ -144,14 +149,14 @@ export class SignInPage implements OnInit {
 
     //From here we will post data the data base
     const postdata = {
-      username: this.email,
+      email: this.email,
       password: this.password,
       // "role": this.role
     };
     console.log(postdata);
 
     //here we are hitting to the data base link
-    this.http.post(`${this.apiUrl}/Signup/login`, postdata).subscribe(
+    this.http.post(`${this.apiUrl}/user/login`, postdata).subscribe(
       (response: any) => {
         console.log(response);
 
@@ -159,13 +164,14 @@ export class SignInPage implements OnInit {
         //here you setItem for local storage and you call
         //that data with get item where ever you want
         // localStorage.setItem('userRole', response.role);
-        localStorage.setItem('username', response.username);
-        localStorage.setItem('school', response.school);
-        localStorage.setItem('firstName', response.firstName);
-        localStorage.setItem('lastName', response.lastName);
-        localStorage.setItem('mobileNo', response.mobileNo);
-        localStorage.setItem('emergency', response.emergency);
-        localStorage.setItem('profile', response.profile);
+        localStorage.setItem('email', response.userData.email);
+        localStorage.setItem('school', response.userData.school);
+        localStorage.setItem('schoolId', response.userData.schoolId);
+        localStorage.setItem('firstName', response.userData.firstName);
+        localStorage.setItem('lastName', response.userData.lastName);
+        localStorage.setItem('mobileNo', response.userData.mobileNo);
+        localStorage.setItem('emergency', response.userData.emergency);
+        localStorage.setItem('profile', response.userData.profile);
 
         //localStorage.setItem('school', response.school);
         // localStorage.setItem('firstName', response.firstName);
@@ -174,21 +180,21 @@ export class SignInPage implements OnInit {
 
         localStorage.setItem('isLoggedIn', 'true');
 
-        console.log(response.role);
-        console.log(response.school);
-        console.log(response.firstName);
-        console.log(response.lastName);
-        console.log(response.mobileNo);
-        console.log(response.emergency);
-        // console.log(response.profile);
+        console.log(response.userData.role);
+        console.log(response.userData.school);
+        console.log(response.userData.firstName);
+        console.log(response.userData.lastName);
+        console.log(response.userData.mobileNo);
+        console.log(response.userData.emergency);
+        console.log(response.userData.role);
 
         // invoking platform function to trigger onesignal
-        this.platformFun(response.mobileNo);
+        this.platformFun(response.userData.mobileNo);
 
-        this.roleService.setUserRole(response.role); // Set the user's role
+        this.roleService.setUserRole(response.userData.role); // Set the user's role
 
         // Redirect to the appropriate page based on the user role
-        switch (response.role as string) {
+        switch (response.userData.role as string) {
           case 'student':
             this.router.navigate(['/tabs/student-side-courses-page']);
             break;
@@ -224,19 +230,19 @@ export class SignInPage implements OnInit {
         //hangle the response from the server here
       },
       (error) => {
-        this.toastService.presentToast('incorrect username or password');
+        this.toastService.presentToast('incorrect email or password');
       }
     );
   }
 }
 
-function storeNotification(notification: any) {
-  // Implement your logic to store the notification locally
-  // For example, you can store it in local storage
-  console.log('storeNotifications function triggered');
-  let notifications: any[] = JSON.parse(
-    localStorage.getItem('notifications') || '[]'
-  );
-  notifications.push(notification);
-  localStorage.setItem('notifications', JSON.stringify(notifications));
-}
+// function storeNotification(notification: any) {
+//   // Implement your logic to store the notification locally
+//   // For example, you can store it in local storage
+//   console.log('storeNotifications function triggered');
+//   let notifications: any[] = JSON.parse(
+//     localStorage.getItem('notifications') || '[]'
+//   );
+//   notifications.push(notification);
+//   localStorage.setItem('notifications', JSON.stringify(notifications));
+// }
