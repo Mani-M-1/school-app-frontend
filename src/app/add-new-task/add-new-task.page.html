@@ -6,7 +6,7 @@
       slot="end"
       size="larger"
       class="ion-padding"
-      (click)="dismis()"
+      (click)="dismiss()"
     ></ion-icon>
   </ion-toolbar>
 </ion-header>
@@ -15,14 +15,14 @@
   <ion-card class="ion-align-self-center">
     <ion-item>
       <ion-textarea
-        [(ngModel)]="itemName"
+        [(ngModel)]="taskTitle"
         placeholder="Write task here"
       ></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label>Priority</ion-label>
-      <ion-select [(ngModel)]="itemPriority">
+      <ion-select [(ngModel)]="priority">
         <ion-select-option value="low">Low</ion-select-option>
         <ion-select-option value="middle">Middle</ion-select-option>
         <ion-select-option value="high" selected>High</ion-select-option>
@@ -33,7 +33,7 @@
       <ion-icon name="calendar-outline" slot="start"></ion-icon>
       <ion-label>Due Date </ion-label>
       <ion-datetime
-        [(ngModel)]="itemDueDate"
+        [(ngModel)]="dueDate"
         displayFormat="D MMM YYYY H:mm"
       ></ion-datetime>
     </ion-item>
@@ -41,7 +41,7 @@
     <ion-item>
       <ion-icon name="pricetag-outline" slot="start"></ion-icon>
       <ion-label> Category</ion-label>
-      <span>{{categorySelectedCategory}}</span>
+      <span>{{category}}</span>
     </ion-item>
 
     <ion-item>
@@ -49,7 +49,7 @@
         *ngFor="let tag of categories; let i = index"
         color="secondary"
         outline="true"
-        (click)="selectCategory(i)"
+        (click)="selectCategory($event, i)"
       >
         <ion-label color="secondary">{{tag}}</ion-label>
       </ion-chip>
@@ -62,7 +62,7 @@
       </ion-chip>
     </ion-item>
 
-    <ion-button class="ion-margin" expand="block" (click)="add()"
+    <ion-button class="ion-margin" expand="block" (click)="addTask()"
       >Add Task</ion-button
     >
   </ion-card>
