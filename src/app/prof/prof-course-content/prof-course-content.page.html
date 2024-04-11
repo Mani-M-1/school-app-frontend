@@ -1,6 +1,6 @@
 <ion-content *ngFor="let item of weeklyCourse" class="content-padding">
   <ion-header class="ion-no-border">
-    <ion-toolbar color="new">
+    <ion-toolbar>
       {{ item.CourseName }}
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/tabs/tab5" color=""></ion-back-button>
@@ -10,7 +10,7 @@
 
   <p>Add A Week for your Course</p>
   <ion-fab vertical="top" horizontal="end" class="addWeek" side="left">
-    <ion-fab-button color="new" size="small" (click)="addNewWeek(item)">
+    <ion-fab-button size="small" (click)="addNewWeek(item)">
       <ion-icon name="pencil-outline" size="small" color="gb"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -183,29 +183,16 @@
                   </div> -->
 
             <div class="buttons">
-              <ion-button
-                shape="round"
-                color="new"
-                class="update"
-                (click)="update(content)"
+              <ion-button shape="round" class="update" (click)="update(content)"
                 >update
-                <ion-icon
-                  name="create-outline"
-                  slot="start"
-                  color="success"
-                ></ion-icon>
+                <ion-icon name="create-outline" slot="start"></ion-icon>
               </ion-button>
               <ion-button
                 shape="round"
-                color="new"
                 class="del"
                 (click)="deleteWeek(content)"
                 >Delete
-                <ion-icon
-                  name="trash-outline"
-                  slot="start"
-                  color="red"
-                ></ion-icon>
+                <ion-icon name="trash-outline" slot="start"></ion-icon>
               </ion-button>
             </div>
             <!-- </ion-note> -->

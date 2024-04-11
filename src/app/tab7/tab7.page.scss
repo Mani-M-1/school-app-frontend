@@ -2,6 +2,10 @@
   height: 50px;
 }
 
+ion-toolbar {
+  --background: #ffaa01;
+}
+
 .coming-soon-text {
   height: calc(100vh - 50px);
   text-align: center;

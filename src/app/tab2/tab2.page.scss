@@ -95,8 +95,9 @@
 
 // styles added by "manikanta"
 .tab2-page__blogs-card {
-  border: 2px solid grey;
+  // border: 2px solid grey;
   border-radius: 10px;
+  background-color: #fff1de;
 }
 
 // ion-content {
@@ -126,4 +127,8 @@ ion-card-title {
 
 ion-item {
   color: rgb(163, 163, 163);
+}
+
+ion-toolbar {
+  --background: #ffaa01;
 }

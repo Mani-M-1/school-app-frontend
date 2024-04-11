@@ -27,6 +27,7 @@ export class AddProfessorPage implements OnInit {
   email: string;
   password: string;
   mobileNo: string;
+  emergency: string;
   address: string;
 
   schoolId: any;
@@ -55,6 +56,7 @@ export class AddProfessorPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      emergency: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       profile: [''], // Initialize profile as an empty string
       address: ['', Validators.required], // Address field
 
@@ -78,6 +80,7 @@ export class AddProfessorPage implements OnInit {
         email: formValue.email,
         password: formValue.password,
         mobileNo: formValue.mobileNo,
+        emergency: formValue.emergency,
         address: formValue.address,
         school: this.school,
         schoolId: this.schoolId,
@@ -91,14 +94,11 @@ export class AddProfessorPage implements OnInit {
           // extract email and password from the response
           // email,password
           let data: any = response;
-          console.log(data.createdProfessor.email);
-          console.log(data.createdProfessor.password);
+          console.log(data.createdUser.email);
+          console.log(data.createdUser.password);
 
           // call the sendEmail functon to send email with credentials
-          this.sendEmail(
-            data.createdProfessor.email,
-            data.createdProfessor.password
-          );
+          this.sendEmail(data.createdUser.email, data.createdUser.password);
 
           // Navigate to a specific route after successful submission
           this.navCtrl.navigateRoot(['/tabs/tab10']);

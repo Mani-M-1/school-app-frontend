@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="new">
+  <ion-toolbar>
     <ion-title>Blog Content</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
@@ -28,14 +28,14 @@
         <ion-card-content color="light" class="ion-card-content">
           <ion-img src="{{item.images}}" /><br /><br />
           <!-- <ion-item color="primary">{{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}</ion-item> Display the date and time -->
-          <div>
-            <p style="text-align: justify">{{ item.content }}</p>
-          </div>
+          <!-- <div> -->
+          <p style="text-align: justify">{{ item.content }}</p>
+          <!-- </div> -->
           <!-- <ion-item class="a"> {{ item.timestamp | date: 'yyyy-MM-dd' }} {{ item.timestamp | date: 'hh:mm a' }}<br></ion-item> -->
           <!-- <ion-item>{{ item.Name }}</ion-item> -->
 
           <ion-item class="writer">{{ item.Name }}</ion-item>
-          <div class="line"></div>
+          <!-- <div class="line"></div> -->
           <div class="icons">
             <!-- <ion-icon
               name="thumbs-up-outline"
@@ -68,16 +68,20 @@
             {{ item.likedBy.length }}
             <!-- Like -->
 
-            <div class="icon-space"></div>
+            <!-- <div class="icon-space"></div> -->
 
-            <ion-button color="translucent" (click)="toggleCommentSection()">
+            <ion-button
+              fill="dark"
+              color="translucent"
+              (click)="toggleCommentSection()"
+            >
               <ion-icon
                 name="chatbox-outline"
                 slot="start"
-                class="icon"
                 expand="full"
-              ></ion-icon
-              >Comment
+                color="dark"
+              ></ion-icon>
+              Comment
             </ion-button>
 
             <div class="space"></div>
@@ -102,6 +106,7 @@
           <ion-textarea
             [(ngModel)]="commentText"
             placeholder="Enter your comment"
+            color="dark"
           ></ion-textarea>
           <ion-button (click)="postComment()" expand="full" color="new"
             >Post Comment</ion-button
@@ -113,14 +118,18 @@
             class="blog-content-page__comments-list-item"
             *ngFor="let comment of item.comments"
           >
-            <div class="blog-content-page__comments-list-item-profile-img">
+            <!-- <div class="blog-content-page__comments-list-item-profile-img">
               {{comment.email[0].toUpperCase()}}
-            </div>
+            </div> -->
+            <img
+              class="blog-content-page__comments-list-item-profile-img"
+              src="{{profileImg}}"
+            />
             <div
               class="blog-content-page__comments-list-item-email-and-comment-wrapper"
             >
               <span class="blog-content-page__comments-list-item-email">
-                {{comment.email}}
+                {{comment.firstName}}
               </span>
               <span class="blog-content-page__comments-list-item-comment">
                 {{comment.comment}}

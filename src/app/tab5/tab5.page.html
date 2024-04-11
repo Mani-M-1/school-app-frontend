@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <ion-header class="ion-no-border">
-    <ion-toolbar color="new" class="ion-header">
+    <ion-toolbar class="ion-header">
       <app-greeting></app-greeting>
 
       <!-- <ion-fab vertical="top" horizontal="end" side="right">
@@ -160,11 +160,13 @@
             </ion-button>
           </ion-item>
 
-          <ion-item class="save-btn-item">
-            <ion-button color="primary" (click)="saveChanges()">
+          <!-- <ion-item color="translucent"> -->
+          <div class="tab5-page__save-btn-wrapper">
+            <ion-button class="tab5-page__save-btn" (click)="saveChanges()">
               Save
             </ion-button>
-          </ion-item>
+          </div>
+          <!-- </ion-item> -->
         </ion-card-content>
       </div>
     </dialog>

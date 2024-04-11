@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/forgot-password"
+        color="dark"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Confirm OTP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content [fullscreen]="true"> -->
+<ion-grid class="otp-page__otp-content-wrapper">
+  <ion-row class="ion-justify-content-center">
+    <ion-col mode="ios" size-xs="11" size="14" size-md="8" size-lg="4">
+      <ion-img src="../../assets/otp-verify-vector-img.jpg"></ion-img>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col>
+      <ion-title style="font-size: 18px; margin-bottom: 20px">
+        Enter OTP sent to your email
+      </ion-title>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col mode="ios" size-xs="2" size="1.5" size-md="1" size-lg="1">
+      <ion-input
+        [(ngModel)]="otp[0]"
+        #Field1
+        (keyup)="startFunction($event, Field2)"
+        fill="outline"
+        maxlength="1"
+        minlength="1"
+        mode="md"
+        type="text"
+        class="forgot-pass-page__otp-inputs"
+      >
+      </ion-input>
+    </ion-col>
+    <ion-col mode="ios" size-xs="2" size="1.5" size-md="1" size-lg="1">
+      <ion-input
+        [(ngModel)]="otp[1]"
+        #Field2
+        (keyup)="gotoNextField($event, Field3, Field1)"
+        fill="outline"
+        maxlength="1"
+        minlength="1"
+        mode="md"
+        type="text"
+        class="forgot-pass-page__otp-inputs"
+      >
+      </ion-input>
+    </ion-col>
+    <ion-col mode="ios" size-xs="2" size="1.5" size-md="1" size-lg="1">
+      <ion-input
+        [(ngModel)]="otp[2]"
+        #Field3
+        (keyup)="gotoNextField($event, Field4, Field2)"
+        fill="outline"
+        maxlength="1"
+        minlength="1"
+        mode="md"
+        type="text"
+        class="forgot-pass-page__otp-inputs"
+      >
+      </ion-input>
+    </ion-col>
+    <ion-col mode="ios" size-xs="2" size="1.5" size-md="1" size-lg="1">
+      <ion-input
+        [(ngModel)]="otp[3]"
+        #Field4
+        (keyup)="finishFunction($event, Field3)"
+        fill="outline"
+        maxlength="1"
+        minlength="1"
+        mode="md"
+        type="text"
+        class="forgot-pass-page__otp-inputs"
+      >
+      </ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col>
+      <ion-label *ngIf="otpErr">Enter OTP correctly!</ion-label>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col>
+      <ion-button
+        class="otp-page__submit-btn"
+        (click)="handleOnclickSubmitBtn()"
+      >
+        Submit
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col>
+      Didn't receive OTP?
+      <button
+        *ngIf="!resendOtp && seconds > 0"
+        class="otp-page__resend-btn-disabled"
+      >
+        Resend in 00:{{seconds < 10 ? '0' + seconds : seconds}}
+      </button>
+      <button
+        *ngIf="seconds <= 0"
+        class="otp-page__resend-btn"
+        (click)="handleOnclickResendBtn()"
+      >
+        Resend
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<!-- </ion-content> -->

@@ -65,11 +65,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../tab11/tab11.module').then((m) => m.Tab11PageModule),
       },
-      {
-        path: '',
-        redirectTo: '/tabs/student-side-courses-page',
-        pathMatch: 'full',
-      },
+      // {
+      //   path: '',
+      //   redirectTo: '/tabs/student-side-courses-page',
+      //   pathMatch: 'full',
+      // },
     ],
   },
   {

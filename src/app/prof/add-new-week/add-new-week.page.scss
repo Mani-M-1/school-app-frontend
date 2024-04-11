@@ -1,40 +1,47 @@
-ion-card-content{
-    padding: 20px;
+ion-card-content {
+  padding: 20px;
 }
 ion-item {
-    padding-top: 2vh;
-    // padding-bottom: 1vh;
-    --padding-start: 10px; /* Adjust padding as needed */
-    --padding-end: 10px; /* Adjust padding as needed */
-    --border-radius: 40px; /* Adjust border radius as needed */
-    --background: #f5f5f5; /* Adjust background color as needed */
-    --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15); /* Add a subtle box shadow */
-  }
-  
-  ion-input {
-    border: none;
-    --padding-start: 0;
-    --padding-end: 0;
-    color: rgb(64, 64, 64);
+  padding-top: 2vh;
+  // padding-bottom: 1vh;
+  --padding-start: 10px; /* Adjust padding as needed */
+  --padding-end: 10px; /* Adjust padding as needed */
+  --border-radius: 40px; /* Adjust border radius as needed */
+  --background: #fff1de; /* Adjust background color as needed */
+  --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15); /* Add a subtle box shadow */
+}
 
-  }
+ion-input {
+  border: none;
+  --padding-start: 0;
+  --padding-end: 0;
+  color: rgb(64, 64, 64);
+}
 
-  ion-select{
-    color:  rgb(64, 64, 64);
-  }
+ion-select {
+  color: rgb(64, 64, 64);
+}
 
-  .icon-spacing {
-    margin-right: 15px; /* Adjust the value as per your preference */
-  }
-  
-  .input-spacing {
-    margin-left: 10px; /* Adjust the value as per your preference */
-  }
+.icon-spacing {
+  margin-right: 15px; /* Adjust the value as per your preference */
+}
 
-  .icon-align{
-    margin-right: 15px;
-    margin-top: 17px;
-  }
-  ion-toolbar{
-    border-radius: 0 0 10px 10px;
-  }
+.input-spacing {
+  margin-left: 10px; /* Adjust the value as per your preference */
+}
+
+.icon-align {
+  margin-right: 15px;
+  margin-top: 17px;
+}
+ion-toolbar {
+  border-radius: 0 0 10px 10px;
+  --background: #ffaa01;
+}
+
+// styles added by "manikanta"
+.add-new-week-page__create-weekly-course-btn {
+  --background: #ffaa01;
+  margin-top: 20px;
+  height: 45px;
+}

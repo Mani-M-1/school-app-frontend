@@ -23,6 +23,7 @@ export class AddStudentPage implements OnInit {
   email: any;
   password: any;
   mobileNo: any;
+  emergency: any;
   address: any;
 
   schoolId: any;
@@ -55,6 +56,7 @@ export class AddStudentPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      emergency: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       address: ['', Validators.required], // Address field
       // school: ['', Validators.required],
       // schoolId: ['', Validators.required],
@@ -75,6 +77,7 @@ export class AddStudentPage implements OnInit {
         email: formValue.email,
         password: formValue.password,
         mobileNo: formValue.mobileNo,
+        emergency: formValue.emergency,
         address: formValue.address,
         school: this.school,
         schoolId: this.schoolId,
@@ -88,14 +91,11 @@ export class AddStudentPage implements OnInit {
           // extract email and password from the response
           // email,password
           let data: any = response;
-          console.log(data.createdStudent.email);
-          console.log(data.createdStudent.password);
+          console.log(data.createdUser.email);
+          console.log(data.createdUser.password);
 
           // call the sendEmail functon to send email with credentials
-          this.sendEmail(
-            data.createdStudent.email,
-            data.createdStudent.password
-          );
+          this.sendEmail(data.createdUser.email, data.createdUser.password);
           this.route.navigate(['/tabs/tab9']);
         },
         (error) => {

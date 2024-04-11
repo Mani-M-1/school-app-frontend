@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="primary" class="ion-header">
+  <ion-toolbar class="ion-header">
     <ion-title color="light">Employees</ion-title>
   </ion-toolbar>
   <ion-searchbar
@@ -36,12 +36,14 @@
             <img class="tab10-professor-image" src="{{professor.profile}}" />
             <!-- <div class="image">
             </div> -->
-            <h5 class="tab10-professor-name" textWrap="true">
+            <ion-title class="tab10-professor-name" textWrap="true">
               {{ professor.firstName }} {{ professor.lastName }}
-            </h5>
+            </ion-title>
             <!-- <ion-card-title class="s">{{ professor.lastName }}</ion-card-title> -->
             <!-- <ion-item>{{ professor.gender }}</ion-item> -->
-            <p class="tab10-professor-name">{{ professor.subjects }}</p>
+            <ion-label class="tab10-professor-subjects"
+              >{{ professor.subjects }}</ion-label
+            >
             <!-- <ion-item>{{ professor.email }}</ion-item> -->
             <!-- <ion-item>{{ professor.mobileNumber }}</ion-item> -->
           </ion-card>

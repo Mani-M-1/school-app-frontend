@@ -1,0 +1,76 @@
+ion-toolbar {
+  --background: #ffaa01;
+}
+
+ion-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgot-pass-page__otp-inputs {
+  --border-radius: 10px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+// .otp-page__otp-content-wrapper {
+//   background-color: red;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+/* CSS */
+.otp-page__otp-content-wrapper {
+  height: 100%;
+  // background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; /* Add padding to provide space around the content */
+}
+
+/* Center the input fields within the grid */
+ion-grid {
+  width: 100%; /* Make sure the grid takes full width */
+}
+
+/* Center the submit button */
+.otp-page__submit-btn {
+  // margin-top: 20px; /* Add margin for separation */
+  min-width: 320px;
+  height: 45px;
+  --background: #ffaa01;
+}
+
+ion-img {
+  margin-bottom: 20px;
+}
+
+ion-label {
+  margin-top: 5px;
+  color: #ffaa01;
+  // color: red;
+}
+
+a {
+  margin: 0 5px;
+}
+
+.otp-page__resend-btn {
+  background: transparent;
+  font-size: 16px;
+  color: #ffaa01;
+  padding: 0 5px;
+}
+
+.otp-page__resend-btn-disabled {
+  cursor: not-allowed;
+  background: transparent;
+  font-size: 16px;
+  color: #8c764b;
+  padding: 0 5px;
+}

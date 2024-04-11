@@ -9,6 +9,7 @@ ion-header {
     padding-top: 2vh;
     padding-bottom: 2vh;
     border-radius: 0px 0px 25px 25px;
+    --background: #ffaa01;
   }
 
   ion-title {
@@ -20,8 +21,9 @@ ion-header {
 
 ion-content {
   ion-card {
-    border-radius: 20px;
-    box-shadow: 0 8px 10px rgba(19, 18, 18, 0.425);
+    border-radius: 10px;
+    // box-shadow: 0 8px 10px rgba(19, 18, 18, 0.425);
+    box-shadow: 0 4px 6px rgba(15, 15, 15, 0.2);
     // height: 25vh;
     width: 100%;
     color: light;
@@ -50,6 +52,7 @@ ion-fab {
 }
 .students-list-container {
   padding-right: 3vh;
+  margin-bottom: 3rem;
 }
 .log-out {
   position: relative;
@@ -59,7 +62,8 @@ ion-fab {
 
 // styles by "manikanta"
 .tab9-page__student-items {
-  background-color: grey;
+  // background-color: grey;
+  background-color: #fff1de;
   height: 250px;
 }
 
@@ -68,6 +72,13 @@ ion-fab {
   height: 70%;
 }
 
-.tab9-page__student-name {
+.tab9-page__student-firstname {
+  padding: 0 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.tab9-page__student-lastname {
   padding: 0 10px;
 }

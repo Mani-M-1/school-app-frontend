@@ -102,9 +102,7 @@ export class StudentSideCoursesPage implements OnInit {
 
   ngOnInit() {
     console.log('Initializing Tab1Page');
-    this.email = localStorage.getItem('email');
     // this.schoolId = localStorage.getItem('schoolId');
-    console.log(this.email);
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -197,6 +195,8 @@ export class StudentSideCoursesPage implements OnInit {
 
   //get course details api
   getCourseDetails() {
+    this.email = localStorage.getItem('email');
+    console.log(this.email);
     this.http
       .get(`${this.apiUrl}/enrollCourse/user-profile-details/${this.email}`)
       .subscribe((data: any) => {

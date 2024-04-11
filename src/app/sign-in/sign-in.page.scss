@@ -1,71 +1,79 @@
-ion-content {
-  .img {
-    height: 100px;
-    width: 50px;
-  }
-  ion-title {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-  p {
-    text-align: center;
-    padding: 0px;
-  }
-  ion-input {
-    border-radius: 40px;
-  }
-  ion-item {
-    color: white;
-    padding: 15px 15px 5px 15px;
-    border-radius: 30px;
-    --border-radius: 40px; /* Adjust border radius as needed */
-    --background: #f5f5f5; /* Adjust background color as needed */
-    --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15); /* Add a subtle box shadow */
-  }
+// ion-content {
+//   .img {
+//     height: 100px;
+//     width: 50px;
+//   }
+//   // ion-title {
+//   //   font-size: 1.8rem;
+//   //   text-align: center;
+//   // }
+//   p {
+//     text-align: center;
+//     padding: 0px;
+//   }
+//   ion-input {
+//     border-radius: 40px;
+//   }
+//   ion-item {
+//     color: white;
+//     padding: 15px 15px 5px 15px;
+//     border-radius: 30px;
+//     --border-radius: 40px; /* Adjust border radius as needed */
+//     --background: #f5f5f5; /* Adjust background color as needed */
+//     --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15); /* Add a subtle box shadow */
+//   }
 
-  ion-text {
-    padding-left: 250px;
-    padding-top: 50px;
-  }
-  // .end-btn {
-  //     position: absolute;
-  //     right: 0;
-  //     bottom: 0;
-  //     top: 0;
-  //     font-size:small;
-  // }
-  .end-btn {
-    margin-top: 0;
-    position: absolute;
-    right: 0;
-    font-size: 0.7rem;
-  }
-  .center-btn {
-    font-size: 2vh;
-    padding-left: 11vh;
-    padding-right: 11vh;
-    position: absolute;
-    right: 0;
-    left: 0;
-  }
+//   ion-text {
+//     padding-left: 250px;
+//     padding-top: 50px;
+//   }
+//   // .end-btn {
+//   //     position: absolute;
+//   //     right: 0;
+//   //     bottom: 0;
+//   //     top: 0;
+//   //     font-size:small;
+//   // }
+//   .end-btn {
+//     margin-top: 0;
+//     position: absolute;
+//     right: 0;
+//     font-size: 0.7rem;
+//   }
+//   .center-btn {
+//     font-size: 2vh;
+//     padding-left: 11vh;
+//     padding-right: 11vh;
+//     position: absolute;
+//     right: 0;
+//     left: 0;
+//   }
 
-  .button-container {
-    padding-left: 3vh;
-    padding-right: 3vh;
-    padding-top: 0;
-    display: flex;
-    justify-content: space-between;
-  }
+//   .button-container {
+//     padding-left: 3vh;
+//     padding-right: 3vh;
+//     padding-top: 0;
+//     display: flex;
+//     justify-content: space-between;
+//   }
 
-  ion-button {
-    flex: 1;
-  }
-  b {
-    color: blue;
-  }
-}
+//   ion-button {
+//     flex: 1;
+//   }
+//   b {
+//     color: blue;
+//   }
+// }
 
 // styles added by "manikanta"
+.sign-in-page__bg-container {
+  height: 100vh;
+}
+
+.sign-in-page__main-img {
+  width: 100%;
+}
+
 .sign-in-page__inner-wrapper {
   // background-color: red;
   // width: 100%;
@@ -75,6 +83,20 @@ ion-content {
   align-items: center;
 }
 
+h3 {
+  color: rgb(140, 0, 255);
+  font-weight: bold;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+// ion-title {
+//   text-align: center;
+// }
+
 .sign-in-page__login-form {
   // background-color: rgb(157, 157, 157);
   width: 50%;
@@ -82,6 +104,19 @@ ion-content {
   display: flex;
   flex-direction: column;
   // justify-content: center;
+}
+
+ion-input {
+  border-radius: 40px;
+}
+
+ion-item {
+  color: white;
+  padding: 12px 10px;
+  border-radius: 30px;
+  --border-radius: 40px; /* Adjust border radius as needed */
+  --background: #f5f5f5; /* Adjust background color as needed */
+  --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15); /* Add a subtle box shadow */
 }
 
 // .sign-in-page__login-btn-wrapper {
@@ -96,23 +131,45 @@ ion-content {
   font-size: 16px;
   font-weight: bold;
   width: 40%;
-  min-width: 120px;
+  min-width: 100px;
   align-self: center;
-  padding: 16px 0;
+  padding: 14px 0;
   border-radius: 30px;
-  margin-top: 10px;
+  margin: 20px 0;
   outline: none;
   cursor: pointer;
-  background-color: white;
+  // background-color: rgb(228, 228, 228);
+  background-color: #ffaa01;
   border: 0;
 }
 
-// @media screen and (max-width: 767px) {
-//   .sign-in-page__login-form {
-//     width: 40%;
-//   }
-// }
+a {
+  margin: 10px 0;
+  align-self: flex-end;
+  font-size: 14px;
+}
 
 .signup-link {
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .sign-in-page__bg-container {
+    display: flex;
+    align-items: center;
+  }
+  .sign-in-page__inner-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sign-in-page__main-img {
+    width: 50%;
+    height: 100%;
+  }
+  .sign-in-page__login-form {
+    width: 50%;
+    height: 100%;
+    padding: 0 4rem;
+  }
 }

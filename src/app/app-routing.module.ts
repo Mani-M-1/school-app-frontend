@@ -42,13 +42,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'forgot-pass',
-    loadChildren: () =>
-      import('./forgot-pass/forgot-pass.module').then(
-        (m) => m.ForgotPassPageModule
-      ),
-  },
-  {
     path: 'weekly-course',
     loadChildren: () =>
       import('./prof/weekly-course/weekly-course.module').then(
@@ -164,13 +157,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'forgotpassword1',
-    loadChildren: () =>
-      import('./forgotpassword1/forgotpassword1.module').then(
-        (m) => m.Forgotpassword1PageModule
-      ),
-  },
-  {
     path: 'professor-profile/:id',
     loadChildren: () =>
       import('./professor-profile/professor-profile.module').then(
@@ -196,6 +182,17 @@ const routes: Routes = [
     loadChildren: () =>
       import('./enrolled-students/enrolled-students.module').then(
         (m) => m.EnrolledStudentsPageModule
+      ),
+  },
+  {
+    path: 'otp',
+    loadChildren: () => import('./otp/otp.module').then((m) => m.OtpPageModule),
+  },
+  {
+    path: 'change-password',
+    loadChildren: () =>
+      import('./change-password/change-password.module').then(
+        (m) => m.ChangePasswordPageModule
       ),
   },
 ];

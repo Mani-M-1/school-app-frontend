@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="new">
+  <ion-toolbar>
     <ion-title>Add-Student</ion-title>
 
     <ion-buttons slot="start">
@@ -34,7 +34,7 @@
           ></ion-input>
         </ion-item>
 
-        <ion-item shape="round" fill="outline">
+        <ion-item shape="round" fill="outline" lines="none">
           <ion-label>
             <ion-icon name="man-outline" slot="start"></ion-icon>
             Gender
@@ -46,7 +46,7 @@
           </ion-select>
         </ion-item>
 
-        <ion-item shape="round" fill="outline">
+        <ion-item shape="round" fill="outline" lines="none">
           <ion-label>
             <ion-icon name="school" slot="start" slot="start"></ion-icon>
             Year of Study
@@ -59,7 +59,7 @@
           </ion-select>
         </ion-item>
 
-        <ion-item shape="round" fill="outline">
+        <ion-item shape="round" fill="outline" lines="none">
           <ion-label>
             <ion-icon name="book-outline" slot="start"></ion-icon>
             Group
@@ -73,7 +73,7 @@
           </ion-select>
         </ion-item>
 
-        <ion-item fill="outline" shape="round">
+        <ion-item fill="outline" shape="round" lines="none">
           <ion-icon name="mail-open-outline" slot="start"></ion-icon>
           <!-- <ion-label position="floating"></ion-label> -->
           <ion-input
@@ -84,7 +84,7 @@
         </ion-item>
 
         <!-- create password field here -->
-        <ion-item fill="outline" shape="round">
+        <ion-item fill="outline" shape="round" lines="none">
           <ion-icon name="eye" slot="start"></ion-icon>
           <!-- <ion-label position="floating">Password</ion-label> -->
           <ion-input
@@ -95,13 +95,24 @@
           ></ion-input>
         </ion-item>
 
-        <ion-item fill="outline" shape="round">
+        <ion-item fill="outline" shape="round" lines="none">
           <ion-icon name="call-outline" slot="start"></ion-icon>
           <!-- <ion-label position="floating"></ion-label> -->
           <ion-input
             placeholder="mobile number"
             formControlName="mobileNo"
             name="mobileNo"
+            type="tel"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item fill="outline" shape="round" lines="none">
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <!-- <ion-label position="floating"></ion-label> -->
+          <ion-input
+            placeholder="emergency number"
+            formControlName="emergency"
+            name="emergency"
             type="tel"
           ></ion-input>
         </ion-item>
@@ -192,9 +203,7 @@
         ></ion-textarea> -->
       </ion-item>
 
-      <ion-button shape="round" expand="full" color="primary" type="submit"
-        >Submit</ion-button
-      >
+      <ion-button shape="round" expand="full" type="submit">Submit</ion-button>
     </form>
   </ion-list>
 </ion-content>

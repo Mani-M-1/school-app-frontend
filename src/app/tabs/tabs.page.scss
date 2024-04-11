@@ -20,23 +20,24 @@ ion-tab-bar {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.6
-  ); /* Adjust the background color and opacity */
-  --ion-background-color: transparent; /* Make the background fully transparent */
+  border: 0;
+  // background-color: rgba(
+  //   255,
+  //   255,
+  //   255,
+  //   0.258
+  // ); /* Adjust the background color and opacity */
+  // --ion-background-color: transparent; /* Make the background fully transparent */
   --box-shadow: none; /* Remove any box shadow (optional) */
   z-index: 1; /* Ensure the tab bar is on top of the content */
 }
 
 /* Customize the appearance of the tab buttons */
 ion-tab-button {
-  --color-selected: #7105c4; /* Set the selected tab color */
-  --color: #888888; /* Set the unselected tab color */
+  // --color-selected: #7105c4; /* Set the selected tab color */
+  --color-selected: #ffaa01; /* Set the selected tab color */
+  --color: #d0d0d0; /* Set the unselected tab color */
 }
-
 /* Optional: Change the color of the active tab indicator */
 // ion-tab-button::part(indicator) {
 //   background-color: #f2f6f4; /* Set the active tab indicator color */
