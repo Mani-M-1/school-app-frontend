@@ -1,7 +1,6 @@
 //import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { TodoService } from '../todo.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -15,24 +14,18 @@ import { environment } from 'src/environments/environment';
 export class AddNewTaskPage implements OnInit {
   private apiUrl: string = environment.apiUrl;
 
-  //[x: string]: any;
   categories = ['work', 'personal'];
 
-  newTaskObj = {};
-  itemName: any;
-  itemDueDate: any;
-  itemPriority: any;
-  itemCategory: any;
-  categorySelectedCategory: any;
-  category: any;
-  date: any;
-  priority: any;
-  task: any;
   email: any;
+
+  // task data
+  taskTitle: any;
+  dueDate: any;
+  priority: any;
+  category: any;
 
   constructor(
     public modalCtlr: ModalController,
-    public todoService: TodoService,
     private http: HttpClient,
     private router: Router
   ) {
@@ -48,28 +41,20 @@ export class AddNewTaskPage implements OnInit {
     }
   }
 
-  addNew() {
-    console.log(this.itemName),
-      console.log(this.email),
-      console.log(this.itemPriority),
-      console.log(this.itemDueDate),
-      console.log(this.categorySelectedCategory);
-    //console.log(this.itemDueDate)
-    //now write post http call to push data to database
+  addTask() {
     const body = {
-      task: this.itemName,
+      task: this.taskTitle,
       email: this.email,
-      priority: this.itemPriority,
-      date: this.itemDueDate,
-      category: this.categorySelectedCategory,
+      priority: this.priority,
+      date: this.dueDate,
+      category: this.category,
     };
-
-    console.log(this.email);
 
     console.log(body);
     this.http.post(`${this.apiUrl}/todo`, body).subscribe(
       (response) => {
         console.log(response);
+        this.dismiss();
       },
       (error) => {
         console.log(error);
@@ -77,39 +62,15 @@ export class AddNewTaskPage implements OnInit {
     );
   }
 
-  ngOnInit() {
-    // this.categories.push();
-    // this.categories.push();
+  ngOnInit() {}
+
+  selectCategory(event: any, index: any) {
+    this.category = this.categories[index];
+    console.log(this.category);
+    event.target.setAttribute('fill', 'primary');
   }
 
-  // this for adding task
-  async add() {
-    this.addNew();
-    this.newTaskObj = {
-      itemName: this.itemName,
-      email: this.email,
-      itemDueDate: this.itemDueDate,
-      itemPriority: this.itemPriority,
-      itemCategory: this.categorySelectedCategory,
-    };
-    console.log(this.newTaskObj);
-    let uid = this.itemName + this.itemDueDate;
-
-    if (uid) {
-      await this.todoService.addTask(uid, this.newTaskObj);
-    } else {
-      console.log("can't save empty task");
-    }
-
-    this.dismis();
-  }
-
-  selectCategory(index: any) {
-    this.categorySelectedCategory = this.categories[index];
-    console.log(this.categorySelectedCategory);
-  }
-
-  async dismis() {
-    await this.modalCtlr.dismiss(this.newTaskObj);
+  async dismiss() {
+    await this.modalCtlr.dismiss();
   }
 }
