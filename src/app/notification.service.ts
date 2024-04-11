@@ -17,7 +17,7 @@ export class NotificationService {
 
   getNotifications(): any[] {
     const notifications = localStorage.getItem('notifications');
-    return notifications ? JSON.parse(notifications) : [];
+    return !notifications ? [] : JSON.parse(notifications);
   }
 
   deleteNotification(deleteNotification: any): any {

@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="new">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/prof-course-content"></ion-back-button>
     </ion-buttons>
@@ -172,12 +172,16 @@
             type="date"
             [(ngModel)]="EndDate"
             >End Date:</ion-input
-          > </ion-item
-        ><br />
+          >
+        </ion-item>
 
         <!-- <ion-datetime presentation="date-time" [preferWheel]="true"></ion-datetime> -->
 
-        <ion-button size="full" color="new" shape="round" (click)="addNew()"
+        <ion-button
+          class="add-new-week-page__create-weekly-course-btn"
+          size="full"
+          shape="round"
+          (click)="addNew()"
           >Create Weekly Course</ion-button
         >
       </ion-card-content>

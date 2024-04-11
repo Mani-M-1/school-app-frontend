@@ -51,22 +51,34 @@ export class SignInPage implements OnInit {
   ) {}
 
   platformFun(mobileNum: any) {
-    this.platform.ready().then(() => {
-      if (this.platform.is('mobile')) {
-        // this.platform.ready().then(() => {
-        //   console.log(
-        //     'Platform ready in mobile view and triggering this.OnSignalInit()'
-        //   );
-        //   this.OneSignalInit();
-        // });
-        console.log("this.platform.is('mobile') triggered");
-        this.OneSignalInit(mobileNum);
-      } else {
-        console.log(
-          'Platform is not mobile. OneSignal initialization skipped.'
-        );
-      }
-    });
+    // this.platform.ready().then(() => {
+    //   if (this.platform.is('mobile')) {
+    //     // this.platform.ready().then(() => {
+    //     //   console.log(
+    //     //     'Platform ready in mobile view and triggering this.OnSignalInit()'
+    //     //   );
+    //     //   this.OneSignalInit();
+    //     // });
+    //     console.log("this.platform.is('mobile') triggered");
+    //     this.OneSignalInit(mobileNum);
+    //   } else {
+    //     console.log(
+    //       'Platform is not mobile. OneSignal initialization skipped.'
+    //     );
+    //   }
+    // });
+    if (this.platform.is('mobile')) {
+      // this.platform.ready().then(() => {
+      //   console.log(
+      //     'Platform ready in mobile view and triggering this.OnSignalInit()'
+      //   );
+      //   this.OneSignalInit();
+      // });
+      console.log("this.platform.is('mobile') triggered");
+      this.OneSignalInit(mobileNum);
+    } else {
+      console.log('Platform is not mobile. OneSignal initialization skipped.');
+    }
   }
 
   // will be implemented version 2 of applicaton development

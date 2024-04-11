@@ -14,6 +14,7 @@ export class Tab3Page {
     private router: Router,
     private notificationService: NotificationService
   ) {
+    this.notificationArr = [];
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
 

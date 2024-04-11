@@ -26,6 +26,10 @@ ion-title {
 }
 
 // styles added by "manikanta"
+ion-toolbar {
+  --background: #ffaa01;
+}
+
 .student-default-img {
   width: 20%;
   min-width: 200px;
@@ -34,4 +38,10 @@ ion-title {
 #studentImg {
   display: flex;
   background-color: red;
+}
+
+ion-button {
+  --background: #ffaa01;
+  margin-top: 20px;
+  height: 45px;
 }

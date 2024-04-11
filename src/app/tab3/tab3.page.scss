@@ -3,16 +3,19 @@
 //   color: red;
 // }
 
-#tab3-page__toolbar {
-  --background: transparent;
-}
+// #tab3-page__toolbar {
+//   // --background: transparent;
+//   --background: #ffaa01;
+
+// }
 
 ion-title {
   --background: transparent;
 }
 
 .notification-header {
-  background-color: rgb(96, 94, 94);
+  // background-color: rgb(96, 94, 94);
+  background-color: #ffaa01;
   height: 50px;
   display: flex;
   align-items: center;
@@ -21,7 +24,8 @@ ion-title {
 
 .tab3-page__clear-all-btn {
   --box-shadow: none;
-  --background: transparent;
+  --background: #ffaa01;
+  // --background: transparent;
   font-size: 12px;
 }
 

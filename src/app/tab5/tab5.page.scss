@@ -4,6 +4,7 @@ ion-header {
   padding-bottom: 1vh;
 
   ion-toolbar {
+    --background: #ffaa01;
     padding-left: 4vh;
     padding-right: 2vh;
     padding-top: 2vh;
@@ -55,11 +56,11 @@ ion-content {
 .m {
   padding-top: 1vh;
   font-size: 1.2rem;
-  ion-button {
-    padding-left: 27.4vh;
-    margin: 0vh;
-    border: 0vh;
-  }
+  // ion-button {
+  //   padding-left: 27.4vh;
+  //   margin: 0vh;
+  //   border: 0vh;
+  // }
 }
 // .calender{
 //   padding-right: 8vh;
@@ -145,7 +146,17 @@ ion-content {
 }
 
 .tab5-page__course-card {
-  background-color: rgb(49, 49, 49);
+  // background-color: rgb(49, 49, 49);
+  background-color: #fff1de;
+}
+
+ion-card-header {
+  color: rgb(85, 85, 85);
+}
+
+ion-card-title {
+  font-weight: bold;
+  color: black;
 }
 
 .tab5-page__course-card-img {
@@ -197,7 +208,8 @@ ion-content {
 }
 
 .accept {
-  background-color: rgb(0, 149, 255);
+  // background-color: rgb(0, 149, 255);
+  background-color: #ffaa01;
 }
 
 .cancel {
@@ -205,7 +217,8 @@ ion-content {
 }
 
 .accept:hover {
-  background-color: rgb(0, 113, 193);
+  // background-color: rgb(0, 113, 193);
+  background-color: #ffaa018c;
   transform: scale(1.1);
 }
 
@@ -226,6 +239,7 @@ ion-content {
   cursor: pointer;
   border: 0;
   background-color: transparent;
+  color: black;
   font-size: 18px;
   padding: 10px;
 }
@@ -258,9 +272,16 @@ ion-content {
   z-index: 100px;
 }
 
+ion-card-content {
+  border-radius: 10px;
+  background-color: rgba(147, 147, 147, 0.455);
+}
+
 ion-item {
   font-size: 12px;
-  border-bottom: 2px solid grey;
+  // border-bottom: 2px solid grey;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 ion-item ion-icon {
@@ -285,11 +306,32 @@ ion-item ion-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(120, 120, 120);
+  // background-color: rgb(120, 120, 120);
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .close-update-modal-btn:hover {
-  background-color: rgb(74, 74, 74);
+  color: rgb(74, 74, 74);
+}
+
+.tab5-page__save-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background-color: red;
+}
+
+.tab5-page__save-btn {
+  scale: 0.8;
+  width: 160px;
+  height: 45px;
+  --border-radius: 50px;
+  --background: #ffaa01;
+  margin-top: 20px;
+  // position: absolute;
+  // right: 10px;
 }
 
 @media screen and (max-width: 767px) {

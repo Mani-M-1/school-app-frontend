@@ -21,6 +21,7 @@ export class BlogContentPage implements OnInit {
   comments = {};
   _id: any;
   email: any;
+  firstName: any;
   comment: any;
   timeStamp: any;
 
@@ -31,6 +32,9 @@ export class BlogContentPage implements OnInit {
   commentText: any;
   likeCount: number = 0;
   blogId: any;
+
+  // profile image
+  profileImg: any;
 
   constructor(
     private http: HttpClient,
@@ -93,6 +97,8 @@ export class BlogContentPage implements OnInit {
     //for showing individual data
     // this._id = localStorage.getItem('_id')
     this.email = localStorage.getItem('email');
+    this.firstName = localStorage.getItem('firstName');
+    this.profileImg = localStorage.getItem('profile');
     console.log(this.email);
   }
 
@@ -180,6 +186,7 @@ export class BlogContentPage implements OnInit {
       // "_id": this._id,
       _id: this.blogs[0]._id,
       email: this.email,
+      firstName: this.firstName,
       comment: this.commentText,
       // "timeStamp": this.timeStamp
     };

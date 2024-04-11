@@ -1,13 +1,24 @@
-ion-header{
-    // --ion-background-color: blue;
-    border-radius: 10vh;
+ion-header {
+  // --ion-background-color: blue;
+  border-radius: 10vh;
 }
-ion-list{
-padding-bottom: 310px;
+ion-list {
+  padding-bottom: 310px;
 }
-ion-icon{
-    color:aqua;
+ion-icon {
+  color: aqua;
 }
-ion-title{
-    padding-left: 10vh;
+ion-title {
+  padding-left: 10vh;
+}
+
+// styles added by "manikanta"
+ion-toolbar {
+  --background: #ffaa01;
+}
+
+ion-button {
+  --background: #ffaa01;
+  margin-top: 20px;
+  height: 45px;
 }

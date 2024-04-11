@@ -2,7 +2,7 @@ ion-header {
   --ion-background-color: rgb(67, 98, 236);
 }
 ion-title {
-  color: rgb(26, 25, 25);
+  // color: rgb(26, 25, 25);
   font-weight: bold;
   padding-left: 0px;
   margin-left: 0px;
@@ -18,6 +18,7 @@ ion-button-like {
 }
 ion-toolbar {
   border-radius: 0 0 10px 10px;
+  --background: #ffaa01;
 }
 
 /* Example SCSS for customizing the button alignment in the grid */
@@ -75,6 +76,7 @@ ion-card {
 .writer {
   font-weight: bold;
   padding-right: 10px;
+  color: grey;
 }
 
 /* CSS for ion-card content */
@@ -114,13 +116,14 @@ p {
 }
 
 .blog-content-page__comments-list-item-profile-img {
-  min-height: 50px;
-  min-width: 50px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  background-color: teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.247);
+  // background-color: teal;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
 }
 
 // .blog-content-page__comments-list-item-email-and-comment-wrapper {
@@ -130,10 +133,14 @@ p {
 .blog-content-page__comments-list-item-email {
   font-size: 14px;
   font-weight: bold;
-  color: rgb(241, 241, 241);
+  color: rgb(170, 170, 170);
   margin-right: 10px;
 }
 
 .blog-content-page__comments-list-item-comment {
-  color: grey;
+  color: rgb(98, 98, 98);
+}
+
+ion-button {
+  box-shadow: none;
 }

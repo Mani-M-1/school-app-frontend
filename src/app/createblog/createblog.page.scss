@@ -17,6 +17,7 @@ ion-list {
 
 ion-toolbar {
   border-radius: 0 0 10px 10px;
+  --background: #ffaa01;
 }
 
 ion-title {
@@ -63,4 +64,10 @@ p {
 
 ion-textarea {
   color: rgb(74, 74, 74);
+}
+
+// styles added by "manikanta"
+.createblog-page__add-blog-btn {
+  margin-top: 20px;
+  --background: #ffaa01;
 }

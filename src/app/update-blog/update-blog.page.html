@@ -1,46 +1,88 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="new">
+  <ion-toolbar>
     <ion-title>Update Blog</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab6" color=""></ion-back-button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<div class="update-blog-page__bottom-wrapper">
+  <div class="update-blog-page__form-container">
     <ion-item>
-      <ion-icon name="star-outline" class="icon-spacing" color="primary"></ion-icon>
+      <ion-icon
+        name="star-outline"
+        class="icon-spacing"
+        color="primary"
+      ></ion-icon>
       <!-- <ion-label position="floating">Title</ion-label> -->
-      <ion-input placeholder="Title" type="text" [(ngModel)]="title" name="title"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-icon name="information-outline" color="success" class="icon-spacing"></ion-icon>
-        <ion-textarea placeholder="Write your content here" autoGrow="true" [(ngModel)]="content" required></ion-textarea>
+      <ion-input
+        placeholder="Title"
+        type="text"
+        [(ngModel)]="title"
+        name="title"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="image-outline" color="warning" class="icon-spacing"></ion-icon>
-        <ion-input [(ngModel)]="images" 
-        type="file" (change)="onImageFileChange($event)"
-        ></ion-input>
-      <ion-button color="new" (click)="uploadFiles('image')">
-        {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ? 'Update Image' : 'Upload Image') }}
+      <ion-icon
+        name="information-outline"
+        color="success"
+        class="icon-spacing"
+      ></ion-icon>
+      <ion-textarea
+        placeholder="Write your content here"
+        autoGrow="true"
+        [(ngModel)]="content"
+        required
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon
+        name="image-outline"
+        color="warning"
+        class="icon-spacing"
+      ></ion-icon>
+      <ion-input
+        [(ngModel)]="images"
+        type="file"
+        (change)="onImageFileChange($event)"
+      ></ion-input>
+      <ion-button
+        class="update-blog-page__upload-img-btn"
+        color="new"
+        (click)="uploadFiles('image')"
+      >
+        {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ? 'Update
+        Image' : 'Upload Image') }}
       </ion-button>
     </ion-item>
     <p><b>Note:</b> Please upload a blog image before submitting the blog</p>
 
-
     <ion-item>
-      <ion-icon name="person-outline" color="danger" class="icon-spacing"></ion-icon>
-      <ion-input type="text" placeholder="ProfessorName" name="Name" [(ngModel)]="Name" required></ion-input>
-    </ion-item><br><br>
+      <ion-icon
+        name="person-outline"
+        color="danger"
+        class="icon-spacing"
+      ></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="ProfessorName"
+        name="Name"
+        [(ngModel)]="Name"
+        required
+      ></ion-input>
+    </ion-item>
 
-
-  <ion-button class="update" expand="full" 
-  (click)="updateBlog()" name="updateBlog" 
-  color="new" shape="round"> update Blog </ion-button>
-
-
-</ion-content>
+    <ion-button
+      class="update-blog-page__update-button"
+      expand="full"
+      (click)="updateBlog()"
+      name="updateBlog"
+      shape="round"
+    >
+      update Blog
+    </ion-button>
+  </div>
+</div>

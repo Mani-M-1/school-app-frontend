@@ -9,6 +9,7 @@ ion-header {
     padding-top: 2vh;
     padding-bottom: 2vh;
     border-radius: 0px 0px 25px 25px;
+    --background: #ffaa01;
   }
 
   ion-title {
@@ -60,10 +61,16 @@ h6 {
 }
 
 // styles by "manikanta"
+.professor-cards {
+  margin-bottom: 3rem;
+}
+
 .tab10-professor-items {
-  background-color: grey;
+  // background-color: grey;
+  background-color: #fff1de;
+  box-shadow: 0 4px 6px rgba(15, 15, 15, 0.2);
   height: 250px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .tab10-professor-image {
@@ -72,5 +79,12 @@ h6 {
 }
 
 .tab10-professor-name {
+  padding: 0 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.tab10-professor-subjects {
   padding: 0 10px;
 }

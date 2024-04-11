@@ -89,6 +89,10 @@
 //   }
 
 //styles by "manikanta"
+ion-toolbar {
+  --background: #ffaa01;
+}
+
 .student-profile-page__enrolled-courses-title-and-btn-wrapper {
   display: flex;
   align-items: center;
@@ -109,7 +113,7 @@
 
 .student-profile-page__enrolled-courses-items {
   list-style-type: none;
-  background-color: rgb(107, 107, 107);
+  background-color: rgb(155, 155, 155);
   padding: 10px 20px;
   border-radius: 30px;
 }

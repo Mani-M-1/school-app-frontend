@@ -5,11 +5,7 @@
 </ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-segment
-    style="background-color: rgb(6, 6, 6)"
-    color="primary"
-    [(ngModel)]="selectTabs"
-  >
+  <ion-segment color="warning" fill="translucent" [(ngModel)]="selectTabs">
     <ion-segment-button value="allBlogs" (click)="handleOnclickAllBlogs()">
       <ion-label>All Blogs</ion-label>
     </ion-segment-button>
@@ -32,15 +28,10 @@
         size-lg="3"
         size-xl="3"
       >
-        <h1>{{item.count}}</h1>
+        <!-- <h1 style="color: black">{{item.count}}</h1> -->
 
         <!-- <ion-card class="card-margin"> -->
-        <ion-card
-          class="rounded-card"
-          color="white"
-          (click)="cardClick(item)"
-          class="tab6card"
-        >
+        <ion-card color="white" (click)="cardClick(item)">
           <ion-img class="tab6-page__allblogs-card-img" src="{{item.images}}" />
 
           <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
@@ -96,10 +87,10 @@
         color="primary"
         *ngFor="let item of userBlogs"
       >
-        <h1>{{item.count}}</h1>
+        <!-- <h1>{{item.count}}</h1> -->
 
         <!-- <ion-card > -->
-        <ion-card class="card-margin" color="white" (click)="cardClick(item)">
+        <ion-card (click)="cardClick(item)">
           <ion-img class="tab6-page__allblogs-card-img" src="{{item.images}}" />
 
           <!-- <ion-img src="/assets/Natural-Image.jpg"></ion-img> -->
@@ -159,7 +150,7 @@
   </div>
 
   <ion-fab>
-    <ion-fab-button (click)="blogPost()" color="new">
+    <ion-fab-button (click)="blogPost()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
