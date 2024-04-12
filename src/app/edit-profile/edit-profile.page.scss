@@ -1,117 +1,20 @@
+// styles added by "manikanta"
+
 ion-toolbar {
   border-radius: 0 0 10px 10px;
   --background: #ffaa01;
 }
+
 ion-title {
   text-align: center;
-  padding-right: 10vh;
-  // font-size: medium;
-}
-// ion-avatar {
-//   // outline: auto;
-//   width: 10rem;
-//   height: 10rem;
-//   // //margin-top: 5rem;
-//   // position: absolute;
-//   // left: 28%;
-//   // //  top: 2%;
-//   // transform: translate(-50%, -50%, -80%, -80%);
-// }
-.school {
-  padding-top: 10vh;
-  padding-left: 1vh;
-  padding-right: 1vh;
-}
-.fname {
-  padding-top: 2vh;
-  padding-left: 1vh;
-  padding-right: 1vh;
-}
-.lname {
-  padding-top: 2vh;
-  padding-left: 1vh;
-  padding-right: 1vh;
-}
-.email {
-  padding-top: 2vh;
-  padding-left: 1vh;
-  padding-right: 1vh;
-}
-.emergency {
-  padding-top: 2vh;
-  padding-left: 1vh;
-  padding-right: 1vh;
-}
-.center-btn {
-  font-size: 2vh;
-  padding-left: 4vh;
-  padding-right: 4vh;
-  position: absolute;
-  right: 0;
-  left: 0;
-  --background: #ffaa01;
-}
-.camera {
-  // height: vh;
-  //margin-top: 5rem;
-  position: fixed;
-  left: 56%;
-  top: 21%;
-  // transform: translate(-50%, -50%, -80%, -80%);
-  // padding-right: 1px;
-}
-// .avatar-container {
-// margin-top: 50px;
-// left: 40%;
-// position: relative;
-// display: inline-block;
-// }
-
-.camera-button {
-  position: absolute;
-  bottom: -4%;
-  right: -4%;
-  border: 2px solid rgb(202, 202, 202);
-  border-radius: 50%;
-  // transform: translate(50%, 50%);
+  padding-right: 4.5rem;
 }
 
-.camera-icon {
-  font-size: 20px; /* Adjust the size as needed */
-}
-.ok {
-  position: absolute;
-  top: 0;
-  right: 80px;
-}
-p {
-  font-size: 10px;
-}
-
-// styles added by "manikanta"
-// .edit-profile-page__save-pic-btn {
-//   position: fixed;
-//   right: 10px;
-//   top: 60px;
-//   border: 2px solid grey;
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// .edit-profile-page__save-pic-btn:hover {
-//   background-color: rgb(78, 78, 78);
-// }
-
-.edit-profile-page__profile-wrapper {
-  // background-color: red;
+.edit-profile-page__profile-img-wrapper {
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30%;
 }
 
 ion-avatar {
@@ -119,4 +22,25 @@ ion-avatar {
   height: 10rem;
   position: relative;
   border: 2px solid rgb(255, 255, 255);
+}
+
+.camera-button {
+  position: absolute;
+  bottom: -4%;
+  right: -4%;
+  border: 2px solid rgb(202, 202, 202);
+  border-radius: 50%;
+}
+
+ion-item {
+  margin-top: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.edit-profile-page__update-profile-btn {
+  height: 45px;
+  margin-top: 10px;
+  width: 100%;
+  --background: #ffaa01;
 }
