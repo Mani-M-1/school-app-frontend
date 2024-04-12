@@ -54,17 +54,17 @@ export class Tab8Page {
   }
 
   ngOnInit() {
-    this.school = localStorage.getItem('school');
-    this.firstName = localStorage.getItem('firstName');
-    this.lastName = localStorage.getItem('lastName');
-    this.mobileNo = localStorage.getItem('mobileNo');
-    this.emergency = localStorage.getItem('emergency');
-    this.profile = localStorage.getItem('profile');
-
-    console.log('ngOnInit triggered in tab11');
+    console.log('ngOnInit triggered in tab8');
     // this.ionViewDidEnter();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.school = localStorage.getItem('school');
+        this.firstName = localStorage.getItem('firstName');
+        this.lastName = localStorage.getItem('lastName');
+        this.mobileNo = localStorage.getItem('mobileNo');
+        this.emergency = localStorage.getItem('emergency');
+        this.profile = localStorage.getItem('profile');
+
         this.getProfileData();
       }
     });

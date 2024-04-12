@@ -72,6 +72,10 @@ export class ChangePasswordPage implements OnInit {
         (response) => {
           console.log(response);
           this.presentToast('Password updated successfully', true);
+
+          // clearing otp stored in local storage
+          localStorage.removeItem('otp');
+
           // You can redirect to another page or show a success message
           this.router.navigate(['/sign-in']); // Navigate after successful update
         },

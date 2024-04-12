@@ -63,6 +63,41 @@ export class TodoHomePage {
     console.log(this.userRole);
   }
 
+  covertDateFormat(dateString: any) {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    // return date;
+    const dateObj = new Date(dateString);
+    const year = dateObj.getFullYear();
+    const month = months[dateObj.getMonth()];
+    const date = dateObj.getDate();
+    const day = days[dateObj.getDay()];
+
+    let hours: any = dateObj.getHours();
+    let minutes: any = dateObj.getMinutes();
+    // const year = dateObj.getFullYear();
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return `${day}, ${month} ${date}, ${year}, ${hours}:${minutes}`;
+  }
+
   backButton() {
     console.log('button clicked');
     console.log('User role:', this.userRole);

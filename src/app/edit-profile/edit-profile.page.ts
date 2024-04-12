@@ -95,54 +95,9 @@ export class EditProfilePage implements OnInit {
     console.log(this.profile);
   }
 
-  //this is for loading spinner and iam calling this
-  //async function in uploading function
-  // async presentLoading() {
-  //   const loading = await this.loadingController.create({
-  //     message: 'Loading...',
-  //     spinner: 'circles',
-  //   });
-  //   await loading.present();
-
-  //   // Simulate an asynchronous process
-  //   setTimeout(() => {
-  //     loading.dismiss();
-  //   }, 4000);
-  // }
-
   //for uploading files
   selectedFile: File;
 
-  //for camera module ionic
-  // takePicture = async () => {
-  //   const image = await Camera.getPhoto({
-  //     quality: 90,
-  //     allowEditing: true,
-  //     resultType: CameraResultType.Uri,
-  //     source:CameraSource.Prompt,
-  //     saveToGallery: true
-  //   });
-
-  //   // this.imageSource = 'data:image/jpeg;base64,' + image.base64String;
-  //   // console.log(this.imageSource);
-
-  //   this.imageSource = this.domSanitizer.bypassSecurityTrustUrl(image.webPath ? image.webPath : "");
-  // }
-
-  // // the get photo function is shows the image where image tag is
-  // getPhoto(){
-  //   return this.imageSource
-  // }
-
-  // camera module capacitor
-  // async takePicture(){
-  //   const image = await Camera.getPhoto({
-  //     quality: 100,
-  //     allowEditing: true,
-  //     resultType: CameraResultType.DataUrl
-  //   });
-  //   this.picture = image.dataUrl;
-  // }
   ngOnInit() {}
 
   async uploadFiles(fileType: any) {
@@ -157,9 +112,6 @@ export class EditProfilePage implements OnInit {
       console.log('No file selected.');
       return;
     }
-    // this.uploadInProgressImage = true;
-    // this.uploadInProgressVideo = true;
-    // this.uploadInProgressFile = true
 
     this.showLoader = true;
 
@@ -243,6 +195,7 @@ export class EditProfilePage implements OnInit {
       emergency: this.emergency,
       profile: this.imageUrl,
     };
+
     const email = localStorage.getItem('email');
     const role = localStorage.getItem('userRole');
     // localStorage.setItem('userRole', response.role);
@@ -268,24 +221,25 @@ export class EditProfilePage implements OnInit {
           localStorage.setItem('mobileNo', updatedProfile.mobileNo);
           localStorage.setItem('emergency', updatedProfile.emergency);
 
-          // Do something with the response if needed
-          // this.toastService.presentToast("Profile updated successfully");
-
-          if (!role) {
-            this.toastService.presentToast('somethig went wrong');
-          } else {
-            if (role === 'student') {
+          switch (role) {
+            case 'student':
               this.router.navigate(['/tabs/tab4']);
               this.toastService.presentToast('Profile updated successfully');
-            }
-            if (role === 'professor') {
+              break;
+
+            case 'professor':
               this.router.navigate(['/tabs/tab8']);
               this.toastService.presentToast('Profile updated successfully');
-            }
-            if (role === 'principal') {
+              break;
+
+            case 'principal':
               this.router.navigate(['/tabs/tab11']);
               this.toastService.presentToast('Profile updated successfully');
-            }
+              break;
+
+            default:
+              this.toastService.presentToast('somethig went wrong');
+              break;
           }
         },
         (error) => {

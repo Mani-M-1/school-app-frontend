@@ -39,10 +39,7 @@ export class SignInPage implements OnInit {
 
   constructor(
     private http: HttpClient,
-    //to navigate one page to anothor page
     private router: Router,
-    //for showing toast massages i used it for log in fail
-    //don't forgot to use it is good one
     private toastService: ToastService,
     private authService: AuthService,
     private roleService: RoleService,
@@ -51,33 +48,11 @@ export class SignInPage implements OnInit {
   ) {}
 
   platformFun(mobileNum: any) {
-    // this.platform.ready().then(() => {
-    //   if (this.platform.is('mobile')) {
-    //     // this.platform.ready().then(() => {
-    //     //   console.log(
-    //     //     'Platform ready in mobile view and triggering this.OnSignalInit()'
-    //     //   );
-    //     //   this.OneSignalInit();
-    //     // });
-    //     console.log("this.platform.is('mobile') triggered");
-    //     this.OneSignalInit(mobileNum);
-    //   } else {
-    //     console.log(
-    //       'Platform is not mobile. OneSignal initialization skipped.'
-    //     );
-    //   }
-    // });
-    if (this.platform.is('mobile')) {
-      // this.platform.ready().then(() => {
-      //   console.log(
-      //     'Platform ready in mobile view and triggering this.OnSignalInit()'
-      //   );
-      //   this.OneSignalInit();
-      // });
+    if (this.platform.is('mobileweb') || this.platform.is('desktop')) {
+      console.log('Platform is not mobile. OneSignal initialization skipped.');
+    } else {
       console.log("this.platform.is('mobile') triggered");
       this.OneSignalInit(mobileNum);
-    } else {
-      console.log('Platform is not mobile. OneSignal initialization skipped.');
     }
   }
 
@@ -85,15 +60,9 @@ export class SignInPage implements OnInit {
 
   OneSignalInit(phoneNum: any): void {
     console.log('OnsignalInit function triggered');
-    //   // Uncomment to set OneSignal device logging to VERBOSE
-    //   // OneSignal.setLogLevel(6, 0);
-    //   //alert("notification started")
-    //   // NOTE: Update the setAppId value below with your OneSignal AppId.
-    //   // OneSignal.setAppId("d3feb1d4-dcd3-468f-826f-5481d02c64d3");
     OneSignal.setAppId('29817fd7-735e-487b-8b4f-cb8d408a8d97'); // my onesignal app id
     OneSignal.setNotificationOpenedHandler((jsonData: any) => {
       console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-      alert('message received');
 
       // Store notification locally
       const { additionalData, title, body, notificationId } =
@@ -111,21 +80,7 @@ export class SignInPage implements OnInit {
       // this.notificationService.getNotifications();
     });
 
-    // Handle notification received event
-    // document.addEventListener('notificationReceived', (event: any) => {
-    //   // Handle notification received event
-    //   // This event is triggered when a notification is received, even if the app is in the background
-    //   const notification = event.data.notification;
-
-    //   console.log('notificationReceived triggered');
-
-    //   // Store notification locally
-    //   // storeNotification(notification);
-    // });
-
     // 'works on onesignal-cordova-plugin version: ^3.3.1';
-    // Prompts the user for notification permissions.
-    //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.
     OneSignal.promptForPushNotificationsWithUserResponse((accepted: any) => {
       console.log('User accepted notifications: ' + accepted);
       if (accepted) {
@@ -222,24 +177,6 @@ export class SignInPage implements OnInit {
             // Handle other roles or invalid role values
             break;
         }
-
-        // Assuming successful login with 'role' returned from the server
-        // const role = 'student'; // Replace this with the actual role received from the server
-
-        // // Store the authentication status and role in localStorage
-        // localStorage.setItem('token', 'dummy_token'); // Replace 'dummy_token' with your actual authentication token received from the server
-        // localStorage.setItem('role', role);
-
-        // // Navigate based on the user's role
-        // if (role === 'student') {
-        //   this.router.navigate(['/tabs/tab1']);
-        // } else if (role === 'professor') {
-        //   this.router.navigate(['/tab/tab5']);
-        // } else {
-        //   // Handle unknown role or error
-        // }
-
-        //hangle the response from the server here
       },
       (error) => {
         this.toastService.presentToast('incorrect email or password');
@@ -247,14 +184,3 @@ export class SignInPage implements OnInit {
     );
   }
 }
-
-// function storeNotification(notification: any) {
-//   // Implement your logic to store the notification locally
-//   // For example, you can store it in local storage
-//   console.log('storeNotifications function triggered');
-//   let notifications: any[] = JSON.parse(
-//     localStorage.getItem('notifications') || '[]'
-//   );
-//   notifications.push(notification);
-//   localStorage.setItem('notifications', JSON.stringify(notifications));
-// }

@@ -38,13 +38,6 @@ export class Tab4Page implements OnInit {
     } else {
       this.router.navigate(['/sign-in']);
     }
-
-    this.school = localStorage.getItem('school');
-    this.firstName = localStorage.getItem('firstName');
-    this.lastName = localStorage.getItem('lastName');
-    this.mobileNo = localStorage.getItem('mobileNo');
-    this.emergency = localStorage.getItem('emergency');
-    this.profile = localStorage.getItem('profile');
   }
 
   ngOnInit() {
@@ -52,6 +45,13 @@ export class Tab4Page implements OnInit {
     // this.ionViewDidEnter();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.school = localStorage.getItem('school');
+        this.firstName = localStorage.getItem('firstName');
+        this.lastName = localStorage.getItem('lastName');
+        this.mobileNo = localStorage.getItem('mobileNo');
+        this.emergency = localStorage.getItem('emergency');
+        this.profile = localStorage.getItem('profile');
+
         this.getProfileData();
       }
     });
