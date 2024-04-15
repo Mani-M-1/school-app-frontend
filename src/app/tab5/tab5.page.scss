@@ -22,33 +22,7 @@ ion-content {
     right: 0;
     bottom: 10vh;
     top: 0;
-    // font-size:small;
   }
-  // ion-card{
-  //   height: 25vh;
-  //   width: 20vh;
-  //   color: light;
-
-  //   ion-card-title{
-  //     font-size: 1rem;
-  //   }
-  // }
-
-  // .card-container{
-  //   ion-card{
-  //     padding-top: 1vh;
-  //     height: 25vh;
-  //     width: 20vh;
-  //     color: light;
-  //     margin: 1px;
-
-  //     ion-card-title{
-  //       padding-top: 2.5vh;
-  //       font-size: 1rem;
-  //       font-weight: 700;
-  //     }
-  //   }
-  // }
 }
 .L {
   font-size: 1.2rem;
@@ -56,27 +30,7 @@ ion-content {
 .m {
   padding-top: 1vh;
   font-size: 1.2rem;
-  // ion-button {
-  //   padding-left: 27.4vh;
-  //   margin: 0vh;
-  //   border: 0vh;
-  // }
 }
-// .calender{
-//   padding-right: 8vh;
-// }
-
-// .image{
-//   // width: 20vh;
-//   // height: 60%;
-//   //object-fit:scale-down;
-//   width: 100%;
-//   height: 60%;
-// }
-
-// ion-searchbar {
-//   --box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); /* Adjust the shadow properties as desired */
-// }
 
 .image-container {
   display: flex;
@@ -87,8 +41,6 @@ ion-content {
 }
 
 .fixed-image {
-  // max-height: 50%;
-  // max-width: 50%;
   height: auto;
   width: auto;
 }
@@ -101,13 +53,6 @@ ion-content {
   flex-direction: column;
   justify-content: space-between;
 }
-
-// .responsive-card .image {
-//   flex: 1; /* Allow the image to expand and take available space */
-//   max-height: 60%; /* Set a maximum height for the image */
-//   overflow: hidden; /* Hide any overflowing content */
-//   max-width: 100%;
-// }
 
 .responsive-card .image {
   flex: 1;
@@ -146,7 +91,6 @@ ion-content {
 }
 
 .tab5-page__course-card {
-  // background-color: rgb(49, 49, 49);
   background-color: #fff1de;
 }
 
@@ -186,10 +130,6 @@ ion-card-title {
   border-radius: 10px;
 }
 
-// ion-item {
-//   height: 50px;
-// }
-
 .popup-card-btns-wrapper {
   margin-top: 40px;
   display: flex;
@@ -208,7 +148,6 @@ ion-card-title {
 }
 
 .accept {
-  // background-color: rgb(0, 149, 255);
   background-color: #ffaa01;
 }
 
@@ -217,7 +156,6 @@ ion-card-title {
 }
 
 .accept:hover {
-  // background-color: rgb(0, 113, 193);
   background-color: #ffaa018c;
   transform: scale(1.1);
 }
@@ -279,7 +217,6 @@ ion-card-content {
 
 ion-item {
   font-size: 12px;
-  // border-bottom: 2px solid grey;
   margin-top: 10px;
   border-radius: 10px;
 }
@@ -290,8 +227,6 @@ ion-item ion-icon {
 }
 
 #upload-img-btn {
-  // background-color: red;
-  // padding: 6px 18px;
   font-size: 10px;
 }
 
@@ -306,7 +241,6 @@ ion-item ion-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  // background-color: rgb(120, 120, 120);
   background-color: transparent;
   font-size: 20px;
   font-weight: bold;
@@ -320,7 +254,6 @@ ion-item ion-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  // background-color: red;
 }
 
 .tab5-page__save-btn {
@@ -330,8 +263,6 @@ ion-item ion-icon {
   --border-radius: 50px;
   --background: #ffaa01;
   margin-top: 20px;
-  // position: absolute;
-  // right: 10px;
 }
 
 @media screen and (max-width: 767px) {

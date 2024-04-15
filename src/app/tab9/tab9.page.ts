@@ -18,8 +18,6 @@ export class Tab9Page implements OnInit {
   students: any[];
   allStudents: any[]; // A copy of the original students array
   searchText: string = '';
-  // filteredStudents: any[];
-  // showAll: boolean;
 
   constructor(
     private navctrl: NavController,
@@ -33,7 +31,6 @@ export class Tab9Page implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.getStudents();
-        // this.getStudentss();
       }
     });
   }
@@ -57,18 +54,12 @@ export class Tab9Page implements OnInit {
   // Custom filter function to filter students based on the searchText
   searchStudents() {
     if (this.searchText.trim() !== '') {
-      // This condition checks if the search bar is not empty.
-      // trim() function is used to remove leading and trailing spaces
-      // If the search bar is not empty (searchText has some content), perform the search
-      // Make an HTTP GET request to the search API endpoint with the search text as a parameter
       this.http
         .get<any[]>(
           `${this.apiUrl}/user/student/search/${this.searchText}/${this.schoolId}`
         )
         .subscribe(
           (response) => {
-            // Handle the successful response from the API
-            // Update the 'students' array with the search results received from the server
             this.students = response; //This will update the UI to display the filtered list of students based on the search text.
             console.log(response);
           },
@@ -77,8 +68,6 @@ export class Tab9Page implements OnInit {
           }
         );
     } else {
-      // If the search bar is empty, fetch all students again
-      // Call the 'getStudentss()' method to fetch all students from the server
       this.getStudents();
     }
   }

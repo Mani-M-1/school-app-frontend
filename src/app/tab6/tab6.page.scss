@@ -2,21 +2,11 @@ ion-toolbar {
   border-radius: 0 0 10px 10px;
   --background: #ffaa01;
 }
-// ion-content{
-//     --ion-background-color: rgb(238, 243, 243);
-//  }
+
 ion-header {
   --ion-background-color: rgb(63, 127, 224);
 }
-// ion-card.rounded-card {
-//   margin-left: 0.5px;
-//   margin-right: 0.5px;
-//   margin-top: 0.5px;
-//   // border: 1px solid #fffcfc; /* Adjust the color and thickness as needed */
-//   border-radius: 8px; /* Adjust the border radius as needed */
-//   border-radius: 10px;
-//   box-shadow: 0 8px 10px rgba(15, 15, 15, 0.425);
-// }
+
 ion-title {
   color: rgb(19, 18, 18);
   font-weight: bold;
@@ -31,17 +21,6 @@ p {
   margin-inline: start;
   padding-inline-start: 0%;
 }
-/* Styling for the button with class "button-s" */
-// ion-button.button-s {
-//   --background: #2e97ec; /* Set the background color */
-//   --color: #21be26; /* Set the text color */
-// }
-
-// //   /* Styling for the button with class "button-sr" */
-// ion-button.button-sr {
-//   --background: #2e97ec; /* Set the background color */
-//   --color: #eb1313; /* Set the text color */
-// }
 
 .button-container {
   display: flex;
@@ -67,29 +46,15 @@ ion-fab {
 .card-margin {
   border-radius: 10px;
   border: 1px solid #8d8585; /* Adjust the color and thickness as needed */
-  // border-radius: 8px;
   margin-left: 0px;
   margin-right: -0px;
   position: relative;
 }
 
 ion-segment {
-  // --background: #dcdfdf;
-  // --background: #ffaa01;
   border-radius: 0 0 10px 10px;
   padding-top: 4px;
 }
-// ion-card.tab6card {
-//   margin-left: 0.5px;
-//   margin-right: 0.5px;
-//   margin-top: 0.5px;
-//   border-radius: 10px 10px 10px 10px;
-//   box-shadow: 0 8px 10px rgba(15, 15, 15, 0.425);
-
-//   // border: 1px solid #fffcfc; /* Adjust the color and thickness as needed */
-//   border-radius: 8px; /* Adjust the border radius as needed */
-//   border-radius: 10px;
-// }
 
 ion-card {
   /* Adjust card styling for smaller screens */
@@ -142,10 +107,9 @@ ion-card {
 }
 
 .update-btn {
-  // background-color: rgb(0, 145, 255);
-  color: white;
-  // background-color: #ffaa0185;
-  background-color: rgba(255, 255, 255, 0.448);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: black;
+  background-color: rgb(209, 209, 209);
 }
 
 .update-btn:hover {
@@ -153,6 +117,5 @@ ion-card {
 }
 
 .delete-btn {
-  // background-color: rgb(255, 55, 55);
   background-color: transparent;
 }

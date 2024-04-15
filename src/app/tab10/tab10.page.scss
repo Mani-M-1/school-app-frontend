@@ -13,32 +13,11 @@ ion-header {
   }
 
   ion-title {
-    color: black;
     font-size: x-large;
-    padding-left: 8vh;
+    text-align: center;
   }
 }
-ion-content {
-  // padding-right: 6vh;
-  //   ion-card {
-  //     border-radius: 20px;
-  //     box-shadow: 0 8px 10px rgba(19, 18, 18, 0.425);
-  //     width: 100%;
-  //     // padding-right: 2vh;
-  //   }
-  //   .image {
-  //     // width: 20vh;
-  //     // height: 60%;
-  //     //object-fit:fill;
-  //     width: 100%;
-  //     height: 60%;
-  //   }
-  //   .s {
-  //     font-size: large;
-  //     color: rgb(230, 93, 13);
-  //     // padding-right: 2vh;
-  //   }
-}
+
 div.sr {
   padding-right: 3vh;
 }
@@ -48,7 +27,6 @@ ion-card-title {
 h6 {
   padding-left: 6vh;
   color: lightblue;
-  // margin-top: 6vh;
 }
 .ss {
   margin-bottom: 1vh;
@@ -66,7 +44,6 @@ h6 {
 }
 
 .tab10-professor-items {
-  // background-color: grey;
   background-color: #fff1de;
   box-shadow: 0 4px 6px rgba(15, 15, 15, 0.2);
   height: 250px;

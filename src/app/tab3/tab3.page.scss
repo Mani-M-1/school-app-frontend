@@ -1,20 +1,8 @@
-// ion-button {
-//   background-color: transparent;
-//   color: red;
-// }
-
-// #tab3-page__toolbar {
-//   // --background: transparent;
-//   --background: #ffaa01;
-
-// }
-
 ion-title {
   --background: transparent;
 }
 
 .notification-header {
-  // background-color: rgb(96, 94, 94);
   background-color: #ffaa01;
   height: 50px;
   display: flex;
@@ -25,12 +13,7 @@ ion-title {
 .tab3-page__clear-all-btn {
   --box-shadow: none;
   --background: #ffaa01;
-  // --background: transparent;
   font-size: 12px;
-}
-
-.tab3-page__students-list {
-  //   background-color: blue;
 }
 
 .tab3-page__students-list-item {

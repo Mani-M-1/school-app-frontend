@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ToastService } from 'src/app/services/toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
 import { environment } from 'src/environments/environment';
@@ -55,7 +53,6 @@ export class UpdateWeekPage implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private toastService: ToastService,
     private route: ActivatedRoute,
     private router: Router,
     private loadingController: LoadingController,
@@ -134,9 +131,6 @@ export class UpdateWeekPage implements OnInit {
       console.log('No file selected.');
       return;
     }
-    // this.uploadInProgressImage = true;
-    // this.uploadInProgressVideo = true;
-    // this.uploadInProgressFile = true
 
     this.showLoader = true;
 

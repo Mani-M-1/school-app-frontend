@@ -17,23 +17,14 @@
         *ngFor="let item of blogs"
       >
         <ion-card (click)="cardClick(item)" class="tab2-page__blogs-card">
-          <!-- <ion-card-header>
-            <ion-card-title>{{ item.title }}</ion-card-title>
-          </ion-card-header> -->
-
-          <!-- <ion-card-content color="danger"> -->
-          <!-- </ion-card-content> -->
-
           <img class="tab2-page__allblogs-card-img" src="{{item.images}}" />
           <ion-card-content color="light">
             <ion-card-title>{{ item.title }}</ion-card-title>
 
-            <!-- <ion-item color="primary">{{ item.timestamp }}</ion-item> Display the timestamp -->
             <p class="tab2-page__allblogs-card-name">{{ item.Name }}</p>
             <p class="tab2-page__allblogs-card-timestamp">
               {{item.timestamp }}
             </p>
-            <!-- <ion-item>{{ item.Name }}</ion-item> -->
           </ion-card-content>
         </ion-card>
       </ion-col>

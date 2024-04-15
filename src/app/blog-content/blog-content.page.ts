@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { response } from 'express';
 import { ToastService } from '../services/toast.service';
 
 import { environment } from 'src/environments/environment';
@@ -14,12 +13,13 @@ import { environment } from 'src/environments/environment';
 export class BlogContentPage implements OnInit {
   private apiUrl: string = environment.apiUrl;
 
-  blogs: any[] = [];
+  blog: any;
 
   isBlogLiked: any;
 
   comments = {};
-  _id: any;
+
+  userId: any;
   email: any;
   firstName: any;
   comment: any;
@@ -32,9 +32,6 @@ export class BlogContentPage implements OnInit {
   commentText: any;
   likeCount: number = 0;
   blogId: any;
-
-  // profile image
-  profileImg: any;
 
   constructor(
     private http: HttpClient,
@@ -50,13 +47,6 @@ export class BlogContentPage implements OnInit {
     } else {
       this.router.navigate(['/sign-in']);
     }
-
-    //iam getting this data from tab6  page
-    //   let a:any = localStorage.getItem("createblog");
-    //  console.log(a);
-    //  let b = JSON.parse(a);
-    //  this.blogs.push(b);
-    //  console.log(b.CourseContent);
   }
 
   getBlogDetails() {
@@ -70,7 +60,7 @@ export class BlogContentPage implements OnInit {
       .subscribe(
         (data) => {
           console.log(data.blogDetails);
-          this.blogs = [{ ...data.blogDetails }];
+          this.blog = data.blogDetails;
           const emailInData = data.blogDetails.likedBy.filter(
             (blog: { email: any }) => blog.email === this.email
           );
@@ -89,55 +79,13 @@ export class BlogContentPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.isBlogLiked = false;
     this.getBlogDetails();
-    // this.blogcontent();
 
-    //here we are getting item email from sign-in page
-    //for showing individual data
-    // this._id = localStorage.getItem('_id')
+    this.userId = localStorage.getItem('userId');
     this.email = localStorage.getItem('email');
     this.firstName = localStorage.getItem('firstName');
-    this.profileImg = localStorage.getItem('profile');
     console.log(this.email);
   }
-
-  // blogcontent() {
-  //   //   this.http.get('${this.apiUrl}/blogs').subscribe((data: any) =>{
-  //   //     console.log(data);
-  //   //     this.blogs = data.posts;
-  //   // }
-
-  //   //i'm getting item from blog-post-page..
-  //   this.content = localStorage.getItem('createblog');
-
-  //   let a = JSON.parse(this.content);
-  //   console.log(a);
-  //   this.blogs.push(a);
-  //   console.log(a.content);
-  //   console.log(a._id);
-  //   // console.log(a.timeStamp);
-  //   console.log(a.comment);
-  //   // this._id = this.a.content._id
-  // }
-
-  // likePost(blogId: any) {
-  //   console.log('blogId', blogId);
-  //   console.log(blogId._id);
-  //  console.log("button clicked");
-
-  //  this.http.post(`https://nice-gold-pike-shoe.cyclic.app/blog/${blogId._id}/like`)
-  //  .subscribe((response: any)=>{
-  //   console.log(response);
-  //  },(error) => {
-
-  //   console.log(error);
-
-  //  });
-
-  // }
-
-  // likePost() {}
 
   likeBlog() {
     this.http
@@ -176,19 +124,15 @@ export class BlogContentPage implements OnInit {
   }
 
   postComment() {
-    //this user name is for showing user who posted the comment
-    console.log(this.blogs[0]._id);
     console.log(this.email);
     console.log(this.commentText);
-    //console.log(this.timeStamp);
 
     const comment = {
-      // "_id": this._id,
-      _id: this.blogs[0]._id,
+      blogId: this.blog._id,
+      userId: this.userId,
       email: this.email,
       firstName: this.firstName,
       comment: this.commentText,
-      // "timeStamp": this.timeStamp
     };
 
     console.log(comment);
@@ -210,34 +154,3 @@ export class BlogContentPage implements OnInit {
     );
   }
 }
-
-// blogcontent(){
-
-//     //i'm getting item from blog-post-page..
-//      this.content = localStorage.getItem('createblog');
-
-//     // let a = JSON.parse(this.content)
-//     const {likes,...rest} = JSON.parse(this.content);
-//     const likedArr = likes.filter((like: { isLiked: boolean; }) => like.isLiked === true);
-
-//     const a = {likes:likedArr, ...rest};
-//     console.log(a);
-//     this.blogs.push(a)
-//     console.log(a.content);
-//     console.log(a._id);
-//     // console.log(a.timeStamp);
-//     console.log(a.comment);
-//     // this._id = this.a.content._id
-
-//   };
-
-//   toggleLikeDislike(blogId: string): void {
-//     if (this.isLikedMap.get(blogId)) {
-//       this.unlikeButton(blogId);
-//     } else {
-//       this.likebutton(blogId);
-//     }
-//   }
-
-//   // like button functionality
-//   likebut…

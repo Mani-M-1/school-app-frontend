@@ -1,4 +1,3 @@
-//import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';

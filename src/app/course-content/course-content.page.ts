@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import data from '../../assets/Course.json';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-course-content',
@@ -11,17 +7,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./course-content.page.scss'],
 })
 export class CourseContentPage implements OnInit {
-  private apiUrl: string = environment.apiUrl;
-
   Course: any[] = [];
 
   email: any;
 
-  constructor(
-    private http: HttpClient,
-    public activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor(public activatedRoute: ActivatedRoute, private router: Router) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
     this.email = localStorage.getItem('email');

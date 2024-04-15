@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
@@ -17,11 +17,7 @@ export class Tab10Page implements OnInit {
   professors: any[];
   searchText: any;
 
-  constructor(
-    private route: Router,
-    private router: ActivatedRoute,
-    private http: HttpClient
-  ) {
+  constructor(private route: Router, private http: HttpClient) {
     this.schoolId = localStorage.getItem('schoolId');
   }
 

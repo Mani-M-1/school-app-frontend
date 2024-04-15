@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from 'src/app/services/toast.service';
 import { Router } from '@angular/router';
-import { response } from 'express';
-//import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { LoadingController } from '@ionic/angular';
 
 import { environment } from 'src/environments/environment';
@@ -48,17 +44,9 @@ export class EditProfilePage implements OnInit {
   uploadSuccessful: boolean;
   uploadedFileUrl: any;
 
-  // //for camera functionality
-  // imageSource: any;
-  // picture: any;
-  // newImage: string | undefined;
-
-  // role: any;
   userRole: any;
 
   ImageUrl: string;
-
-  // image: any;
 
   //for showing image in ion-avatar
   selectedProfileImage: string | null = null;
@@ -68,7 +56,6 @@ export class EditProfilePage implements OnInit {
     private http: HttpClient,
     private toastService: ToastService,
     private router: Router,
-    private domSanitizer: DomSanitizer,
     private loadingController: LoadingController
   ) {
     //here we need to check if user is signed in and user role
@@ -198,9 +185,7 @@ export class EditProfilePage implements OnInit {
 
     const email = localStorage.getItem('email');
     const role = localStorage.getItem('userRole');
-    // localStorage.setItem('userRole', response.role);
 
-    // const email = 'venuazmeera69@gmail.com'
     console.log(email);
     console.log(role);
 
@@ -209,8 +194,6 @@ export class EditProfilePage implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          //after getting response now set the local storage agin with the updated values
-          //as same as sign-in screen with setItem
           console.log(updatedProfile);
 
           //iam storing data for updation in tab4 page details

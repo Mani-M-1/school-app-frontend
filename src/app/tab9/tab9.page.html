@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="ion-header">
-    <ion-title color="light">Students</ion-title>
+    <ion-title color="dark">Students</ion-title>
   </ion-toolbar>
 
   <ion-searchbar
@@ -35,28 +35,16 @@
             (click)="navigateToProfile(student)"
           >
             <img class="tab9-page__student-image" src="{{student.profile}}" />
-            <!-- <div class="image">
-            </div> -->
+
             <ion-title class="tab9-page__student-firstname"
               >{{student.firstName}}</ion-title
             >
             <ion-label class="tab9-page__student-lastname"
               >{{student.lastName}}</ion-label
             >
-            <!-- <ion-card-header>{{student.gender}}</ion-card-header> -->
-            <!-- <ion-card-title>{{student.yearOfStudy}}</ion-card-title> -->
-            <!-- <ion-item>{{student.group}}</ion-item>
-  <ion-item>{{student.email}}</ion-item>
-  <ion-item>{{student.mobileNumber}}</ion-item> -->
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addstudent()" >
-      <ion-icon name="pencil-outline"></ion-icon>   
-     </ion-fab-button>
-  </ion-fab> -->
 </ion-content>

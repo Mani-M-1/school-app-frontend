@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
@@ -105,9 +100,6 @@ export class CreateblogPage implements OnInit {
       console.log('No file selected.');
       return;
     }
-    // this.uploadInProgressImage = true;
-    // this.uploadInProgressVideo = true;
-    // this.uploadInProgressFile = true
 
     this.showLoader = true;
 
@@ -175,15 +167,6 @@ export class CreateblogPage implements OnInit {
     });
   }
 
-  // initializeForm() {
-  //   this.blogForm = this.formBuilder.group({
-  //     title: ['', Validators.required],
-  //     content: ['', Validators.required],
-  //     images: ['', Validators.required],
-  //     professorName: ['', Validators.required]
-  //   });
-  // }
-
   add() {
     if (this.blogForm.valid) {
       const formValue = this.blogForm.value;
@@ -204,8 +187,6 @@ export class CreateblogPage implements OnInit {
         this.navCtrl.navigateRoot('/tabs/tab6');
       });
       console.log(bodydata);
-
-      // this.navCtrl.navigateRoot('/blog-post')
     } else {
       this.presentErrorAlert();
     }

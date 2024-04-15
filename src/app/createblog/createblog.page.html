@@ -12,8 +12,7 @@
     <ion-row>
       <ion-col size="12" size-md="8" offset-md="2">
         <form [formGroup]="blogForm" (ngSubmit)="add()">
-          <ion-item>
-            <!-- <ion-label position="floating">Title:</ion-label> -->
+          <ion-item color="light">
             <ion-icon
               name="star-outline"
               class="icon-spacing"
@@ -32,8 +31,7 @@
             </ion-text>
           </ion-item>
 
-          <ion-item>
-            <!-- <ion-label position="floating">Content:</ion-label> -->
+          <ion-item color="light">
             <ion-icon
               name="information-outline"
               color="success"
@@ -52,16 +50,7 @@
             </ion-text>
           </ion-item>
 
-          <!-- <ion-item>
-            <ion-icon name="image-outline" slot="start" color="primary"></ion-icon>
-            <ion-label position="floating">Blog Image:</ion-label>
-            <ion-input type="text" formControlName="images"></ion-input>
-            <ion-text *ngIf="blogForm.get('images')?.invalid && blogForm.get('images')?.touched" color="danger">
-              Course Image is required.
-            </ion-text>
-          </ion-item> -->
-
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="image-outline"
               color="warning"
@@ -73,9 +62,7 @@
               type="file"
               (change)="onImageFileChange($event)"
             >
-              <!--type="file"-->
             </ion-input>
-            <!-- <ion-button color="new" (click)="uploadFiles('image')">Upload file</ion-button> -->
             <ion-button color="new" (click)="uploadFiles('image')">
               {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ?
               'Update Image' : 'Upload Image') }}
@@ -85,8 +72,7 @@
             <b>Note:</b> Please upload a blog image before submitting the blog
           </p>
 
-          <ion-item>
-            <!-- <ion-label position="floating">Professor Name:</ion-label> -->
+          <ion-item color="light">
             <ion-icon
               name="person-outline"
               color="danger"

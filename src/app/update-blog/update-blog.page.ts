@@ -97,9 +97,6 @@ export class UpdateBlogPage implements OnInit {
       console.log('No file selected.');
       return;
     }
-    // this.uploadInProgressImage = true;
-    // this.uploadInProgressVideo = true;
-    // this.uploadInProgressFile = true
 
     this.showLoader = true;
 
@@ -156,6 +153,9 @@ export class UpdateBlogPage implements OnInit {
 
   onImageFileChange(event: any) {
     this.image = event.target.files[0];
+
+    // triggering upload file when a image is selected
+    this.uploadFiles('image');
   }
 
   updateBlog() {

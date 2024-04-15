@@ -1,93 +1,3 @@
-// /* Custom styles for the profile page */
-
-// ion-header {
-//     ion-toolbar {
-//       --background: #007bff; /* Change the primary header background color */
-//       color: #fff;
-//     }
-//   }
-
-//   .profile-card {
-//     margin: 10px;
-//     border-radius: 10px;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//     overflow: hidden;
-//   }
-//   // .round {
-//   //   border-radius: 50%;
-//   //   overflow: hidden;
-//   // }
-//   .profile-picture {
-//     height: 220px;
-//     // display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: #f5f5f5; /* Add a background color for the profile picture container */
-//     position: relative; /* Make the container relative for absolute positioning */
-//     // display: inline-block; /* To wrap content around the image */
-//   }
-//   .profile-picture {
-//     position: relative;
-//   }
-
-//   .camera-button,
-//   .upload-button {
-//     position: absolute;
-//     bottom: 5px;
-//     right: 5px;
-//     cursor: pointer;
-//     background-color: transparent;
-//     border: none;
-//     padding: 0;
-//     font-size: 14px; /* Adjust font size for buttons */
-//   }
-
-//   .camera-button ion-icon {
-//     font-size: 24px;
-//     margin-right: 5px; /* Add a small margin between icon and text */
-//   }
-
-//   .upload-button {
-//     bottom: 30px; /* Adjust vertical positioning for the second button */
-//   }
-
-//   .profile-picture img {
-//     max-width: 100%;
-//     // max-height: 100%;
-//      border-radius: 50%;
-//     // object-fit: cover;
-//   }
-
-//   ion-card-content {
-//     padding: 20px;
-//   }
-
-//   ion-item ion-icon {
-//     color: #007bff; /* Change the color of the icons */
-//   }
-
-//   .delete-button {
-//     margin-top: 20px;
-
-//   }
-//   .update{
-//     margin-top: 20px;
-//     padding-left: 200px;
-//   }
-//   .updated{
-//     padding-left: 120px;
-//   }
-//   .block-button{
-//     padding-left: 190px;
-//     margin-top: 20px;
-//     color: red;
-//   }
-//   .unblock-button{
-//     padding-left: 165px;
-//      margin-top: 20px;
-//      color: red;
-//   }
-
 //styles by "manikanta"
 ion-toolbar {
   --background: #ffaa01;
@@ -108,7 +18,6 @@ ion-toolbar {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  // background-color: rgb(46, 46, 46);
 }
 
 .student-profile-page__enrolled-courses-items {
@@ -116,4 +25,8 @@ ion-toolbar {
   background-color: rgb(155, 155, 155);
   padding: 10px 20px;
   border-radius: 30px;
+}
+
+ion-card {
+  box-shadow: none;
 }

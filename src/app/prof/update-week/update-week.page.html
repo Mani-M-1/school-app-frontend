@@ -10,9 +10,6 @@
 <ion-content class="ion-padding-top">
   <div class="ion-padding-top">
     <ion-card color="white">
-      <!-- <ion-card-header color="tertiary" class="custom-header">
-          <ion-card-title class="custom-title">Weekly Course Content Details</ion-card-title>
-        </ion-card-header> -->
       <ion-card-header color="new" class="custom-header">
         <ion-card-title class="custom-title"
           >Weekly Course Content Details</ion-card-title
@@ -26,7 +23,6 @@
             color="tertiary"
             class="icon-spacing"
           ></ion-icon>
-          <!-- <ion-label position="floating">Week</ion-label> -->
           <ion-select placeholder="Select a week" [(ngModel)]="Week">
             <ion-select-option value="week1" color="dark"
               >First Week</ion-select-option
@@ -54,9 +50,7 @@
             type="file"
             (change)="onVideoFileChange($event)"
           >
-            <!--type="file"-->
           </ion-input>
-          <!-- <ion-button color="new" (click)="uploadFiles('video')">Upload file</ion-button> -->
           <ion-button color="new" (click)="uploadFiles('video')">
             {{ uploadInProgressVideo ? 'Uploading...' : (uploadStatusVideo ?
             'Update Video' : 'Upload Video') }}
@@ -86,7 +80,6 @@
             type="file"
             (change)="onFileChange($event)"
           >
-            <!--type="file"-->
           </ion-input>
           <ion-button color="new" (click)="uploadFiles('file')">
             {{ uploadInProgressFile ? 'Uploading...' : (uploadStatusFile ?
@@ -95,7 +88,6 @@
         </ion-item>
 
         <ion-item>
-          <!-- <ion-label position="floating">Reading meterial</ion-label><br> -->
           <ion-icon
             name="document-outline"
             color="red"
@@ -114,7 +106,6 @@
             color="primary"
             class="icon-spacing"
           ></ion-icon>
-          <!-- <ion-label position="floating">Assignment</ion-label> -->
           <ion-input
             placeholder="Give Assignment to your Students"
             [(ngModel)]="Assignment"
@@ -127,7 +118,6 @@
             color="danger"
             class="icon-spacing"
           ></ion-icon>
-          <!-- <ion-label position="floating">Additional Content</ion-label><br> -->
           <ion-input
             placeholder="Give a pdf link for addl content"
             [(ngModel)]="AdditionalContent"
@@ -141,7 +131,6 @@
             color="warning"
             class="icon-spacing"
           ></ion-icon>
-          <!-- <ion-label position="floating">Annoncement</ion-label> -->
           <ion-input
             placeholder="Anounce if Something to mention"
             [(ngModel)]="Announcement"
@@ -149,7 +138,6 @@
         </ion-item>
 
         <ion-item>
-          <!-- <ion-label position="floating">Start Date</ion-label> -->
           <ion-icon
             name="calendar-outline"
             color="hello"
@@ -165,7 +153,6 @@
         </ion-item>
 
         <ion-item>
-          <!-- <ion-label position="floating">End Date</ion-label> -->
           <ion-icon name="calendar-outline" color="gb" class="icon-spacing">
           </ion-icon>
           <ion-input

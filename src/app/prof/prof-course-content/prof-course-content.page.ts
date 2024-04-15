@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import Plyr from 'plyr';
-// import linkifyStr from 'linkifyjs/string';
 
 import { environment } from 'src/environments/environment';
-
-// for video player in this page and i need to
-//write same code in course-content page
-//import { VideoPlayer, VideoOptions } from '@ionic-native/video-player/ngx';
 
 @Component({
   selector: 'app-prof-course-content',
@@ -22,17 +17,14 @@ export class ProfCourseContentPage implements OnInit {
   courseId: string;
   weeklyCourse: any[] = [];
   modalCtrl: any;
-  private player: Plyr;
 
-  //this is for video player
-  //videoOptions: VideoOptions;
+  private player: any;
 
   constructor(
     private http: HttpClient,
     public activatedRoute: ActivatedRoute,
     private router: Router,
-    private alertCtrl: AlertController,
-    private toastCtrl: ToastController // private videoPlayer: VideoPlayer //also placed on constructer
+    private alertCtrl: AlertController
   ) {
     //here we need to check if user is signed in and user role
     let login_state = localStorage.getItem('isLoggedIn');
@@ -42,25 +34,6 @@ export class ProfCourseContentPage implements OnInit {
     } else {
       this.router.navigate(['/sign-in']);
     }
-
-    // this.http.get('assets/weeklyCourse.json').subscribe((data:any) => {
-    //   console.log(data);
-    // });
-    // this.Course = data;
-    //this.getCourseDetails();
-
-    //this pases the the weekly course data to the course content page
-    //i am getting this data from tab5 page
-    //  let a:any = localStorage.getItem("weeklyCoursedata");
-    //  console.log(a);
-    //  let b = JSON.parse(a);
-    //  this.weeklyCourse.push(b);
-    //  console.log(b.CourseContent);
-
-    //video player
-    //  this.videoOptions = {
-    //   volume: 0.7,
-    // };
   }
 
   linkify(text: string): string {
@@ -79,9 +52,6 @@ export class ProfCourseContentPage implements OnInit {
       .get<any>(`${this.apiUrl}/weeklyCourse/getCourse/${this.courseId}`)
       .subscribe(
         (data) => {
-          // const { assignment, ...rest } = data;
-          // const modifiedAssignmentValue = linkifyStr(assignment);
-          // this.weeklyCourse = [{ modifiedAssignmentValue, ...rest }];
           this.weeklyCourse = [{ ...data }];
           console.log(this.weeklyCourse);
         },
@@ -91,45 +61,13 @@ export class ProfCourseContentPage implements OnInit {
       );
   }
 
-  ngAfterViewInit() {
-    this.player = new Plyr('#video-player', {
-      controls: ['play', 'progress', 'fullscreen'],
-    });
-  }
-  //the functions which is resposible for playing videos
-  // playOfflineVideo() {
-  //   this.videoPlayer
-  //     .play('file:///android_asset/www/movie.mp4')
-  //     .then(() => {
-  //       console.log('video finished');
-  //     })
-  //     .catch((error: any) => {
-  //       console.log(error);
-  //     });
-  // }
-
-  // playOnlineVideo() {
-  //   this.videoPlayer
-  //     .play('http://static.videogular.com/assets/videos/elephants-dream.mp4')
-  //     .then(() => {
-  //       console.log('video finished');
-  //     })
-  //     .catch((error: any) => {
-  //       console.log(error);
-  //     });
-  // }
-  // closeVideoPlayer() {
-  //   this.videoPlayer.close();
-  // }
-
-  // viewCourseContent(item){
-
-  // }
-
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.fetchTheCourseDeatails();
+        this.player = new Plyr('#video-player', {
+          controls: ['play', 'progress', 'fullscreen'],
+        });
       }
     });
   }
@@ -143,6 +81,7 @@ export class ProfCourseContentPage implements OnInit {
     console.log(data);
     this.router.navigate(['/update-week', data]);
   }
+
   deleteWeek(weekId: any) {
     console.log('weekId', weekId);
     console.log(weekId._id);

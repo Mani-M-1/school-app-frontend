@@ -9,13 +9,12 @@
 
 <div class="update-blog-page__bottom-wrapper">
   <div class="update-blog-page__form-container">
-    <ion-item>
+    <ion-item color="light">
       <ion-icon
         name="star-outline"
         class="icon-spacing"
         color="primary"
       ></ion-icon>
-      <!-- <ion-label position="floating">Title</ion-label> -->
       <ion-input
         placeholder="Title"
         type="text"
@@ -24,7 +23,7 @@
       ></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item color="light">
       <ion-icon
         name="information-outline"
         color="success"
@@ -38,29 +37,30 @@
       ></ion-textarea>
     </ion-item>
 
-    <ion-item>
+    <ion-item color="light">
       <ion-icon
         name="image-outline"
         color="warning"
         class="icon-spacing"
       ></ion-icon>
       <ion-input
+        style="font-size: 14px"
         [(ngModel)]="images"
         type="file"
         (change)="onImageFileChange($event)"
       ></ion-input>
-      <ion-button
+      <!-- <ion-button
         class="update-blog-page__upload-img-btn"
-        color="new"
+        color="translucent"
         (click)="uploadFiles('image')"
       >
         {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ? 'Update
         Image' : 'Upload Image') }}
-      </ion-button>
+      </ion-button> -->
     </ion-item>
     <p><b>Note:</b> Please upload a blog image before submitting the blog</p>
 
-    <ion-item>
+    <ion-item color="light">
       <ion-icon
         name="person-outline"
         color="danger"

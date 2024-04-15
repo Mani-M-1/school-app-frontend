@@ -19,45 +19,7 @@ ion-content {
     bottom: 0;
     top: 0;
     font-size: small;
-    // font-weight: 1000;
   }
-  // ion-card{
-  //   height: 25vh;
-  //   width: 20vh;
-  //   color: light;
-
-  //   ion-card-title{
-  //     padding-top: 2.5vh;
-  //     font-size: 1rem;
-  //     font-weight: 700;
-  //   }
-  // }
-  // .card-container{
-  //   ion-card{
-  //     padding-top: 1vh;
-  //     height: 25vh;
-  //     width: 20vh;
-  //     color: light;
-  //     margin: 1px;
-
-  //     ion-card-title{
-  //       padding-top: 2.5vh;
-  //       font-size: 1rem;
-  //       font-weight: 700;
-  //     }
-  //   }
-  // }
-
-  // .image-container{
-  //   // width: 20vh;
-  //   // height: 60%;
-  //   //object-fit:fill;
-  //   width: 100%;
-  //   height: 100%;
-  //   margin: auto;
-  //   // display:block;
-  //   position: inherit;
-  // }
   .image-container {
     display: flex;
     justify-content: center;
@@ -67,8 +29,6 @@ ion-content {
   }
 
   .fixed-image {
-    // max-height: 50%;
-    // max-width: 50%;
     height: auto;
     width: auto;
   }
@@ -77,9 +37,6 @@ ion-content {
     font-size: 1.2rem;
   }
 }
-// .calender{
-//   padding-right: 8vh;
-// }
 
 /* Add a class for responsive card styling */
 .responsive-card {
@@ -90,28 +47,11 @@ ion-content {
   justify-content: space-between;
 }
 
-// .responsive-card .image {
-//   flex: 1; /* Allow the image to expand and take available space */
-//   max-height: 100%; /* Set a maximum height for the image */
-//   overflow: hidden; /* Hide any overflowing content */
-//   max-width: 100%; /* Adjust this value as needed */
-// }
-
-// /* Style the card title and professor name */
-// .responsive-card ion-card-header {
-//   padding: 0.5rem;
-// }
-
 .responsive-card ion-card-title {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
-
-// /* Add responsive card margin */
-// .responsive-card {
-//   margin: 0.5rem;
-// }
 
 // styles added by "manikanta"
 .card-container {
@@ -119,7 +59,6 @@ ion-content {
 }
 
 .tab1-page__course-card {
-  // background-color: rgb(49, 49, 49);
   background-color: #fff1de;
 }
 

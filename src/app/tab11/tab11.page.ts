@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
 import { RoleService } from '../role.service';
 
 import { environment } from 'src/environments/environment';
@@ -25,7 +24,6 @@ export class Tab11Page implements OnInit {
   updateProfile: any;
 
   constructor(
-    private navctrl: NavController,
     private http: HttpClient,
     private router: Router,
     private roleService: RoleService
@@ -42,7 +40,6 @@ export class Tab11Page implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit triggered in tab11');
-    // this.ionViewDidEnter();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.school = localStorage.getItem('school');
@@ -58,8 +55,6 @@ export class Tab11Page implements OnInit {
   }
 
   logOut() {
-    // Step 1: Update the login_state in localStorage to false
-    // localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('isLoggedIn'); // written by "manikanta"
 
     this.roleService.clearUserRole();
@@ -69,17 +64,6 @@ export class Tab11Page implements OnInit {
     // Step 2: Navigate the user to the sign-in page
     this.router.navigate(['/sign-in']);
   }
-
-  // ionViewDidEnter() {
-  //   this.school = localStorage.getItem('school');
-  //   this.firstName = localStorage.getItem('firstName');
-  //   this.lastName = localStorage.getItem('lastName');
-  //   this.mobileNo = localStorage.getItem('mobileNo');
-  //   this.emergency = localStorage.getItem('emergency');
-  //   this.email = localStorage.getItem('email');
-  //   console.log(this.email);
-  //   this.profile = localStorage.getItem('profile');
-  // }
 
   getProfileData() {
     this.email = localStorage.getItem('email');
@@ -95,9 +79,5 @@ export class Tab11Page implements OnInit {
         this.emergency = data.emergency;
         this.profile = data.profile;
       });
-    // this.http.get(`${this.apiUrl}/Signup`).subscribe((data:any) => {
-    //   console.log(data);
-    //   this.Course = data;
-    // });
   }
 }

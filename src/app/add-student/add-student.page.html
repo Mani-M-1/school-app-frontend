@@ -13,7 +13,6 @@
     <form [formGroup]="studentForm" (ngSubmit)="submitForm()">
       <div class="form-container">
         <ion-item>
-          <!-- <ion-label position="floating">FirstName</ion-label> -->
           <ion-icon name="person" slot="start"></ion-icon>
           <ion-input
             type="text"
@@ -24,7 +23,6 @@
         </ion-item>
 
         <ion-item>
-          <!-- <ion-label position="floating">LastName</ion-label> -->
           <ion-icon name="person" slot="start"></ion-icon>
           <ion-input
             type="text"
@@ -75,7 +73,6 @@
 
         <ion-item fill="outline" shape="round" lines="none">
           <ion-icon name="mail-open-outline" slot="start"></ion-icon>
-          <!-- <ion-label position="floating"></ion-label> -->
           <ion-input
             placeholder="Email"
             formControlName="email"
@@ -86,7 +83,6 @@
         <!-- create password field here -->
         <ion-item fill="outline" shape="round" lines="none">
           <ion-icon name="eye" slot="start"></ion-icon>
-          <!-- <ion-label position="floating">Password</ion-label> -->
           <ion-input
             type="password"
             placeholder="Enter your password"
@@ -97,7 +93,6 @@
 
         <ion-item fill="outline" shape="round" lines="none">
           <ion-icon name="call-outline" slot="start"></ion-icon>
-          <!-- <ion-label position="floating"></ion-label> -->
           <ion-input
             placeholder="mobile number"
             formControlName="mobileNo"
@@ -108,7 +103,6 @@
 
         <ion-item fill="outline" shape="round" lines="none">
           <ion-icon name="call-outline" slot="start"></ion-icon>
-          <!-- <ion-label position="floating"></ion-label> -->
           <ion-input
             placeholder="emergency number"
             formControlName="emergency"
@@ -140,23 +134,6 @@
             autoGrow="true"
           ></ion-textarea>
         </ion-item>
-
-        <!-- <ion-item id="studentImg">
-          <ion-icon name="link-outline"></ion-icon>
-          <ion-label position="floating">Image Url</ion-label>
-          <ion-input
-            type="text"
-            formControlName="profile"
-            placeholder="paste image link here"
-          ></ion-input> -->
-
-        <!-- for default image url -->
-        <!-- <img
-            class="student-default-img"
-            [src]="studentForm.get('profile')?.value || defaultImageUrl"
-            alt="Default Image"
-          /> -->
-        <!-- </ion-item> -->
       </div>
 
       <!-- create two feilds here , one schoolname, school code -->
@@ -171,15 +148,6 @@
           [disabled]="true"
           value="{{school}}"
         ></ion-textarea>
-        <!-- <ion-textarea
-          type="text"
-          placeholder="Enter SchoolName here"
-          formControlName="school"
-          name="school"
-          autoGrow="true"
-          [disabled]="true"
-          value="{{schoolId}}"
-        ></ion-textarea> -->
       </ion-item>
 
       <ion-item class="input-item">
@@ -193,14 +161,6 @@
           [disabled]="true"
           value="{{schoolId}}"
         ></ion-textarea>
-        <!-- <ion-textarea
-          type="text"
-          placeholder="Enter your SchoolId"
-          formControlName="schoolId"
-          name="schoolId"
-          autoGrow="true"
-          [disabled]="true"
-        ></ion-textarea> -->
       </ion-item>
 
       <ion-button shape="round" expand="full" type="submit">Submit</ion-button>

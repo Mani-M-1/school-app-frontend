@@ -1,28 +1,15 @@
 <ion-content fullscreen="true">
   <div class="sign-in-page__bg-container">
     <div class="sign-in-page__inner-wrapper">
-      <!-- <img
-        class="sign-in-page__main-img"
-        src="../../assets/businessman-logging-his-tablet.jpg"
-      /> -->
       <img
         class="sign-in-page__main-img"
         src="../../assets/login-school-img-2.png"
       />
       <div class="sign-in-page__login-form">
         <h3>Welcome Back!</h3>
-        <p>Log in to your existant account of Student Corner</p>
-        <!-- <ion-radio-group value="strawberries">
-            <ion-item color="transparent">
-              <ion-label color="black">I want to BUY it</ion-label>
-              <ion-radio value="CLIENT"></ion-radio>
-            </ion-item>
-        
-            <ion-item>
-              <ion-label>I want to SELL it</ion-label>
-              <ion-radio value="PARTENR"></ion-radio>
-            </ion-item>
-          </ion-radio-group> -->
+        <p style="text-align: center">
+          Log in to your existant account of Student Corner
+        </p>
 
         <ion-item color="light" lines="none">
           <ion-icon
@@ -30,14 +17,13 @@
             slot="start"
             color="primary"
           ></ion-icon>
-          <!-- <ion-label position="floating">Email</ion-label> -->
           <ion-input
             placeholder="Enter your email"
             [(ngModel)]="email"
           ></ion-input>
         </ion-item>
 
-        <ion-item color="light">
+        <ion-item color="light" lines="none">
           <ion-icon
             [name]="type ? 'eye-outline' : 'eye-off-outline'"
             slot="end"
@@ -50,7 +36,6 @@
             slot="start"
             color="red"
           ></ion-icon>
-          <!-- <ion-label position="floating">password</ion-label> -->
           <ion-input
             placeholder="Enter your password"
             [(ngModel)]="password"
@@ -58,37 +43,12 @@
             [type]="type ? 'password' : 'text'"
           ></ion-input>
         </ion-item>
-        <!-- <ion-item color="transparent">
-        <ion-button 
-        class="end-btn" 
-        fill="clear" 
-        size="small"
-        (click)="forgotPassword()"
-        >Forgot Password?</ion-button>
-      </ion-item> -->
-        <!-- <ion-item color="transparent"> -->
         <a slot="end" fill="clear" routerLink="/forgot-password"
           >Forgot password?</a
         >
-        <!-- </ion-item> -->
-
-        <!-- <div class="sign-in-page__login-btn-wrapper"> -->
-
-        <!-- <div class="sign-in-page__login-btn-wrapper"> -->
         <button class="sign-in-page__login-btn" (click)="logIn()">
           <ion-label color="light"> Log in </ion-label>
         </button>
-        <!-- </div> -->
-        <!-- </div> -->
-        <!-- <br /> -->
-
-        <!-- <div> -->
-        <!-- <p>
-        Don't have an account?<br /><b class="signup-link" routerLink="/sign-up"
-          >Sign Up</b
-        >
-      </p> -->
-        <!-- </div> -->
       </div>
     </div>
   </div>
