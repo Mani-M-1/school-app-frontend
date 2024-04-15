@@ -65,17 +65,21 @@ const routes: Routes = [
         loadChildren: () =>
           import('../tab11/tab11.module').then((m) => m.Tab11PageModule),
       },
-      // {
-      //   path: '',
-      //   redirectTo: '/tabs/student-side-courses-page',
-      //   pathMatch: 'full',
-      // },
+      {
+        path: '',
+        loadChildren: () =>
+          import(
+            '../student-side-courses-page/student-side-courses-page.module'
+          ).then((m) => m.StudentSideCoursesPageModule),
+      },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/student-side-courses-page',
-    pathMatch: 'full',
+    loadChildren: () =>
+      import(
+        '../student-side-courses-page/student-side-courses-page.module'
+      ).then((m) => m.StudentSideCoursesPageModule),
   },
 ];
 

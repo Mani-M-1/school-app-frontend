@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { ToastService } from '../services/toast.service';
@@ -25,9 +25,9 @@ export class Tab5Page implements OnInit {
   searchText: any;
   showAll: boolean | undefined;
   weeklyCourse: any;
-  //navCtrl: any;
   taskForm: any;
   taskService: any;
+
   //this user name variable for shoeing
   //individual data based on prof email
   email: any;
@@ -35,7 +35,6 @@ export class Tab5Page implements OnInit {
   // for course content update
   courseId: any;
 
-  // CourseContentdata: any;
   private image: File; // this is for file type for storing iamge event
 
   // for saving  S3 urls
@@ -87,11 +86,6 @@ export class Tab5Page implements OnInit {
     } else {
       this.router.navigate(['/sign-in']);
     }
-    //this.http.get('assets/weeklyCourse.json').subscribe((data:any) => {
-    //console.log(data);
-    //this.weeklyCourse = data;
-    //});
-    // this.getCourseDetails();
 
     // this is for task form in todo-main
     this.taskForm = this.formBuilder.group({
@@ -99,7 +93,6 @@ export class Tab5Page implements OnInit {
       description: ['', Validators.required],
       dueDate: ['', Validators.required],
     });
-    // this.isUpdatePopupActive = true;
 
     this.isOptionsVisible = [];
   }
@@ -178,8 +171,6 @@ export class Tab5Page implements OnInit {
         (response) => {
           console.log(response);
           // Assuming successful signup
-          //route this to tab5 page don't forget
-          // this.router.navigate(['/tabs/tab5']);
           this.isUpdatePopupActive = false;
 
           // getting new data after updation
@@ -335,13 +326,10 @@ export class Tab5Page implements OnInit {
 
   cardClicked(item: any) {
     console.log(item);
-    let a = item;
 
     //this data is going to prof-course.content page
-    // localStorage.setItem("weeklyCoursedata",JSON.stringify(a)) "removed by manikanta"
     console.log('card clicked');
-    this.router.navigate(['/prof-course-content', a._id]);
-    //this.navCtrl.navigateForward(CourseContentPage,{data: item})
+    this.router.navigate(['/prof-course-content', item._id]);
   }
 
   // here is the function we are calling in

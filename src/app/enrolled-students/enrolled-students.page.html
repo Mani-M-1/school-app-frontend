@@ -7,13 +7,6 @@
   <h1 class="course-regsiter-page__course-regiter-text">Enrolled Students</h1>
 
   <form (ngSubmit)="submitForm($event)">
-    <!-- <ion-searchbar
-      (ionChange)="onSearchStudentChange($event)"
-      class="course-regsiter-page__studentname-searchbar"
-      placeholder="Enter Course Name"
-      value="{{courseName}}"
-      disabled="true"
-    ></ion-searchbar> -->
     <ion-title
       ><span style="font-size: 16px; color: rgb(195, 195, 195)">Course:</span>
       {{courseName}}
@@ -26,12 +19,10 @@
       (input)="searchCourseFunc($event)"
     ></ion-searchbar>
 
-    <!-- <ion-checkbox-group> -->
     <ion-item
       *ngFor="let student of students;"
       class="course-regsiter-page__checkbox-group-ion-item"
     >
-      <!-- <ion-checkbox value="Physics"></ion-checkbox> -->
       <ion-checkbox
         (ionChange)="checkboxChanged($event, student)"
         [checked]="student.enrolledCourse.isChecked"
@@ -50,10 +41,6 @@
         >
       </div>
     </ion-item>
-
-    <!-- Add button outside the loop for adding all courses -->
-
-    <!-- </ion-checkbox-group> -->
     <ion-button class="course-regsiter-page__submit-btn" type="submit"
       >Submit</ion-button
     >

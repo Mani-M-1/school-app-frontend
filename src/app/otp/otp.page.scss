@@ -14,18 +14,9 @@ ion-col {
   width: 100%;
 }
 
-// .otp-page__otp-content-wrapper {
-//   background-color: red;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-// }
-
 /* CSS */
 .otp-page__otp-content-wrapper {
   height: 100%;
-  // background-color: red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +31,6 @@ ion-grid {
 
 /* Center the submit button */
 .otp-page__submit-btn {
-  // margin-top: 20px; /* Add margin for separation */
   min-width: 320px;
   height: 45px;
   --background: #ffaa01;
@@ -53,7 +43,6 @@ ion-img {
 ion-label {
   margin-top: 5px;
   color: #ffaa01;
-  // color: red;
 }
 
 a {

@@ -112,13 +112,6 @@
         <ion-item class="input-item">
           <ion-icon name="home" slot="start"></ion-icon>
           <ion-label position="floating">School Name</ion-label>
-          <!-- <ion-textarea
-            type="text"
-            placeholder="Enter School Name here"
-            formControlName="school"
-            name="school"
-            autoGrow="true"
-          ></ion-textarea> -->
           <ion-textarea
             type="text"
             placeholder="Enter your School Name"
@@ -140,30 +133,7 @@
             [disabled]="true"
             value="{{schoolId}}"
           ></ion-textarea>
-          <!-- <ion-textarea
-            type="text"
-            placeholder="Enter your SchoolId"
-            formControlName="schoolId"
-            name="schoolId"
-            autoGrow="true"
-            [disabled]="true"
-          ></ion-textarea> -->
         </ion-item>
-
-        <!-- <ion-item>
-          <ion-label position="floating"></ion-label>
-          <ion-input
-            type="text"
-            formControlName="profile"
-            placeholder="paste image link here"
-          ></ion-input>
-
-          for default image url
-          <img
-            [src]="professorForm.get('profile')?.value || defaultImageUrl"
-            alt="Default Image"
-          />
-        </ion-item> -->
 
         <ion-item class="input-item">
           <ion-icon name="link-outline" slot="start"></ion-icon>

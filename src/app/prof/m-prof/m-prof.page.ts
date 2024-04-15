@@ -49,7 +49,6 @@ export class MProfPage implements OnInit {
     localStorage.setItem('weeklyCoursedata', JSON.stringify(a));
     console.log('card clicked');
     this.router.navigate(['/prof-course-content']);
-    //this.navCtrl.navigateForward(CourseContentPage,{data: item})
   }
 
   getCourseDetails() {

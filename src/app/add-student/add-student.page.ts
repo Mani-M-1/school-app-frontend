@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -34,7 +34,6 @@ export class AddStudentPage implements OnInit {
 
   constructor(
     private route: Router,
-    private router: ActivatedRoute,
     private http: HttpClient,
     private formBuilder: FormBuilder
   ) {
@@ -58,8 +57,6 @@ export class AddStudentPage implements OnInit {
       mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       emergency: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       address: ['', Validators.required], // Address field
-      // school: ['', Validators.required],
-      // schoolId: ['', Validators.required],
       profile: [''], // Initialize images as an empty string
     });
   }
@@ -84,18 +81,19 @@ export class AddStudentPage implements OnInit {
         role: 'student',
         profile: formValue.profile || this.defaultImageUrl, // for default image url
       };
+
       // Make the POST request to the API endpoint
       this.http.post(`${this.apiUrl}/user/signup`, body).subscribe(
-        (response) => {
+        (response: any) => {
           console.log(response);
-          // extract email and password from the response
-          // email,password
-          let data: any = response;
-          console.log(data.createdUser.email);
-          console.log(data.createdUser.password);
+          console.log(response.createdUser.email);
+          console.log(response.createdUser.password);
 
           // call the sendEmail functon to send email with credentials
-          this.sendEmail(data.createdUser.email, data.createdUser.password);
+          this.sendEmail(
+            response.createdUser.email,
+            response.createdUser.password
+          );
           this.route.navigate(['/tabs/tab9']);
         },
         (error) => {

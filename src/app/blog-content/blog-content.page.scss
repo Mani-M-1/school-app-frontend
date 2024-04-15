@@ -2,7 +2,6 @@ ion-header {
   --ion-background-color: rgb(67, 98, 236);
 }
 ion-title {
-  // color: rgb(26, 25, 25);
   font-weight: bold;
   padding-left: 0px;
   margin-left: 0px;
@@ -21,26 +20,12 @@ ion-toolbar {
   --background: #ffaa01;
 }
 
-/* Example SCSS for customizing the button alignment in the grid */
-// .button-row {
-//     display: flex;
-//   }
-
-//   .button-col {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-
-.line {
-  height: 1px; /* Adjust the height of the line as needed */
-  width: 100%; /* Make the line stretch across the container */
-  background-color: #ccc; /* Change the color of the line if desired */
-  margin-bottom: 10px; /* Adjust the spacing between the line and the icons */
+ion-textarea {
+  color: #ffaa01;
 }
+
 .icons {
   padding-top: 10px;
-  padding-left: 20px;
   display: flex;
   align-items: center; /* Align the icons vertically in the center */
 }
@@ -57,11 +42,7 @@ ion-toolbar {
 .icon1 {
   font-size: 20px;
 }
-ion-card {
-  border: 1px solid #8d8585; /* Adjust the color and thickness as needed */
-  border-radius: 10px;
-  box-shadow: 0 8px 10px rgba(15, 15, 15, 0.425);
-}
+
 .content-padding {
   padding-top: 0;
   padding-bottom: 0;
@@ -69,25 +50,10 @@ ion-card {
   padding-right: 0;
 }
 
-.card-margin {
-  margin-left: -5px;
-  margin-right: -5px;
-}
 .writer {
   font-weight: bold;
   padding-right: 10px;
   color: grey;
-}
-
-/* CSS for ion-card content */
-.ion-card-content {
-  /* Allow text to wrap to the next line */
-  word-wrap: break-word;
-  white-space: normal;
-}
-p {
-  line-height: 200%;
-  font-size: 1.1em;
 }
 
 // styles added by "manikanta"
@@ -111,8 +77,6 @@ p {
 .blog-content-page__comments-list-item {
   list-style-type: none;
   display: flex;
-  align-items: flex-start;
-  gap: 5px;
 }
 
 .blog-content-page__comments-list-item-profile-img {
@@ -120,25 +84,28 @@ p {
   width: 50px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.247);
-  // background-color: teal;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
 }
 
-// .blog-content-page__comments-list-item-email-and-comment-wrapper {
-//   margin-top: 2px;
-// }
+.blog-content-page__comments-list-item-email-and-comment-wrapper {
+  background-color: #fff1de;
+  flex-grow: 1;
+  border-radius: 0 6px 6px 6px;
+  padding: 5px;
+  margin: 5px 0 0 5px;
+  height: 100%;
+}
 
-.blog-content-page__comments-list-item-email {
+.blog-content-page__comments-list-item-fullname {
   font-size: 14px;
-  font-weight: bold;
-  color: rgb(170, 170, 170);
-  margin-right: 10px;
+  font-weight: 500;
+  color: #ffaa01;
+  margin: 0;
 }
 
 .blog-content-page__comments-list-item-comment {
   color: rgb(98, 98, 98);
+  margin-bottom: 5px;
+  margin: 0;
 }
 
 ion-button {

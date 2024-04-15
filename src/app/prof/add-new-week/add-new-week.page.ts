@@ -115,9 +115,6 @@ export class AddNewWeekPage implements OnInit {
       console.log('No file selected.');
       return;
     }
-    // this.uploadInProgressImage = true;
-    // this.uploadInProgressVideo = true;
-    // this.uploadInProgressFile = true
 
     this.showLoader = true;
 

@@ -1,7 +1,5 @@
 <ion-header class="notification-header" [translucent]="true">
-  <!-- <ion-toolbar id="tab3-page__toolbar"> -->
   <ion-title> Notifications </ion-title>
-  <!-- </ion-toolbar> -->
   <ion-button
     class="tab3-page__clear-all-btn"
     (click)="handleOnclickClearAllBtn()"
@@ -17,11 +15,6 @@
       class="tab3-page__students-list-item"
       *ngFor="let notification of notificationArr"
     >
-      <!-- <div class="tab3-page__profile-img">
-        {{notification.additionalData.email[0]}}
-        
-      </div> -->
-
       <div class="tab3-page__students-list-item-img-and-data-wrapper">
         <img
           src="{{notification.additionalData.profile}}"

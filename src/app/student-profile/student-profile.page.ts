@@ -1,21 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { NavigationExtras } from '@angular/router';
-import { response } from 'express';
-import { error } from 'console';
 import { ToastController } from '@ionic/angular'; // Import ToastController
 
 import { environment } from 'src/environments/environment';
-
-interface StudentResponse {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  images: string;
-  email: string;
-}
 
 @Component({
   selector: 'app-student-profile',
@@ -45,17 +33,13 @@ export class StudentProfilePage implements OnInit {
   updatedStudent: any;
   selectedFileUrl: any;
 
-  // editedStudent: any;
-  // originalStudent: {};
-
   chooseFile() {
     this.fileInput.nativeElement.click();
   }
 
   studentId: any;
-  student: any; // Assuming you have an array of student data
-  // Define a variable to hold the selected student data
-  // selectedStudent: any;
+  student: any;
+
   content: any;
   password: any;
   uploadInProgressImage: boolean;
@@ -78,38 +62,12 @@ export class StudentProfilePage implements OnInit {
   currentCourseArr: any[];
   completedCourseArr: any[];
 
-  private image: File;
-
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
     private toastController: ToastController
   ) {}
-
-  // getStudentProfileDetails(email: string) {
-  //   this.http
-  //     .get<any>(`${this.apiUrl}/enrollCourse/user-profile-details/${email}`)
-  //     .subscribe(
-  //       (response) => {
-  //         this.studentProfileId = response.userProfile._id;
-  //         const enrolledCoursesArr = response.userProfile.enrolledCourses;
-
-  //         // filtering "currentCourses"
-  //         this.currentCourseArr = enrolledCoursesArr.filter(
-  //           (eachItem: any) => eachItem.isCompleted === false
-  //         );
-
-  //         // filtering "completedCourses"
-  //         this.completedCourseArr = enrolledCoursesArr.filter(
-  //           (eachItem: any) => eachItem.isCompleted === true
-  //         );
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //       }
-  //     );
-  // }
 
   getStudent() {
     this.route.params.subscribe((params) => {
@@ -133,10 +91,6 @@ export class StudentProfilePage implements OnInit {
           this.completedCourseArr = enrolledCoursesArr.filter(
             (eachItem: any) => eachItem.isCompleted === true
           );
-
-          // passing the email which is used as "email" for profile
-          // this.getStudentProfileDetails(response.email);
-          // console.log(this.emailForCourses);
         },
         (error) => {
           console.log(error);
@@ -165,21 +119,7 @@ export class StudentProfilePage implements OnInit {
       });
   }
 
-  //update function ....once click the edit icon navigate to updata student profile page
-  // update(updatedStudent: any){
-  //   console.log(updatedStudent[0])
-  //   this.router.navigate(['/update-student-profile', updatedStudent[0]])
-  // console.log(student);
-  // this.router.navigate(['/update-student-profile'], navigationExtras);
-
-  // Function to handle the "Forgot Password" button click
-  // forgotPassword(studentPassword: any) {
-  //   console.log(studentPassword[0]);
-  //   // Navigate to the forgot password page
-  //   this.router.navigate(['/forgot-password', studentPassword[0]]);
-  // }
-
-  toggleEditMode(student: any) {
+  toggleEditMode() {
     this.isEditing = !this.isEditing;
     this.editedStudent = { ...this.updatedStudent }; // Clone the student data for editing
     this.originalStudent = { ...this.updatedStudent }; // Store the original student data
@@ -204,8 +144,6 @@ export class StudentProfilePage implements OnInit {
           // Update the originalStudent with the editedStudent data
           this.student = { ...response.updatedStudent };
           this.isEditing = false; // Switch back to view mode
-
-          // this.getStudent();
         },
         (error) => {
           console.error('Error updating student profile:', error);
@@ -221,12 +159,6 @@ export class StudentProfilePage implements OnInit {
 
   // Function to trigger file upload
   uploadImage(fileType: any, student: any) {
-    // var currentFile: File | null = null;
-
-    // if(fileType == 'image'){
-    // this.selectedFile = this.image
-    // }
-
     if (!this.selectedFile) {
       console.log('No file selected.');
       return;
@@ -275,9 +207,8 @@ export class StudentProfilePage implements OnInit {
     console.log(imagepath, profileId);
     const data = {
       profile: imagepath,
-      //  updatedStudent: this.updatedStudent._id
     };
-    // console.log(profileId._id);
+
     // Make the PUT request to the API endpoint
     console.log(data);
     this.http
@@ -288,8 +219,6 @@ export class StudentProfilePage implements OnInit {
           // Handle the response or show a success message
           console.log(response.updatedStudent);
           this.updatedStudent = response.updatedStudent;
-          // For example, show a success toast
-          // this.showToast('Student profile updated successfully.');
 
           this.getStudent();
         },
@@ -300,7 +229,6 @@ export class StudentProfilePage implements OnInit {
           // this.showToast('Error updating student profile. Please try again.');
         }
       );
-    // this.router.navigate(['/tab9']);
   }
 
   // Function to block a student
@@ -360,10 +288,6 @@ export class StudentProfilePage implements OnInit {
       student.email,
     ]);
   }
-
-  // showAlert(message: string){
-  //   alert(message); // display a pop-up alert with the provided message
-  // }
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({

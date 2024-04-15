@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-
   {
     path: '',
     loadChildren: () =>
@@ -16,11 +13,6 @@ const routes: Routes = [
       import(
         './student-side-courses-page/student-side-courses-page.module'
       ).then((m) => m.StudentSideCoursesPageModule),
-  },
-  {
-    path: 'search',
-    loadChildren: () =>
-      import('./search/search.module').then((m) => m.SearchPageModule),
   },
   {
     path: 'sign-in',
@@ -49,13 +41,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'samplepage',
-    loadChildren: () =>
-      import('./samplepage/samplepage.module').then(
-        (m) => m.SamplepagePageModule
-      ),
-  },
-  {
     path: 'm-prof',
     loadChildren: () =>
       import('./prof/m-prof/m-prof.module').then((m) => m.MProfPageModule),
@@ -80,11 +65,6 @@ const routes: Routes = [
       import('./prof/add-new-week/add-new-week.module').then(
         (m) => m.AddNewWeekPageModule
       ),
-  },
-  {
-    path: 'details',
-    loadChildren: () =>
-      import('./details/details.module').then((m) => m.DetailsPageModule),
   },
   {
     path: 'edit-profile',

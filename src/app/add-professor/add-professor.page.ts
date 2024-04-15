@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
-import { response } from 'express';
 
 import { environment } from 'src/environments/environment';
 
@@ -36,7 +34,6 @@ export class AddProfessorPage implements OnInit {
   constructor(
     private http: HttpClient,
     private navCtrl: NavController,
-    private alertController: AlertController,
     private formbuilder: FormBuilder
   ) {
     this.schoolId = localStorage.getItem('schoolId'); // schoolId of "professor"
@@ -59,9 +56,6 @@ export class AddProfessorPage implements OnInit {
       emergency: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       profile: [''], // Initialize profile as an empty string
       address: ['', Validators.required], // Address field
-
-      // school: ['', Validators.required],
-      // schoolId: ['', Validators.required],
     });
   }
 
@@ -87,6 +81,7 @@ export class AddProfessorPage implements OnInit {
         role: 'professor',
         profile: formValue.profile || this.defaultImageUrl,
       };
+
       // send a post request to add professor data
       this.http.post(`${this.apiUrl}/user/signup`, body).subscribe(
         (response) => {

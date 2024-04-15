@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { AddNewTaskPage } from '../add-new-task/add-new-task.page';
 import { UpdateTaskPage } from '../update-task/update-task.page';
 import { HttpClient } from '@angular/common/http';
@@ -88,7 +88,7 @@ export class TodoHomePage {
 
     let hours: any = dateObj.getHours();
     let minutes: any = dateObj.getMinutes();
-    // const year = dateObj.getFullYear();
+
     if (hours < 10) {
       hours = `0${hours}`;
     }

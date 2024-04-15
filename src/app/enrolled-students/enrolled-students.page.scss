@@ -1,7 +1,3 @@
-// ion-content {
-// --padding-top: 30px;
-// }
-
 .course-regsiter-page__course-regiter-text {
   text-align: center;
 }
@@ -10,16 +6,7 @@ form {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  // gap: 20px;
-  // position: relative;
 }
-
-// ion-input.course-regsiter-page__studentname {
-//   // --background: transparent;
-
-//   --background: #7573f5;
-//   --border-style: none;
-// }
 
 ion-item.course-regsiter-page__studentname-ion-item {
   --border-radius: 15px;
@@ -39,7 +26,6 @@ ion-checkbox-group {
 }
 
 ion-item.course-regsiter-page__checkbox-group-ion-item {
-  // margin-bottom: 20px;
   --background: transparent;
 }
 

@@ -27,19 +27,8 @@ ion-title {
 }
 
 ion-item {
-  padding-top: 2vh;
-  --padding-start: 10px; /* Adjust padding as needed */
-  --padding-end: 10px; /* Adjust padding as needed */
-  --border-radius: 10px; /* Adjust border radius as needed */
-  --background: #f5f5f5; /* Adjust background color as needed */
-  --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15); /* Add a subtle box shadow */
-}
-
-ion-input {
-  border: none;
-  --padding-start: 0;
-  --padding-end: 0;
-  color: rgb(64, 64, 64);
+  border-radius: 10px;
+  margin: 15px 0 0 0;
 }
 
 .icon-spacing {
@@ -62,12 +51,9 @@ p {
   color: rgb(229, 81, 81);
 }
 
-ion-textarea {
-  color: rgb(74, 74, 74);
-}
-
 // styles added by "manikanta"
 .createblog-page__add-blog-btn {
   margin-top: 20px;
+  height: 45px;
   --background: #ffaa01;
 }

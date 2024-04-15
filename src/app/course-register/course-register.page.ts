@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 import { environment } from 'src/environments/environment';
@@ -16,7 +16,6 @@ export class CourseRegisterPage implements OnInit {
   studentId: string = '';
   studentFirstName: string = '';
   email: any;
-  // searchStudent: string = '';
   selectedCourses: string[] = []; // this array is used to store the selected courses
   courses: any[]; // available courses from "weeklyCourses"
   enrolledCoursesArr: any[];
@@ -26,9 +25,12 @@ export class CourseRegisterPage implements OnInit {
   constructor(
     private navctrl: NavController,
     private http: HttpClient,
-    private router: Router,
     private route: ActivatedRoute
   ) {
+    this.schoolId = localStorage.getItem('schoolId');
+  }
+
+  getEnrolledCourses() {
     this.route.params.subscribe((params) => {
       this.studentId = params['studentId'];
       this.studentFirstName = params['studentFirstName'];
@@ -36,15 +38,6 @@ export class CourseRegisterPage implements OnInit {
       console.log(this.studentFirstName);
     });
 
-    this.schoolId = localStorage.getItem('schoolId');
-  }
-
-  onSearchStudentChange(event: any) {
-    // this.searchStudent = event.target.value;
-    // console.log('Search term changed:', this.searchStudent);
-  }
-
-  getEnrolledCourses() {
     this.http
       .get<any>(
         `${this.apiUrl}/enrollCourse/user-profile-details/${this.email}`
@@ -111,21 +104,6 @@ export class CourseRegisterPage implements OnInit {
     }
   }
 
-  // addCourse(course: any) {
-  //   // Check if the course is not already in the selectedCourses array
-  //   if (!this.selectedCourses.includes(course.CourseName)) {
-  //     this.selectedCourses.push(course.CourseName);
-  //   }
-  // }
-
-  // Add a single course to the selectedCourses array
-  // addCourse(course: any) {
-  //   if (!this.selectedCourses.includes(course)) {
-  //     this.selectedCourses.push(course);
-  //   }
-  //   console.log(this.selectedCourses);
-  // }
-
   addCourse(course: any) {
     const body = {
       StudentId: this.studentId,
@@ -135,7 +113,6 @@ export class CourseRegisterPage implements OnInit {
     console.log(body);
     this.http.post(`${this.apiUrl}/enrollCourse/enrollCourses`, body).subscribe(
       (response) => {
-        // this.getCourses();
         console.log(response);
 
         // calling this function  to update the enrolled courses array
@@ -146,15 +123,6 @@ export class CourseRegisterPage implements OnInit {
       }
     );
   }
-
-  // Remove a single course from the selectedCourses array
-  // removeCourse(course: any) {
-  //   const index = this.selectedCourses.indexOf(course);
-  //   if (index !== -1) {
-  //     this.selectedCourses.splice(index, 1);
-  //   }
-  //   console.log(this.selectedCourses);
-  // }
 
   removeCourse(course: any) {
     const body = {
@@ -177,10 +145,6 @@ export class CourseRegisterPage implements OnInit {
 
   // Handle changes in checkbox state
   checkboxChanged(event: any, course: any) {
-    // if (!event.detail.checked) {
-    //   // If the checkbox is unchecked, remove the course from the selectedCourses array
-    //   this.removeCourse(course);
-    // }
     if (event.detail.checked) {
       // Checkbox is checked, add the course to the selectedCourses array
       this.addCourse(course);

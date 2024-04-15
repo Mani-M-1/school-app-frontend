@@ -10,10 +10,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-//the vodeoPlayer import
-// import { VideoPlayer } from '@ionic-native/video-player/ngx';
-//update popup
-
 @NgModule({
   //and declare in declarations
   declarations: [AppComponent],

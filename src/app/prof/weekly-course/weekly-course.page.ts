@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ToastService } from '../../services/toast.service';
-import { response } from 'express';
 import { LoadingController } from '@ionic/angular';
 
 import { environment } from 'src/environments/environment';
@@ -84,8 +78,6 @@ export class WeeklyCoursePage implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private formBuilder: FormBuilder,
-    // private FormControl: FormControl
     private toastService: ToastService,
     private loadingController: LoadingController
   ) {
@@ -118,48 +110,8 @@ export class WeeklyCoursePage implements OnInit {
   }
 
   selectedFile: File;
-  //for uploding images directly from computer
-  // handleFileInput(event: any) {
-  //   this.selectedFile = event.target.files[0];
-  // }
 
   ngOnInit() {}
-
-  // adding new course
-  /*var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({
-  "CourseName": "hello10",
-  "ProfessorName": "venu",
-  "email": "rahul123@gmail.com",
-  "CourseDate": "10-06-2023",
-  "Coursetimings": "10:10",
-  "Accessclass": "anyone",
-  "Discription": "no dis",
-  "CourseImage": "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
-  "CourseContent": {
-    "week": "week1",
-    "readingmeterial": "no meterial",
-    "assignment": "no assignment",
-    "additionalContent": "no content",
-    "announcement": "no annoucement",
-    "startDate": "10-10-2023",
-    "endDate": "11-10-2023"
-  }
-});
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-
-fetch("localhost:3000/weeklyCourse", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));*/
 
   async uploadFiles(fileType: any) {
     var currentFile;
@@ -180,9 +132,6 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
       console.log('No file selected.');
       return;
     }
-    // this.uploadInProgressImage = true;
-    // this.uploadInProgressVideo = true;
-    // this.uploadInProgressFile = true
 
     this.showLoader = true;
 
@@ -266,30 +215,8 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
     console.log(this.Coursetimings);
     console.log(this.Accessclass);
     console.log(this.Discription);
-    // console.log(this.CourseImage);
 
     console.log(this.CourseContent);
-    // console.log(this.Readingmeterial);
-    // console.log(this.Assignment);
-    // console.log(this.AdditionalContent);
-    // console.log(this.Announcement);
-    // console.log(this.StartDate);
-    // console.log(this.EndDate);
-
-    // Save the course content to the database
-    // const courseContent = {
-    //   selectedWeek: this.selectedWeek,
-    //   videoFileUrl: this.videoUrl,
-    //   filesFileUrl: this.filesFileUrl,
-    //   readingmeterial: this.readingmeterial,
-    //   assignment: this.assignment,
-    //   additionalContent: this.additionalContent,
-    //   annoncement: this.announcement,
-    //   startDate: this.startDate,
-    //   endDate: this.endDate,
-
-    // calling upload files function
-    // this.uploadFiles("course_files");
 
     //difining
     const postdata = {
@@ -302,8 +229,6 @@ fetch("localhost:3000/weeklyCourse", requestOptions)
       Discription: this.Discription,
       CourseImage: this.imageUrl,
       schoolId: this.schoolId,
-
-      // "CourseContent":this.CourseContent[0]
 
       CourseContent: {
         week: this.CourseContent[0].week,

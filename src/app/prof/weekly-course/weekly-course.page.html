@@ -1,22 +1,14 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="new">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/tab5"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/tabs/tab5"></ion-back-button>
+    <ion-card-header class="header">Enter your Course Details</ion-card-header>
+  </ion-buttons>
+</ion-toolbar>
 
 <ion-content>
-  <!-- <ion-grid>
-    <ion-row class="ion-justify-content-left">
-      <ion-col size="12" size-md="10" size-lg="8" size-xl="7"> -->
   <div class="background-container">
-    <!-- <ion-card color="white"> -->
-    <ion-card-header color="new" class="header"
-      >Enter your Course Details</ion-card-header
-    >
     <ion-card-content>
-      <ion-item>
+      <ion-item color="light">
         <ion-icon
           name="book-outline"
           color="primary"
@@ -28,13 +20,7 @@
         ></ion-input>
       </ion-item>
 
-      <!-- <ion-item>
-                <ion-label position="floating">Professor</ion-label>
-        
-                <ion-input placeholder="Enter your Course Name" [(ngModel)]="CourseName"></ion-input>
-              </ion-item> -->
-
-      <ion-item>
+      <ion-item color="light">
         <ion-icon
           name="school-outline"
           color="danger"
@@ -46,12 +32,11 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item class="CourseDate">
-        <!-- <ion-label position="floating">Course Date</ion-label> -->
+      <ion-item color="light" class="CourseDate">
         <ion-icon
           name="calendar-outline"
           color="tertiary"
-          class="icon-"
+          class="icon-spacing"
         ></ion-icon>
         <ion-input
           placeholder="Enter Course date"
@@ -60,7 +45,7 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item class="CourseTimings">
+      <ion-item color="light" class="CourseTimings">
         <ion-icon
           name="time-outline"
           color="warning"
@@ -73,7 +58,7 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="light">
         <ion-icon
           name="people-circle-outline"
           color="success"
@@ -85,7 +70,7 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="light">
         <ion-icon
           name="information-circle-outline"
           color="danger"
@@ -99,7 +84,7 @@
         ></ion-textarea>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="light">
         <ion-icon
           name="image-outline"
           color="primary"
@@ -110,30 +95,26 @@
           type="file"
           (change)="onImageFileChange($event)"
         >
-          <!--type="file"-->
         </ion-input>
-        <!-- <ion-button color="new" (click)="uploadFiles('image')">Upload file</ion-button> -->
-        <ion-button color="new" (click)="uploadFiles('image')">
+        <ion-button style="scale: 0.8" (click)="uploadFiles('image')">
           {{ uploadInProgressImage ? 'Uploading...' : (uploadStatusImage ?
           'Update Image' : 'Upload Image') }}
         </ion-button>
       </ion-item>
     </ion-card-content>
-    <!-- </ion-card> -->
 
     <div *ngFor="let content of CourseContent; let i = index">
-      <ion-card color="white" class="course-card">
-        <ion-card-header color="new" class="white-text"
-          >Course Content Details</ion-card-header
+      <ion-card class="course-card">
+        <ion-card-header class="white-text"
+          >Weekly Course Details</ion-card-header
         >
         <ion-card-content>
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="calendar-outline"
               color="danger"
               class="icon-spacing"
             ></ion-icon>
-            <!-- <ion-input [(ngModel)]="CourseContent[i].week" name="week{{i}}"> -->
             <ion-select
               placeholder="Select a week"
               [(ngModel)]="CourseContent[i].week"
@@ -154,7 +135,7 @@
             </ion-select>
           </ion-item>
 
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="videocam-outline"
               color="warning"
@@ -165,16 +146,14 @@
               type="file"
               (change)="onVideoFileChange($event)"
             >
-              <!--type="file"-->
             </ion-input>
-            <!-- <ion-button color="new" (click)="uploadFiles('video')">Upload file</ion-button> -->
-            <ion-button color="new" (click)="uploadFiles('video')">
+            <ion-button style="scale: 0.8" (click)="uploadFiles('video')">
               {{ uploadInProgressVideo ? 'Uploading...' : (uploadStatusVideo ?
               'Update Video' : 'Upload Video') }}
             </ion-button>
           </ion-item>
 
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="videocam-outline"
               color="success"
@@ -186,7 +165,7 @@
             ></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="document-outline"
               color="warning"
@@ -197,15 +176,14 @@
               type="file"
               (change)="onFileChange($event)"
             >
-              <!--type="file"-->
             </ion-input>
-            <ion-button color="new" (click)="uploadFiles('file')">
+            <ion-button style="scale: 0.8" (click)="uploadFiles('file')">
               {{ uploadInProgressFile ? 'Uploading...' : (uploadStatusFile ?
               'Update Pdf' : 'Upload Pdf') }}
             </ion-button>
           </ion-item>
 
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="document-outline"
               color="primary"
@@ -219,7 +197,7 @@
             </ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="document-text-outline"
               color="warning"
@@ -233,7 +211,7 @@
             ></ion-textarea>
           </ion-item>
 
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="documents-outline"
               color="success"
@@ -247,7 +225,7 @@
             </ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item color="light">
             <ion-icon
               name="megaphone-outline"
               color="dark"
@@ -261,8 +239,7 @@
             </ion-input>
           </ion-item>
 
-          <ion-item>
-            <!-- <ion-label position="floating">Start Date</ion-label> -->
+          <ion-item color="light">
             <ion-icon
               name="calendar-outline"
               color="pink"
@@ -277,8 +254,7 @@
             </ion-input>
           </ion-item>
 
-          <ion-item>
-            <!-- <ion-label position="floating">End Date</ion-label> -->
+          <ion-item color="light">
             <ion-icon
               name="calendar-outline"
               color="warning"
@@ -293,45 +269,11 @@
             </ion-input> </ion-item
           ><br />
 
-          <!-- <ion-item>
-                  <ion-input placeholder="Type your message"></ion-input>
-                </ion-item> -->
-
-          <!--<ion-item color="white">
-                  <ion-label position="floating">Email</ion-label>
-                  <ion-input placeholder="Enter your email"></ion-input>
-                </ion-item> <br> -->
-
-          <!-- <form>
-                  <div *ngFor="let content of CourseContent; let i = index">
-                    <label>Week:</label>
-                    <input [(ngModel)]="CourseContent[i].week" name="week{{i}}">
-                    <label>Reading Material:</label>
-                    <input [(ngModel)]="CourseContent[i].readingmeterial" name="readingmeterial{{i}}">
-                    <label>Assignment:</label>
-                    <input [(ngModel)]="CourseContent[i].assignment" name="assignment{{i}}">
-                    <label>Additional Content:</label>
-                    <input [(ngModel)]="CourseContent[i].additionalContent" name="additionalContent{{i}}">
-                    <label>Announcement:</label>
-                    <input [(ngModel)]="CourseContent[i].annoncement" name="annoncement{{i}}">
-                    <label>Start Date:</label>
-                    <input [(ngModel)]="CourseContent[i].startDate" name="startDate{{i}}">
-                    <label>End Date:</label>
-                    <input [(ngModel)]="CourseContent[i].endDate" name="endDate{{i}}">
-                  </div>
-                </form> -->
-          <ion-button
-            size="full"
-            shape="round"
-            color="new"
-            (click)="SubmitCourse()"
+          <ion-button size="full" shape="round" (click)="SubmitCourse()"
             >Submit Course</ion-button
           >
         </ion-card-content>
       </ion-card>
     </div>
   </div>
-  <!-- </ion-col>
-    </ion-row>
-  </ion-grid> -->
 </ion-content>

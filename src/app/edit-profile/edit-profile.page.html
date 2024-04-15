@@ -44,7 +44,6 @@
             slot="start"
             color="success"
           ></ion-icon>
-          <!-- <ion-label position="stacked label">School</ion-label> -->
           <ion-input
             placeholder="Enter your School name"
             value="{{school}}"
@@ -62,7 +61,6 @@
             slot="start"
             color="danger"
           ></ion-icon>
-          <!-- <ion-label position="stacked label">First Name</ion-label> -->
           <ion-input
             placeholder="Enter your First name"
             value="{{firstName}}"
@@ -80,7 +78,6 @@
             slot="start"
             color="primary"
           ></ion-icon>
-          <!-- <ion-label position="stacked label">Last name</ion-label> -->
           <ion-input
             placeholder="Enter your last name"
             value="{{lastName}}"
@@ -94,7 +91,6 @@
       <ion-col size-xs="11" size="14" size-md="8" size-lg="4">
         <ion-item color="light" lines="none">
           <ion-icon name="call-outline" slot="start" color="medium"></ion-icon>
-          <!-- <ion-label position="stacked label">Emergency Contact</ion-label> -->
           <ion-input
             placeholder="Enter Mobile Number"
             value="{{mobileNo}}"
@@ -108,7 +104,6 @@
       <ion-col size-xs="11" size="14" size-md="8" size-lg="4">
         <ion-item color="light" lines="none">
           <ion-icon name="home-outline" slot="start" color="warning"></ion-icon>
-          <!-- <ion-label position="stacked label">Emergency Contact</ion-label> -->
           <ion-input
             placeholder="Enter a Contact in case of Emergency"
             value="{{emergency}}"
@@ -120,125 +115,13 @@
 
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size="14" size-md="8" size-lg="4">
-        <!-- <div class="edit-profile-page__update-profile-btn-wrapper"> -->
         <ion-button
           class="edit-profile-page__update-profile-btn"
           shape="round"
           (click)="update()"
           >Update Profile</ion-button
         >
-        <!-- </div> -->
       </ion-col>
     </ion-row>
   </ion-grid>
-  <!-- <div>
-    <ion-item>
-      <ion-label>Select Profile Image</ion-label>
-      <input type="file" (change)="onImageSelected($event)" accept="image/*">
-    </ion-item>
-     
-    <ion-item>
-      <ion-label>Uploaded Image</ion-label>
-      <img [src]="uploadedImage" *ngIf="uploadedImage" />
-    </ion-item>
-    
-  </div> -->
-
-  <!-- <div class="edit-profile-page__profile-wrapper"> -->
-  <!-- <ion-avatar>
-    <ion-img src="{{ profile }}"></ion-img>
-
-    <ion-fab-button
-      size="small"
-      color="light"
-      class="camera-button"
-      (click)="chooseFileInput.click()"
-      (change)="onImageFileChange($event)"
-    >
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-    <input
-      type="file"
-      accept="image/*"
-      style="display: none"
-      #chooseFileInput
-      (change)="onImageFileChange($event)"
-    />
-  </ion-avatar> -->
-  <!-- 
-    <ion-fab vertical="top" horizontal="end" color="" class="ok">
-      <ion-fab-button
-        size="small"
-        horizontal="end"
-        color="transprent"
-        (click)="uploadFiles('image')"
-        class="edit-profile-page__save-pic-btn"
-      >
-        <p>save<br />picture</p>
-      </ion-fab-button>
-    </ion-fab> -->
-
-  <!-- <ion-fab-button slot="end" class="camera" size="small">
-      <ion-icon name="camera-outline" size="small" (click)="takePicture()">
-      </ion-icon></ion-fab-button><br><br> -->
-  <!-- </div> -->
-
-  <!-- <ion-item color="light" lines="none" [disabled]="true">
-    <ion-icon name="business-outline" slot="start" color="success"></ion-icon>
-    <ion-label position="stacked label">School</ion-label>
-    <ion-input
-      placeholder="Enter your School name"
-      value="{{school}}"
-      [(ngModel)]="school"
-    ></ion-input>
-  </ion-item> -->
-
-  <!-- <ion-item color="light" lines="none">
-    <ion-icon name="person-outline" slot="start" color="danger"></ion-icon>
-    <ion-label position="stacked label">First Name</ion-label>
-    <ion-input
-      placeholder="Enter your First name"
-      value="{{firstName}}"
-      [(ngModel)]="firstName"
-    ></ion-input>
-  </ion-item> -->
-
-  <!-- <ion-item color="light" lines="none">
-    <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
-    <ion-label position="stacked label">Last name</ion-label>
-    <ion-input
-      placeholder="Enter your last name"
-      value="{{lastName}}"
-      [(ngModel)]="lastName"
-    ></ion-input>
-  </ion-item> -->
-
-  <!-- <ion-item color="light" lines="none">
-    <ion-icon name="home-outline" slot="start" color="warning"></ion-icon>
-    <ion-label position="stacked label">Emergency Contact</ion-label>
-    <ion-input
-      placeholder="Enter a Contact in case of Emergency"
-      value="{{emergency}}"
-      [(ngModel)]="emergency"
-    ></ion-input>
-  </ion-item> -->
-
-  <!-- <ion-item color="light" lines="none">
-    <ion-icon name="call-outline" slot="start" color="medium"></ion-icon>
-    <ion-label position="stacked label">Emergency Contact</ion-label>
-    <ion-input
-      placeholder="Enter a Contact in case of Emergency"
-      value="{{mobileNo}}"
-      [(ngModel)]="mobileNo"
-    ></ion-input>
-  </ion-item> -->
-
-  <!-- <div class="edit-profile-page__update-profile-btn-wrapper">
-    <ion-button
-      class="edit-profile-page__update-profile-btn"
-      shape="round"
-      (click)="update()"
-      >Update Profile</ion-button
-    >
-  </div> -->
 </ion-content>

@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar color="primary" class="ion-header">
+  <ion-toolbar class="ion-header">
     <ion-title color="dark">Employee Profile</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="toggleEditMode(professor)">
+      <ion-button (click)="toggleEditMode()">
         <ion-icon
           [name]="isEditing ? 'checkmark-outline' : 'create-outline'"
           color="dark"
@@ -19,7 +19,6 @@
 
 <ion-content>
   <ion-card *ngIf="professor" class="profile-card">
-    <!-- <div class="profile-picture round"> -->
     <img
       src="{{professor.profile}}"
       alt="Profile Picture"
@@ -42,7 +41,6 @@
     >
       Upload
     </ion-button>
-    <!-- </div> -->
     <p>{{ uploadStatus }}</p>
 
     <ion-card>
@@ -62,12 +60,6 @@
         <ion-item>
           <ion-icon name="eye" slot="start"></ion-icon>
           <ion-label>{{professor.password}}</ion-label>
-          <!-- Add the "Forgot Password" button -->
-          <!-- <ion-buttons slot="end">
-            <ion-button (click)="forgotPassword(professor)">
-              <ion-icon name="key-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-          </ion-buttons> -->
         </ion-item>
         <ion-item *ngIf="!isEditing">
           <ion-icon name="call-outline" slot="start"></ion-icon>
@@ -147,18 +139,6 @@
             placeholder="{{professor.school}}"
           ></ion-input>
         </ion-item>
-
-        <!-- <ion-item *ngIf="!isEditing">
-          <ion-icon name="home" slot="start"></ion-icon>
-          <ion-label text-wrap="true">{{professor.SchoolId}}</ion-label>
-        </ion-item>
-        <ion-item *ngIf="isEditing">
-          <ion-input
-            type="SchoolId"
-            [(ngModel)]="editedProfessor.SchoolId"
-            placeholder="{{professor.SchoolId}}"
-          ></ion-input>
-        </ion-item> -->
       </ion-card>
     </div>
     <ion-button (click)="delete(professor)" class="delete-button">
@@ -193,9 +173,5 @@
     >
       Unblock
     </ion-button>
-
-    <!-- Rest of your code remains unchanged -->
-
-    <!-- Rest of your code remains unchanged -->
   </ion-card>
 </ion-content>

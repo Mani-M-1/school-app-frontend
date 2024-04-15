@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 
 import { environment } from 'src/environments/environment';
@@ -17,7 +17,6 @@ export class ProfessorProfilePage implements OnInit {
   originalProfessor: any = {};
   editedProfessor: any = {};
 
-  // professor: any = [];
   mobileNumber: any;
   firstName: any;
   lastName: any;
@@ -25,7 +24,6 @@ export class ProfessorProfilePage implements OnInit {
   email: any;
   gender: any;
   address: any;
-  // professor: any;
 
   @ViewChild('fileInput') fileInput: ElementRef; // Using any type for now
 
@@ -72,7 +70,6 @@ export class ProfessorProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    // this.getprofessor();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.getprofessor();
@@ -80,19 +77,7 @@ export class ProfessorProfilePage implements OnInit {
     });
   }
 
-  // ionViewDidEnter() {
-  //   this.mobileNumber = localStorage.getItem('mobileNumber');
-  //   this.firstName = localStorage.getItem('firstName');
-  //   this.lastName = localStorage.getItem('lastName');
-  //   this.subjects = localStorage.getItem('subjects');
-  //   this.email = localStorage.getItem('email');
-  //   this.gender = localStorage.getItem('gender');
-  //   this.address = localStorage.getItem('address');
-
-  // }
-
   delete(professorData: any) {
-    // console.log('clickdeletebutton')
     console.log(professorData);
     // now get the document id this professor
     let doc_id = professorData._id;
@@ -100,19 +85,9 @@ export class ProfessorProfilePage implements OnInit {
       .delete(`${this.apiUrl}/user/profile/${doc_id}`)
       .subscribe((data) => {
         console.log(data);
-        // Optionally, you can remove the deleted professor from the array to update the UI
-        //  this.professors = this.professors.filter(
-        //   (professor: any) => professor._id !== professorData
-        // );
       });
     this.router.navigate(['/tabs/tab10']);
   }
-
-  // edit(professor:any){
-  //   console.log(professor[0]);
-  //   this.router.navigate(['/update-professor-profile', professor[0]]);
-
-  // }
 
   forgotPassword(professorPassword: any) {
     console.log(professorPassword[0]);
@@ -120,7 +95,7 @@ export class ProfessorProfilePage implements OnInit {
   }
 
   //edit function
-  toggleEditMode(professor: any) {
+  toggleEditMode() {
     this.isEditing = !this.isEditing;
     this.editedProfessor = { ...this.professor }; // Clone the professor data for editing
     this.originalProfessor = { ...this.professor }; // Store the original professor data
@@ -143,8 +118,7 @@ export class ProfessorProfilePage implements OnInit {
       .subscribe(
         (response) => {
           console.log('professor profile updated successfully:', response);
-          // Update the originalprofessor with the editedprofessor data
-          // this.professor = { ...response };
+
           this.getprofessor();
           this.isEditing = false; // Switch back to view mode
         },
@@ -162,12 +136,6 @@ export class ProfessorProfilePage implements OnInit {
 
   // Function to trigger file upload
   uploadImage(fileType: any, professor: any) {
-    // var currentFile: File | null = null;
-
-    // if(fileType == 'image'){
-    // this.selectedFile = this.image
-    // }
-
     if (!this.selectedFile) {
       console.log('No file selected.');
       return;
@@ -215,10 +183,8 @@ export class ProfessorProfilePage implements OnInit {
   updateProfileImage(imagepath: any, profileId: any) {
     const data = {
       profile: imagepath,
-      //  updatedprofessor: this.updatedprofessor._id
     };
-    // console.log(profileId._id);
-    // Make the PUT request to the API endpoint
+
     console.log(data);
     this.http
       .put<any>(`${this.apiUrl}/user/profile/update/${profileId}`, data)
