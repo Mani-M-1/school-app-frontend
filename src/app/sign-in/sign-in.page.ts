@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+// import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastService } from '../services/toast.service';
@@ -32,7 +32,7 @@ export class SignInPage implements OnInit {
   student: any;
   professor: any;
 
-  form!: FormGroup;
+  // form!: FormGroup;
   type: boolean = true;
 
   constructor(
@@ -64,6 +64,11 @@ export class SignInPage implements OnInit {
 
   changeType() {
     this.type = !this.type;
+  }
+
+  hadleOnclickForgotPassword() {
+    console.log('sign-in page forgot password navigate function');
+    this.router.navigate(['/forgot-password']);
   }
 
   logIn() {

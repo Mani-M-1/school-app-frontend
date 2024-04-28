@@ -47,16 +47,16 @@ export class StudentSideCoursesPage implements OnInit {
       description: ['', Validators.required],
       dueDate: ['', Validators.required],
     });
+
+    this.getCourseDetails();
   }
 
   ngOnInit() {
-    console.log('Initializing Tab1Page');
-
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.getCourseDetails(); // and we are calling this function
-      }
-    });
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.getCourseDetails(); // and we are calling this function
+    //   }
+    // });
   }
 
   //get course details api

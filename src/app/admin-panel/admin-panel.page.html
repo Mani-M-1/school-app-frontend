@@ -1,0 +1,259 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Manage Principals</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row class="ion-align-items-center ion-margin-top">
+      <ion-col size="12" style="padding: 0; display: flex">
+        <!-- <ion-item lines="none" color="primary" style="margin: 0"> -->
+        <ion-searchbar
+          (input)="searchPrincipals($event)"
+          color="light"
+          placeholder="Search by Name"
+          style="padding: 0; margin-right: 10px; font-size: 10px"
+        ></ion-searchbar>
+        <ion-button
+          style="padding: 0; margin: 0"
+          (click)="handleOnclickAddBtn()"
+        >
+          Add +
+        </ion-button>
+        <!-- </ion-item> -->
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col
+        size="12"
+        *ngFor="let principal of principals; let i = index"
+        style="padding: 0; margin-top: 10px"
+      >
+        <!-- <ion-list> -->
+        <!-- <div> -->
+        <ion-card color="light" class="admin-panel-page__list-items-wrapper">
+          <div class="admin-panel-page__list-items-details-wrapper">
+            <!-- <ion-label style="font-size: 10px"
+              >{{principal.schoolId}}</ion-label
+            > -->
+            <div class="admin-panel-page__list-items-bottom-details-wrapper">
+              <ion-label color="dark" style="font-size: 10px; width: 40%"
+                >{{principal.schoolDetails.schoolCode}}</ion-label
+              >
+              <ion-label color="dark"
+                >{{principal.firstName}} {{principal.lastName}}</ion-label
+              >
+              <!-- <ion-label>{{principal.school}}</ion-label> -->
+            </div>
+          </div>
+
+          <button class="options-btn" (click)="optionsFunc(i)">
+            <ion-icon color="dark" name="ellipsis-vertical"></ion-icon>
+          </button>
+
+          <ul color="primary" *ngIf="isOptionsVisible[i]" class="options-card">
+            <li
+              class="option-item"
+              (click)="handleOnclickDetails(principal, i)"
+            >
+              Details
+            </li>
+            <li class="option-item" (click)="handleOnclickEdit(principal, i)">
+              Edit
+            </li>
+            <li class="option-item" (click)="handleOnclickDelete(principal, i)">
+              Delete
+            </li>
+          </ul>
+        </ion-card>
+        <!-- </div> -->
+        <!-- </ion-list> -->
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center ion-margin-top">
+      <ion-col size="12" style="padding: 0"> </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- popup related code  -->
+
+<div *ngIf="isModalVisible" class="popup-main-wrapper" (click)="showModal()">
+  <div class="popup-content-wrapper" (click)="stopEventPropogation($event)">
+    <div style="display: flex; align-items: center; justify-content: flex-end">
+      <ion-icon
+        class="popup-close-btn"
+        name="close-outline"
+        (click)="showModal()"
+      ></ion-icon>
+    </div>
+
+    <ion-item color="light" lines="none">
+      <ion-icon name="person-outline" slot="start" color="tertiary"></ion-icon>
+      <ion-input
+        [disabled]="isEditable ? false : true"
+        placeholder="Enter first name"
+        [(ngModel)]="firstName"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item color="light" lines="none">
+      <ion-icon name="person-outline" slot="start" color="warning"></ion-icon>
+      <ion-input
+        [disabled]="isEditable ? false : true"
+        placeholder="Enter last name"
+        [(ngModel)]="lastName"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item color="light">
+      <ion-icon
+        name="phone-portrait-outline"
+        slot="start"
+        color="success"
+      ></ion-icon>
+      <ion-input
+        [disabled]="isEditable ? false : true"
+        placeholder="Enter mobile number"
+        [(ngModel)]="phone"
+        type="tel"
+        minlength="10"
+        maxlength="10"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item color="light" lines="none">
+      <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+      <ion-input
+        [disabled]="isEditable ? false : true"
+        placeholder="Enter email"
+        [(ngModel)]="email"
+        type="email"
+      ></ion-input>
+    </ion-item>
+    <!-- 
+    <ion-item [disabled]="true" *ngIf="!isEditable" color="light" lines="none">
+      <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+      <ion-input [disabled]="isEditable ? false : true" [(ngModel)]="gender" type="gender"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="isEditable" color="light" lines="none">
+      <ion-icon size="large" name="man-outline" slot="start"></ion-icon>
+      <ion-select [(ngModel)]="gender" placeholder="Gender">
+        <ion-select-option value="male">Male</ion-select-option>
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+    <ion-item color="light" lines="none">
+      <ion-icon size="large" name="man-outline" slot="start"></ion-icon>
+      <ion-select
+        [disabled]="isEditable ? false : true"
+        [(ngModel)]="gender"
+        placeholder="Gender"
+      >
+        <ion-select-option value="male">Male</ion-select-option>
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="light">
+      <ion-icon name="home-outline" slot="start" color="success"></ion-icon>
+      <ion-input
+        [disabled]="isEditable ? false : true"
+        placeholder="Incase of Emegency"
+        [(ngModel)]="emergency"
+        type="tel"
+        minlength="10"
+        maxlength="10"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item color="light">
+      <ion-icon
+        name="lock-closed-outline"
+        slot="start"
+        color="danger"
+      ></ion-icon>
+      <ion-input
+        [disabled]="isEditable ? false : true"
+        placeholder="Enter password"
+        [(ngModel)]="password"
+        minlength="8"
+        type="text"
+        autofill="false"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item color="light" lines="none">
+      <ion-icon
+        name="business-outline"
+        slot="start"
+        color="tertiary"
+      ></ion-icon>
+      <ion-input
+        [disabled]="isEditable ? false : true"
+        placeholder="Enter School Name"
+        [(ngModel)]="school"
+      >
+      </ion-input>
+    </ion-item>
+
+    <button
+      *ngIf="isEditable"
+      class="admin-panel-page__submit-btn"
+      (click)="updatePrincipal()"
+    >
+      Submit
+    </button>
+  </div>
+</div>
+
+<!-- delete modal  -->
+
+<div
+  *ngIf="isDeleteModalVisible"
+  class="delete-modal"
+  (click)="closeDeleteModal()"
+>
+  <div
+    class="delete-modal-inner-content-card"
+    (click)="stopEventPropogationInDeleteModal($event)"
+  >
+    <h4 style="text-align: center">
+      Do you want to delete
+      <b
+        >"{{deletePrincipalDetails.firstName}}
+        {{deletePrincipalDetails.lastName}}"</b
+      >
+    </h4>
+    <div class="delete-modal-btns-wrapper">
+      <button
+        class="delete-modal-btns accept-delete"
+        (click)="deletionConfirmed(deletePrincipalDetails._id)"
+      >
+        Yes
+      </button>
+      <button
+        class="delete-modal-btns reject-delete"
+        (click)="closeDeleteModal()"
+      >
+        Cancel
+      </button>
+    </div>
+
+    <!-- close icon  -->
+    <ion-icon
+      class="delete-modal-close-icon"
+      name="close-outline"
+      (click)="closeDeleteModal()"
+    ></ion-icon>
+  </div>
+</div>

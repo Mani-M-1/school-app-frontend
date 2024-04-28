@@ -175,6 +175,20 @@ const routes: Routes = [
         (m) => m.ChangePasswordPageModule
       ),
   },
+  {
+    path: 'admin-panel',
+    loadChildren: () =>
+      import('./admin-panel/admin-panel.module').then(
+        (m) => m.AdminPanelPageModule
+      ),
+  },
+  {
+    path: 'add-principal',
+    loadChildren: () =>
+      import('./add-principal/add-principal.module').then(
+        (m) => m.AddPrincipalPageModule
+      ),
+  },
 ];
 @NgModule({
   imports: [

@@ -20,7 +20,7 @@ export class Tab5Page implements OnInit {
 
   isUpdatePopupActive: any; // for update course popup
 
-  isOptionsVisible: boolean[]; // for options
+  isOptionsVisible: boolean[] = []; // for options
 
   searchText: any;
   showAll: boolean | undefined;
@@ -93,8 +93,6 @@ export class Tab5Page implements OnInit {
       description: ['', Validators.required],
       dueDate: ['', Validators.required],
     });
-
-    this.isOptionsVisible = [];
   }
 
   handleOnclickEnrolledStudentsBtn(course: any) {

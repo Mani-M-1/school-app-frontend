@@ -23,6 +23,7 @@
             <ion-icon
               *ngIf="isBlogLiked"
               name="heart"
+              color="danger"
               style="font-size: 20px"
               (click)="dislikeBlog()"
             ></ion-icon>
@@ -30,6 +31,7 @@
             <ion-icon
               *ngIf="!isBlogLiked"
               name="heart-outline"
+              color="danger"
               style="font-size: 20px"
               (click)="likeBlog()"
             ></ion-icon>

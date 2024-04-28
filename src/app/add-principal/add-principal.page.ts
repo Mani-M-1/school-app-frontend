@@ -6,11 +6,11 @@ import { ToastService } from '../services/toast.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.page.html',
-  styleUrls: ['./sign-up.page.scss'],
+  selector: 'app-add-principal',
+  templateUrl: './add-principal.page.html',
+  styleUrls: ['./add-principal.page.scss'],
 })
-export class SignUpPage implements OnInit {
+export class AddPrincipalPage implements OnInit {
   private apiUrl: string = environment.apiUrl;
 
   //variables
@@ -18,12 +18,20 @@ export class SignUpPage implements OnInit {
   lastName: any;
   phone: any;
   email: any;
-  school: any;
-  role: any;
+  gender: any;
+  role: any = 'principal';
   emergency: any;
-  address: any;
   password: any;
-  conformPassword: any;
+  address: any;
+
+  // school details
+  school: any; // school name is common for "principal" also because we need to store that school name in "UserProfile" Schema
+  schoolCode: any;
+  schoolAddress: any;
+  schoolPhoneNumber: any;
+
+  // this is for changing type of "password"
+  type: boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -33,9 +41,11 @@ export class SignUpPage implements OnInit {
 
   ngOnInit() {}
 
-  changeType() {}
+  changeType() {
+    this.type = !this.type;
+  }
 
-  signUp() {
+  addPrincipal() {
     console.log(this.firstName);
     console.log(this.lastName);
     console.log(this.phone);
@@ -52,18 +62,22 @@ export class SignUpPage implements OnInit {
       lastName: this.lastName,
       mobileNo: this.phone,
       email: this.email,
-      school: this.school,
+      gender: this.gender,
       role: this.role,
       emergency: this.emergency,
-      address: this.address,
       password: this.password,
+      address: this.address,
+      school: this.school,
+      schoolCode: this.schoolCode,
+      schoolAddress: this.schoolAddress,
+      schoolPhoneNumber: this.schoolPhoneNumber,
     };
 
-    this.http.post(`${this.apiUrl}/user/signup`, postdata).subscribe(
+    this.http.post(`${this.apiUrl}/user/add/principal`, postdata).subscribe(
       (response) => {
         console.log(response);
 
-        this.router.navigate(['/sign-in']);
+        this.router.navigate(['/admin-panel']);
       },
       (error) => {
         console.log(error);
