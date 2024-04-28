@@ -1,3 +1,5 @@
+// // old logic
+
 // import { Component } from '@angular/core';
 // import { NavigationEnd, Router } from '@angular/router';
 // import { RoleService } from '../role.service';
@@ -37,6 +39,8 @@
 //   }
 // }
 
+// latest logic
+
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { RoleService } from '../role.service';
@@ -67,11 +71,15 @@ export class TabsPage implements OnInit {
   }
 
   private checkUserRole() {
+    const url = this.router.url;
+    console.log('Current URL Path:', url);
+
     const userRole = this.roleService.getUserRole();
     if (userRole) {
       this.updateTabsVisibility(userRole);
       this.isRoleChecked = true;
-    } else {
+    } else if (url !== '/forgot-password') {
+      // avoiding navigation to "sign-in" page when we click on forgot-password button in sign-in page
       this.router.navigate(['/sign-in']);
     }
   }
