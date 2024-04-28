@@ -52,11 +52,11 @@ export class StudentSideCoursesPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.router.events.subscribe((event) => {
-    //   if (event instanceof NavigationEnd) {
-    //     this.getCourseDetails(); // and we are calling this function
-    //   }
-    // });
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.getCourseDetails(); // and we are calling this function
+      }
+    });
   }
 
   //get course details api

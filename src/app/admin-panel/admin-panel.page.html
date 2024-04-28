@@ -33,16 +33,16 @@
       >
         <!-- <ion-list> -->
         <!-- <div> -->
-        <ion-card color="light" class="admin-panel-page__list-items-wrapper">
+        <ion-card-content class="admin-panel-page__list-items-wrapper">
           <div class="admin-panel-page__list-items-details-wrapper">
             <!-- <ion-label style="font-size: 10px"
               >{{principal.schoolId}}</ion-label
             > -->
             <div class="admin-panel-page__list-items-bottom-details-wrapper">
-              <ion-label color="dark" style="font-size: 10px; width: 40%"
+              <ion-label style="font-size: 10px; width: 40%"
                 >{{principal.schoolDetails.schoolCode}}</ion-label
               >
-              <ion-label color="dark"
+              <ion-label
                 >{{principal.firstName}} {{principal.lastName}}</ion-label
               >
               <!-- <ion-label>{{principal.school}}</ion-label> -->
@@ -50,10 +50,10 @@
           </div>
 
           <button class="options-btn" (click)="optionsFunc(i)">
-            <ion-icon color="dark" name="ellipsis-vertical"></ion-icon>
+            <ion-icon name="ellipsis-vertical"></ion-icon>
           </button>
 
-          <ul color="primary" *ngIf="isOptionsVisible[i]" class="options-card">
+          <ul *ngIf="isOptionsVisible[i]" class="options-card">
             <li
               class="option-item"
               (click)="handleOnclickDetails(principal, i)"
@@ -67,7 +67,7 @@
               Delete
             </li>
           </ul>
-        </ion-card>
+        </ion-card-content>
         <!-- </div> -->
         <!-- </ion-list> -->
       </ion-col>
