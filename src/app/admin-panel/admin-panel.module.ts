@@ -13,8 +13,8 @@ import { AdminPanelPage } from './admin-panel.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPanelPageRoutingModule
+    AdminPanelPageRoutingModule,
   ],
-  declarations: [AdminPanelPage]
+  declarations: [AdminPanelPage],
 })
 export class AdminPanelPageModule {}
