@@ -26,18 +26,18 @@ export class AppComponent {
   }
 
   OnInit() {
-    this.isLoggedIn();
+    // this.isLoggedIn();
   }
 
   //this is for routing porpose if the user is loggedin then he should navigate to tab1 page
-  isLoggedIn() {
-    const email = localStorage.getItem('email');
-    if (email) {
-      this.router.navigate(['tab1']);
-    } else {
-      this.router.navigate(['login']);
-    }
-  }
+  // isLoggedIn() {
+  //   const email = localStorage.getItem('email');
+  //   if (email) {
+  //     this.router.navigate(['student-side-courses-page']);
+  //   } else {
+  //     this.router.navigate(['sign-in']);
+  //   }
+  // }
 
   OneSignalInit(): void {
     console.log('OnsignalInit function triggered');

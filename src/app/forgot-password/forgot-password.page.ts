@@ -14,7 +14,9 @@ export class ForgotPasswordPage implements OnInit {
 
   email: any;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {
+    console.log('Forgot password page ');
+  }
 
   ngOnInit() {}
 

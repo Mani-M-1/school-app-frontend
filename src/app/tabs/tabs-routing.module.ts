@@ -67,19 +67,15 @@ const routes: Routes = [
       },
       {
         path: '',
-        loadChildren: () =>
-          import(
-            '../student-side-courses-page/student-side-courses-page.module'
-          ).then((m) => m.StudentSideCoursesPageModule),
+        redirectTo: '/student-side-courses-page',
+        pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    loadChildren: () =>
-      import(
-        '../student-side-courses-page/student-side-courses-page.module'
-      ).then((m) => m.StudentSideCoursesPageModule),
+    redirectTo: '/tabs/student-side-courses-page',
+    pathMatch: 'full',
   },
 ];
 
