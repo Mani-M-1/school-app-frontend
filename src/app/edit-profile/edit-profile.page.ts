@@ -220,6 +220,11 @@ export class EditProfilePage implements OnInit {
               this.toastService.presentToast('Profile updated successfully');
               break;
 
+            case 'admin':
+              this.router.navigate(['/tabs/tab12']);
+              this.toastService.presentToast('Profile updated successfully');
+              break;
+
             default:
               this.toastService.presentToast('somethig went wrong');
               break;

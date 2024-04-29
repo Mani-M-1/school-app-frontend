@@ -38,14 +38,15 @@ export class AdminPanelPage implements OnInit {
   deletePrincipalDetails: any;
 
   constructor(private http: HttpClient, private router: Router) {
-    // let login_state = localStorage.getItem('isLoggedIn');
-    // let userRole = localStorage.getItem('userRole');
-    // console.log(`admin panel login_state: ${login_state}`);
-    // if (login_state == 'true' && userRole === 'admin') {
-    //   console.log('log in is succesful');
-    // } else {
-    //   this.router.navigate(['/sign-in']);
-    // }
+    let login_state = localStorage.getItem('isLoggedIn');
+    let userRole = localStorage.getItem('userRole');
+    console.log(`admin panel login_state: ${login_state}`);
+
+    if (login_state == 'true' && userRole === 'admin') {
+      console.log('log in is succesful, you are admin');
+    } else {
+      this.router.navigate(['/sign-in']);
+    }
   }
 
   ngOnInit() {

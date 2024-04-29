@@ -102,7 +102,7 @@
       </ion-item>
 
       <ion-item color="light">
-        <ion-icon name="home-outline" slot="start" color="success"></ion-icon>
+        <ion-icon name="call-outline" slot="start" color="success"></ion-icon>
         <ion-input
           placeholder="Incase of Emegency"
           [(ngModel)]="emergency"
@@ -136,18 +136,14 @@
       </ion-item>
 
       <ion-item color="light" lines="none">
-        <ion-icon
-          name="business-outline"
-          slot="start"
-          color="tertiary"
-        ></ion-icon>
+        <ion-icon name="home-outline" slot="start" color="tertiary"></ion-icon>
         <ion-input placeholder="Enter Address" [(ngModel)]="address">
         </ion-input>
       </ion-item>
 
       <!-- <ion-item  color="light"> -->
       <!-- <ion-header> -->
-      <ion-title> School Details </ion-title>
+      <ion-title style="margin: 10px 0"> School Details </ion-title>
       <!-- </ion-header> -->
       <!-- </ion-item> -->
 
@@ -155,7 +151,7 @@
         <ion-icon
           name="business-outline"
           slot="start"
-          color="tertiary"
+          color="primary"
         ></ion-icon>
         <ion-input placeholder="Enter School Name" [(ngModel)]="school">
         </ion-input>
@@ -163,9 +159,9 @@
 
       <ion-item color="light" lines="none">
         <ion-icon
-          name="business-outline"
+          name="lock-closed-outline"
           slot="start"
-          color="tertiary"
+          color="success"
         ></ion-icon>
         <ion-input placeholder="Enter School Code" [(ngModel)]="schoolCode">
         </ion-input>
@@ -175,7 +171,7 @@
         <ion-icon
           name="business-outline"
           slot="start"
-          color="tertiary"
+          color="warning"
         ></ion-icon>
         <ion-input
           placeholder="Enter School Address"
@@ -185,11 +181,7 @@
       </ion-item>
 
       <ion-item color="light" lines="none">
-        <ion-icon
-          name="business-outline"
-          slot="start"
-          color="tertiary"
-        ></ion-icon>
+        <ion-icon name="call-outline" slot="start" color="tertiary"></ion-icon>
         <ion-input
           placeholder="Enter School Phone Number"
           [(ngModel)]="schoolPhoneNumber"

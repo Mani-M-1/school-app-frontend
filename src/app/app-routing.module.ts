@@ -175,13 +175,7 @@ const routes: Routes = [
         (m) => m.ChangePasswordPageModule
       ),
   },
-  {
-    path: 'admin-panel',
-    loadChildren: () =>
-      import('./admin-panel/admin-panel.module').then(
-        (m) => m.AdminPanelPageModule
-      ),
-  },
+
   {
     path: 'add-principal',
     loadChildren: () =>

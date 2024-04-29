@@ -66,6 +66,18 @@ const routes: Routes = [
           import('../tab11/tab11.module').then((m) => m.Tab11PageModule),
       },
       {
+        path: 'admin-panel',
+        loadChildren: () =>
+          import('../admin-panel/admin-panel.module').then(
+            (m) => m.AdminPanelPageModule
+          ),
+      },
+      {
+        path: 'tab12',
+        loadChildren: () =>
+          import('../tab12/tab12.module').then((m) => m.Tab12PageModule),
+      },
+      {
         path: '',
         redirectTo: '/student-side-courses-page',
         pathMatch: 'full',

@@ -54,6 +54,9 @@ export class TabsPage implements OnInit {
   isStudent = false;
   isPrincipal = false;
   isProfessor = false;
+  isAdmin = false;
+
+  // for checking "userRole"
   isRoleChecked = false;
 
   constructor(private roleService: RoleService, private router: Router) {}
@@ -88,9 +91,11 @@ export class TabsPage implements OnInit {
     this.isStudent = userRole === 'student';
     this.isProfessor = userRole === 'professor';
     this.isPrincipal = userRole === 'principal';
+    this.isAdmin = userRole === 'admin';
 
     console.log(`tabs page - isStudent:${this.isStudent}`);
     console.log(`tabs page - isProfessor:${this.isProfessor}`);
     console.log(`tabs page - isPrincipal:${this.isPrincipal}`);
+    console.log(`tabs page - isAdmin:${this.isAdmin}`);
   }
 }
