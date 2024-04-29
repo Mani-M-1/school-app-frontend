@@ -59,7 +59,16 @@ export class TabsPage implements OnInit {
   // for checking "userRole"
   isRoleChecked = false;
 
-  constructor(private roleService: RoleService, private router: Router) {}
+  constructor(private roleService: RoleService, private router: Router) {
+    //here we need to check if user is signed in and user role
+    let login_state = localStorage.getItem('isLoggedIn');
+
+    if (login_state == 'true') {
+      console.log('log in is succesful');
+    } else {
+      this.router.navigate(['/sign-in']);
+    }
+  }
 
   ngOnInit() {
     // Check user role when component initializes
@@ -78,12 +87,12 @@ export class TabsPage implements OnInit {
     console.log('Current URL Path:', url);
 
     const userRole = this.roleService.getUserRole();
+
+    console.log('Current user role:', userRole);
+
     if (userRole) {
       this.updateTabsVisibility(userRole);
       this.isRoleChecked = true;
-    } else if (url !== '/forgot-password') {
-      // avoiding navigation to "sign-in" page when we click on forgot-password button in sign-in page
-      this.router.navigate(['/sign-in']);
     }
   }
 

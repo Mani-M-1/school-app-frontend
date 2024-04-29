@@ -104,9 +104,13 @@ ion-toolbar {
 
 // for popup items
 ion-item {
+  // width: 100%;
+  // min-width: 300px;
   border-radius: 10px;
-  margin: 0 10px 10px 10px;
+  // margin: 0 10px 10px 10px;
+  // margin: 0 5px 5px 5px;
   font-size: 14px;
+  scale: 0.8;
 }
 
 .admin-panel-page__submit-btn {
@@ -114,12 +118,17 @@ ion-item {
   border: 0;
   height: 50px;
   font-size: 16px;
-  margin: 0 10px 10px 10px;
-  //   width: 100%;
+  // margin: 0;
+  // padding: 0;
+  // margin: 0 10px 10px 10px;
+  // margin: 0 5px 5px 5px;
+  // width: 100%;
   // min-width: 120px;
   background-color: #ffaa01;
   padding: 16px 0;
   border-radius: 10px;
+  scale: 0.8;
+  // margin-left: 6px;
 }
 
 // delete modal styles

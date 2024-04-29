@@ -66,11 +66,6 @@ export class SignInPage implements OnInit {
     this.type = !this.type;
   }
 
-  hadleOnclickForgotPassword() {
-    console.log('sign-in page forgot password navigate function');
-    this.router.navigate(['/forgot-password']);
-  }
-
   logIn() {
     console.log(this.email);
     console.log(this.password);
