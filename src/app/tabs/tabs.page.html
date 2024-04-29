@@ -58,5 +58,15 @@
       <ion-icon name="person"></ion-icon>
       <ion-label>Profile</ion-label>
     </ion-tab-button>
+
+    <ion-tab-button *ngIf="isAdmin" href="/tabs/admin-panel" tab="admin-panel">
+      <ion-icon name="people"></ion-icon>
+      <ion-label>Principals</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="isAdmin" href="/tabs/tab12" tab="tab12">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
