@@ -41,7 +41,9 @@ export class SignInPage implements OnInit {
     private toastService: ToastService,
     private roleService: RoleService,
     private platform: Platform
-  ) {}
+  ) {
+    console.log('apiUrl', this.apiUrl);
+  }
 
   // will be implemented version 2 of applicaton development
 
