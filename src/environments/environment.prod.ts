@@ -5,5 +5,5 @@ export const environment = {
   // apiUrl: 'http://localhost:3000',
 
   // production url
-  apiUrl: 'https://student-corner-production-3fc875bb5b7f.herokuapp.com',
+  apiUrl: 'https://student-corner-production-9d9169b0158d.herokuapp.com',
 };
